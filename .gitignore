@@ -1,0 +1,17 @@
+# Personal
+pyrightconfig.json
+avega-html/
+.vscode/
+
+# Python
+__pycache__/
+.venv/
+
+# Django
+migrations/
+media/
+metadata.json
+
+# React
+node_modules/
+.env
