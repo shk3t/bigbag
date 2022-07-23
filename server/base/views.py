@@ -12,6 +12,8 @@ def list_routes(request):
         "/api/register",
         "/api/login",
         "/api/logout",
+        "/api/products",
+        "/api/products/:id",
     ]
     return Response(routes)
 

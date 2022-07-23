@@ -9,8 +9,8 @@ export default function App() {
     <BrowserRouter>
       <div>
         <Routes>
-          <Route path="/" element={<MainPage />} exact />
-          <Route path="/main" element={<MainPage />} exact />
+          <Route path="/" element={<MainPage />} />
+          <Route path="/main" element={<MainPage />} />
           <Route path="/products/:id" element={<ProductPage />} />
         </Routes>
       </div>
