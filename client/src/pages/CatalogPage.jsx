@@ -9,7 +9,7 @@ import axios from "axios";
 import ItemsService from "../API/ItemsService";
 import ImgService from "../API/ImgService";
 
-const Catalog = () => {
+const CatalogPage = () => {
   useEffect(() => {
     fetchItems();
   }, []);
@@ -53,4 +53,4 @@ const Catalog = () => {
   );
 };
 
-export default Catalog;
+export default CatalogPage;
