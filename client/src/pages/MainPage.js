@@ -5,7 +5,7 @@ import "../styles/main.css"
 
 export default function MainPage() {
   return (
-    <div>
+    <div className="root-div">
       <Header />
 
       <div className="container">
