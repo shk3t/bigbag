@@ -1,7 +1,7 @@
 # Personal
 pyrightconfig.json
-avega-html/
 .vscode/
+todo.md
 
 # Python
 __pycache__/
@@ -9,7 +9,7 @@ __pycache__/
 
 # Django
 migrations/
-media/
+#media/
 metadata.json
 
 # React

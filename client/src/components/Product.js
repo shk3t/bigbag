@@ -11,7 +11,6 @@ export default function Product() {
 
   async function fetchProduct() {
     const product = await ProductService.getProductById(params.id)
-    console.log(product)
     setProduct(product)
   }
 
