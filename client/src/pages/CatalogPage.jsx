@@ -37,8 +37,8 @@ const CatalogPage = () => {
       <Header />
       <Way />
       <div className="find-string">Это строка поиска, будет компонентом</div>
-      <div className="catalog">
-        <div className="catalog-item__wrap">
+      <div className="catalog catalog__in-catalog-page">
+        <div className="catalog-item__wrap ">
           {items.map((item) => (
             <ProductItem
               item={item}
@@ -48,6 +48,7 @@ const CatalogPage = () => {
           ))}
         </div>
       </div>
+
       <Footer />
     </div>
   );

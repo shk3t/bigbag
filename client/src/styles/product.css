@@ -146,17 +146,6 @@ main {
   font-size: 15px;
 }
 
-footer {
-  height: min-content;
-  display: grid;
-  align-items: center;
-  grid-template-columns: repeat(4, 1fr);
-  background-color: #484543;
-  font-size: 18px;
-  color: #fff;
-  padding: 40px 100px;
-}
-
 .footer-nav {
   /* width: min-content; */
   margin-right: 100px;

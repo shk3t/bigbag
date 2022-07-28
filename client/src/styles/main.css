@@ -177,7 +177,7 @@ h3 {
   display: grid;
   /* grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, 1fr); */
-  height: 1258px;
+  /* height: 1258px; */
   flex-wrap: wrap;
   background-color: #f8f8f8;
 }
@@ -194,27 +194,37 @@ h3 {
   justify-items: center;
   grid-gap: 1em;
   font-size: 14px;
+  margin-top: 3em;
 }
 
 .catalog-item {
   width: 269px;
   /* height: 306px; */
-  height: min-content;
+  /* height: min-content; */
   border-radius: 20px;
   /* background-color: aliceblue; */
   box-shadow: 5px 5px 9px -1px rgba(34, 60, 80, 0.2);
+  position: relative;
 }
 
 .catalog-item__img {
   width: 100%;
   border-radius: 20px;
   position: relative;
+  /* высота и бек временно, для страницы Каталог, пока нет картинок */
+  height: 269px;
+  background-color: aliceblue;
 }
 
 .catalog-btn__wrap {
   display: flex;
   width: 100%;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 0.5em;
+  position: absolute;
+  bottom: 0;
+  align-items: flex-end;
+  margin-bottom: 0.5em;
 }
 
 .catalog-item__btn-shopping-cart {
@@ -297,7 +307,8 @@ footer {
   background-color: #484543;
   font-size: 18px;
   color: #fff;
-  padding: 40px 100px;
+  padding: 2em 100px;
+  margin-top: 2em;
 }
 
 .footer-nav {
@@ -349,6 +360,10 @@ footer ul {
 
 /* ///////////////////////  СТИЛИ СТРАНИЦЫ catalog */
 
+.catalog__in-catalog-page {
+  background-color: #fff;
+}
+
 .find-string {
   /* width: max-content; */
   height: 56px;
@@ -359,7 +374,23 @@ footer ul {
   margin-right: 100px;
 }
 
-/* пока убрала, потому что марджины идут из catalog-item__wrap */
 .product-item {
   height: 306px;
+  width: 269px;
+  box-shadow: 5px 5px 9px -1px rgba(34, 60, 80, 0.2);
+  position: relative;
+}
+
+.catalog-item__title {
+  color: #616467;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: left;
+}
+
+.catalog-item__price {
+  width: min-content;
+  white-space: nowrap;
+  color: #616467;
+  font-weight: 400;
 }
