@@ -394,3 +394,28 @@ footer ul {
   color: #616467;
   font-weight: 400;
 }
+
+/* ///////////////////////////////ABOUT US */
+.about-us__wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding-left: 100px;
+  padding-right: 100px;
+  margin-bottom: 8em;
+}
+
+.about-us__text {
+  margin-top: 2em;
+  font-size: 16px;
+  text-align: justify;
+  line-height: 2em;
+  color: #616467;
+}
+
+.about-us__text h2 {
+  text-transform: uppercase;
+  margin-bottom: 1em;
+  font-weight: 500;
+  font-size: 2em;
+}
