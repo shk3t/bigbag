@@ -1,7 +1,8 @@
-import React from "react"
-import avgLogo from "../assets/avg_logo.png"
+import React from "react";
+import avgLogo from "../assets/avg_logo.png";
+import { Link } from "react-router-dom";
 
-  export default function Footer() {
+export default function Footer() {
   return (
     <footer>
       <div className="footer-logo">
@@ -11,9 +12,9 @@ import avgLogo from "../assets/avg_logo.png"
       </div>
       <div className="footer-nav">
         <ul>
-          <li>О компании</li>
+          <Link to="/about">О нас</Link>
           <li>Оплата</li>
-          <li>Доставка</li>
+          <Link to="/delivery">Доставка</Link>
         </ul>
       </div>
 
@@ -21,7 +22,12 @@ import avgLogo from "../assets/avg_logo.png"
         <p>Нужна консультация? Оставьте свой номер, и мы c вами свяжемся:</p>
         <form action="#" method="post" className="phone_form">
           <div className="user_phone">
-            <input type="text" placeholder="+7xxx-xxx-xx-xx" id="user_phone" className="rfield" />
+            <input
+              type="text"
+              placeholder="+7xxx-xxx-xx-xx"
+              id="user_phone"
+              className="rfield"
+            />
           </div>
 
           <input type="submit" className="btn_submit" />
@@ -38,10 +44,10 @@ import avgLogo from "../assets/avg_logo.png"
         </p>
         <br />
         <p>
-          г. <strong>Москва</strong>, м. Пражская, ул. Подольских Курсантов, д. 3, стр. 7А, СК
-          "Мобиус Логистика"
+          г. <strong>Москва</strong>, м. Пражская, ул. Подольских Курсантов, д.
+          3, стр. 7А, СК "Мобиус Логистика"
         </p>
       </div>
     </footer>
-  )
+  );
 }

@@ -71,7 +71,11 @@ nav {
   font-size: 18px;
 }
 
-.header__nav__ul li:not(:first-child)::before {
+.header__nav__ul a {
+  text-decoration: none;
+}
+
+.header__nav__ul a:not(:first-child)::before {
   content: "/";
   margin-right: 20px;
 }
@@ -330,6 +334,11 @@ footer ul {
   display: grid;
   grid-gap: 40px;
   font-size: 18px;
+}
+
+footer ul a {
+  text-decoration: none;
+  color: #fff;
 }
 
 .footer-call {

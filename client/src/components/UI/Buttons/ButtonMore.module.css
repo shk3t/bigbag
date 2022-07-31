@@ -5,4 +5,6 @@
   border-radius: 10px;
   color: #fff;
   font-size: 12px;
+  /*заменить на hover*/
+  cursor: pointer;
 }
