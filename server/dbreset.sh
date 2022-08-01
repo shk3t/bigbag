@@ -9,7 +9,7 @@ function check_bin() {
     fi
 }
 
-function main() {
+function reset_db() {
     psql -d avegabag -f $PWD/sql/reset.sql
     rm $PWD/base/migrations/*
     python $PWD/manage.py makemigrations base
@@ -21,7 +21,7 @@ server_path="avegabug/server"
 if [[ $PWD =~ ${server_path}$ ]]; then
     check_bin psql
     check_bin python
-    main path
+    reset_db path
 else
     echo "Please, run this script from \"$server_path\" dir"
 fi 

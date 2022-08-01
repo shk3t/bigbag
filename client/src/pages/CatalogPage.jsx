@@ -2,48 +2,45 @@ import React from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Way from "../components/Way";
-import "../styles/main.css";
 import ProductItem from "../components/ProductItem";
 import { useState, useEffect } from "react";
-import axios from "axios";
-import ItemsService from "../API/ItemsService";
-import ImgService from "../API/ImgService";
+import ProductService from "../API/ProductService";
 
+// Везде заменил item на product, потому что так понятнее)) (Удалить После Прочтения)
 const CatalogPage = () => {
   useEffect(() => {
-    fetchItems();
+    fetchProducts();
   }, []);
 
-  const [items, setItems] = useState([]);
+  const [products, setProducts] = useState([]);
 
-  async function fetchItems() {
-    const items = await ItemsService.getAll();
-    setItems(items);
+  async function fetchProducts() {
+    // Нам не нужен фейк, потому что есть свои данные,
+    // хватаем из ...:8000/api/products:
+    // proxy из package.json + строка в axios.get() (УПП)
+    const products = await ProductService.getAll();
+    // Посмотри в консоли браузера, что возвращает сервер
+    console.log(products);  // (УПП)
+    setProducts(products);
   }
 
-  /*
-  const [imgs, setImgs] = useState([]);
-
-  async function fetchImgs() {
-    const imgs = await ImgService.getAll();
-    setImgs(imgs);
-    // imgs.map((img) => (img = img.url));
-    // console.log(imgs);
-  }
-  */
+  // Удалил все что тут было: что-то связанное с image -
+  // Потому что пути к нашим image содержатся уже в product.image,
+  // Осталось их просто добавить в src={product.image} (УПП)
 
   return (
     <div className="root-div">
       <Header />
       <Way />
+
       <div className="find-string">Это строка поиска, будет компонентом</div>
       <div className="catalog catalog__in-catalog-page">
         <div className="catalog-item__wrap ">
-          {items.map((item) => (
+          {products.map((product) => (
             <ProductItem
-              item={item}
               //key ниже должен быть уникальным, чтобы react не ругался
-              key={item.id}
+              key={product.id}
+              product={product}
             />
           ))}
         </div>

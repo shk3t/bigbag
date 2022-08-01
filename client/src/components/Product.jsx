@@ -1,18 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { getProductAction } from "../reducers/productReducer";
+import React from "react";
 
-export default function Product() {
-  const { id } = useParams();
-  const dispatch = useDispatch();
-  const product = useSelector((state) => state.productReducer.product);
-  useEffect(() => {
-    dispatch(getProductAction(id));
-  }, []);
-
+export default function Product({product}) {
   return (
-    <main>
+    <div>
       {product && (
         <div>
           <div className="product-img">
@@ -37,6 +27,6 @@ export default function Product() {
           </div>
         </div>
       )}
-    </main>
+    </div>
   );
 }

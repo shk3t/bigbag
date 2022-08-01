@@ -1,6 +1,8 @@
 import React from "react";
-import avgLogo from "../assets/avg_logo.png";
 import { Link } from "react-router-dom";
+
+import avgLogo from "../assets/avg_logo.png";
+import { ABOUT_PATH, DELIVERY_PATH } from "../routes";
 
 export default function Footer() {
   return (
@@ -12,9 +14,9 @@ export default function Footer() {
       </div>
       <div className="footer-nav">
         <ul>
-          <Link to="/about">О нас</Link>
+          <Link to={ABOUT_PATH}>О нас</Link>
           <li>Оплата</li>
-          <Link to="/delivery">Доставка</Link>
+          <Link to={DELIVERY_PATH}>Доставка</Link>
         </ul>
       </div>
 

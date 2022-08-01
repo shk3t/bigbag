@@ -1,12 +1,13 @@
 import React from "react"
 import Footer from "../components/Footer"
 import Header from "../components/Header"
-import "../styles/main.css"
+import Way from "../components/Way"
 
 export default function MainPage() {
   return (
     <div className="root-div">
       <Header />
+      <Way />
 
       <div className="container">
         <main>

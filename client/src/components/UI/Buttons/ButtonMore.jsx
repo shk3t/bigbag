@@ -1,7 +1,8 @@
 import React from "react";
-import classes from "./ButtonMore.module.css";
-import { ABOUT_PAGE_ROUTE } from "../../../utils/consts";
 import { useNavigate } from "react-router-dom";
+
+import classes from "./ButtonMore.module.css";
+import { ABOUT_PATH } from "../../../routes";
 
 const ButtonMore = (props) => {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ const ButtonMore = (props) => {
       onClick={() => {
         console.log("It work");
         // onClick={() => navigate(PRODUCT_PAGE_ROUTE + "/" + product.id)}
-        navigate(ABOUT_PAGE_ROUTE);
+        navigate(ABOUT_PATH);
       }}
       className={classes.moreAboutProduct}
     >
