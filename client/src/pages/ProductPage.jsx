@@ -21,9 +21,7 @@ export default function ProductPage() {
     <div>
       <Header />
       <Way />
-      <main>
-        <Product product={product} />
-      </main>
+      <main>{product && <Product product={product} />}</main>
       <Footer />
     </div>
   );
