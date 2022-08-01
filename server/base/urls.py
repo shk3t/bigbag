@@ -1,12 +1,19 @@
 from django.urls import path
-from .views import product, category, route
+from base.views import product, category, user, auth
 
 urlpatterns = [
-    path("", route.RouteList.as_view()),
-    path("routes", route.RouteList.as_view(), name="routes"),
-    path("products", product.ProductList.as_view(), name="products"),
-    path("products/<str:id>", product.ProductDetail.as_view(), name="product"),
-    path("products/<str:product_id>/image", product.ImageDetial.as_view(), name="product_image"),
-    path("categories", category.CategoryList.as_view(), name="categories"),
-    path("categories/<str:id>", category.CategoryDetail.as_view(), name="category"),
+    path("register", auth.register),
+    path("login", auth.login),
+    path("tokens/refresh", auth.refresh_tokens),
+
+    path("users", user.UserList.as_view()),
+    path("users/<int:id>", user.UserDetail.as_view()),
+    path("users/current", auth.get_current_user),
+
+    path("categories", category.CategoryList.as_view()),
+    path("categories/<str:id>", category.CategoryDetail.as_view()),
+
+    path("products", product.ProductList.as_view()),
+    path("products/<str:id>", product.ProductDetail.as_view()),
+    path("products/<str:product_id>/image", product.ImageDetial.as_view()),
 ]

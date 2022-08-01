@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Category, Order, OrderItem
+from base.models import Product, Category, Order, OrderItem, User
 
 
 admin.site.register(
@@ -8,5 +8,6 @@ admin.site.register(
         Category,
         Order,
         OrderItem,
+        User
     ]
 )

@@ -1,12 +1,13 @@
 from rest_framework.response import Response
 from rest_framework.views import APIView, status
+from base.permissions import ReadOnlyMixin
 
-from ..services import TranslitService
-from ..models import Category
-from ..serializers import CategorySerializer
+from base.services import TranslitService
+from base.models import Category
+from base.serializers import CategorySerializer
 
 
-class CategoryList(APIView):
+class CategoryList(ReadOnlyMixin, APIView):
     def get(self, request):
         categories = Category.objects.all()
         serializer = CategorySerializer(categories, many=True)
@@ -16,12 +17,12 @@ class CategoryList(APIView):
         category_data = request.data
         TranslitService.append_id(category_data)
         serializer = CategorySerializer(data=category_data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
 
-class CategoryDetail(APIView):
+
+class CategoryDetail(ReadOnlyMixin, APIView):
     def get(self, request, id):
         category = Category.get_by_id(id)
         serializer = CategorySerializer(category)

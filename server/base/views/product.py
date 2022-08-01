@@ -1,12 +1,13 @@
 from rest_framework.response import Response
 from rest_framework.views import APIView, status
 
-from ..services import TranslitService
-from ..models import Product
-from ..serializers import ProductSerializer
+from base.permissions import ReadOnlyMixin
+from base.services import TranslitService
+from base.models import Product
+from base.serializers import ProductSerializer
 
 
-class ProductList(APIView):
+class ProductList(ReadOnlyMixin, APIView):
     def get(self, request):
         products = Product.objects.all()
         serializer = ProductSerializer(products, many=True)
@@ -16,13 +17,12 @@ class ProductList(APIView):
         product_data = request.data
         TranslitService.append_id(product_data)
         serializer = ProductSerializer(data=product_data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
 
 
-class ProductDetail(APIView):
+class ProductDetail(ReadOnlyMixin, APIView):
     def get(self, request, id):
         product = Product.get_by_id(id)
         serializer = ProductSerializer(product)
@@ -35,10 +35,9 @@ class ProductDetail(APIView):
             TranslitService.append_id(updated_data)
             product.delete()
         serializer = ProductSerializer(product, data=updated_data, partial=True)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
 
     def delete(self, request, id):
         product = Product.get_by_id(id)
@@ -47,7 +46,9 @@ class ProductDetail(APIView):
         return Response("Product deleted")
 
 
-class ImageDetial(APIView):
+class ImageDetial(ReadOnlyMixin, APIView):
+    # permission_classes = [IsAdminOrReadOnly]
+
     def put(self, request, product_id):
         product = Product.get_by_id(product_id)
         product.image.delete()

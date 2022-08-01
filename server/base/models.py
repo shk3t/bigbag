@@ -1,30 +1,33 @@
 from django.db import models
 from django.db.models import CASCADE
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
+# from django.contrib.auth.models import User
 from django.core.validators import validate_image_file_extension
 from django.core.exceptions import ValidationError
 from rest_framework.exceptions import APIException
 
+from base.exceptions import HttpException
 
-class SafeModel(models.Model):
-    class Meta:
-        abstract = True
-
+class SafeModelMixin:
     @classmethod
     def get_by_id(cls, id):
         try:
             return cls.objects.get(id=id)
-        except Product.DoesNotExist as error:
-            raise APIException(error, 404)
+        except cls.DoesNotExist as error:
+            raise HttpException(error, 404)
 
     def validate(self):
         try:
             self.full_clean()
         except ValidationError as error:
-            raise APIException(error, 400)
+            raise HttpException(dict(error), 400)
 
 
-class Category(SafeModel):
+class User(AbstractUser, SafeModelMixin):
+    pass
+
+
+class Category(SafeModelMixin, models.Model):
     id = models.CharField(max_length=256, primary_key=True)
     name = models.CharField(max_length=256, unique=True)
 
@@ -32,7 +35,7 @@ class Category(SafeModel):
         return self.name
 
 
-class Product(SafeModel):
+class Product(SafeModelMixin, models.Model):
     id = models.CharField(max_length=256, primary_key=True)
     name = models.CharField(max_length=256, unique=True)
     description = models.TextField(null=True, blank=True)
