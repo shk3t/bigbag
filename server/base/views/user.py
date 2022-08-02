@@ -22,3 +22,18 @@ class UserDetail(APIView):
         user = User.get_by_id(id)
         serializer = UserSerializer(user)
         return Response(serializer.data)
+
+
+class ProfileDetail(APIView):
+    def get(self, request):
+        user = request.user
+        serializer = UserSerializer(user)
+        return Response(serializer.data)
+
+    def put(self, request):
+        updated_data = request.data
+        user = request.user
+        serializer = UserSerializer(user, data=updated_data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)

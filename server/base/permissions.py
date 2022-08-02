@@ -12,5 +12,5 @@ class IsAdminOrReadOnly(BasePermission):
 
 
 class ReadOnlyMixin:
-    pass  # TODO delete
+    pass  # TODO uncomment
     # permission_classes = [IsAdminOrReadOnly]
