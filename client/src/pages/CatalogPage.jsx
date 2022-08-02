@@ -6,7 +6,6 @@ import ProductItem from "../components/ProductItem";
 import { useState, useEffect } from "react";
 import ProductService from "../API/ProductService";
 
-// Везде заменил item на product, потому что так понятнее)) (Удалить После Прочтения)
 const CatalogPage = () => {
   useEffect(() => {
     fetchProducts();
@@ -20,13 +19,9 @@ const CatalogPage = () => {
     // proxy из package.json + строка в axios.get() (УПП)
     const products = await ProductService.getAll();
     // Посмотри в консоли браузера, что возвращает сервер
-    console.log(products);  // (УПП)
+    console.log(products); // (УПП)
     setProducts(products);
   }
-
-  // Удалил все что тут было: что-то связанное с image -
-  // Потому что пути к нашим image содержатся уже в product.image,
-  // Осталось их просто добавить в src={product.image} (УПП)
 
   return (
     <div className="root-div">

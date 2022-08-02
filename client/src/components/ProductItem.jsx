@@ -2,22 +2,24 @@ import React from "react";
 import ButtonMore from "./UI/Buttons/ButtonMore";
 
 // Деструктуризировал твои props в {product} - в принципе, получилось то же самое.
-// Здесь ошибок особо нет (Удалить После Прочтения)
-const ProductItem = ({product}) => {
+const ProductItem = ({ product }) => {
   return (
     <div className="product-item">
       <div>
-        <img className="catalog-item__img" alt="динамически"></img>
+        <img
+          className="catalog-item__img"
+          alt="продукт"
+          src={product.image}
+        ></img>
       </div>
       <div>
-        <ButtonMore>Подробнее</ButtonMore>
+        <ButtonMore id={product.id}>Подробнее</ButtonMore>
       </div>
       {/* <button>Корзина</button> */}
       <div className="catalog-btn__wrap">
-        <div className="catalog-item__title ">{product.name}</div>
-        {/* <div>{props.item.body}</div> */}
-        {/* <div>{props.item.price}</div> */}
-        <div className="catalog-item__price">9.95 р/шт</div>
+        {/* временно убрала, чтобы не забыть стилизовать кнопку и отображение описания+цены */}
+        {/* <div className="catalog-item__title ">{product.name}</div> */}
+        {/* <div className="catalog-item__price">{product.price} р/шт</div> */}
       </div>
     </div>
   );

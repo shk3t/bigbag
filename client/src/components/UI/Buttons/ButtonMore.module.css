@@ -8,3 +8,9 @@
   /*заменить на hover*/
   cursor: pointer;
 }
+
+.moreAboutProduct:hover {
+  width: 10em;
+  height: 3em;
+  text-transform: uppercase;
+}
