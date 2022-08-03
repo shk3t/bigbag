@@ -446,3 +446,56 @@ footer ul a {
   font-weight: 500;
   font-size: 2em;
 }
+
+/* /////////////////////// АВТОРИЗАЦИЯ */
+.auth-card {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  width: 400px;
+  margin: auto;
+  justify-items: center;
+  grid-gap: 1em;
+  transform: translate(0, 50%);
+}
+
+.auth-card h2 {
+  text-transform: uppercase;
+
+  color: #334756;
+}
+
+.auth-forms {
+  display: grid;
+  grid-gap: 1em;
+}
+
+.auth-forms input,
+button {
+  border: 0;
+  height: 3em;
+  width: 300px;
+}
+
+.auth-forms input {
+  background: #f3f6ff;
+  border-radius: 30px;
+  padding-left: 1em;
+  font-size: 1em;
+}
+
+.auth-card button {
+  background: #211f1c;
+  border-radius: 50px;
+  text-transform: uppercase;
+  color: #fbfbfb;
+  font-size: 1em;
+}
+
+.auth_no-akk {
+  color: #334756;
+  font-size: 0.8em;
+}
+
+.auth_no-akk a {
+  color: #616467;
+}

@@ -4,6 +4,7 @@ import MainPage from "./pages/MainPage";
 import AboutUsPage from "./pages/AboutUsPage";
 import DeliveryPage from "./pages/DeliveryPage";
 import MyCartPage from "./pages/MyCartPage";
+import Auth from "./pages/Auth";
 
 // Вынес константы из utils/consts.js потому что так удобнее)) (Удалить После Прочтения)
 export const MAIN_PATH = "/main";
@@ -12,6 +13,22 @@ export const CATALOG_PATH = "/catalog";
 export const ABOUT_PATH = "/about";
 export const DELIVERY_PATH = "/delivery";
 export const CART_PATH = "/cart";
+export const AUTH_PATH = "/auth";
+export const REGISTRATION_PATH = "/registration";
+export const LOGIN_PATH = "/login";
+export const ADMIN_PATH = "/admin";
+
+export const authRoutes = [
+  {
+    path: CART_PATH,
+    Component: MyCartPage,
+  },
+  // закомментила, пока нет компонента Админ
+  // {
+  //   path: ADMIN_PATH,
+  //   Component: Admin,
+  // },
+];
 
 export const publicRoutes = [
   {
@@ -34,8 +51,18 @@ export const publicRoutes = [
     path: DELIVERY_PATH,
     Component: DeliveryPage,
   },
+
   {
-    path: CART_PATH,
-    Component: MyCartPage,
+    path: AUTH_PATH,
+    Component: Auth,
+  },
+
+  {
+    path: LOGIN_PATH,
+    Component: Auth,
+  },
+  {
+    path: REGISTRATION_PATH,
+    Component: Auth,
   },
 ];
