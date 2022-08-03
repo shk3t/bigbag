@@ -29,7 +29,7 @@ def login(request):
     return AuthService.tokenized_response(user)
 
 
-@api_view(["POST"])
+@api_view(["GET"])
 def refresh_tokens(request):
     raw_token = request.COOKIES.get("refresh_token")
     try:

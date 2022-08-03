@@ -62,7 +62,7 @@ class Product(SafeModelMixin, models.Model):
         null=True, blank=True, validators=[validate_image_file_extension]
     )
     category = models.ForeignKey(
-        to=Category, null=True, blank=True, on_delete=models.SET_NULL
+        to=Category, null=True, blank=True, on_delete=models.SET_NULL,
     )
     in_stock = models.BooleanField(default=True)
 

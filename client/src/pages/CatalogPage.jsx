@@ -17,7 +17,7 @@ const CatalogPage = () => {
     // Нам не нужен фейк, потому что есть свои данные,
     // хватаем из ...:8000/api/products:
     // proxy из package.json + строка в axios.get() (УПП)
-    const products = await ProductService.getAll();
+    const products = await ProductService.getAllProducts();
     // Посмотри в консоли браузера, что возвращает сервер
     console.log(products); // (УПП)
     setProducts(products);

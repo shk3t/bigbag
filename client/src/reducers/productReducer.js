@@ -16,11 +16,11 @@ export function productReducer(state = { products: [] }, action) {
 }
 
 export const listProductsAction = () => async (dispatch) => {
-  const products = await ProductService.getAll();
+  const products = await ProductService.getAllProducts();
   return { type: GET_PRODUCT_LIST, payload: products };
 }
 
 export const getProductAction = (id) => async (dispatch) => {
-  const product = await ProductService.getById(id);
+  const product = await ProductService.getProduct(id);
   dispatch({ type: GET_PRODUCT, payload: product });
 };

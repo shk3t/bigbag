@@ -8,7 +8,7 @@ urlpatterns = [
 
     path("users", user.UserList.as_view()),
     path("users/<int:id>", user.UserDetail.as_view()),
-    path("users/profile", user.ProfileDetail.as_view()),
+    path("profile", user.ProfileDetail.as_view()),
 
     path("categories", category.CategoryList.as_view()),
     path("categories/<str:id>", category.CategoryDetail.as_view()),
