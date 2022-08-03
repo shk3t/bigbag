@@ -9,12 +9,12 @@ from base.models import User
 from base.services import AuthService
 
 
+# TODO pass id to tokenizer
 @api_view(["POST"])
 def register(request):
-    user = User(**request.data)
     serializer = UserSerializer(data=request.data)
     serializer.is_valid(raise_exception=True)
-    serializer.save()
+    user = User.objects.create(**request.data)
     return AuthService.tokenized_response(user)
 
 

@@ -17,7 +17,6 @@ class AuthService:
     def tokenized_response(user: User) -> Response:
         access_token = AccessToken.for_user(user)
         refresh_token = RefreshToken.for_user(user)
-        print(repr(refresh_token))
         response = Response({"access_token": str(access_token)})
         response.set_cookie(
             key="refresh_token",

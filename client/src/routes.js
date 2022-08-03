@@ -3,8 +3,8 @@ import CatalogPage from "./pages/CatalogPage";
 import MainPage from "./pages/MainPage";
 import AboutUsPage from "./pages/AboutUsPage";
 import DeliveryPage from "./pages/DeliveryPage";
-import MyCartPage from "./pages/MyCartPage";
-import Auth from "./pages/Auth";
+import CartPage from "./pages/CartPage";
+import AuthPage from "./pages/AuthPage";
 
 // Вынес константы из utils/consts.js потому что так удобнее)) (Удалить После Прочтения)
 export const MAIN_PATH = "/main";
@@ -18,10 +18,10 @@ export const REGISTRATION_PATH = "/registration";
 export const LOGIN_PATH = "/login";
 export const ADMIN_PATH = "/admin";
 
-export const authRoutes = [
+export const privateRoutes = [
   {
     path: CART_PATH,
-    Component: MyCartPage,
+    Component: CartPage,
   },
   // закомментила, пока нет компонента Админ
   // {
@@ -54,15 +54,15 @@ export const publicRoutes = [
 
   {
     path: AUTH_PATH,
-    Component: Auth,
+    Component: AuthPage,
   },
 
   {
     path: LOGIN_PATH,
-    Component: Auth,
+    Component: AuthPage,
   },
   {
     path: REGISTRATION_PATH,
-    Component: Auth,
+    Component: AuthPage,
   },
 ];
