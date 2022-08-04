@@ -1,5 +1,6 @@
 TRUNCATE TABLE base_category CASCADE;
 TRUNCATE TABLE base_product CASCADE;
+TRUNCATE TABLE base_user CASCADE;
 
 INSERT INTO base_category
 VALUES

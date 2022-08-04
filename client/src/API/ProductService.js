@@ -20,7 +20,7 @@ export default class ProductService {
     return response.data;
   }
   static async deleteProduct(id) {
-    await api.delete(`/apiproducts/${id}`);
+    await api.delete(`/api/products/${id}`);
   }
 
   static async uploadImage(productId, newImage) {

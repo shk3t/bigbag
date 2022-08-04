@@ -2,15 +2,13 @@ import axios from "axios";
 import { saveAccessToken } from "../api";
 
 export default class AuthService {
-  static async register(userData) {
-    const response = await axios.post("/api/register", userData);
+  static async register(credentials) {
+    await axios.post("/api/register", credentials);
     saveAccessToken(response.data.access_token);
-    return response
   }
-  static async login(userData) {
-    const response = await axios.post("/api/login", userData);
+  static async login(credentials) {
+    await axios.post("/api/login", credentials);
     saveAccessToken(response.data.access_token);
-    return response;
   }
   static async logout() {
     localStorage.removeItem("access_token");
