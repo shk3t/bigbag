@@ -11,7 +11,7 @@ api.interceptors.response.use(
     return config;
   },
   async (error) => {
-    originalRequest = error.config;
+    const originalRequest = error.config;
     if (
       error.response.status == 401 &&
       originalRequest &&
@@ -41,7 +41,7 @@ export function saveAccessToken(token) {
 }
 
 export async function refreshTokens() {
-  const response = await axios.get(`${API_URL}/tokens/refresh`, {
+  const response = await axios.get(`/api/tokens/refresh`, {
     withCredentials: true,
   });
   saveAccessToken(response.data.access_token);
