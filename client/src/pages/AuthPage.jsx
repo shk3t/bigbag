@@ -3,6 +3,7 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
 import { REGISTRATION_PATH, LOGIN_PATH, MAIN_PATH } from "../routes";
 import AuthService from "../API/AuthService";
+import ErrorAuthMsg from "../components/UI/ErrorAuthMsg";
 
 const Auth = () => {
   const location = useLocation();
@@ -14,15 +15,13 @@ const Auth = () => {
   async function registerOrLogin(event) {
     event.preventDefault();
     try {
-      await (isLogin
-        ? AuthService.login(user)
-        : AuthService.register(user));
+      await (isLogin ? AuthService.login(user) : AuthService.register(user));
       navigate(MAIN_PATH);
-      alert("Авторизация прошла успешно!")
+      alert("Авторизация прошла успешно!");
       // TODO как-то сохарнять и обновлять состояние в глобальном isAuth
     } catch (error) {
-      console.log(error.response.data)
-      alert("Ошибка авторизации!")
+      console.log(error.response.data);
+      alert("Ошибка авторизации!");
     }
   }
 
@@ -30,7 +29,8 @@ const Auth = () => {
     <div>
       <div className="auth-card">
         <h2>{isLogin ? "Авторизация" : "Регистрация"}</h2>
-        <form>
+        <ErrorAuthMsg />
+        <form className="auth-forms__form">
           <div className="auth-forms">
             {!isLogin && (
               <input

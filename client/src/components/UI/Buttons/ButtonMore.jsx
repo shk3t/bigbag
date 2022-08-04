@@ -10,7 +10,7 @@ const ButtonMore = (props) => {
     <button
       onClick={() => {
         console.log("It work");
-        // onClick={() => navigate(PRODUCT_PAGE_ROUTE + "/" + product.id)}
+
         navigate(PRODUCTS_PATH + "/" + props.id);
       }}
       className={classes.moreAboutProduct}

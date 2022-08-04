@@ -14,3 +14,9 @@
   height: 3em;
   text-transform: uppercase;
 }
+
+.header__login_btn {
+  width: 110px;
+  background: #211f1c;
+  color: #fff;
+}

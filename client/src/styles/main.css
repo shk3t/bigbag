@@ -49,13 +49,30 @@ header {
 
 .header__logo,
 .header__nav,
-.header__shopping-cart {
+.header__shopping-cart,
+.header__login-btn {
   height: 40px;
 }
 
 .header__nav {
   width: 427px;
   display: flex;
+  align-items: center;
+}
+
+.header__cart-login {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  grid-gap: 2rem;
+  align-items: center;
+}
+
+.header__hello {
+  margin-right: 1.1em;
+}
+
+.invisible {
+  visibility: hidden;
 }
 
 .way {
@@ -464,13 +481,15 @@ footer ul a {
   color: #334756;
 }
 
-.auth-forms {
+.auth-forms,
+.auth-forms__form {
   display: grid;
   grid-gap: 1em;
 }
 
 .auth-forms input,
-button {
+button,
+.auth_error {
   border: 0;
   height: 3em;
   width: 300px;
@@ -498,4 +517,15 @@ button {
 
 .auth_no-akk a {
   color: #616467;
+}
+
+.auth_error {
+  display: none;
+  background: #fd60602c;
+  color: rgba(0, 0, 0, 0.659);
+  font-size: 0.8em;
+  text-align: center;
+  margin: auto;
+  vertical-align: middle;
+  border: 1px solid #fd6060e1;
 }
