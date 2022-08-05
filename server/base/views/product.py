@@ -1,5 +1,6 @@
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework.views import APIView, status
+from rest_framework.views import APIView
 
 from base.permissions import ReadOnlyMixin
 from base.services import TranslitService
@@ -8,6 +9,9 @@ from base.serializers import ProductSerializer
 
 
 class ProductList(ReadOnlyMixin, APIView):
+    # TODO delete
+    # permission_classes = [IsAuthenticated]
+
     def get(self, request):
         products = Product.objects.all()
         serializer = ProductSerializer(products, many=True)

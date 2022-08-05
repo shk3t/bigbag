@@ -7,14 +7,12 @@ import storage from "redux-persist/lib/storage";
 import { productReducer } from "./reducers/productReducer";
 import { authReducer } from "./reducers/authReducer";
 
-// TODO persist state between reloads
-
 const middlewares = [thunk];
 
 const authPersistConfig = {
   key: "authReducer",
   storage,
-  blacklist: ["authErrorMessages"],
+  blacklist: ["errorMessages"],
 };
 
 const rootReducer = combineReducers({

@@ -1,6 +1,12 @@
 import axios from "axios";
 import AuthService from "./API/AuthService";
-import { getAccessToken } from "./utils/accessToken";
+import { logoutAction } from "./reducers/authReducer";
+
+let store;
+
+export const injectStore = (_store) => {
+  store = _store;
+};
 
 const api = axios.create({
   withCredentials: true,
@@ -8,7 +14,8 @@ const api = axios.create({
 export default api;
 
 api.interceptors.request.use((config) => {
-  config.headers.Authorization = `Bearer ${getAccessToken()}`;
+  const accessToken = store.getState().authReducer.accessToken;
+  config.headers.Authorization = `Bearer ${accessToken}`;
   return config;
 });
 
@@ -23,12 +30,10 @@ api.interceptors.response.use(
     ) {
       originalRequest._is_retry = true;
       try {
-        // TODO process error of expired refresh token
-        // TODO update isAuth if expired
         await AuthService.refreshTokens();
         return api.request(originalRequest);
       } catch (exception) {
-        // TODO
+        store.dispatch(logoutAction());
       }
     } else {
       throw error;

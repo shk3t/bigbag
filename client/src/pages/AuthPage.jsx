@@ -6,7 +6,11 @@ import { REGISTRATION_PATH, LOGIN_PATH, MAIN_PATH } from "../routes";
 
 import ErrorAuthMsg from "../components/UI/ErrorAuthMsg";
 
-import { registerAction, loginAction } from "../reducers/authReducer";
+import {
+  registerAction,
+  loginAction,
+  clearErrorMessageAction,
+} from "../reducers/authReducer";
 
 const Auth = () => {
   const location = useLocation();
@@ -17,9 +21,7 @@ const Auth = () => {
     email: "",
     password: "",
   });
-  const { authUser, authErrorMessages } = useSelector(
-    (state) => state.authReducer
-  );
+  const { authUser, errorMessages } = useSelector((state) => state.authReducer);
 
   // TODO заменить на что-нибудь другое
   const isLogin = location.pathname === LOGIN_PATH;
@@ -33,6 +35,10 @@ const Auth = () => {
     }
   }
 
+  function clearErrorMessage() {
+    dispatch(clearErrorMessageAction());
+  }
+
   useEffect(() => {
     if (authUser) {
       navigate(MAIN_PATH);
@@ -43,7 +49,7 @@ const Auth = () => {
     <div>
       <div className="auth-card">
         <h2>{isLogin ? "Авторизация" : "Регистрация"}</h2>
-        {authErrorMessages && <ErrorAuthMsg messages={authErrorMessages} />}
+        {errorMessages && <ErrorAuthMsg messages={errorMessages} />}
         <form className="auth-forms__form">
           <div className="auth-forms">
             {!isLogin && (
@@ -80,12 +86,18 @@ const Auth = () => {
         {isLogin ? (
           <div className="auth_no-akk">
             Нет аккаунта?
-            <NavLink to={REGISTRATION_PATH}> Зарегистрируйтесь </NavLink>
+            <NavLink to={REGISTRATION_PATH} onClick={clearErrorMessage}>
+              {" "}
+              Зарегистрируйтесь{" "}
+            </NavLink>
           </div>
         ) : (
           <div className="auth_no-akk">
             Есть аккаунт?
-            <NavLink to={LOGIN_PATH}> Войдите </NavLink>
+            <NavLink to={LOGIN_PATH} onClick={clearErrorMessage}>
+              {" "}
+              Войдите{" "}
+            </NavLink>
           </div>
         )}
       </div>

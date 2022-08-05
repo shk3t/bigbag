@@ -1,9 +1,10 @@
 from rest_framework.exceptions import AuthenticationFailed
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from rest_framework_simplejwt.exceptions import InvalidToken
 from rest_framework_simplejwt.tokens import RefreshToken, TokenError
-from base.exceptions import HttpException
 
+from base.exceptions import HttpException
 from base.serializers import UserSerializer
 from base.models import User
 from base.services import AuthService
@@ -37,10 +38,12 @@ def logout(request):
 def refresh_tokens(request):
     raw_token = request.COOKIES.get("refresh_token")
     try:
+        if not raw_token:
+            raise InvalidToken
         refresh_token = RefreshToken(raw_token)
     except TokenError as error:
         raise HttpException(error, 401)
-    user = User.objects.get(id=refresh_token["user_id"])
+    user = User.get_by_id(refresh_token["user_id"])
     return AuthService.tokenized_response(user)
 
 

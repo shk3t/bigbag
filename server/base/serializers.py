@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from rest_framework_simplejwt.tokens import AccessToken, RefreshToken
+from rest_framework_simplejwt.tokens import AccessToken
 
 from base.models import Category, Product, User
 
@@ -16,6 +16,21 @@ class UserSerializer(serializers.ModelSerializer):
         user.set_password(password)
         user.save()
         return user
+
+
+class UserWithTokenSerializer(serializers.ModelSerializer):
+    user = serializers.SerializerMethodField()
+    access_token = serializers.SerializerMethodField()
+
+    class Meta:
+        model = User
+        fields = ["user", "access_token"]
+
+    def get_user(self, user):
+        return UserSerializer(user).data
+
+    def get_access_token(self, user):
+        return str(AccessToken.for_user(user))
 
 
 class ProductSerializer(serializers.ModelSerializer):

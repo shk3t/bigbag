@@ -4,6 +4,7 @@ from rest_framework_simplejwt.tokens import AccessToken, RefreshToken
 from transliterate import translit
 
 from base.models import User
+from base.serializers import UserWithTokenSerializer
 
 
 class TranslitService:
@@ -15,9 +16,9 @@ class TranslitService:
 
 class AuthService:
     def tokenized_response(user: User) -> Response:
-        access_token = AccessToken.for_user(user)
         refresh_token = RefreshToken.for_user(user)
-        response = Response({"access_token": str(access_token)})
+        serializer = UserWithTokenSerializer(user)
+        response = Response(serializer.data)
         response.set_cookie(
             key="refresh_token",
             value=str(refresh_token),
