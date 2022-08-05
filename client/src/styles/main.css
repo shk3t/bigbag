@@ -31,16 +31,16 @@ body {
 }
 
 header,
-.slider,
 .our-benefits,
 .catalog,
 .partners {
-  padding-left: 100px;
-  padding-right: 100px;
+  padding-left: 6rem;
+  padding-right: 6rem;
 }
 
 header {
-  height: 115px;
+  height: 100px;
+  /* margin-bottom: 3rem; */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -54,10 +54,52 @@ header {
   height: 40px;
 }
 
+/*изменение лого при наведении, чтобы было понятно, что элемень кликабельный, пока не работает*/
+.header_logo:hover {
+  background: rgba(0, 0, 0, 0.25);
+  width: 200px;
+  opacity: 0.5;
+}
+
 .header__nav {
   width: 427px;
   display: flex;
   align-items: center;
+}
+
+nav {
+  width: 100%;
+}
+
+.header__nav__ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  justify-content: space-evenly;
+  font-size: 1em;
+}
+
+.header__nav__ul a {
+  text-decoration: none;
+}
+
+.header__nav__ul a:visited {
+  color: #393d45;
+}
+
+.header__nav__ul a:hover {
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.header__nav-li:not(:first-child)::before {
+  content: "/";
+  margin-right: 2em;
+}
+
+.shopping-cart {
+  width: 39px;
 }
 
 .header__cart-login {
@@ -76,13 +118,11 @@ header {
 }
 
 .way {
-  margin-left: 100px;
-  margin-right: 100px;
+  margin: 1em 100px 1em 100px;
   /* width: 100%; */
-  height: 74px;
+  height: 3em;
   padding: 20px;
-
-  font-size: 32px;
+  font-size: 1.3em;
   color: #616467;
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
@@ -93,38 +133,18 @@ header {
   width: max-content;
 }
 
-nav {
-  width: 100%;
-}
-
-.header__nav__ul {
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  justify-content: space-evenly;
-  font-size: 18px;
-}
-
-.header__nav__ul a {
-  text-decoration: none;
-}
-
-.header__nav__ul a:not(:first-child)::before {
-  content: "/";
-  margin-right: 20px;
-}
-
-.shopping-cart {
-  width: 39px;
-}
-
 .slider {
   height: 585px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 0.8fr 1fr;
+  grid-gap: 5rem;
   align-items: center;
   justify-content: space-between;
   background: linear-gradient(90deg, #fcf9f6 1.6%, #ffffff 100%);
+  padding-left: 6rem;
+  padding-right: 6rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 h1,
@@ -136,23 +156,31 @@ h3 {
 }
 
 h3 {
-  margin-top: 100px;
+  margin-top: 2.5rem;
+  font-size: 0.7em;
 }
 
 .slider h1 {
-  font-size: 60px;
+  font-size: 2.5em;
   margin-top: 0px;
 }
 
 .slider-text {
-  width: 587px;
-  height: 372px;
+  /* width: 587px;
+  height: 372px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .slider-text p {
   color: #616467;
-  font-size: 22px;
-  line-height: 35px;
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+.slider-text button {
+  margin-top: 1rem;
 }
 
 .btn__action {
@@ -163,19 +191,31 @@ h3 {
   font-size: 16px;
 }
 
+.btn__action:hover {
+  cursor: pointer;
+  background: #393d452a;
+  color: #211f1c;
+  border: 1.5px solid #393d45;
+}
+
 .slider-img {
-  width: 608px;
-  height: 452px;
+  width: 100%;
+  height: 100%;
   background-color: aliceblue;
   border-radius: 40px;
 }
 
 .our-benefits {
   /* эта высота играет роль при вычислении расстояния между title и остальными элем-ами */
-  height: 675px;
-  display: flex;
+  /* height: 675px; */
+  width: 100%;
+  /* display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: space-evenly; */
+  display: grid;
+  grid-gap: 2em;
+  grid-template-columns: repeat(auto-fit, 310px);
+  justify-content: space-between;
 }
 
 .our-benefits__title,
@@ -188,6 +228,10 @@ h3 {
 
 .our-benefits__title {
   width: 100%;
+  padding-left: 6rem;
+  padding-right: 6rem;
+  margin-top: 1em;
+  margin-bottom: 1em;
   height: min-content;
   justify-content: space-around;
 }
@@ -196,7 +240,7 @@ h3 {
   width: 330px;
   text-align: center;
   /* margin-top: 40px; */
-  line-height: 35px;
+  /* line-height: 35px; */
 }
 
 .our-benefits__item img {
@@ -204,36 +248,46 @@ h3 {
 }
 
 .our-benefits__item h4 {
-  font-size: 32px;
+  font-size: 1.3em;
+  color: #393d45;
 }
 
 .our-benefits__item p {
-  font-size: 22px;
+  font-size: 1em;
   color: #616467;
+  line-height: 1.6em;
 }
 
 .catalog {
   display: grid;
+  width: 100%;
   /* grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, 1fr); */
   /* height: 1258px; */
-  flex-wrap: wrap;
+
   background-color: #f8f8f8;
 }
 
 .catalog-title {
   width: 100%;
   height: min-content;
+  background-color: #f8f8f8;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  padding-left: 6rem;
+  padding-right: 6rem;
 }
 
 .catalog-item__wrap {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-template-rows: repeat(2, 1fr);
   justify-items: center;
-  grid-gap: 1em;
+  justify-content: space-around;
+  grid-gap: 1rem;
   font-size: 14px;
-  margin-top: 3em;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 
 .catalog-item {
@@ -246,24 +300,40 @@ h3 {
   position: relative;
 }
 
+/* три блока ниже -- увеличение при наведении */
+.item__hover-scale {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.product-item {
+  transition: 0.4s; /* Время эффекта */
+  display: block;
+}
+
+.product-item:hover {
+  transform: scale(1.05);
+  /* border: 0.1px solid #393d4597; */
+}
+
 .catalog-item__img {
   width: 100%;
   border-radius: 20px;
-  position: relative;
+  /* position: relative; */
   /* высота и бек временно, для страницы Каталог, пока нет картинок */
-  height: 269px;
-  background-color: aliceblue;
+  /* height: 269px; */
+  /* background-color: aliceblue; */
 }
 
 .catalog-btn__wrap {
   display: flex;
   width: 100%;
   justify-content: space-between;
-  padding: 0.5em;
-  position: absolute;
+  padding: 1em;
   bottom: 0;
   align-items: flex-end;
-  margin-bottom: 0.5em;
+  /* margin-top: 0.6em;
+  margin-bottom: 0.4em; */
 }
 
 .catalog-item__btn-shopping-cart {
@@ -293,8 +363,18 @@ h3 {
 }
 
 .catalog-item__btn-price {
+  width: 10em;
+  height: 2.5em;
   background-color: #393d45;
-  width: 138px;
+  border-radius: 10px;
+  color: #fff;
+}
+
+.catalog-item__btn-price:hover {
+  cursor: pointer;
+  background: #393d452a;
+  color: #211f1c;
+  border: 1.5px solid #393d45;
 }
 
 .catalog-item__btn-shopping-cart {
@@ -305,6 +385,8 @@ h3 {
 .btn-all_wrap {
   width: 100%;
   text-align: center;
+  background-color: #f8f8f8;
+  padding-bottom: 2rem;
 }
 
 .btn-all {
@@ -316,10 +398,18 @@ h3 {
   font-size: 18px;
 }
 
+.btn-all:hover {
+  cursor: pointer;
+  background: #393d452a;
+  color: #211f1c;
+  border: 1.5px solid #393d45;
+}
+
 .partners {
-  height: 390px;
-  display: flex;
-  flex-wrap: wrap;
+  width: 100%;
+  /* height: 390px; */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   justify-items: center;
   justify-content: space-around;
 }
@@ -327,6 +417,8 @@ h3 {
 .partners-title {
   width: 100%;
   height: min-content;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 .partners-item {
@@ -338,16 +430,18 @@ h3 {
   opacity: 50%;
 }
 
+/*///////////////////////////////////////////////// FOOTER*/
+
 footer {
   height: min-content;
   display: grid;
   align-items: center;
   grid-template-columns: repeat(4, 1fr);
   background-color: #484543;
-  font-size: 18px;
+  font-size: 0.85em;
   color: #fff;
-  padding: 2em 100px;
-  margin-top: 2em;
+  padding: 1em 6rem;
+  margin-top: 2rem;
 }
 
 .footer-nav {
@@ -357,7 +451,7 @@ footer {
 }
 
 .footer-logo {
-  font-size: 16px;
+  /* font-size: 1em; */
 }
 
 .footer-logo img {
@@ -368,7 +462,7 @@ footer ul {
   list-style: none;
   display: grid;
   grid-gap: 40px;
-  font-size: 18px;
+  /* font-size: 1em; */
 }
 
 footer ul a {
@@ -384,7 +478,7 @@ footer ul a {
 #user_phone {
   width: 220px;
   height: 54px;
-  font-size: 18px;
+  /* font-size: 1em; */
   padding-left: 10px;
   border-radius: 10px;
   border: 0px;
@@ -405,24 +499,43 @@ footer ul a {
 /* ///////////////////////  СТИЛИ СТРАНИЦЫ catalog */
 
 .catalog__in-catalog-page {
+  display: grid;
+  padding-left: 6rem;
+  padding-right: 6rem;
   background-color: #fff;
 }
 
+/*поиск не сделан по центру*/
 .find-string {
   /* width: max-content; */
-  height: 56px;
+  height: 3rem;
   background: #f5f7fb;
   border-radius: 30px;
-  margin-top: 60px;
+  margin-top: 2rem;
   margin-left: 100px;
   margin-right: 100px;
+  padding-left: 1.5em;
+  align-items: center;
+  position: relative;
+}
+
+.find-string p {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
 }
 
 .product-item {
-  height: 306px;
-  width: 269px;
+  /* height: 306px; */
+  /* width: 269px; */
   box-shadow: 5px 5px 9px -1px rgba(34, 60, 80, 0.2);
-  position: relative;
+
+  border-radius: 20px;
+}
+
+/* запланирован эффект увеличения при наведении */
+.product-item:hover {
 }
 
 .catalog-item__title {
@@ -437,6 +550,14 @@ footer ul a {
   white-space: nowrap;
   color: #616467;
   font-weight: 400;
+}
+
+.btn-more__wrap {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: space-around;
+  height: 2rem;
 }
 
 /* ///////////////////////////////ABOUT US */

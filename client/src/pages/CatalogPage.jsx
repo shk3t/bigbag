@@ -28,8 +28,10 @@ const CatalogPage = () => {
       <Header />
       <Way />
 
-      <div className="find-string">Это строка поиска, будет компонентом</div>
-      <div className="catalog catalog__in-catalog-page">
+      <div className="find-string">
+        <p>Поиск</p>
+      </div>
+      <div className="catalog__in-catalog-page">
         <div className="catalog-item__wrap ">
           {products.map((product) => (
             <ProductItem

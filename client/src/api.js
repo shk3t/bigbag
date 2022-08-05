@@ -13,7 +13,7 @@
 //     return config;
 //   },
 //   async (error) => {
-//     originalRequest = error.config;
+//     const originalRequest = error.config;
 //     if (
 //       error.response.status == 401 &&
 //       originalRequest &&

@@ -1,22 +1,28 @@
 .moreAboutProduct {
-  width: 9em;
-  height: 2em;
-  background-color: #211f1c;
+  position: absolute;
+  width: 10em;
+  height: 2.5em;
+  background-color: #393d45;
   border-radius: 10px;
   color: #fff;
-  font-size: 12px;
-  /*заменить на hover*/
-  cursor: pointer;
 }
 
 .moreAboutProduct:hover {
-  width: 10em;
-  height: 3em;
-  text-transform: uppercase;
+  cursor: pointer;
+  background: #393d452a;
+  color: #211f1c;
+  border: 1.5px solid #393d45;
 }
 
 .header__login_btn {
   width: 110px;
   background: #211f1c;
   color: #fff;
+}
+
+.header__login_btn:hover {
+  cursor: pointer;
+  background: #393d452a;
+  color: #211f1c;
+  border: 1.5px solid #393d45;
 }

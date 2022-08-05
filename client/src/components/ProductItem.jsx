@@ -5,21 +5,22 @@ import ButtonMore from "./UI/Buttons/ButtonMore";
 const ProductItem = ({ product }) => {
   return (
     <div className="product-item">
-      <div>
-        <img
-          className="catalog-item__img"
-          alt="продукт"
-          src={product.image}
-        ></img>
-      </div>
-      <div>
-        <ButtonMore id={product.id}>Подробнее</ButtonMore>
-      </div>
-      {/* <button>Корзина</button> */}
-      <div className="catalog-btn__wrap">
-        {/* временно убрала, чтобы не забыть стилизовать кнопку и отображение описания+цены */}
-        {/* <div className="catalog-item__title ">{product.name}</div> */}
-        {/* <div className="catalog-item__price">{product.price} р/шт</div> */}
+      <div className="item__hover-scale">
+        <div>
+          <img
+            className="catalog-item__img"
+            alt="продукт"
+            src={product.image}
+          ></img>
+        </div>
+        <div className="btn-more__wrap">
+          <ButtonMore id={product.id}>Подробнее</ButtonMore>
+        </div>
+        {/* <button>Корзина</button> */}
+        <div className="catalog-btn__wrap">
+          <div className="catalog-item__title ">{product.name}</div>
+          <div className="catalog-item__price">{product.price} р/шт</div>
+        </div>
       </div>
     </div>
   );
