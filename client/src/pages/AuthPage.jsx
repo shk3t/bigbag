@@ -1,29 +1,38 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import { REGISTRATION_PATH, LOGIN_PATH, MAIN_PATH } from "../routes";
-import AuthService from "../API/AuthService";
+
 import ErrorAuthMsg from "../components/UI/ErrorAuthMsg";
+
+import { loginAction } from "../reducers/authReducer";
 
 const Auth = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [user, setUser] = useState({ name: "", email: "", password: "" });
+  const dispatch = useDispatch();
+  const [activeUser, errorMessage] = useSelector(
+    (state) => state.authReducer.activeUser
+  );
 
+  // TODO заменить на что-нибудь другое
   const isLogin = location.pathname === LOGIN_PATH;
 
   async function registerOrLogin(event) {
     event.preventDefault();
-    try {
-      await (isLogin ? AuthService.login(user) : AuthService.register(user));
-      navigate(MAIN_PATH);
-      alert("Авторизация прошла успешно!");
-      // TODO как-то сохарнять и обновлять состояние в глобальном isAuth
-    } catch (error) {
-      console.log(error.response.data);
-      alert("Ошибка авторизации!");
+    if (isLogin) {
+      dispatch(loginAction(user));
+    } else {
+      dispatch(registerAction(user));
     }
   }
+
+  useEffect(() => {
+    if (activeUser) {
+      navigate(MAIN_PATH);
+    }
+  }, [activeUser]);
 
   return (
     <div>

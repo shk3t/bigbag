@@ -1,6 +1,6 @@
 from rest_framework.response import Response
-from rest_framework.views import APIView, status
-from rest_framework.permissions import IsAdminUser
+from rest_framework.views import APIView
+from rest_framework.permissions import IsAdminUser, IsAuthenticated
 
 from base.serializers import UserSerializer
 from base.models import User
@@ -24,7 +24,9 @@ class UserDetail(APIView):
         return Response(serializer.data)
 
 
-class ProfileDetail(APIView):
+class CurrentUserDetail(APIView):
+    permission_classes = [IsAuthenticated]
+
     def get(self, request):
         user = request.user
         serializer = UserSerializer(user)
