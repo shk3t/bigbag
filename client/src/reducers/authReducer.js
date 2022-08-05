@@ -1,44 +1,55 @@
 import AuthService from "../API/AuthService";
 import UserService from "../API/UserService";
+import { extractErrorMessages } from "../utils/error";
 
 const REGISTER = "REGISTER";
 const LOGIN = "LOGIN";
 const LOGOUT = "LOGOUT";
 
-export function authReducer(state = { activeUser: null }) {
+const initialState = { authUser: null, authErrorMessages: null };
+
+export function authReducer(state = initialState, action) {
   switch (action.type) {
     case REGISTER:
       return {
-        activeUser: action.payload.user,
-        errorMessage: action.payload.error,
+        authUser: action.payload.user,
+        authErrorMessages: action.payload.messages,
       };
     case LOGIN:
-      return { activeUser: action.payload };
+      return {
+        authUser: action.payload.user,
+        authErrorMessages: action.payload.messages,
+      };
     case LOGOUT:
-      return { activeUser: null };
+      return { authUser: null, authErrorMessages: null };
     default:
       return state;
   }
 }
 
 export const registerAction = (credentials) => async (dispatch) => {
-  const error = null;
   try {
     await AuthService.register(credentials);
-    const user = await UserService.getActiveUser();
-  } catch (exception) {
-    error = exception;
+    const user = await UserService.getAuthenticatedUser();
+    dispatch({ type: REGISTER, payload: { user, messages: null } });
+  } catch (error) {
+    const messages = extractErrorMessages(error)
+    dispatch({ type: REGISTER, payload: { user: null, messages } });
   }
-  dispatch({ type: REGISTER, payload: { user, error } });
 };
 
 export const loginAction = (credentials) => async (dispatch) => {
-  await AuthService.login(credentials);
-  const user = await UserService.getActiveUser();
-  dispatch({ type: LOGIN, payload: user });
+  try {
+    await AuthService.login(credentials);
+    const user = await UserService.getAuthenticatedUser();
+    dispatch({ type: LOGIN, payload: { user, messages: null } });
+  } catch (error) {
+    const messages = extractErrorMessages(error)
+    dispatch({ type: LOGIN, payload: { user: null, messages } });
+  }
 };
 
-export const logoutAction = (credentials) => async (dispatch) => {
+export const logoutAction = () => async (dispatch) => {
   await AuthService.logout();
   dispatch({ type: LOGOUT });
 };

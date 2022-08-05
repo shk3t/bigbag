@@ -7,7 +7,8 @@ from base.models import User
 
 
 class UserList(APIView):
-    permission_classes = [IsAdminUser]
+    # TODO uncomment all
+    # permission_classes = [IsAdminUser]
 
     def get(self, request):
         users = User.objects.all()
@@ -16,7 +17,7 @@ class UserList(APIView):
 
 
 class UserDetail(APIView):
-    permission_classes = [IsAdminUser]
+    # permission_classes = [IsAdminUser]
 
     def get(self, request, id):
         user = User.get_by_id(id)
@@ -24,8 +25,8 @@ class UserDetail(APIView):
         return Response(serializer.data)
 
 
-class CurrentUserDetail(APIView):
-    permission_classes = [IsAuthenticated]
+class AuthenticatedUserDetail(APIView):
+    # permission_classes = [IsAuthenticated]
 
     def get(self, request):
         user = request.user

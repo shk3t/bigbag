@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -6,58 +6,69 @@ import { REGISTRATION_PATH, LOGIN_PATH, MAIN_PATH } from "../routes";
 
 import ErrorAuthMsg from "../components/UI/ErrorAuthMsg";
 
-import { loginAction } from "../reducers/authReducer";
+import { registerAction, loginAction } from "../reducers/authReducer";
 
 const Auth = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [activeUser, errorMessage] = useSelector(
-    (state) => state.authReducer.activeUser
+  const [credentials, setCredentials] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+  const { authUser, authErrorMessages } = useSelector(
+    (state) => state.authReducer
   );
 
   // TODO заменить на что-нибудь другое
   const isLogin = location.pathname === LOGIN_PATH;
 
-  async function registerOrLogin(event) {
+  function registerOrLogin(event) {
     event.preventDefault();
     if (isLogin) {
-      dispatch(loginAction(user));
+      dispatch(loginAction(credentials));
     } else {
-      dispatch(registerAction(user));
+      dispatch(registerAction(credentials));
     }
   }
 
   useEffect(() => {
-    if (activeUser) {
+    if (authUser) {
       navigate(MAIN_PATH);
     }
-  }, [activeUser]);
+  }, [authUser]);
 
   return (
     <div>
       <div className="auth-card">
         <h2>{isLogin ? "Авторизация" : "Регистрация"}</h2>
-        <ErrorAuthMsg />
+        {authErrorMessages && <ErrorAuthMsg messages={authErrorMessages} />}
         <form className="auth-forms__form">
           <div className="auth-forms">
             {!isLogin && (
               <input
-                value={user.name}
-                onChange={(e) => setUser({ ...user, name: e.target.value })}
+                value={credentials.name}
+                onChange={(event) =>
+                  setCredentials({ ...credentials, name: event.target.value })
+                }
                 type="text"
                 placeholder="Имя"
               ></input>
             )}
             <input
-              value={user.email}
-              onChange={(e) => setUser({ ...user, email: e.target.value })}
+              value={credentials.email}
+              onChange={(event) =>
+                setCredentials({ ...credentials, email: event.target.value })
+              }
               type="text"
               placeholder="Электронная почта"
             ></input>
             <input
-              value={user.password}
-              onChange={(e) => setUser({ ...user, password: e.target.value })}
+              value={credentials.password}
+              onChange={(event) =>
+                setCredentials({ ...credentials, password: event.target.value })
+              }
               type="text"
               placeholder="Пароль"
             ></input>

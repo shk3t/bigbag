@@ -1,15 +1,19 @@
 import axios from "axios";
+import AuthService from "./API/AuthService";
+import { getAccessToken } from "./utils/accessToken";
 
 const api = axios.create({
-  headers: { Authorization: `Bearer ${getAccessToken()}` },
   withCredentials: true,
 });
 export default api;
 
+api.interceptors.request.use((config) => {
+  config.headers.Authorization = `Bearer ${getAccessToken()}`;
+  return config;
+});
+
 api.interceptors.response.use(
-  (config) => {
-    return config;
-  },
+  (config) => config,
   async (error) => {
     const originalRequest = error.config;
     if (
@@ -21,7 +25,7 @@ api.interceptors.response.use(
       try {
         // TODO process error of expired refresh token
         // TODO update isAuth if expired
-        await refreshTokens();
+        await AuthService.refreshTokens();
         return api.request(originalRequest);
       } catch (exception) {
         // TODO
@@ -31,18 +35,3 @@ api.interceptors.response.use(
     }
   }
 );
-
-export function getAccessToken() {
-  localStorage.getItem("access_token");
-}
-
-export function saveAccessToken(token) {
-  localStorage.setItem("access_token", token);
-}
-
-export async function refreshTokens() {
-  const response = await axios.get(`/api/tokens/refresh`, {
-    withCredentials: true,
-  });
-  saveAccessToken(response.data.access_token);
-}

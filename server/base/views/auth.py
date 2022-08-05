@@ -27,8 +27,13 @@ def login(request):
         raise AuthenticationFailed()
     return AuthService.tokenized_response(user)
 
+@api_view(["POST"])
+def logout(request):
+    response = Response("Logouted")
+    response.delete_cookie("refresh_token")
+    return response
 
-@api_view(["GET"])
+@api_view(["POST"])
 def refresh_tokens(request):
     raw_token = request.COOKIES.get("refresh_token")
     try:
@@ -37,3 +42,5 @@ def refresh_tokens(request):
         raise HttpException(error, 401)
     user = User.objects.get(id=refresh_token["user_id"])
     return AuthService.tokenized_response(user)
+
+

@@ -1,11 +1,14 @@
 import React from "react";
-import "../.././styles/main.css";
 
-const ErrorAuthMsg = () => {
+const ErrorAuthMsg = ({ messages }) => {
   return (
     <div>
       <div className="auth_error">
-        <p>Неправильный логин и/или пароль</p>
+        {messages.map((message, i) => (
+          <p key={i}>
+            {message}
+          </p>
+        ))}
       </div>
     </div>
   );
