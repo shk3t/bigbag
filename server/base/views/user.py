@@ -24,6 +24,11 @@ class UserDetail(APIView):
         serializer = UserSerializer(user)
         return Response(serializer.data)
 
+    def delete(self, request, id):
+        user = User.get_by_id(id)
+        user.delete()
+        return Response("User deleted")
+
 
 class AuthenticatedUserDetail(APIView):
     # permission_classes = [IsAuthenticated]

@@ -61,11 +61,11 @@
 
 # Как пересобирать базу данных:
 
-1. запустить `sql/reset.sql` в слоне
-2. удалить все из `avegabug/server/base/migrations`
+1. запустить `avegabug/server/sql/reset.sql` в слоне
+2. удалить папку `avegabug/server/base/migrations`
 3. `python manage.py makemigrations base` [^cmd]
-4. `python manage.py makemigrations base` [^cmd]
-5. запустить `sql/init.sql` в слоне
+4. `python manage.py migrate` [^cmd]
+5. запустить `avegabug/server/sql/init.sql` в слоне
 
 <br />
 
