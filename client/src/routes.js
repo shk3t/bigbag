@@ -6,7 +6,6 @@ import DeliveryPage from "./pages/DeliveryPage";
 import CartPage from "./pages/CartPage";
 import AuthPage from "./pages/AuthPage";
 
-// Вынес константы из utils/consts.js потому что так удобнее)) (Удалить После Прочтения)
 export const MAIN_PATH = "/main";
 export const PRODUCTS_PATH = "/products";
 export const CATALOG_PATH = "/catalog";
@@ -19,10 +18,11 @@ export const LOGIN_PATH = "/login";
 export const ADMIN_PATH = "/admin";
 
 export const privateRoutes = [
-  {
-    path: CART_PATH,
-    Component: CartPage,
-  },
+  // !!!! Временно вынесла Корзину в public Routes, пока делаю стили. Затем раскомментить
+  // {
+  //   path: CART_PATH,
+  //   Component: CartPage,
+  // },
   // закомментила, пока нет компонента Админ
   // {
   //   path: ADMIN_PATH,
@@ -31,6 +31,11 @@ export const privateRoutes = [
 ];
 
 export const publicRoutes = [
+  {
+    path: CART_PATH,
+    Component: CartPage,
+  },
+
   {
     path: PRODUCTS_PATH + "/:id",
     Component: ProductPage,

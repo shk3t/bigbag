@@ -5,9 +5,7 @@ const ErrorAuthMsg = ({ messages }) => {
     <div>
       <div className="auth_error">
         {messages.map((message, i) => (
-          <p key={i}>
-            {message}
-          </p>
+          <p key={i}>{message}</p>
         ))}
       </div>
     </div>

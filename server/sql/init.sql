@@ -12,4 +12,6 @@ VALUES
     ('seryj-meshok', 'Серый мешок', 'Очень прочный мешок серого цвета', 30.50, 'example-bug.png', TRUE, 'meshki'),
     ('belyj-meshok', 'Белый мешок', 'Просто прочный мешок белого цвета', 15.00, 'example-bug2.png', TRUE, 'meshki'),
     ('chernye-perchatki', 'Черные перчатки', 'Балдежные черные тканевые перчатки, которые не страшно надеть на руку', 16.49, 'example-bug3.png', TRUE, 'perchatki'),
-    ('bolshoi-belyj-meshok', 'Большой белый мешок', 'Как и просто белый мешок, только еще и большой', 150.00, 'example-bug3.png', TRUE, 'meshki');
+    ('bolshoi-belyj-meshok', 'Большой белый мешок', 'Как и просто белый мешок, только еще и большой', 150.00, 'example-bug3.png', TRUE, 'meshki'),
+    ('1', 'Мешок 50х90 усиленный', 'Цвет: серый, Сорт: 2, Вес: 45+3', 13.00, 'id1.webp', TRUE, 'meshki');
+

@@ -1,13 +1,14 @@
 import React from "react";
 import "../.././styles/main.css";
+import { useSelector } from "react-redux";
 
 const HelloUser = () => {
+  const { authUser, errorMessages } = useSelector((state) => state.authReducer);
+
   const isAuth = false;
   return (
-    //header__hello__invisible -- если горит кнопка Войти
     <div className={isAuth ? "header__hello invisible" : "header__hello"}>
-      {/* // откуда импортирую user? */}
-      Здравствуйте, UserName
+      Здравствуйте, {authUser.name}
     </div>
   );
 };

@@ -5,8 +5,11 @@ import { Link } from "react-router-dom";
 import { ABOUT_PATH, CATALOG_PATH, DELIVERY_PATH, MAIN_PATH } from "../routes";
 import BtnLoginLogout from "./UI/Buttons/BtnLoginLogout";
 import HelloUser from "./UI/HelloUser";
+import { useSelector } from "react-redux";
 
 export default function Header() {
+  const { authUser, errorMessages } = useSelector((state) => state.authReducer);
+
   return (
     <header>
       <div className="header__logo">
@@ -31,7 +34,8 @@ export default function Header() {
         </nav>
       </div>
       <div className="header__cart-login">
-        <HelloUser />
+        {authUser ? <HelloUser /> : ""}
+
         <div className="header__shopping-cart">
           <img className="shopping-cart" src={cartLogo} alt="Корзина" />
         </div>

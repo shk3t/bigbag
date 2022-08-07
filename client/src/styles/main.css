@@ -593,7 +593,7 @@ footer ul a {
   margin: auto;
   justify-items: center;
   grid-gap: 1em;
-  transform: translate(0, 50%);
+  transform: translate(0, 25%);
 }
 
 .auth-card h2 {
@@ -644,8 +644,131 @@ button,
   background: #fd60602c;
   color: rgba(0, 0, 0, 0.659);
   font-size: 0.8em;
+  font-weight: 500;
   text-align: center;
   margin: auto;
   vertical-align: middle;
-  border: 1px solid #fd6060e1;
+  border: 1px solid #fd606095;
+  border-radius: 0.2em;
+  height: min-content;
+  margin-top: -1em;
+}
+
+.auth_error p {
+  margin: 0.5em;
+}
+
+/*//////////////////////////////// КОРЗИНА */
+
+.cart__container {
+  padding-left: 6em;
+  padding-right: 6em;
+}
+
+.cart__container-title {
+  display: grid;
+  grid-template-columns: 4fr 2fr 2fr 2fr 2fr;
+  grid-column-start: 2;
+  /* grid-gap: 1em; */
+  font-weight: 500;
+  text-align: center;
+  height: 40px;
+}
+
+.title-count {
+  width: 125px;
+}
+
+/*////////////////////////// ТЕЛО КОРЗИНЫ */
+
+.cart__container-products {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr 2fr 2fr 2fr;
+  margin: 1em 0;
+  background: #f8f8f8;
+  text-align: center;
+}
+
+/*стиль для всех элементов вложенности первого уровня*/
+.cart__container-products > * {
+  align-self: center;
+}
+
+.cart__container-products-img {
+  justify-self: center;
+}
+
+.cart__container-products-count {
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+}
+
+.cart__container-products-delete {
+  justify-self: center;
+}
+
+.cart__container-products-delete button {
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  cursor: pointer;
+}
+
+/* ///////////////////СТИЛИ СЧЁТЧИКА КОЛ-ВА ТОВАРА */
+.count-count {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: baseline;
+}
+
+.count-box {
+  height: 30px;
+  /* min-width: min-content; */
+}
+
+.count-input {
+  max-width: 100%;
+  padding: 0.2em;
+  background-color: transparent;
+  text-align: center;
+  border: 0.5px solid black;
+  height: 30px;
+}
+
+.count-input::-webkit-inner-spin-button,
+.count-input::-webkit-outer-spin-button {
+  appearance: none;
+}
+
+.count-control {
+  display: flex;
+  align-items: center;
+  min-width: 30px;
+  height: 30px;
+}
+
+.count-up,
+.count-down {
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  align-self: center;
+}
+
+/* ///////////////// НИЗ КОРЗИНЫ */
+
+.cart__container-footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  /* grid-gap: 1em; */
+  background: #f8f8f8;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.cart__footer-count {
+  grid-column-start: 4;
 }
