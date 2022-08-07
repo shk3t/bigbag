@@ -24,9 +24,9 @@
     - [x] `logout`
     - [x] `refreshTokens`
     - [x] **JWT** сохранять в `localStorage`
-      - [x] в Redux
-    - [x] обработка ошибок при авторизации
-- [x] добавить кнопку **logout** в **Header**
+        - [x] в Redux
+    - [X] обработка ошибок при авторизации
+- [X] добавить кнопку **logout** в **Header**
 - [x] объединить **login** и **register** в одну страницу через `isAuth ? ... : ...`
 - [ ] реализовать как всплывающее окно
 
@@ -46,7 +46,7 @@
 - [ ] табличка продуктов
 - [ ] перенести во всплывающее окно
 - [ ] CartService, использовать localStorage
-  - [ ] заменить localStorage на Redux
+    - [ ] заменить localStorage на Redux
 - [ ] потом еще че-нть придумаю)
 
 <br />
@@ -61,11 +61,11 @@
 
 # Как пересобирать базу данных:
 
-1. запустить `sql/reset.sql` в слоне
-2. удалить все из `avegabug/server/base/migrations`
+1. запустить `avegabug/server/sql/reset.sql` в слоне
+2. удалить папку `avegabug/server/base/migrations`
 3. `python manage.py makemigrations base` [^cmd]
-4. `python manage.py makemigrate base` [^cmd]
-5. запустить `sql/init.sql` в слоне
+4. `python manage.py migrate` [^cmd]
+5. запустить `avegabug/server/sql/init.sql` в слоне
 
 <br />
 

@@ -1,11 +1,14 @@
+from datetime import datetime
 from django.db import models
 from django.db.models import CASCADE
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import validate_image_file_extension
 from django.core.exceptions import ValidationError
+from django.utils import timezone
 
 from base.exceptions import HttpException
 from base.managers import EmailUserManager
+
 
 class SafeModelMixin:
     @classmethod
@@ -25,12 +28,12 @@ class SafeModelMixin:
 class User(AbstractUser, SafeModelMixin):
     name = models.CharField(max_length=128, null=True, blank=True)
     email = models.EmailField(unique=True)
+    last_login = models.DateTimeField(default=timezone.now, blank=True)
     username = None
     first_name = None
     last_name = None
     is_active = None
     date_joined = None
-    last_login = None
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
@@ -43,6 +46,11 @@ class User(AbstractUser, SafeModelMixin):
     @property
     def is_active(self):
         return True
+
+    def update_last_login(self):
+        self.last_login = timezone.now()
+        # TODO try except
+        self.save()
 
 
 class Category(SafeModelMixin, models.Model):
@@ -62,7 +70,10 @@ class Product(SafeModelMixin, models.Model):
         null=True, blank=True, validators=[validate_image_file_extension]
     )
     category = models.ForeignKey(
-        to=Category, null=True, blank=True, on_delete=models.SET_NULL,
+        to=Category,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
     )
     in_stock = models.BooleanField(default=True)
 

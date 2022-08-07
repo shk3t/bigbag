@@ -26,13 +26,16 @@ def login(request):
         raise AuthenticationFailed()
     if not user.check_password(request.data["password"]):
         raise AuthenticationFailed()
+    user.update_last_login()
     return AuthService.tokenized_response(user)
+
 
 @api_view(["POST"])
 def logout(request):
     response = Response("Logouted")
     response.delete_cookie("refresh_token")
     return response
+
 
 @api_view(["POST"])
 def refresh_tokens(request):
@@ -44,6 +47,5 @@ def refresh_tokens(request):
     except TokenError as error:
         raise HttpException(error, 401)
     user = User.get_by_id(refresh_token["user_id"])
+    user.update_last_login()
     return AuthService.tokenized_response(user)
-
-
