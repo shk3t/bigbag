@@ -1,13 +1,5 @@
 from django.contrib import admin
-from base.models import Product, Category, Order, OrderItem, User
+from base.models import User, Product, PolyBagType, PolyBag, BigBagType, BigBag
 
 
-admin.site.register(
-    [
-        Product,
-        Category,
-        Order,
-        OrderItem,
-        User
-    ]
-)
+admin.site.register([User, Product, PolyBagType, PolyBag, BigBagType, BigBag])

@@ -1,5 +1,5 @@
 from django.urls import path
-from base.views import product, category, user, auth
+from base.views import product, subtype, user, auth
 
 urlpatterns = [
     path("register", auth.register),
@@ -11,10 +11,10 @@ urlpatterns = [
     path("users/<int:id>", user.UserDetail.as_view()),
     path("users/authenticated", user.AuthenticatedUserDetail.as_view()),
 
-    path("categories", category.CategoryList.as_view()),
-    path("categories/<str:id>", category.CategoryDetail.as_view()),
-
     path("products", product.ProductList.as_view()),
-    path("products/<str:id>", product.ProductDetail.as_view()),
+    path("products/<int:id>", product.ProductDetail.as_view()),
     path("products/<str:product_id>/image", product.ImageDetial.as_view()),
+    
+    path("subtypes/<str:type>", subtype.BagTypeList.as_view()),
+    path("subtypes/<str:type>/<str:subtype>", subtype.BagTypeDetail.as_view()),
 ]

@@ -1,7 +1,11 @@
+from typing import OrderedDict
+from django.db import models
 from rest_framework import serializers
 from rest_framework_simplejwt.tokens import AccessToken
+from base.exceptions import HttpException
 
-from base.models import Category, Product, User
+from base.models import BigBag, BigBagType, PolyBag, PolyBagType, Product, User
+from base.models import User
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -14,6 +18,13 @@ class UserSerializer(serializers.ModelSerializer):
         password = validated_data.pop("password")
         user = User(**validated_data)
         user.set_password(password)
+        user.save()
+        return user
+
+    def update(self, user, validated_data):
+        for attr, value in validated_data.items():
+            setattr(user, attr, value)
+        user.set_password(validated_data.get("password", user.password))
         user.save()
         return user
 
@@ -39,7 +50,100 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class CategorySerializer(serializers.ModelSerializer):
+class PolyBagTypeSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Category
+        model = PolyBagType
         fields = "__all__"
+
+
+class BigBagTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BigBagType
+        fields = "__all__"
+
+
+class PolyBagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PolyBag
+        fields = "__all__"
+
+
+class BigBagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BigBag
+        fields = "__all__"
+
+
+class BagProductSerializer(serializers.Serializer):
+    @staticmethod
+    def merge_data(*serializers):
+        ret = OrderedDict()
+        for s in serializers:
+            ret.update(s.data)
+        return ret
+
+    def run_validation(self, data):
+        return data
+
+    def to_representation(self, product):
+        if not isinstance(product, models.Model):
+            return product
+        Bag, BagSerializer = BagMapping.for_type(product.type)
+        bag = Bag.get_by_pk(product.id)
+        bag_ret = BagSerializer(bag).data
+        product_ret = ProductSerializer(product).data
+        ret = OrderedDict()
+        ret.update(product_ret)
+        ret.update(bag_ret)
+        return ret
+
+    def create(self, data):
+        _, BagSerializer = BagMapping.for_type(data["type"])
+        product_serializer = ProductSerializer(data=data)
+        product_serializer.is_valid(raise_exception=True)
+        product = product_serializer.save()
+        data["id"] = product.id
+        bag_serializer = BagSerializer(data=data)
+        if not bag_serializer.is_valid():
+            product.delete()
+            raise HttpException(bag_serializer.errors, 400)
+        bag_serializer.save()
+        return self.merge_data(product_serializer, bag_serializer)
+
+    def update(self, product, data):
+        Bag, BagSerializer = BagMapping.for_type(product.type)
+        if "type" in data and data["type"] != product.type:
+            raise HttpException({"type": ["Изменение значения запрещено"]}, 400)
+        bag = Bag.get_by_pk(product.id)
+        product_serializer = ProductSerializer(product, data=data, partial=True)
+        bag_serializer = BagSerializer(bag, data=data, partial=True)
+        product_serializer.is_valid(raise_exception=True)
+        bag_serializer.is_valid(raise_exception=True)
+        product_serializer.save()
+        bag_serializer.save()
+        return self.merge_data(product_serializer, bag_serializer)
+
+
+class BagMapping:
+    BAG_MAPPING = {
+        Product.ProductType.POLY_BAG: (PolyBag, PolyBagSerializer),
+        Product.ProductType.BIG_BAG: (BigBag, BigBagSerializer),
+        "polybag": (PolyBag, PolyBagSerializer),
+        "bigbag": (BigBag, BigBagSerializer),
+    }
+
+    BAG_TYPE_MAPPING = {
+        Product.ProductType.POLY_BAG: (PolyBagType, PolyBagTypeSerializer),
+        Product.ProductType.BIG_BAG: (BigBagType, BigBagTypeSerializer),
+        "polybag": (PolyBagType, PolyBagTypeSerializer),
+        "bigbag": (BigBagType, BigBagTypeSerializer),
+    }
+
+    @staticmethod
+    def for_type(type, type_model=False):
+        try:
+            if type_model:
+                return BagMapping.BAG_TYPE_MAPPING[type]
+            return BagMapping.BAG_MAPPING[type]
+        except KeyError:
+            raise HttpException({"type": [f'Недопустимое значение: "{type}"']}, 400)

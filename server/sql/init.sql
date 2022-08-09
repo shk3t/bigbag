@@ -1,17 +1,38 @@
-TRUNCATE TABLE base_category CASCADE;
-TRUNCATE TABLE base_product CASCADE;
 TRUNCATE TABLE base_user CASCADE;
+TRUNCATE TABLE base_product CASCADE;
+TRUNCATE TABLE base_polybagtype CASCADE;
+TRUNCATE TABLE base_bigbagtype CASCADE;
+TRUNCATE TABLE base_polybag CASCADE;
+TRUNCATE TABLE base_bigbag CASCADE;
 
-INSERT INTO base_category
+INSERT INTO base_product(id, type, image, price, price_on_request, in_stock, new, sale)
 VALUES
-    ('meshki', 'Мешки'),
-    ('perchatki', 'Перчатки');
+    (5, 'Мешки полипропиленовые', NULL, 9.00, FALSE, TRUE, FALSE, FALSE),
+    (8, 'Мешки полипропиленовые', NULL, 13.50, FALSE, TRUE, FALSE, FALSE),
+    (20, 'МКР (биг-бэг)', NULL, 525, FALSE, TRUE, FALSE, FALSE),
+    (24, 'МКР (биг-бэг)', NULL, 535, FALSE, TRUE, TRUE, FALSE);
 
-INSERT INTO base_product
+INSERT INTO base_polybagtype(name)
 VALUES
-    ('seryj-meshok', 'Серый мешок', 'Очень прочный мешок серого цвета', 30.50, 'example-bug.png', TRUE, 'meshki'),
-    ('belyj-meshok', 'Белый мешок', 'Просто прочный мешок белого цвета', 15.00, 'example-bug2.png', TRUE, 'meshki'),
-    ('chernye-perchatki', 'Черные перчатки', 'Балдежные черные тканевые перчатки, которые не страшно надеть на руку', 16.49, 'example-bug3.png', TRUE, 'perchatki'),
-    ('bolshoi-belyj-meshok', 'Большой белый мешок', 'Как и просто белый мешок, только еще и большой', 150.00, 'example-bug3.png', TRUE, 'meshki'),
-    ('1', 'Мешок 50х90 усиленный', 'Цвет: серый, Сорт: 2, Вес: 45+3', 13.00, 'id1.webp', TRUE, 'meshki');
+    ('Строительные'),
+    ('Пищевые'),
+    ('Бытовые'),
+    ('Ламинированные коробчатого типа'),
+    ('Пищевые с П/Э вкладышем');
 
+INSERT INTO base_bigbagtype(name)
+VALUES
+    ('МКР 2 стропы'),
+    ('МКР 4 лямки'),
+    ('МКР 4 стропы'),
+    ('Вкладыши Новые МКР для МКР');
+
+INSERT INTO base_polybag(id, subtype, size, color, poly_grade, bag_weight, weight_error, items_per_pack)
+VALUES
+    (5, 'Строительные', '55*105', 'Зеленый', '2', 50, 3, 1000),
+    (8, 'Пищевые', '45*75', 'Белый', 'ВС', 45, 3, 1000);
+
+INSERT INTO base_bigbag(id, subtype, size, top_modification, bottom_modification, bag_weight, items_per_pack, pack_size, pack_volume)
+VALUES
+    (20, 'МКР 2 стропы', '75*75*125', 'Открытый', 'Глухой', 0.98, 200, '120*70*70', 0.6),
+    (24, 'МКР 4 лямки', '90*90*130', 'Открытый', 'Глухой', 1.1, 200, '120*70*70', 0.8);

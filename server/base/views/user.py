@@ -20,12 +20,12 @@ class UserDetail(APIView):
     # permission_classes = [IsAdminUser]
 
     def get(self, request, id):
-        user = User.get_by_id(id)
+        user = User.get_by_pk(id)
         serializer = UserSerializer(user)
         return Response(serializer.data)
 
     def delete(self, request, id):
-        user = User.get_by_id(id)
+        user = User.get_by_pk(id)
         user.delete()
         return Response("User deleted")
 

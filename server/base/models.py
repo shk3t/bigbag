@@ -1,6 +1,4 @@
-from datetime import datetime
 from django.db import models
-from django.db.models import CASCADE
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import validate_image_file_extension
 from django.core.exceptions import ValidationError
@@ -8,13 +6,14 @@ from django.utils import timezone
 
 from base.exceptions import HttpException
 from base.managers import EmailUserManager
+from base.utils import attribute_names
 
 
 class SafeModelMixin:
     @classmethod
-    def get_by_id(cls, id):
+    def get_by_pk(cls, pk):
         try:
-            return cls.objects.get(id=id)
+            return cls.objects.get(pk=pk)
         except cls.DoesNotExist as error:
             raise HttpException(error, 404)
 
@@ -35,13 +34,10 @@ class User(AbstractUser, SafeModelMixin):
     is_active = None
     date_joined = None
 
-    USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = []
-
     objects = EmailUserManager()
 
-    def __str__(self):
-        return self.email
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = []
 
     @property
     def is_active(self):
@@ -49,61 +45,84 @@ class User(AbstractUser, SafeModelMixin):
 
     def update_last_login(self):
         self.last_login = timezone.now()
-        # TODO try except
         self.save()
 
 
-class Category(SafeModelMixin, models.Model):
-    id = models.CharField(max_length=128, primary_key=True)
-    name = models.CharField(max_length=128, unique=True)
-
-    def __str__(self):
-        return self.name
-
-
+@attribute_names
 class Product(SafeModelMixin, models.Model):
-    id = models.CharField(max_length=128, primary_key=True)
-    name = models.CharField(max_length=128, unique=True)
-    description = models.TextField(null=True, blank=True)
-    price = models.DecimalField(max_digits=12, decimal_places=2)
+    class OptionalPriceFieldFactory(models.DecimalField):
+        def create():
+            return models.DecimalField(
+                max_digits=12, decimal_places=2, null=True, blank=True
+            )
+
+    class ProductType(models.TextChoices):
+        POLY_BAG = "Мешки полипропиленовые"
+        BIG_BAG = "МКР (биг-бэг)"
+
+    type = models.CharField(max_length=128, choices=ProductType.choices)
     image = models.ImageField(
         null=True, blank=True, validators=[validate_image_file_extension]
     )
-    category = models.ForeignKey(
-        to=Category,
+    price = models.DecimalField(max_digits=12, decimal_places=2)
+    price100 = OptionalPriceFieldFactory.create()
+    price200 = OptionalPriceFieldFactory.create()
+    price500 = OptionalPriceFieldFactory.create()
+    price1000 = OptionalPriceFieldFactory.create()
+    price3000 = OptionalPriceFieldFactory.create()
+    price5000 = OptionalPriceFieldFactory.create()
+    price10000 = OptionalPriceFieldFactory.create()
+    price30000 = OptionalPriceFieldFactory.create()
+    price_on_request = models.BooleanField(default=False)
+    in_stock = models.BooleanField(default=True)
+    new = models.BooleanField(default=False)
+    sale = models.BooleanField(default=False)
+
+
+class PolyBagType(SafeModelMixin, models.Model):
+    name = models.CharField(max_length=128, primary_key=True)
+
+
+class BigBagType(SafeModelMixin, models.Model):
+    name = models.CharField(max_length=128, primary_key=True)
+
+
+class PolyBag(SafeModelMixin, models.Model):
+    id = models.OneToOneField(
+        to=Product, db_column="id", primary_key=True, on_delete=models.CASCADE
+    )
+    subtype = models.ForeignKey(
+        to=PolyBagType,
+        db_column="subtype",
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
     )
-    in_stock = models.BooleanField(default=True)
-
-    def __str__(self):
-        return self.name
-
-
-class Order(models.Model):
-    customer = models.ForeignKey(to=User, on_delete=CASCADE)
-    price = models.DecimalField(max_digits=12, decimal_places=2)
+    size = models.CharField(max_length=128)
+    tag = models.CharField(max_length=128, null=True, blank=True)
+    color = models.CharField(max_length=128)
+    poly_grade = models.CharField(max_length=128)
+    bag_weight = models.IntegerField()
+    weight_error = models.IntegerField(default=3)
+    items_per_pack = models.IntegerField(default=500)
 
 
-class OrderItem(models.Model):
-    product = models.ForeignKey(to=Product, on_delete=CASCADE)
-    order = models.ForeignKey(to=Order, on_delete=CASCADE)
-    quantity = models.IntegerField(default=0)
-    price = models.DecimalField(max_digits=12, decimal_places=2)
-
-
-# class Chat(models.Model):
-#     manager = models.ForeignKey(to=User, related_name="manager_chat", on_delete=CASCADE)
-#     customer = models.ForeignKey(
-#         to=User, related_name="customer_chat", on_delete=CASCADE
-#     )
-#
-#
-# class Message(models.Model):
-#     text = models.TextField()
-#     chat = models.ForeignKey(to=Chat, on_delete=CASCADE)
-#     created_at = models.DateTimeField(auto_now_add=True)
-#
-#     def __str__(self):
-#         return self.text[:32]
+class BigBag(SafeModelMixin, models.Model):
+    id = models.OneToOneField(
+        to=Product, db_column="id", primary_key=True, on_delete=models.CASCADE
+    )
+    subtype = models.ForeignKey(
+        to=BigBagType,
+        db_column="subtype",
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+    )
+    size = models.CharField(max_length=128)
+    tag = models.CharField(max_length=128, null=True, blank=True)
+    top_modification = models.CharField(max_length=128)
+    bottom_modification = models.CharField(max_length=128)
+    bag_weight = models.IntegerField()
+    items_per_pack = models.IntegerField(default=100)
+    pack_size = models.CharField(max_length=128, default="120*70*70")
+    pack_volume = models.DecimalField(max_digits=12, decimal_places=3)

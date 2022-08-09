@@ -46,6 +46,6 @@ def refresh_tokens(request):
         refresh_token = RefreshToken(raw_token)
     except TokenError as error:
         raise HttpException(error, 401)
-    user = User.get_by_id(refresh_token["user_id"])
+    user = User.get_by_pk(refresh_token["user_id"])
     user.update_last_login()
     return AuthService.tokenized_response(user)

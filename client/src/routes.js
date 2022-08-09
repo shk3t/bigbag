@@ -17,18 +17,18 @@ export const REGISTRATION_PATH = "/registration";
 export const LOGIN_PATH = "/login";
 export const ADMIN_PATH = "/admin";
 
-export const privateRoutes = [
-  // !!!! Временно вынесла Корзину в public Routes, пока делаю стили. Затем раскомментить
-  // {
-  //   path: CART_PATH,
-  //   Component: CartPage,
-  // },
-  // закомментила, пока нет компонента Админ
-  // {
-  //   path: ADMIN_PATH,
-  //   Component: Admin,
-  // },
-];
+// export const privateRoutes = [
+//   !!!! Временно вынесла Корзину в public Routes, пока делаю стили. Затем раскомментить
+//   {
+//     path: CART_PATH,
+//     Component: CartPage,
+//   },
+//   закомментила, пока нет компонента Админ
+//   {
+//     path: ADMIN_PATH,
+//     Component: Admin,
+//   },
+// ];
 
 export const publicRoutes = [
   {
