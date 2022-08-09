@@ -7,9 +7,9 @@ export default function Product({ product }) {
         <img src={product.image} />
       </div>
       <div className="product-about__wrap">
-        <div className="product-about__title">{product.name}</div>
+        <div className="product-about__title">{product.type} {product.size}</div>
         <div className="product-about__text">
-          <p>{product.description}</p>
+          <p>{product.subtype}</p>
         </div>
         <div className="product__price-buy">
           <div className="product__price">

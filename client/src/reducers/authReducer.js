@@ -1,5 +1,4 @@
 import AuthService from "../API/AuthService";
-import UserService from "../API/UserService";
 import { extractErrorMessages } from "../utils/error";
 
 const REGISTER = "REGISTER";
@@ -7,24 +6,16 @@ const LOGIN = "LOGIN";
 const LOGOUT = "LOGOUT";
 const CLEAR_ERROR_MESSAGE = "CLEAR_ERROR_MESSAGE";
 
-const initialState = { authUser: null, errorMessages: null };
+const initialState = { authUser: null, accessToken: null, errorMessages: null };
 
-export function authReducer(state = initialState, action) {
+export default function authReducer(state = initialState, action) {
+  const { user, token, messages } = action.payload || {};
   switch (action.type) {
     case REGISTER:
-      return {
-        authUser: action.payload.user,
-        accessToken: action.payload.token,
-        errorMessages: action.payload.messages,
-      };
     case LOGIN:
-      return {
-        authUser: action.payload.user,
-        accessToken: action.payload.token,
-        errorMessages: action.payload.messages,
-      };
+      return { authUser: user, accessToken: token, errorMessages: messages };
     case LOGOUT:
-      return { authUser: null, accessToken: null, errorMessages: null };
+      return initialState;
     case CLEAR_ERROR_MESSAGE:
       return { ...state, errorMessages: null };
     default:

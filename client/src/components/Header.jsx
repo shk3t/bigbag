@@ -8,7 +8,7 @@ import HelloUser from "./UI/HelloUser";
 import { useSelector } from "react-redux";
 
 export default function Header() {
-  const { authUser, errorMessages } = useSelector((state) => state.authReducer);
+  const { authUser } = useSelector((state) => state.authReducer);
 
   return (
     <header>
@@ -34,7 +34,7 @@ export default function Header() {
         </nav>
       </div>
       <div className="header__cart-login">
-        {authUser ? <HelloUser /> : ""}
+        {authUser ? <HelloUser name={authUser.name} /> : ""}
 
         <div className="header__shopping-cart">
           <img className="shopping-cart" src={cartLogo} alt="Корзина" />
