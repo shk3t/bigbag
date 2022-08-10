@@ -30,6 +30,7 @@ export const addItemAction = (product, quantity) => async (dispatch) => {
   if (quantity > 0) {
     const { id, type, size, price, image, items_per_pack } = product;
     const item = {
+      id,
       name: `${type} ${size}`,
       price,
       image,

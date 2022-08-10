@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
-import { REGISTRATION_PATH, LOGIN_PATH, MAIN_PATH } from "../routes";
 
 import ErrorAuthMsg from "../components/UI/ErrorAuthMsg";
 
@@ -12,21 +9,17 @@ import {
   clearErrorMessageAction,
 } from "../reducers/authReducer";
 
-const Auth = (props) => {
-  const location = useLocation();
-  const navigate = useNavigate();
+const Auth = () => {
   const dispatch = useDispatch();
+  const { errorMessages } = useSelector((state) => state.authReducer);
+
   const [credentials, setCredentials] = useState({
     name: "",
     email: "",
     password: "",
   });
-  const { authUser, errorMessages } = useSelector((state) => state.authReducer);
-
-  // TODO заменить на что-нибудь другое
-  // const isLogin = location.pathname === LOGIN_PATH;
   const [isLogin, setIsLogin] = useState(true);
-  console.log(isLogin);
+
 
   function registerOrLogin(event) {
     event.preventDefault();
@@ -37,15 +30,10 @@ const Auth = (props) => {
     }
   }
 
-  function clearErrorMessage() {
+  function toggleAuth() {
     dispatch(clearErrorMessageAction());
+    setIsLogin(!isLogin);
   }
-
-  useEffect(() => {
-    if (authUser) {
-      navigate(MAIN_PATH);
-    }
-  }, [authUser]);
 
   return (
     <div>
@@ -88,18 +76,16 @@ const Auth = (props) => {
         {isLogin ? (
           <div className="auth_no-akk">
             Нет аккаунта?
-            <NavLink to={REGISTRATION_PATH} onClick={clearErrorMessage}>
-              {" "}
-              Зарегистрируйтесь{" "}
-            </NavLink>
+            <button onClick={toggleAuth}>
+              Зарегистрируйтесь
+            </button>
           </div>
         ) : (
           <div className="auth_no-akk">
             Есть аккаунт?
-            <NavLink to={LOGIN_PATH} onClick={clearErrorMessage}>
-              {" "}
-              Войдите{" "}
-            </NavLink>
+            <button onClick={toggleAuth}>
+              Войдите
+            </button>
           </div>
         )}
       </div>

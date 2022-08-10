@@ -1,5 +1,5 @@
 import AuthService from "../API/AuthService";
-import { extractErrorMessages } from "../utils/error";
+import { extractErrorMessages } from "../utils/errors";
 
 const REGISTER = "REGISTER";
 const LOGIN = "LOGIN";
