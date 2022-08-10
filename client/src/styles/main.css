@@ -585,79 +585,6 @@ footer ul a {
   font-size: 2em;
 }
 
-/* /////////////////////// АВТОРИЗАЦИЯ */
-.auth-card {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  width: 400px;
-  margin: auto;
-  justify-items: center;
-  grid-gap: 1em;
-  transform: translate(0, 25%);
-}
-
-.auth-card h2 {
-  text-transform: uppercase;
-
-  color: #334756;
-}
-
-.auth-forms,
-.auth-forms__form {
-  display: grid;
-  grid-gap: 1em;
-}
-
-.auth-forms input,
-button,
-.auth_error {
-  border: 0;
-  height: 3em;
-  width: 300px;
-}
-
-.auth-forms input {
-  background: #f3f6ff;
-  border-radius: 30px;
-  padding-left: 1em;
-  font-size: 1em;
-}
-
-.auth-card button {
-  background: #211f1c;
-  border-radius: 50px;
-  text-transform: uppercase;
-  color: #fbfbfb;
-  font-size: 1em;
-}
-
-.auth_no-akk {
-  color: #334756;
-  font-size: 0.8em;
-}
-
-.auth_no-akk a {
-  color: #616467;
-}
-
-.auth_error {
-  background: #fd60602c;
-  color: rgba(0, 0, 0, 0.659);
-  font-size: 0.8em;
-  font-weight: 500;
-  text-align: center;
-  margin: auto;
-  vertical-align: middle;
-  border: 1px solid #fd606095;
-  border-radius: 0.2em;
-  height: min-content;
-  margin-top: -1em;
-}
-
-.auth_error p {
-  margin: 0.5em;
-}
-
 /*//////////////////////////////// КОРЗИНА */
 
 .cart__container {
@@ -771,4 +698,123 @@ button,
 
 .cart__footer-count {
   grid-column-start: 4;
+}
+
+/* //////////////////// МОДАЛЬНОЕ ОКНО */
+.modal {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.258);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.4s;
+}
+
+.modal.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2em;
+  background-color: #fff;
+  height: 400px;
+  width: 400px;
+  transform: scale(0.5);
+  transition: 0.3s all;
+  width: 50vw;
+}
+
+.modal-content.active {
+  transform: scale(1);
+}
+
+/* /////////////////////// АВТОРИЗАЦИЯ */
+.auth-card {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  width: 400px;
+  margin: auto;
+  justify-items: center;
+  grid-gap: 1em;
+  /* transform: translate(0, 25%); */
+}
+
+.auth-card h2 {
+  text-transform: uppercase;
+
+  color: #334756;
+}
+
+.auth-forms,
+.auth-forms__form {
+  display: grid;
+  grid-gap: 1em;
+}
+
+.auth-forms input,
+button,
+.auth_error {
+  border: 0;
+  height: 3em;
+  width: 300px;
+}
+
+.auth-forms input {
+  background: #f3f6ff;
+  border-radius: 30px;
+  padding-left: 1em;
+  font-size: 1em;
+}
+
+.auth-card button {
+  background: #211f1c;
+  border-radius: 50px;
+  text-transform: uppercase;
+  color: #fbfbfb;
+  font-size: 1em;
+}
+
+.auth-card button:hover,
+add-to-cart:hover {
+  cursor: pointer;
+  background: #393d452a;
+  color: #211f1c;
+  border: 1.5px solid #393d45;
+}
+
+.auth_no-akk {
+  color: #334756;
+  font-size: 0.8em;
+}
+
+.auth_no-akk a {
+  color: #616467;
+}
+
+.auth_error {
+  background: #fd60602c;
+  color: rgba(0, 0, 0, 0.659);
+  font-size: 0.8em;
+  font-weight: 500;
+  text-align: center;
+  margin: auto;
+  vertical-align: middle;
+  border: 1px solid #fd606095;
+  border-radius: 0.2em;
+  height: min-content;
+  margin-top: -1em;
+}
+
+.auth_error p {
+  margin: 0.5em;
 }

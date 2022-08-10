@@ -12,7 +12,7 @@ import {
   clearErrorMessageAction,
 } from "../reducers/authReducer";
 
-const Auth = () => {
+const Auth = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -24,7 +24,9 @@ const Auth = () => {
   const { authUser, errorMessages } = useSelector((state) => state.authReducer);
 
   // TODO заменить на что-нибудь другое
-  const isLogin = location.pathname === LOGIN_PATH;
+  // const isLogin = location.pathname === LOGIN_PATH;
+  const [isLogin, setIsLogin] = useState(true);
+  console.log(isLogin);
 
   function registerOrLogin(event) {
     event.preventDefault();
@@ -75,7 +77,7 @@ const Auth = () => {
               onChange={(event) =>
                 setCredentials({ ...credentials, password: event.target.value })
               }
-              type="text"
+              type="password"
               placeholder="Пароль"
             ></input>
           </div>

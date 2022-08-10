@@ -1,6 +1,8 @@
 import React from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import { CATALOG_PATH } from "../routes";
+import { Link } from "react-router-dom";
 
 export default function MainPage() {
   return (
@@ -201,7 +203,9 @@ export default function MainPage() {
             </div>
           </section>
           <div className="btn-all_wrap">
-            <button className="btn-all">Все товары &rarr;</button>
+            <Link to={CATALOG_PATH}>
+              <button className="btn-all">Все товары &rarr;</button>
+            </Link>
           </div>
           <div className="partners-title">
             <h3>Наши партнёры</h3>
