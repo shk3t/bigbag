@@ -6,13 +6,10 @@ import { MAIN_PATH, publicRoutes, privateRoutes } from "../routes";
 const AppRouter = () => {
   //эта константна должна быть динамической и перенесена в стэйт менеджер
   const isAuth = false;
+  const routes = isAuth ? privateRoutes : publicRoutes;
   return (
     <Routes>
-      {isAuth &&
-        privateRoutes.map(({ path, Component }) => (
-          <Route key={path} path={path} element={<Component />} />
-        ))}
-      {publicRoutes.map(({ path, Component }) => (
+      {routes.map(({ path, Component }) => (
         <Route key={path} path={path} element={<Component />} />
       ))}
       <Route path="*" element={<Navigate to={MAIN_PATH} />} />

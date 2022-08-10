@@ -3,33 +3,48 @@ const SET_QUANTITY = "SET_QUANTITY";
 const REMOVE_ITEM = "REMOVE_ITEM";
 const EMPTY_CART = "EMPTY_CART";
 
-export default function cartReducer(state = { items: [] }, action) {
+export default function cartReducer(state = { cartItems: [] }, action) {
   const { id, item, quantity } = action.payload || {};
   switch (action.type) {
     case ADD_ITEM:
-      state.items[id] = item;
-      return { items: { ...state.items } };
+      if (!state.cartItems.hasOwnProperty(id)) {
+        state.cartItems[id] = item;
+      } else {
+        state.cartItems[id].quantity += item.quantity;
+      }
+      return { cartItems: { ...state.cartItems } };
     case SET_QUANTITY:
-      state.items[id].quantity = quantity;
-      return { items: { ...state.items } };
+      state.cartItems[id].quantity = quantity;
+      return { cartItems: { ...state.cartItems } };
     case REMOVE_ITEM:
-      delete state.items[id];
-      return { items: { ...state.items } };
+      delete state.cartItems[id];
+      return { cartItems: { ...state.cartItems } };
     case EMPTY_CART:
-      return { items: [] };
+      return { cartItems: [] };
     default:
       return state;
   }
 }
 
 export const addItemAction = (product, quantity) => async (dispatch) => {
-  const { id, type, size, image } = product;
-  const item = { id, type, size, image, quantity };
-  return dispatch({ type: ADD_ITEM, payload: { id, item } });
+  if (quantity > 0) {
+    const { id, type, size, price, image, items_per_pack } = product;
+    const item = {
+      name: `${type} ${size}`,
+      price,
+      image,
+      step: items_per_pack,
+      quantity,
+    };
+    return dispatch({ type: ADD_ITEM, payload: { id, item } });
+  }
 };
 
 export const setQuantityAction = (id, quantity) => async (dispatch) => {
-  return dispatch({ type: SET_QUANTITY, payload: { id, quantity } });
+  return dispatch({
+    type: SET_QUANTITY,
+    payload: { id, quantity: quantity > 0 ? quantity : 0 },
+  });
 };
 
 export const removeItemAction = (id) => async (dispatch) => {

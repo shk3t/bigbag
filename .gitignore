@@ -2,8 +2,6 @@
 pyrightconfig.json
 .vscode/
 todo.md
-/package.json
-/package-lock.json
 
 # Python
 __pycache__/
@@ -17,3 +15,5 @@ metadata.json
 # React
 node_modules/
 .env
+/package.json
+/package-lock.json

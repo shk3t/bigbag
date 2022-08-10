@@ -2,7 +2,13 @@ import React from "react";
 import avgLogo from "../assets/avg_logo.png";
 import cartLogo from "../assets/icon-trolley-cart-3683279.png";
 import { Link } from "react-router-dom";
-import { ABOUT_PATH, CATALOG_PATH, DELIVERY_PATH, MAIN_PATH } from "../routes";
+import {
+  ABOUT_PATH,
+  CART_PATH,
+  CATALOG_PATH,
+  DELIVERY_PATH,
+  MAIN_PATH,
+} from "../routes";
 import BtnLoginLogout from "./UI/Buttons/BtnLoginLogout";
 import HelloUser from "./UI/HelloUser";
 import { useSelector } from "react-redux";
@@ -37,7 +43,9 @@ export default function Header() {
         {authUser ? <HelloUser name={authUser.name} /> : ""}
 
         <div className="header__shopping-cart">
-          <img className="shopping-cart" src={cartLogo} alt="Корзина" />
+          <Link to={CART_PATH}>
+            <img className="shopping-cart" src={cartLogo} alt="Корзина" />
+          </Link>
         </div>
         <div>
           <BtnLoginLogout />

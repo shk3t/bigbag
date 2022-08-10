@@ -19,12 +19,17 @@ const authPersistConfig = {
   blacklist: ["errorMessages"],
 };
 
+const cartPersistConfig = {
+  key: "cartReducer",
+  storage,
+};
+
 const rootReducer = combineReducers({
   productReducer,
   productListReducer,
   subtypeReducer,
   subtypeListReducer,
-  cartReducer,
+  cartReducer: persistReducer(cartPersistConfig, cartReducer),
   authReducer: persistReducer(authPersistConfig, authReducer),
 });
 

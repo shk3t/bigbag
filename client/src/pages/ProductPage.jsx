@@ -7,12 +7,12 @@ import { getProductAction } from "../reducers/productReducer";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Way from "../components/Way";
-import Product from "../components/Product";
+import ProductOrder from "../components/ProductOrder";
 
 export default function ProductPage() {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const product = useSelector((state) => state.productReducer.product);
+  const { product } = useSelector((state) => state.productReducer);
   useEffect(() => {
     dispatch(getProductAction(id));
   }, []);
@@ -21,7 +21,7 @@ export default function ProductPage() {
     <div>
       <Header />
       <Way />
-      <main>{product && <Product product={product} />}</main>
+      <main>{product && <ProductOrder product={product} />}</main>
       <Footer />
     </div>
   );

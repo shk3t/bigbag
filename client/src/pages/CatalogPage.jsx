@@ -5,12 +5,12 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Way from "../components/Way";
 import ProductItem from "../components/ProductItem";
-import { listProductsAction } from "../reducers/productListReducer"
+import { listProductsAction } from "../reducers/productListReducer";
 // import ProductService from "../API/ProductService";
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
-  const products = useSelector((state) => state.productListReducer.products);
+  const { products } = useSelector((state) => state.productListReducer);
 
   useEffect(() => {
     dispatch(listProductsAction());
