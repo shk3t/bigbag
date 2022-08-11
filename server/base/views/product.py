@@ -8,7 +8,10 @@ from base.serializers import BagProductSerializer, BagMapping
 
 class ProductList(ReadOnlyMixin, APIView):
     def get(self, request):
+        type_param = request.query_params.get("type")
         products = Product.objects.all()
+        if (type_param):
+            products = products.filter(type=type_param)
         serializer = BagProductSerializer(products, many=True)
         return Response(serializer.data)
 
