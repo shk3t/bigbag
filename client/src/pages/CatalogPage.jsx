@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams, useSearchParams } from "react-router-dom";
 
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -9,11 +10,13 @@ import { listProductsAction } from "../reducers/productListReducer";
 // import ProductService from "../API/ProductService";
 
 const CatalogPage = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.productListReducer);
 
   useEffect(() => {
-    dispatch(listProductsAction());
+    const type = searchParams.get("type");
+    dispatch(listProductsAction({ type }));
   }, []);
 
   // Если еще раз захочешь осмыслить, как обрабатываются данные на фронте,

@@ -3,8 +3,8 @@ import axios from "axios";
 import api from "../api";
 
 export default class ProductService {
-  static async getAllProducts() {
-    const response = await axios.get("/api/products");
+  static async getAllProducts(params = null) {
+    const response = await axios.get("/api/products", { params });
     return response.data;
   }
   static async getProduct(id) {
