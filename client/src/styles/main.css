@@ -818,3 +818,33 @@ add-to-cart:hover {
 .auth_error p {
   margin: 0.5em;
 }
+
+/*////////////////////////// АДМИН ПАНЕЛЬ*/
+
+.admin__container {
+  display: grid;
+  grid-gap: 1rem;
+  padding-left: 6em;
+  padding-right: 6em;
+  margin-bottom: 4rem;
+}
+
+.admin_add-meshki,
+.admin__add-bb {
+  /* display: none; */
+}
+
+.admin_add-meshki active {
+  display: grid;
+  grid-template-rows: 1fr 1fr auto;
+  grid-gap: 2em;
+}
+
+.admin__add-description {
+  display: grid;
+}
+
+.admin__choose {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}

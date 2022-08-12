@@ -5,6 +5,7 @@ import AboutUsPage from "./pages/AboutUsPage";
 import DeliveryPage from "./pages/DeliveryPage";
 import CartPage from "./pages/CartPage";
 import AuthPage from "./pages/AuthPage";
+import Admin from "./pages/Admin";
 
 export const MAIN_PATH = "/main";
 export const PRODUCTS_PATH = "/products";
@@ -18,19 +19,23 @@ export const LOGIN_PATH = "/login";
 export const ADMIN_PATH = "/admin";
 
 export const privateRoutes = [
-//   !!!! Временно вынесла Корзину в public Routes, пока делаю стили. Затем раскомментить
-//   {
-//     path: CART_PATH,
-//     Component: CartPage,
-//   },
-//   закомментила, пока нет компонента Админ
-//   {
-//     path: ADMIN_PATH,
-//     Component: Admin,
-//   },
+  //   !!!! Временно вынесла Корзину в public Routes, пока делаю стили. Затем раскомментить
+  //   {
+  //     path: CART_PATH,
+  //     Component: CartPage,
+  //   },
+  //   временно вынесла в publicRoutes, пока делаю стили
+  //   {
+  //     path: ADMIN_PATH,
+  //     Component: Admin,
+  //   },
 ];
 
 export const publicRoutes = [
+  {
+    path: ADMIN_PATH,
+    Component: Admin,
+  },
   {
     path: CART_PATH,
     Component: CartPage,
