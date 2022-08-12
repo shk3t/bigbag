@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
-export default function Admin() {
+export default function AdminPage() {
   const [select, setSelect] = useState();
   const [className, setClassName] = useState();
 

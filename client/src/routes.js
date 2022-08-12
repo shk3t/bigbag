@@ -5,7 +5,7 @@ import AboutUsPage from "./pages/AboutUsPage";
 import DeliveryPage from "./pages/DeliveryPage";
 import CartPage from "./pages/CartPage";
 import AuthPage from "./pages/AuthPage";
-import Admin from "./pages/Admin";
+import AdminPage from "./pages/AdminPage";
 
 export const MAIN_PATH = "/main";
 export const PRODUCTS_PATH = "/products";
@@ -34,7 +34,7 @@ export const privateRoutes = [
 export const publicRoutes = [
   {
     path: ADMIN_PATH,
-    Component: Admin,
+    Component: AdminPage,
   },
   {
     path: CART_PATH,

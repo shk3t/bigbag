@@ -10,7 +10,7 @@ import {
   clearErrorMessageAction,
 } from "../reducers/authReducer";
 
-const Auth = () => {
+const AuthPage = () => {
   const dispatch = useDispatch();
   const { errorMessages } = useSelector((state) => state.authReducer);
 
@@ -93,4 +93,4 @@ const Auth = () => {
   );
 };
 
-export default Auth;
+export default AuthPage;

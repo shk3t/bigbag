@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useEffect, useState } from "react";
 import classes from "./ButtonMore.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutAction } from "../../../reducers/authReducer";
@@ -10,6 +10,10 @@ const BtnLoginLogout = () => {
   const { authUser } = useSelector((state) => state.authReducer);
 
   const [modalActive, setModalActive] = useState();
+
+  useEffect(() => {
+    setModalActive(false);
+  }, [authUser]);
 
   function loginOrLogout(event) {
     event.preventDefault();
