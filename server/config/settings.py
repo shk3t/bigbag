@@ -91,9 +91,13 @@ CORS_ALLOWED_ORIGINS = [
 
 # REST framework extensions
 REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": (
+    "COERCE_DECIMAL_TO_STRING": False,
+    "DEFAULT_RENDERER_CLASSES": [
+        "rest_framework.renderers.JSONRenderer",
+    ],
+    "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework_simplejwt.authentication.JWTAuthentication",
-    )
+    ],
 }
 
 # JWT

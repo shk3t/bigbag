@@ -9,6 +9,14 @@ import CartItem from "../components/CartItem";
 export default function CartPage() {
   const { cartItems } = useSelector((state) => state.cartReducer);
 
+  function getTotalPrice() {
+    let totalPrice = 0;
+    for (const item of Object.values(cartItems)) {
+      totalPrice += item.price * item.quantity;
+    }
+    return totalPrice.toFixed(2);
+  }
+
   return (
     <div>
       <Header />
@@ -35,14 +43,7 @@ export default function CartPage() {
           <div className="clear"></div> */}
 
           <div className="cart__footer-count">Итого:</div>
-          {/* коммент снизу надо пофиксить */}
-          {/* <div className="cart__footer-sum">
-            {Object.values(cartItems).reduce(
-              (left, right) =>
-                left.quantity * left.price + right.quantity * right.price
-            )}{" "}
-            руб
-          </div> */}
+          <div className="cart__footer-sum">{getTotalPrice()} руб</div>
         </div>
       </section>
       <Footer />

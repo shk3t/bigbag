@@ -19,7 +19,7 @@ const ProductItem = ({ product }) => {
         {/* <button>Корзина</button> */}
         <div className="catalog-btn__wrap">
           <div className="catalog-item__title ">{product.type} {product.size}</div>
-          <div className="catalog-item__price">{product.price} р/шт</div>
+          <div className="catalog-item__price">{product.price.toFixed(2)} р/шт</div>
         </div>
       </div>
     </div>

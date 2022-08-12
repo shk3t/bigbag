@@ -11,7 +11,9 @@ export default function CartItem({ item }) {
         <img src={item.image}></img>
       </div>
       <div className="cart__container-products-title">{item.name}</div>
-      <div className="cart__container-products-price">{item.price}</div>
+      <div className="cart__container-products-price">
+        {item.price.toFixed(2)}
+      </div>
       <div className="cart__container-products-count">
         {/* вот это сделать компонентом мб, т.к. он есть и на карточке продукта */}
         <div className="count-count">
@@ -51,8 +53,7 @@ export default function CartItem({ item }) {
         </div>
       </div>
       <div className="cart__container-products-sum">
-        {" "}
-        {item.price * item.quantity} руб
+        Итого: {(item.price * item.quantity).toFixed(2)} руб
       </div>
       <div className="cart__container-products-delete">
         <button

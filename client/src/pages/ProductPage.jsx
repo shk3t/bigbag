@@ -50,7 +50,7 @@ export default function ProductPage() {
               </div>
               <div className="product__price-buy">
                 <div className="product__price">
-                  <p>{product.price} р/шт</p>
+                  <p>{product.price.toFixed(2)} р/шт</p>
                 </div>
                 <div className="product__amount">
                   <button
