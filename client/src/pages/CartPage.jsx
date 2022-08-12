@@ -24,6 +24,7 @@ export default function CartPage() {
         </div>
         {/* сама корзина */}
         <section className="cart__container-products">
+          {/* вот здесь сейчас просто отрисовывается единый div, состоящий из других дивов. */}
           {Object.entries(cartItems).map(([id, item]) => (
             <CartItem key={id} item={item} />
           ))}
@@ -34,13 +35,14 @@ export default function CartPage() {
           <div className="clear"></div> */}
 
           <div className="cart__footer-count">Итого:</div>
-          <div className="cart__footer-sum">
+          {/* коммент снизу надо пофиксить */}
+          {/* <div className="cart__footer-sum">
             {Object.values(cartItems).reduce(
               (left, right) =>
                 left.quantity * left.price + right.quantity * right.price
             )}{" "}
             руб
-          </div>
+          </div> */}
         </div>
       </section>
       <Footer />

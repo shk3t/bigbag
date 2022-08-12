@@ -13,9 +13,9 @@
     - [x] `logout`
     - [x] `refreshTokens`
     - [x] **JWT** сохранять в `localStorage`
-        - [x] в Redux
-    - [X] обработка ошибок при авторизации
-- [X] добавить кнопку **logout** в **Header**
+      - [x] в Redux
+    - [x] обработка ошибок при авторизации
+- [x] добавить кнопку **logout** в **Header**
 - [x] объединить **login** и **register** в одну страницу через `isAuth ? ... : ...`
 - [ ] реализовать как всплывающее окно
 
@@ -34,8 +34,8 @@
 - [ ] стили
 - [ ] табличка продуктов
 - [ ] перенести во всплывающее окно
-- [X] CartService, использовать localStorage
-    - [X] заменить localStorage на Redux
+- [x] CartService, использовать localStorage
+  - [x] заменить localStorage на Redux
 - [ ] потом еще че-нть придумаю)
 
 <br />

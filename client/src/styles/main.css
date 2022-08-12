@@ -602,18 +602,23 @@ footer ul a {
   height: 40px;
 }
 
-.title-count {
-  width: 125px;
-}
-
 /*////////////////////////// ТЕЛО КОРЗИНЫ */
 
 .cart__container-products {
   display: grid;
-  grid-template-columns: 2fr 2fr 2fr 2fr 2fr 2fr;
+  /* grid-template-columns: 2fr 2fr 2fr 2fr 2fr 2fr; */
   margin: 1em 0;
   background: #f8f8f8;
   text-align: center;
+}
+
+.cart__container-products > div {
+  display: grid;
+  grid-template-columns: 1fr 3fr 2fr 2fr 2fr 2fr;
+  margin: 1em 0;
+  background: #f8f8f8;
+  text-align: center;
+  align-items: center;
 }
 
 /*стиль для всех элементов вложенности первого уровня*/
@@ -622,7 +627,12 @@ footer ul a {
 }
 
 .cart__container-products-img {
+  width: 100px;
   justify-self: center;
+}
+
+.cart__container-products-img img {
+  width: 70px;
 }
 
 .cart__container-products-count {
@@ -656,7 +666,7 @@ footer ul a {
 }
 
 .count-input {
-  max-width: 100%;
+  width: 100%;
   padding: 0.2em;
   background-color: transparent;
   text-align: center;
@@ -674,12 +684,13 @@ footer ul a {
   align-items: center;
   min-width: 30px;
   height: 30px;
+  justify-content: center;
 }
 
 .count-up,
 .count-down {
   padding: 0;
-  width: 100%;
+  width: 40px;
   height: 100%;
   align-self: center;
 }
@@ -776,6 +787,17 @@ button,
   font-size: 1em;
 }
 
+.auth_action {
+  padding-left: 0.5em;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.auth_action:hover {
+  color: rgba(0, 0, 0, 0.401);
+}
+
 .auth-card button {
   background: #211f1c;
   border-radius: 50px;
@@ -793,6 +815,8 @@ add-to-cart:hover {
 }
 
 .auth_no-akk {
+  display: flex;
+  justify-content: space-arounf;
   color: #334756;
   font-size: 0.8em;
 }

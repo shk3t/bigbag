@@ -50,13 +50,16 @@ export default function CartItem({ item }) {
           </div>
         </div>
       </div>
-      <div className="cart__container-products-sum">Итого: {item.price * item.quantity} руб</div>
+      <div className="cart__container-products-sum">
+        {" "}
+        {item.price * item.quantity} руб
+      </div>
       <div className="cart__container-products-delete">
         <button
           type="button"
           onClick={() => dispatch(removeItemAction(item.id))}
         >
-          Del
+          Удалить
         </button>
       </div>
     </div>

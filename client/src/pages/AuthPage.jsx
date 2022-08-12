@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 import ErrorAuthMsg from "../components/UI/ErrorAuthMsg";
 
@@ -19,7 +20,6 @@ const Auth = () => {
     password: "",
   });
   const [isLogin, setIsLogin] = useState(true);
-
 
   function registerOrLogin(event) {
     event.preventDefault();
@@ -75,17 +75,17 @@ const Auth = () => {
         </form>
         {isLogin ? (
           <div className="auth_no-akk">
-            Нет аккаунта?
-            <button onClick={toggleAuth}>
+            <div>Нет аккаунта?</div>
+            <div className="auth_action" onClick={toggleAuth}>
               Зарегистрируйтесь
-            </button>
+            </div>
           </div>
         ) : (
           <div className="auth_no-akk">
-            Есть аккаунт?
-            <button onClick={toggleAuth}>
+            <div> Есть аккаунт?</div>
+            <div className="auth_action" onClick={toggleAuth}>
               Войдите
-            </button>
+            </div>
           </div>
         )}
       </div>
