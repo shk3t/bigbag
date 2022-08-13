@@ -8,6 +8,7 @@ import {
   CATALOG_PATH,
   DELIVERY_PATH,
   MAIN_PATH,
+  ADMIN_PATH,
 } from "../routes";
 import BtnLoginLogout from "./UI/Buttons/BtnLoginLogout";
 import HelloUser from "./UI/HelloUser";
@@ -20,7 +21,7 @@ export default function Header() {
     <header>
       <div className="header__logo">
         <Link to={MAIN_PATH}>
-          <img src={avgLogo} alt="AvegaBag лого" />
+          <img className="img-logo" src={avgLogo} alt="AvegaBag лого" />
         </Link>
       </div>
       <div className="header__nav">
@@ -39,6 +40,9 @@ export default function Header() {
           </ul>
         </nav>
       </div>
+      <Link to={ADMIN_PATH}>
+        <button className="header__admin-btn">Админ панель</button>
+      </Link>
       <div className="header__cart-login">
         {authUser ? <HelloUser name={authUser.name} /> : ""}
 

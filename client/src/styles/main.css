@@ -38,6 +38,8 @@ header,
   padding-right: 6rem;
 }
 
+/*//////////////////////// HEADER*/
+
 header {
   height: 100px;
   /* margin-bottom: 3rem; */
@@ -54,11 +56,10 @@ header {
   height: 40px;
 }
 
-/*изменение лого при наведении, чтобы было понятно, что элемень кликабельный, пока не работает*/
-.header_logo:hover {
-  background: rgba(0, 0, 0, 0.25);
-  width: 200px;
-  opacity: 0.5;
+.img-logo:hover {
+  opacity: 0.7;
+  transform: scale(1.1);
+  transition: 0.25s;
 }
 
 .header__nav {
@@ -107,6 +108,22 @@ nav {
   grid-template-columns: 1fr auto auto;
   grid-gap: 2rem;
   align-items: center;
+}
+
+.header__admin-btn {
+  width: max-content;
+  background-color: #616467;
+  color: #fff;
+  border-radius: 1em;
+  padding-left: 1.2em;
+  padding-right: 1.2em;
+  cursor: pointer;
+}
+
+.header__admin-btn:hover {
+  background-color: #61646753;
+  color: rgba(0, 0, 0, 0.834);
+  border: 0.5px solid rgba(0, 0, 0, 0.834);
 }
 
 .header__hello {
@@ -297,6 +314,7 @@ h3 {
   border-radius: 20px;
   /* background-color: aliceblue; */
   box-shadow: 5px 5px 9px -1px rgba(34, 60, 80, 0.2);
+
   position: relative;
 }
 
@@ -730,6 +748,7 @@ footer ul a {
 .modal.active {
   opacity: 1;
   pointer-events: all;
+  z-index: 2000;
 }
 
 .modal-content {
@@ -738,11 +757,13 @@ footer ul a {
   justify-content: center;
   border-radius: 2em;
   background-color: #fff;
-  height: 400px;
-  width: 400px;
+  /* height: 400px;
+  width: 400px; */
   transform: scale(0.5);
   transition: 0.3s all;
   width: 50vw;
+  height: max-content;
+  padding-bottom: 1em;
 }
 
 .modal-content.active {
@@ -806,8 +827,7 @@ button,
   font-size: 1em;
 }
 
-.auth-card button:hover,
-add-to-cart:hover {
+.auth-card button:hover {
   cursor: pointer;
   background: #393d452a;
   color: #211f1c;

@@ -55,6 +55,7 @@ main {
   font-weight: 600;
   text-align: center;
   position: relative;
+  z-index: -1;
 }
 
 .product__price p {
@@ -89,4 +90,11 @@ main {
   background-color: #211f1c;
   color: #fff;
   font-size: 1em;
+}
+
+.add-to-cart:hover {
+  cursor: pointer;
+  background: #393d452a;
+  color: #211f1c;
+  border: 1px solid #393d45;
 }

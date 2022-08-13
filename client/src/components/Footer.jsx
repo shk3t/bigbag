@@ -2,13 +2,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import avgLogo from "../assets/avg_logo.png";
-import { ABOUT_PATH, DELIVERY_PATH } from "../routes";
+import { ABOUT_PATH, DELIVERY_PATH, MAIN_PATH } from "../routes";
 
 export default function Footer() {
   return (
     <footer>
       <div className="footer-logo">
-        <img src={avgLogo} alt="АвегаBag" />
+        <Link to={MAIN_PATH}>
+          <img className="img-logo" src={avgLogo} alt="АвегаBag" />
+        </Link>
         <p>Промышленная полимерная упаковка</p>
         <p>&copy; 2020-2022</p>
       </div>

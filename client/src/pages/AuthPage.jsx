@@ -35,6 +35,16 @@ const AuthPage = () => {
     setIsLogin(!isLogin);
   }
 
+  function checkPassword(password) {
+    setCredentials({
+      ...credentials,
+      password: password.target.value,
+    });
+    password.length < 8
+      ? alert("Пароль должен быть больше 8")
+      : alert("Надёжный пароль");
+  }
+
   return (
     <div>
       <div className="auth-card">
@@ -62,9 +72,13 @@ const AuthPage = () => {
             ></input>
             <input
               value={credentials.password}
-              onChange={(event) =>
-                setCredentials({ ...credentials, password: event.target.value })
-              }
+              // onChange={(event) =>
+              //   setCredentials({
+              //     ...credentials,
+              //     password: event.target.value,
+              //   })
+              // }
+              onChange={checkPassword}
               type="password"
               placeholder="Пароль"
             ></input>
