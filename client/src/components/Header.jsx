@@ -9,7 +9,7 @@ import {
   DELIVERY_PATH,
   MAIN_PATH,
   ADMIN_PATH,
-} from "../routes";
+} from "../consts";
 import BtnLoginLogout from "./UI/Buttons/BtnLoginLogout";
 import HelloUser from "./UI/HelloUser";
 import { useSelector } from "react-redux";

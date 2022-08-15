@@ -10,7 +10,7 @@ export default function CartPage() {
   const { cartItems } = useSelector((state) => state.cartReducer);
 
   function getTotalPrice() {
-    let totalPrice = 0;
+    let totalPrice = 0.0;
     for (const item of Object.values(cartItems)) {
       totalPrice += item.price * item.quantity;
     }

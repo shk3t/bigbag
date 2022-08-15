@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { removeItemAction, setQuantityAction } from "../reducers/cartReducer";
 
+// FIX айтемы ререндерятся вместе
 export default function CartItem({ item }) {
   const dispatch = useDispatch();
 

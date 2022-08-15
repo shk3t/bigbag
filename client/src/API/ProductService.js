@@ -24,11 +24,12 @@ export default class ProductService {
   }
 
   static async uploadImage(productId, image) {
-    // TODO realize how to use FormData
-    const formData = image;
-    await api.put(`/api/products/image/${productId}`, formData);
+    const formData = new FormData()
+    formData.append("image", image)
+    const response = await api.put(`/api/products/${productId}/image`, formData);
+    return response.data
   }
   static async deleteImage(productId) {
-    await api.delete(`/api/products/image/${productId}`);
+    await api.delete(`/api/products/${productId}/image`);
   }
 }

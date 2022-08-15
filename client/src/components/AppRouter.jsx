@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { Routes, Route, Navigate } from "react-router-dom";
-
-import { MAIN_PATH, publicRoutes, privateRoutes } from "../routes";
+import { MAIN_PATH } from "../consts";
+import { publicRoutes, authRoutes } from "../routes";
 
 const AppRouter = () => {
-  //эта константна должна быть динамической и перенесена в стэйт менеджер
-  const isAuth = false;
-  const routes = isAuth ? privateRoutes : publicRoutes;
+  const { authUser } = useSelector((state) => state.authReducer);
+
+  //TODO проверять авторизацию и права администратора при подгрузке маршрутов
+  let routes = [...publicRoutes]
+  if (authUser) {
+    routes.push(...authRoutes);
+  }
+
   return (
     <Routes>
       {routes.map(({ path, Component }) => (

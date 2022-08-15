@@ -1,6 +1,5 @@
 import axios from "axios";
-import AuthService from "./API/AuthService";
-import { logoutAction } from "./reducers/authReducer";
+import { logoutAction, refreshTokensAction } from "./reducers/authReducer";
 
 let store;
 
@@ -30,7 +29,7 @@ api.interceptors.response.use(
     ) {
       originalRequest._is_retry = true;
       try {
-        await AuthService.refreshTokens();
+        await store.dispatch(refreshTokensAction());
         return api.request(originalRequest);
       } catch (exception) {
         store.dispatch(logoutAction());

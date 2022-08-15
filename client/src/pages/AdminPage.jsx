@@ -1,70 +1,49 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+
+import { BIG_BAG, BIG_BAG_TYPE, POLY_BAG, POLY_BAG_TYPE } from "../consts";
+import CreatePolyBagForm from "../components/UI/Forms/CreatePolyBagForm";
+import { useDispatch, useSelector } from "react-redux";
+import { setProductAction } from "../reducers/productReducer";
 
 export default function AdminPage() {
-  const [select, setSelect] = useState();
-  const [className, setClassName] = useState();
+  const dispatch = useDispatch();
+  const { product } = useSelector((state) => state.productReducer);
+  const [tableId, setTableId] = useState(POLY_BAG);
 
-  function handleSelectValue(e) {
-    setSelect(e.target.value);
+  function renderTable() {
+    switch (tableId) {
+      case POLY_BAG:
+        return <CreatePolyBagForm />;
+      case BIG_BAG:
+        return <div>Таблица биг бегов</div>;
+      case POLY_BAG_TYPE:
+        return <div>Таблица типов пп мешков</div>;
+      case BIG_BAG_TYPE:
+        return <div>Таблица типов биг-бэг</div>;
+    }
   }
 
   return (
     <div>
       <div className="admin__container">
         <h1>Добавить товар</h1>
-
-        {/* выбор категории ниже влияет на то, какой div будет загружаться */}
         <div className=" admin__choose">
-          Выберите категорию:
-          <select value={select} onChange={handleSelectValue}>
-            <option value="m">Мешки</option>
-            <option value="bb">Биг-бэги</option>
+          Выберите таблицу:
+          <select
+            onChange={(event) => {
+              setTableId(event.target.value);
+              dispatch(
+                setProductAction({ ...product, type: event.target.value })
+              );
+            }}
+          >
+            <option value={POLY_BAG}>Мешки полипропиленовые</option>
+            <option value={BIG_BAG}>МКР (биг-бэг)</option>
+            <option value={POLY_BAG_TYPE}>Типы полипропиленовых мешков</option>
+            <option value={BIG_BAG_TYPE}>Типы МКР</option>
           </select>
         </div>
-
-        {/* div, если категория мешки */}
-
-        <div className="admin_add-meshki">
-          <h2>Добавить мешок</h2>
-
-          <div className="admin__add-description">
-            Добавить характеристики
-            <input type="text" placeholder="Введите цвет" />
-            <select>
-              <option>Высший</option>
-              <option>Первый</option>
-              <option>Второй</option>
-              <option>Не указано</option>
-            </select>
-            <input type="number" placeholder="Вес, напр. 46" />
-            <input type="number" placeholder="Шт/уп " />
-          </div>
-          <div>
-            Выберите изображение:
-            <form enctype="multipart/form-data" method="post">
-              <input type="file" />
-              <input type="submit" value="Загрузить"></input>
-            </form>
-          </div>
-        </div>
-
-        {/* div, если категория Биг-бэги */}
-        <div className="admin__add-bb">
-          <h2>Добавить биг-бэг</h2>
-          <div className="admin__add-description">
-            <input type="text" placeholder="Введите тип верха" />
-            <input type="text" placeholder="Введите тип низа" />
-          </div>
-          <div>
-            Выберите изображение:
-            <form enctype="multipart/form-data" method="post">
-              <input type="file" />
-              <input type="submit" value="Загрузить"></input>
-            </form>
-          </div>
-        </div>
-        <input type="submit" value="Добавить товар"></input>
+        {renderTable()}
       </div>
     </div>
   );
