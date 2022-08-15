@@ -1,8 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
+import { CATALOG_PATH } from "../consts";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import { CATALOG_PATH } from "../routes";
-import { Link } from "react-router-dom";
+
+import benefit from "../assets/benefit.png";
+import iconTrolleyCart from "../assets/icon-trolley-cart-3683279.png";
+import novopack from "../assets/novopack.png";
+import exampleBug from "../assets/example-bug.png";
 
 export default function MainPage() {
   return (
@@ -27,7 +33,7 @@ export default function MainPage() {
           </div>
           <section className="our-benefits">
             <div className="our-benefits__item">
-              <img src="./img/benefit.png" alt="преимущество" />
+              <img src={benefit} alt="преимущество" />
               <h4>Lorem ipsum dolor</h4>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -35,7 +41,7 @@ export default function MainPage() {
               </p>
             </div>
             <div className="our-benefits__item">
-              <img src="./img/benefit.png" alt="преимущество" />
+              <img src={benefit} alt="преимущество" />
 
               <h4>Lorem ipsum dolor</h4>
               <p>
@@ -44,7 +50,7 @@ export default function MainPage() {
               </p>
             </div>
             <div className="our-benefits__item">
-              <img src="./img/benefit.png" alt="преимущество" />
+              <img src={benefit} alt="преимущество" />
 
               <h4>Lorem ipsum dolor</h4>
               <p>
@@ -58,148 +64,25 @@ export default function MainPage() {
           </div>
           <section className="catalog">
             <div className="catalog-item__wrap">
-              <div className="catalog-item">
-                <img
-                  className="catalog-item__img"
-                  src="./img/example-bug.png"
-                  alt="мешок"
-                />
-                <div className="catalog-btn__wrap">
-                  <button className="catalog-item__btn-price">МЕШКИ</button>
-                  <button className="catalog-item__btn-shopping-cart">
-                    <img
-                      className="icon-trolley"
-                      src="./img/icon-trolley-cart-3683279.png"
-                      alt="корзина"
-                    />
-                  </button>
+              {[...Array(10).keys()].map((key) => (
+                <div key={key} className="catalog-item">
+                  <img
+                    className="catalog-item__img"
+                    src={exampleBug}
+                    alt="мешок"
+                  />
+                  <div className="catalog-btn__wrap">
+                    <button className="catalog-item__btn-price">МЕШКИ</button>
+                    <button className="catalog-item__btn-shopping-cart">
+                      <img
+                        className="icon-trolley"
+                        src={iconTrolleyCart}
+                        alt="корзина"
+                      />
+                    </button>
+                  </div>
                 </div>
-              </div>
-              <div className="catalog-item">
-                <img
-                  className="catalog-item__img"
-                  src="./img/example-bug2.png"
-                  alt="мешок"
-                />
-                <div className="catalog-btn__wrap">
-                  <button className="catalog-item__btn-price">МЕШКИ</button>
-                  <button className="catalog-item__btn-shopping-cart">
-                    <img
-                      className="icon-trolley"
-                      src="./img/icon-trolley-cart-3683279.png"
-                      alt="корзина"
-                    />
-                  </button>
-                </div>
-              </div>
-              <div className="catalog-item">
-                <img
-                  className="catalog-item__img"
-                  src="./img/example-bug3.png"
-                  alt="перчатки"
-                />
-
-                <div className="catalog-btn__wrap">
-                  <button className="catalog-item__btn-price">ПЕРЧАТКИ</button>
-                  <button className="catalog-item__btn-shopping-cart">
-                    <img
-                      className="icon-trolley"
-                      src="./img/icon-trolley-cart-3683279.png"
-                      alt="корзина"
-                    />
-                  </button>
-                </div>
-              </div>
-              <div className="catalog-item">
-                <img
-                  className="catalog-item__img"
-                  src="./img/example-bug4.png"
-                  alt="мешок"
-                />
-
-                <div className="catalog-btn__wrap">
-                  <button className="catalog-item__btn-price">176 р/шт</button>
-                  <button className="catalog-item__btn-shopping-cart">
-                    <img
-                      className="icon-trolley"
-                      src="./img/icon-trolley-cart-3683279.png"
-                      alt="корзина"
-                    />
-                  </button>
-                </div>
-              </div>
-              <div className="catalog-item">
-                <img
-                  className="catalog-item__img"
-                  src="./img/example-bug.png"
-                  alt="мешок"
-                />
-
-                <div className="catalog-btn__wrap">
-                  <button className="catalog-item__btn-price">176 р/шт</button>
-                  <button className="catalog-item__btn-shopping-cart">
-                    <img
-                      className="icon-trolley"
-                      src="./img/icon-trolley-cart-3683279.png"
-                      alt="корзина"
-                    />
-                  </button>
-                </div>
-              </div>
-              <div className="catalog-item">
-                <img
-                  className="catalog-item__img"
-                  src="./img/example-bug2.png"
-                  alt="мешок"
-                />
-
-                <div className="catalog-btn__wrap">
-                  <button className="catalog-item__btn-price">176 р/шт</button>
-                  <button className="catalog-item__btn-shopping-cart">
-                    <img
-                      className="icon-trolley"
-                      src="./img/icon-trolley-cart-3683279.png"
-                      alt="корзина"
-                    />
-                  </button>
-                </div>
-              </div>
-              <div className="catalog-item">
-                <img
-                  className="catalog-item__img"
-                  src="./img/example-bug4.png"
-                  alt="мешок"
-                />
-
-                <div className="catalog-btn__wrap">
-                  <button className="catalog-item__btn-price">176 р/шт</button>
-                  <button className="catalog-item__btn-shopping-cart">
-                    <img
-                      className="icon-trolley"
-                      src="./img/icon-trolley-cart-3683279.png"
-                      alt="корзина"
-                    />
-                  </button>
-                </div>
-              </div>
-              <div className="catalog-item">
-                <img
-                  className="catalog-item__img"
-                  src="./img/example-bug3.png"
-                  alt="перчатки"
-                />
-
-                <div className="catalog-btn__wrap">
-                  <button className="catalog-item__btn-price">176 р/шт</button>
-                  <button className="catalog-item__btn-shopping-cart">
-                    <img
-                      className="icon-trolley"
-                      src="./img/icon-trolley-cart-3683279.png"
-                      alt="корзина"
-                    />
-                  </button>
-                </div>
-              </div>
+              ))}
             </div>
           </section>
           <div className="btn-all_wrap">
@@ -212,10 +95,10 @@ export default function MainPage() {
           </div>
           <section className="partners">
             <div className="partners-item">
-              <img src="./img/novopack.png" alt="Новопэк" />
+              <img src={novopack} alt="Новопэк" />
             </div>
             <div className="partners-item">
-              <img src="./img/novopack.png" alt="Новопэк" />
+              <img src={novopack} alt="Новопэк" />
             </div>
           </section>
         </main>

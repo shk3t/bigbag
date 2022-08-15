@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import classes from "./ButtonMore.module.css";
-import { PRODUCTS_PATH } from "../../../routes";
+import { PRODUCTS_PATH } from "../../../consts";
 
 const ButtonMore = (props) => {
   const navigate = useNavigate();

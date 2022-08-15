@@ -13,10 +13,15 @@ export default function ProductPage() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const { product } = useSelector((state) => state.productReducer);
+  const [quantity, setQuantity] = useState(0);
   useEffect(() => {
     dispatch(getProductAction(id));
   }, []);
-  const [quantity, setQuantity] = useState(0);
+  useEffect(() => {
+    if (product) {
+      setQuantity(product.items_per_pack);
+    }
+  }, [product]);
 
   function decrementQuantity() {
     const newQuantity = quantity - product.items_per_pack;

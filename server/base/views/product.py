@@ -52,7 +52,9 @@ class ImageDetial(ReadOnlyMixin, APIView):
         product.image = request.FILES.get("image")
         product.validate()
         product.save()
-        return Response("Image updated")
+        # TODO test
+        serializer = BagProductSerializer(product)
+        return Response(serializer.data["image"])
 
     def delete(self, request, product_id):
         product = Product.get_by_pk(product_id)

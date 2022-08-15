@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import avgLogo from "../assets/avg_logo.png";
-import { ABOUT_PATH, DELIVERY_PATH, MAIN_PATH } from "../routes";
+import { ABOUT_PATH, DELIVERY_PATH, MAIN_PATH } from "../consts";
 
 export default function Footer() {
   return (

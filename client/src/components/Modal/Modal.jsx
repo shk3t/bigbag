@@ -9,7 +9,7 @@ export default function Modal({ active, setActive, children }) {
     >
       <div
         className={active ? "modal-content active" : "modal-content"}
-        onClick={(e) => e.stopPropagation()}
+        onClick={(event) => event.stopPropagation()}
       >
         {children}
       </div>

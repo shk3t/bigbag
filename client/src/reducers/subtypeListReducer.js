@@ -11,7 +11,7 @@ export default function subtypeListReducer(state = { subtypes: [] }, action) {
   }
 }
 
-export const listSubtypesAction = () => async (dispatch) => {
-  const subtypes = await SubtypeService.getAllSubtypes();
+export const listSubtypesAction = (type) => async (dispatch) => {
+  const subtypes = await SubtypeService.getAllSubtypes(type);
   return dispatch({ type: LIST_SUBTYPES, payload: subtypes });
 };

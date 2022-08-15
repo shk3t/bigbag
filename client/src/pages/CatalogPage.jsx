@@ -7,7 +7,6 @@ import Header from "../components/Header";
 import Way from "../components/Way";
 import ProductItem from "../components/ProductItem";
 import { listProductsAction } from "../reducers/productListReducer";
-// import ProductService from "../API/ProductService";
 
 const CatalogPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -18,25 +17,6 @@ const CatalogPage = () => {
     const type = searchParams.get("type");
     dispatch(listProductsAction({ type }));
   }, []);
-
-  // Если еще раз захочешь осмыслить, как обрабатываются данные на фронте,
-  // то глянь историю коммитов
-  //
-  // useEffect(() => {
-  //   fetchProducts();
-  // }, []);
-  //
-  // const [products, setProducts] = useState([]);
-  //
-  // async function fetchProducts() {
-  //   // Нам не нужен фейк, потому что есть свои данные,
-  //   // хватаем из ...:8000/api/products:
-  //   // proxy из package.json + строка в axios.get() (УПП)
-  //   const products = await ProductService.getAllProducts();
-  //   // Посмотри в консоли браузера, что возвращает сервер
-  //   console.log(products); // (УПП)
-  //   setProducts(products);
-  // }
 
   return (
     <div className="root-div">
@@ -50,7 +30,6 @@ const CatalogPage = () => {
         <div className="catalog-item__wrap ">
           {products.map((product) => (
             <ProductItem
-              //key ниже должен быть уникальным, чтобы react не ругался
               key={product.id}
               product={product}
             />

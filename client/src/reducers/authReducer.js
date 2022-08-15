@@ -4,6 +4,7 @@ import { extractErrorMessages } from "../utils/errors";
 const REGISTER = "REGISTER";
 const LOGIN = "LOGIN";
 const LOGOUT = "LOGOUT";
+const REFRESH_TOKENS = "REFRESH_TOKENS";
 const CLEAR_ERROR_MESSAGE = "CLEAR_ERROR_MESSAGE";
 
 const initialState = { authUser: null, accessToken: null, errorMessages: null };
@@ -16,6 +17,8 @@ export default function authReducer(state = initialState, action) {
       return { authUser: user, accessToken: token, errorMessages: messages };
     case LOGOUT:
       return initialState;
+    case REFRESH_TOKENS:
+      return { ...state, accessToken: token };
     case CLEAR_ERROR_MESSAGE:
       return { ...state, errorMessages: null };
     default:
@@ -51,6 +54,11 @@ export const loginAction = (credentials) => async (dispatch) => {
 export const logoutAction = () => async (dispatch) => {
   await AuthService.logout();
   dispatch({ type: LOGOUT, payload: null });
+};
+
+export const refreshTokensAction = () => async (dispatch) => {
+  const { access_token } = await AuthService.refreshTokens();
+  dispatch({ type: REFRESH_TOKENS, payload: { token: access_token } });
 };
 
 export const clearErrorMessageAction = () => async (dispatch) => {

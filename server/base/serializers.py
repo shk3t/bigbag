@@ -98,6 +98,8 @@ class BagProductSerializer(serializers.Serializer):
         return ret
 
     def create(self, data):
+        # TODO test
+        data.pop("image", None)
         _, BagSerializer = BagMapping.for_type(data["type"])
         product_serializer = ProductSerializer(data=data)
         product_serializer.is_valid(raise_exception=True)
