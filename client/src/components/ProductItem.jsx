@@ -1,5 +1,6 @@
 import React from "react";
 import ButtonMore from "./UI/Buttons/ButtonMore";
+import { BASE_URL } from "../consts";
 
 // Деструктуризировал твои props в {product} - в принципе, получилось то же самое.
 const ProductItem = ({ product }) => {
@@ -10,7 +11,7 @@ const ProductItem = ({ product }) => {
           <img
             className="catalog-item__img"
             alt="продукт"
-            src={product.image}
+            src={BASE_URL + product.image}
           ></img>
         </div>
         <div className="btn-more__wrap">

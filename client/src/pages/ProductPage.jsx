@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-
 import "../styles/product.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Way from "../components/Way";
 import { getProductAction } from "../reducers/productReducer";
 import { addItemAction } from "../reducers/cartReducer";
+import { BASE_URL } from "../consts";
 
 export default function ProductPage() {
   const { id } = useParams();
@@ -44,7 +44,7 @@ export default function ProductPage() {
         {product && (
           <div className="product-wrap">
             <div className="product-img">
-              <img src={product.image} />
+              <img src={BASE_URL + product.image} />
             </div>
             <div className="product-about__wrap">
               <div className="product-about__title">

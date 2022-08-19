@@ -1,5 +1,6 @@
 import axios from "axios";
 import { logoutAction, refreshTokensAction } from "./reducers/authReducer";
+import { BASE_URL } from "./consts";
 
 let store;
 
@@ -7,18 +8,22 @@ export const injectStore = (_store) => {
   store = _store;
 };
 
-const api = axios.create({
+export const publicApi = axios.create({
+  baseURL: BASE_URL
+});
+
+export const authApi = axios.create({
+  baseURL: BASE_URL,
   withCredentials: true,
 });
-export default api;
 
-api.interceptors.request.use((config) => {
+authApi.interceptors.request.use((config) => {
   const accessToken = store.getState().authReducer.accessToken;
   config.headers.Authorization = `Bearer ${accessToken}`;
   return config;
 });
 
-api.interceptors.response.use(
+authApi.interceptors.response.use(
   (config) => config,
   async (error) => {
     const originalRequest = error.config;
@@ -30,7 +35,7 @@ api.interceptors.response.use(
       originalRequest._is_retry = true;
       try {
         await store.dispatch(refreshTokensAction());
-        return api.request(originalRequest);
+        return authApi.request(originalRequest);
       } catch (exception) {
         store.dispatch(logoutAction());
       }

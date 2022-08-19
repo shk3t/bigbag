@@ -1,7 +1,10 @@
+// Host
+export const BASE_URL = "http://127.0.0.1:8000";
+//export const BASE_URL = "http://91.203.192.60";
+
 // Data
 export const POLY_BAG = "Мешки полипропиленовые";
 export const BIG_BAG = "МКР (биг-бэг)";
-
 export const POLY_BAG_TYPE = "polybag-type";
 export const BIG_BAG_TYPE = "bigbag-type";
 

@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setProductAction } from "../../../reducers/productReducer";
 
-// FIX инпуты ререндерятся вместе
 export default function ProductInput({ field, ...props }) {
   const dispatch = useDispatch();
   const { product } = useSelector((state) => state.productReducer);

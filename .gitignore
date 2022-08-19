@@ -14,6 +14,5 @@ metadata.json
 
 # React
 node_modules/
+build/
 .env
-/package.json
-/package-lock.json

@@ -50,7 +50,7 @@ export default function CreatePolyBagForm() {
           dispatch(createProductAction(product));
         }}
       >
-        Сабмит
+        Добавить
       </button>
     </form>
   );
