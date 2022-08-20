@@ -13,7 +13,6 @@ import {
 const AuthPage = () => {
   const dispatch = useDispatch();
   const { errorMessages } = useSelector((state) => state.authReducer);
-
   const [credentials, setCredentials] = useState({
     name: "",
     email: "",
@@ -35,17 +34,18 @@ const AuthPage = () => {
     setIsLogin(!isLogin);
   }
 
-  function checkPassword(password) {
-    setCredentials({
-      ...credentials,
-      password: password.target.value,
-    });
-    password.target.value.length < 8 ? (
-      <ErrorAuthMsg messages={errorMessages} />
-    ) : (
-      alert("Надёжный пароль")
-    );
-  }
+  // TODO
+  // function checkPassword(password) {
+  //   setCredentials({
+  //     ...credentials,
+  //     password: password.target.value,
+  //   });
+  //   password.target.value.length < 8 ? (
+  //     <ErrorAuthMsg messages={errorMessages} />
+  //   ) : (
+  //     alert("Надёжный пароль")
+  //   );
+  // }
 
   return (
     <div>
@@ -75,14 +75,11 @@ const AuthPage = () => {
             <input
               value={credentials.password}
               onChange={(event) =>
-                setCredentials({
-                  ...credentials,
-                  password: event.target.value,
-                })
+                setCredentials({ ...credentials, password: event.target.value })
               }
               // onBlur={checkPassword}
-              // type="password"
-              // placeholder="Пароль"
+              type="password"
+              placeholder="Пароль"
             ></input>
           </div>
           <button onClick={registerOrLogin}>
