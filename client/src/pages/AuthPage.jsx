@@ -40,9 +40,11 @@ const AuthPage = () => {
       ...credentials,
       password: password.target.value,
     });
-    password.length < 8
-      ? alert("Пароль должен быть больше 8")
-      : alert("Надёжный пароль");
+    password.target.value.length < 8 ? (
+      <ErrorAuthMsg messages={errorMessages} />
+    ) : (
+      alert("Надёжный пароль")
+    );
   }
 
   return (
@@ -72,15 +74,15 @@ const AuthPage = () => {
             ></input>
             <input
               value={credentials.password}
-              // onChange={(event) =>
-              //   setCredentials({
-              //     ...credentials,
-              //     password: event.target.value,
-              //   })
-              // }
-              onChange={checkPassword}
-              type="password"
-              placeholder="Пароль"
+              onChange={(event) =>
+                setCredentials({
+                  ...credentials,
+                  password: event.target.value,
+                })
+              }
+              // onBlur={checkPassword}
+              // type="password"
+              // placeholder="Пароль"
             ></input>
           </div>
           <button onClick={registerOrLogin}>

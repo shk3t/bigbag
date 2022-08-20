@@ -18,11 +18,19 @@ main,
 html,
 body {
   width: 100%;
-  /* height: 100%; */
+  /* height: 100vh; */
 }
 
 body {
   margin: 0px;
+}
+
+div#root {
+  height: 100vh;
+}
+
+div#root > div {
+  height: 100%;
 }
 
 .container {
@@ -458,7 +466,7 @@ footer {
   background-color: #484543;
   font-size: 0.85em;
   color: #fff;
-  padding: 1em 6rem;
+  padding: 1em 6rem 0;
   margin-top: 2rem;
 }
 
@@ -891,4 +899,20 @@ button,
 .admin__choose {
   display: grid;
   grid-template-rows: 1fr 1fr;
+}
+
+/* //////////////////// АДМИНКА ГЛАВНАЯ -- ВСЕ ТОВАРЫ */
+.all-products__title {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  height: 100px;
+  border: 1px solid rgb(19, 79, 19);
+}
+
+.all-product__table {
+  display: grid;
+  border: 1px solid #53afcd;
+  grid-template-columns: repeat(10, 1fr);
+
+  height: 200px;
 }

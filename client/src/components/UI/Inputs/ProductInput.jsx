@@ -6,6 +6,12 @@ export default function ProductInput({ field, ...props }) {
   const dispatch = useDispatch();
   const { product } = useSelector((state) => state.productReducer);
 
+  const [value, setValue] = useState("");
+
+  useMemo(() => {
+    setValue(product[field]);
+  }, []);
+
   switch (props.type) {
     case "file":
       return (
@@ -18,12 +24,6 @@ export default function ProductInput({ field, ...props }) {
         />
       );
     case "number":
-      const [value, setValue] = useState("");
-
-      useMemo(() => {
-        setValue(product[field]);
-      }, []);
-
       return (
         <input
           {...props}
