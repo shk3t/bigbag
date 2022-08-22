@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Way from "../components/Way";
 import ProductItem from "../components/ProductItem";
+import Filter from "../components/Filter";
 import { listProductsAction } from "../reducers/productListReducer";
 
 const CatalogPage = () => {
@@ -26,17 +27,18 @@ const CatalogPage = () => {
       <div className="find-string">
         <p>Поиск</p>
       </div>
-      <div className="catalog__in-catalog-page">
-        <div className="catalog-item__wrap ">
-          {products.map((product) => (
-            <ProductItem
-              key={product.id}
-              product={product}
-            />
-          ))}
+      <div className="catalog__aside-and-catalog">
+        <div className="catalog__filter">
+          <Filter />
+        </div>
+        <div className="catalog__in-catalog-page">
+          <div className="catalog-item__wrap ">
+            {products.map((product) => (
+              <ProductItem key={product.id} product={product} />
+            ))}
+          </div>
         </div>
       </div>
-
       <Footer />
     </div>
   );

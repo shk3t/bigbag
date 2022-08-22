@@ -10,6 +10,8 @@ import iconTrolleyCart from "../assets/icon-trolley-cart-3683279.png";
 import novopack from "../assets/novopack.png";
 import exampleBug from "../assets/example-bug.png";
 
+import BtnRequestACall from "../components/UI/Buttons/BtnRequestACall";
+
 export default function MainPage() {
   return (
     <div className="root-div">
@@ -24,7 +26,9 @@ export default function MainPage() {
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </p>
-              <button className="btn__action">Заказать звонок</button>
+              {/* 22.08 заменить на Buttons -- BtnRequestACall */}
+              {/* <button className="btn__action">Заказать звонок</button> */}
+              <BtnRequestACall />
             </div>
             <div className="slider-img"></div>
           </section>
