@@ -21,31 +21,38 @@ export default function CartPage() {
     <div>
       <Header />
       <Way />
-      <section className="cart__container">
-        {/* заголовки столбцов */}
-        <div className="cart__container-title">
-          <div>Товар</div>
-          <div>Цена</div>
-          <div className="title-count">Количество</div>
-          <div>Итого</div>
-          <div>Удалить</div>
-        </div>
-        {/* сама корзина */}
-        <section className="cart__container-products">
-          {/* вот здесь сейчас просто отрисовывается единый div, состоящий из других дивов. */}
-          {Object.entries(cartItems).map(([id, item]) => (
-            <CartItem key={id} item={item} />
-          ))}
-        </section>
-        {/* низ корзины с суммой  */}
-        <div className="cart__container-footer">
-          {/* <div className="clear"></div>
+      <main>
+        <section className="cart__container">
+          {/* заголовки столбцов */}
+          <div className="cart__container-title">
+            <div>Товар</div>
+            <div>Цена</div>
+            <div className="title-count">Количество</div>
+            <div>Итого</div>
+            <div>Удалить</div>
+          </div>
+          {/* сама корзина */}
+          <section className="cart__container-products">
+            {/* вот здесь сейчас просто отрисовывается единый div, состоящий из других дивов. */}
+            {Object.entries(cartItems).map(([id, item]) => (
+              <CartItem key={id} item={item} />
+            ))}
+          </section>
+          {/* низ корзины с суммой  */}
+          <div className="cart__container-footer">
+            {/* <div className="clear"></div>
           <div className="clear"></div> */}
 
-          <div className="cart__footer-count">Итого:</div>
-          <div className="cart__footer-sum">{getTotalPrice()} руб</div>
+            <div className="cart__footer-count">Итого:</div>
+            <div className="cart__footer-sum">{getTotalPrice()} руб</div>
+          </div>
+        </section>
+        <div className="cart__sent">
+          <form>
+            <button>Отправить заявку</button>
+          </form>
         </div>
-      </section>
+      </main>
       <Footer />
     </div>
   );

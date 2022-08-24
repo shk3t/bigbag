@@ -533,12 +533,44 @@ footer ul a {
 }
 
 .catalog__filter {
-  border: 2px solid grey;
+  width: 150px;
+  margin-top: 3rem;
+}
+
+.catalog__filter > div {
+  align-items: center;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  justify-content: center;
+}
+
+.catalog__filter > div > h4 {
+  margin: 0;
+  text-align: center;
+}
+
+.filter__categories {
+  /* min-width: fit-content; */
+  background: #f5f7fb;
+  margin: 1em;
+  border-radius: 20px;
+  height: 2em;
+  width: 150px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  border: 1px solid transparent;
+}
+
+.filter__categories:hover {
+  transform: scale(1.1);
+}
+
+.filter__categories:active {
+  background: #929396;
 }
 
 .catalog__in-catalog-page {
   display: grid;
-
   background-color: #fff;
 }
 
@@ -746,6 +778,23 @@ footer ul a {
 
 .cart__footer-count {
   grid-column-start: 4;
+}
+
+.cart__sent {
+  margin: auto;
+  margin-top: 2rem;
+}
+
+.cart__sent > form > button {
+  font-size: 1em;
+  cursor: pointer;
+  background-color: rgba(46, 78, 46, 0.785);
+  color: #fff;
+}
+
+.cart__sent > form > button:hover {
+  border: 1px solid rgba(0, 0, 0, 0.33);
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
 }
 
 /* //////////////////// МОДАЛЬНОЕ ОКНО */

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useSearchParams } from "react-router-dom";
 
@@ -13,6 +13,23 @@ const CatalogPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.productListReducer);
+
+  const [currentProduct, setCurrentProduct] = useState(products);
+
+  // ПОЧЕМУ ЭТОТ МАССИВ СПЕРВА ПУСТОЙ, А ЗАТЕМ ОТРИСОВЫВАЕТСЯ СНОВА, УЖЕ ЗАПОЛНЕННЫЙ?
+  console.log(products);
+
+  const returnACategory = function (cat) {
+    console.log(cat);
+
+    if (cat === "all") {
+      setCurrentProduct(products);
+      console.log(products);
+      return;
+    }
+
+    setCurrentProduct(products.filter((el) => el.type === cat));
+  };
 
   useEffect(() => {
     const type = searchParams.get("type");
@@ -29,11 +46,11 @@ const CatalogPage = () => {
       </div>
       <div className="catalog__aside-and-catalog">
         <div className="catalog__filter">
-          <Filter />
+          <Filter returnACategory={returnACategory} />
         </div>
         <div className="catalog__in-catalog-page">
           <div className="catalog-item__wrap ">
-            {products.map((product) => (
+            {currentProduct.map((product) => (
               <ProductItem key={product.id} product={product} />
             ))}
           </div>
