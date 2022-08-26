@@ -48,6 +48,7 @@ export default function Header() {
 
         <div className="header__shopping-cart">
           <Link to={CART_PATH}>
+            <div className="cart_is-not-empty"></div>
             <img className="shopping-cart" src={cartLogo} alt="Корзина" />
           </Link>
         </div>

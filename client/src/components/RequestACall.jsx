@@ -9,7 +9,7 @@ export default function RequestACall() {
         <form className="auth-forms__form" action="">
           <div className="auth-forms"></div>
           <input type="text" placeholder="Ваше имя"></input>
-          <input type="number" placeholder="8-999-123-45-67"></input>
+          <input type="tel" placeholder="8-999-123-45-67"></input>
           <textarea placeholder="Укажите комментарий, если требуется. Например, удобное время для звонка или интересующий вопрос"></textarea>
 
           <button>Жду звонка!</button>

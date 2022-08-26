@@ -41,9 +41,10 @@ const CatalogPage = () => {
       <Header />
       <Way />
 
-      <div className="find-string">
+      {/* строка поиска пока не нужна */}
+      {/* <div className="find-string">
         <p>Поиск</p>
-      </div>
+      </div> */}
       <div className="catalog__aside-and-catalog">
         <div className="catalog__filter">
           <Filter returnACategory={returnACategory} />

@@ -18,10 +18,12 @@ import {
 export const adminRoutes = [];
 
 export const authRoutes = [
-  { path: ADMIN_PATH, Component: AdminPage },
+  // { path: ADMIN_PATH, Component: AdminPage },
 ];
 
 export const publicRoutes = [
+  { path: ADMIN_PATH, Component: AdminPage },
+
   { path: CART_PATH, Component: CartPage },
   { path: PRODUCTS_PATH + "/:id", Component: ProductPage },
   { path: CATALOG_PATH, Component: CatalogPage },

@@ -14,7 +14,7 @@ export default function CreatePolyBagForm() {
 
   return (
     <form className="admin_add-meshki" encType="multipart/form-data">
-      <h2>Добавить мешок</h2>
+      {/* <h4>Добавить мешок</h4> */}
 
       <div className="admin__add-description">
         <div>

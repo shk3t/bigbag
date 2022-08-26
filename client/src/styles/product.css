@@ -3,7 +3,7 @@ main {
   padding-right: 100px; */
   /* margin-top: 2em; */
   display: flex;
-  align-items: flex-start;
+  /* align-items: flex-start; */
   justify-content: space-between;
   margin-bottom: 5em;
 }
@@ -16,6 +16,12 @@ main {
   padding-left: 6rem;
   padding-right: 6rem;
   width: 100vw;
+}
+
+.product-item__img-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .product-img {

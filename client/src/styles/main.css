@@ -107,8 +107,29 @@ nav {
   margin-right: 2em;
 }
 
+/*////////////////// ИКОНКА КОРЗИНЫ */
+
+.header__shopping-cart > a {
+  display: flex;
+  flex-direction: column;
+  /* align-items: flex-end; */
+  width: 43px;
+}
+
 .shopping-cart {
   width: 39px;
+  z-index: 2;
+  position: relative;
+}
+
+.cart_is-not-empty {
+  width: 12px;
+  height: 12px;
+  background-color: rgb(231, 100, 19);
+  border-radius: 50%;
+  z-index: 10;
+  position: absolute;
+  align-self: flex-end;
 }
 
 .header__cart-login {
@@ -513,13 +534,24 @@ footer ul a {
 .btn_submit {
   width: 218px;
   height: 54px;
+
   background-color: #393d45;
   color: #fff;
-  border-radius: 2px;
+  border: none;
+  border-radius: 10px;
   font-size: 16px;
   margin-top: 20px;
+}
 
-  border-radius: 10px;
+.btn_submit:hover {
+  cursor: pointer;
+  background: #e0e2e5d8;
+  color: #211f1c;
+  border: 1.5px solid #393d45;
+}
+
+.btn_submit:active {
+  background: #989a9bd8;
 }
 
 /* ///////////////////////  СТИЛИ СТРАНИЦЫ catalog */
@@ -935,17 +967,67 @@ button,
 
 /*////////////////////////// АДМИН ПАНЕЛЬ*/
 
+.admin-main {
+  display: flex;
+  flex-direction: column;
+  padding-left: 6em;
+  padding-right: 6em;
+}
+
+.admin-main > div:first-child {
+  align-self: flex-end;
+}
+
+.addAnItem {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  background-color: rgba(46, 78, 46, 0.899);
+  border-radius: 1em;
+}
+
 .admin__container {
   display: grid;
   grid-gap: 1rem;
-  padding-left: 6em;
-  padding-right: 6em;
-  margin-bottom: 4rem;
+  padding-left: 1em;
+  padding-right: 1em;
+  height: auto;
+  font-size: 0.9em;
+  color: #211f1c;
 }
 
-.admin_add-meshki,
-.admin__add-bb {
-  /* display: none; */
+.admin__container > h2 {
+  margin: 0.5em;
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+.admin_add-meshki {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin_add-meshki:last-child {
+  align-items: center;
+}
+
+.admin_add-meshki button {
+  height: 2.2em;
+  margin-top: 0.5em;
+  border-radius: 1em;
+  background-color: #616467bb;
+  color: #fff;
+}
+
+.admin_add-meshki button:hover {
+  background-color: #6164673e;
+  color: rgba(46, 78, 46, 0.899);
+
+  border: 1px solid rgba(46, 78, 46, 0.899);
+}
+
+.admin_add-meshki button:active {
+  background-color: rgba(46, 78, 46, 0.685);
+  color: #fff;
 }
 
 .admin_add-meshki active {
@@ -956,6 +1038,15 @@ button,
 
 .admin__add-description {
   display: grid;
+  grid-gap: 0.4em;
+}
+
+.admin__add-description input {
+  background-color: #f3f6ff;
+  border: 1px solid #c4c6cd;
+  height: 2em;
+  /* margin-bottom: 0.5em; */
+  font-size: 0.8em;
 }
 
 .admin__choose {
@@ -1008,4 +1099,20 @@ button,
   background: #f3f6ff;
   resize: vertical;
   overflow: auto;
+}
+
+/* /////////////////// МЕДИА ЗАПРОСЫ*/
+
+@media (max-width: 768px) {
+  .modal-content.active {
+    width: 100%;
+    margin-right: 2em;
+    margin-left: 2em;
+  }
+}
+
+@media (max-width: 1024px) {
+  .catalog-item__img {
+    width: 82%;
+  }
 }

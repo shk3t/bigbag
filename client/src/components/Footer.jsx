@@ -27,7 +27,7 @@ export default function Footer() {
         <form action="#" method="post" className="phone_form">
           <div className="user_phone">
             <input
-              type="text"
+              type="tel"
               placeholder="+7xxx-xxx-xx-xx"
               id="user_phone"
               className="rfield"
