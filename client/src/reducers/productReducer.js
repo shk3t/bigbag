@@ -58,7 +58,7 @@ export const getProductAction = (id) => async (dispatch) => {
   dispatch({ type: GET_PRODUCT, payload: product });
 };
 
-export const setProductAction = (data) => async (dispatch) => {
+export const setProductAction = (data) => (dispatch) => {
   dispatch({ type: SET_PRODUCT, payload: data });
 };
 

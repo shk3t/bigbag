@@ -61,6 +61,6 @@ export const refreshTokensAction = () => async (dispatch) => {
   dispatch({ type: REFRESH_TOKENS, payload: { token: access_token } });
 };
 
-export const clearErrorMessageAction = () => async (dispatch) => {
+export const clearErrorMessageAction = () => (dispatch) => {
   dispatch({ type: CLEAR_ERROR_MESSAGE, payload: null });
 };

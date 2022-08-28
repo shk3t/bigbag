@@ -1,8 +1,8 @@
 import { React, useState } from "react";
 import Modal from "../../Modal/Modal";
-import CallRequest from "../../CallRequest";
+import CallRequestForm from "../Forms/CallRequestForm";
 
-export default function BtnRequestACall() {
+export default function BtnCallRequest() {
   const [modalActive, setModalActive] = useState();
 
   return (
@@ -16,7 +16,7 @@ export default function BtnRequestACall() {
         Заказать звонок
       </button>
       <Modal active={modalActive} setActive={setModalActive}>
-        <CallRequest />
+        <CallRequestForm />
       </Modal>
     </div>
   );

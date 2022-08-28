@@ -1,27 +1,27 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setProductAction } from "../../../reducers/productReducer";
+import { setRequestAction } from "../../../reducers/callRequestReducer";
 
-export default function ProductInput({ field, ...props }) {
+export default function CallRequestInput({ field, ...props }) {
   const dispatch = useDispatch();
-  const { product } = useSelector((state) => state.productReducer);
+  const { request } = useSelector((state) => state.callRequestReducer);
   const [value, setValue] = useState("");
 
   useMemo(() => {
-    setValue(product[field]);
+    setValue(request[field]);
   }, []);
 
   switch (props.type) {
-    // TODO заменить на "image"
-    case "file":
+    case "textarea":
       return (
-        <input
+        <textarea
           {...props}
+          value={request[field]}
           onChange={(event) => {
-            product[field + "File"] = event.target.files[0];
-            dispatch(setProductAction({ ...product }));
+            request[field] = event.target.value;
+            dispatch(setRequestAction({ ...request }));
           }}
-        />
+        ></textarea>
       );
     case "number":
       return (
@@ -31,20 +31,21 @@ export default function ProductInput({ field, ...props }) {
           onChange={(event) => {
             const value = event.target.value;
             setValue(value.replace(/^0+(?=\d)/, ""));
-            product[field] = Number(value);
-            dispatch(setProductAction({ ...product }));
+            request[field] = Number(value);
+            dispatch(setRequestAction({ ...request }));
           }}
         />
       );
     case "text":
+    case "tel":
     default:
       return (
         <input
           {...props}
-          value={product[field]}
+          value={request[field]}
           onChange={(event) => {
-            product[field] = event.target.value;
-            dispatch(setProductAction({ ...product }));
+            request[field] = event.target.value;
+            dispatch(setRequestAction({ ...request }));
           }}
         />
       );

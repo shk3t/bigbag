@@ -6,7 +6,7 @@ from base.exceptions import HttpException
 
 
 @api_view(["POST"])
-def send_email(request):
+def request_call(request):
     data = request.data
     try:
         message = f"Имя: {data['name']},\nТелефон: {data['phone']}"

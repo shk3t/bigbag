@@ -18,5 +18,5 @@ urlpatterns = [
     path("subtypes/<str:type>", subtype.BagTypeList.as_view()),
     path("subtypes/<str:type>/<str:name>", subtype.BagTypeDetail.as_view()),
 
-    path("call-request", email.send_email),
+    path("call-request", email.request_call),
 ]

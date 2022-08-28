@@ -30,7 +30,7 @@ export default function cartReducer(state = { cartItems: {} }, action) {
   }
 }
 
-export const addItemAction = (product, quantity) => async (dispatch) => {
+export const addItemAction = (product, quantity) => (dispatch) => {
   if (quantity > 0) {
     const { id, type, size, price, image, items_per_pack } = product;
     const item = {
@@ -41,21 +41,21 @@ export const addItemAction = (product, quantity) => async (dispatch) => {
       step: items_per_pack,
       quantity,
     };
-    return dispatch({ type: ADD_ITEM, payload: { id, item } });
+    dispatch({ type: ADD_ITEM, payload: { id, item } });
   }
 };
 
-export const setQuantityAction = (id, quantity) => async (dispatch) => {
-  return dispatch({
+export const setQuantityAction = (id, quantity) => (dispatch) => {
+  dispatch({
     type: SET_QUANTITY,
     payload: { id, quantity: quantity > 0 ? quantity : 0 },
   });
 };
 
-export const removeItemAction = (id) => async (dispatch) => {
-  return dispatch({ type: REMOVE_ITEM, payload: { id } });
+export const removeItemAction = (id) => (dispatch) => {
+  dispatch({ type: REMOVE_ITEM, payload: { id } });
 };
 
-export const clearCartAction = () => async (dispatch) => {
-  return dispatch({ type: CLEAR_CART, payload: null });
+export const clearCartAction = () => (dispatch) => {
+  dispatch({ type: CLEAR_CART, payload: null });
 };

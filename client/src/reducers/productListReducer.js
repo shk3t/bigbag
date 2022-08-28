@@ -16,9 +16,9 @@ export default function productListReducer(state = { products: [] }, action) {
 
 export const listProductsAction = (params) => async (dispatch) => {
   const products = await ProductService.getAllProducts(params);
-  return dispatch({ type: LIST_PRODUCTS, payload: products });
+  dispatch({ type: LIST_PRODUCTS, payload: products });
 };
 
 export const clearProductListAction = () => (dispatch) => {
-  return dispatch({type: CLEAR_PRODUCTS, payload: null })
+  dispatch({type: CLEAR_PRODUCTS, payload: null })
 }
