@@ -9,6 +9,7 @@ import benefit from "../assets/benefit.png";
 import iconTrolleyCart from "../assets/icon-trolley-cart-3683279.png";
 import novopack from "../assets/novopack.png";
 import exampleBug from "../assets/example-bug.png";
+import main_img from "../assets/main_img.jpg";
 
 import BtnRequestACall from "../components/UI/Buttons/BtnRequestACall";
 
@@ -21,16 +22,19 @@ export default function MainPage() {
         <main>
           <section className="slider">
             <div className="slider-text">
-              <h1>Промышленная упаковка для вашего бизнеса</h1>
+              <h1>«Авега» — промышленная упаковка для вашего бизнеса</h1>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Мы продаём качественную промышленную полимерную упаковку —
+                строительные, бытовые, пищевые мешки, а также мягкие контейнеры
+                (биг-бэги). Доставка по России и странам СНГ
               </p>
               {/* 22.08 заменить на Buttons -- BtnRequestACall */}
               {/* <button className="btn__action">Заказать звонок</button> */}
               <BtnRequestACall />
             </div>
-            <div className="slider-img"></div>
+            <div className="slider-img">
+              <img src={main_img} alt="Биг-бэг в производстве" />
+            </div>
           </section>
           <div className="our-benefits__title">
             <h3>Наши преимущества</h3>
@@ -38,28 +42,29 @@ export default function MainPage() {
           <section className="our-benefits">
             <div className="our-benefits__item">
               <img src={benefit} alt="преимущество" />
-              <h4>Lorem ipsum dolor</h4>
+              <h4> Качественные материалы</h4>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Наши мешки изготовлены из прочного полипропилена, устойчивого к
+                внешним воздействиям. На материал легко наносить логотипы и
+                метки
               </p>
             </div>
             <div className="our-benefits__item">
               <img src={benefit} alt="преимущество" />
 
-              <h4>Lorem ipsum dolor</h4>
+              <h4>Удобная доставка</h4>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Привезём ваш заказ по Москве и Московской области на выгодных
+                условиях. Доставим по России и странам СНГ по договорённости
               </p>
             </div>
             <div className="our-benefits__item">
               <img src={benefit} alt="преимущество" />
 
-              <h4>Lorem ipsum dolor</h4>
+              <h4>Сертификаты соответствия</h4>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Продукция «Авега» имеет Декларацию о соответствии требованиям
+                Евразийкого Экономического союза
               </p>
             </div>
           </section>
@@ -70,11 +75,13 @@ export default function MainPage() {
             <div className="catalog-item__wrap">
               {[...Array(10).keys()].map((key) => (
                 <div key={key} className="catalog-item">
-                  <img
-                    className="catalog-item__img"
-                    src={exampleBug}
-                    alt="мешок"
-                  />
+                  <div className="catalog-item__img-wrap">
+                    <img
+                      className="catalog-item__img"
+                      src={exampleBug}
+                      alt="мешок"
+                    />
+                  </div>
                   <div className="catalog-btn__wrap">
                     <button className="catalog-item__btn-price">МЕШКИ</button>
                     <button className="catalog-item__btn-shopping-cart">

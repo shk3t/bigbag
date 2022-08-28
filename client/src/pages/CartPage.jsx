@@ -33,7 +33,6 @@ export default function CartPage() {
           </div>
           {/* сама корзина */}
           <section className="cart__container-products">
-            {/* вот здесь сейчас просто отрисовывается единый div, состоящий из других дивов. */}
             {Object.entries(cartItems).map(([id, item]) => (
               <CartItem key={id} item={item} />
             ))}

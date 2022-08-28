@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { removeItemAction, setQuantityAction } from "../reducers/cartReducer";
 import { BASE_URL } from "../consts";
+import del_icon from "../assets/del_icon.png";
 
 export default function CartItem({ item }) {
   const dispatch = useDispatch();
@@ -61,7 +62,7 @@ export default function CartItem({ item }) {
           type="button"
           onClick={() => dispatch(removeItemAction(item.id))}
         >
-          Удалить
+          <img className="del_icon" src={del_icon} alt="Удалить" />
         </button>
       </div>
     </div>

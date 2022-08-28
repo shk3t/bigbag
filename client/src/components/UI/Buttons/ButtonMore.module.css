@@ -26,3 +26,12 @@
   color: #211f1c;
   border: 1.5px solid #393d45;
 }
+
+/*///////////////МЕДИА ЗАПРОСЫ*/
+
+@media (max-width: 1024px) {
+  .header__login_btn {
+    width: 90px;
+    font-size: 0.9em;
+  }
+}

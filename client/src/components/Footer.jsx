@@ -12,6 +12,13 @@ export default function Footer() {
           <img className="img-logo" src={avgLogo} alt="АвегаBag" />
         </Link>
         <p>Промышленная полимерная упаковка</p>
+        <p className="footer__legal-inf">
+          Предложение товаров и услуг на сайте не является офертой.
+        </p>
+        <p className="footer__legal-inf">
+          Icons created by
+          <a href="https://www.flaticon.com/ru/"> Karacis, Talha Dogar</a>.
+        </p>
         <p>&copy; 2020-2022</p>
       </div>
       <div className="footer-nav">

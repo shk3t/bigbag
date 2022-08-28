@@ -61,7 +61,7 @@ header {
 .header__nav,
 .header__shopping-cart,
 .header__login-btn {
-  height: 40px;
+  /* height: 40px; */
 }
 
 .img-logo:hover {
@@ -134,9 +134,10 @@ nav {
 
 .header__cart-login {
   display: grid;
-  grid-template-columns: 1fr auto auto;
+  grid-template-columns: 1fr auto;
   grid-gap: 2rem;
   align-items: center;
+  justify-content: space-between;
 }
 
 .header__admin-btn {
@@ -156,7 +157,10 @@ nav {
 }
 
 .header__hello {
+  /* visibility: hidden; */
   margin-right: 1.1em;
+  width: min-content;
+  font-size: 0.9em;
 }
 
 .invisible {
@@ -180,16 +184,16 @@ nav {
 }
 
 .slider {
-  height: 585px;
+  height: 510px;
   display: grid;
   grid-template-columns: 0.8fr 1fr;
-  grid-gap: 5rem;
+  grid-gap: 4rem;
   align-items: center;
   justify-content: space-between;
   background: linear-gradient(90deg, #fcf9f6 1.6%, #ffffff 100%);
   padding-left: 6rem;
   padding-right: 6rem;
-  padding-top: 2rem;
+  padding-top: 0.8rem;
   padding-bottom: 2rem;
 }
 
@@ -207,7 +211,7 @@ h3 {
 }
 
 .slider h1 {
-  font-size: 2.5em;
+  font-size: 2.1em;
   margin-top: 0px;
 }
 
@@ -221,8 +225,8 @@ h3 {
 
 .slider-text p {
   color: #616467;
-  font-size: 1.1em;
-  line-height: 1.7em;
+  font-size: 1em;
+  line-height: 1.6em;
 }
 
 .slider-text button {
@@ -245,10 +249,19 @@ h3 {
 }
 
 .slider-img {
+  display: flex;
   width: 100%;
   height: 100%;
-  background-color: aliceblue;
+  /* background-color: aliceblue; */
   border-radius: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider-img > img {
+  border-radius: 20px;
+  width: 100%;
+  box-shadow: 5px 5px 9px -1px rgb(34 60 80 / 20%);
 }
 
 .our-benefits {
@@ -291,9 +304,10 @@ h3 {
 
 .our-benefits__item img {
   width: 70px;
+  opacity: 0.5;
 }
 
-.our-benefits__item h4 {
+.our-benefits__item > h4 {
   font-size: 1.3em;
   color: #393d45;
 }
@@ -361,6 +375,12 @@ h3 {
 .product-item:hover {
   transform: scale(1.05);
   /* border: 0.1px solid #393d4597; */
+}
+
+.catalog-item__img-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .catalog-item__img {
@@ -503,6 +523,15 @@ footer {
 
 .footer-logo img {
   filter: invert(1);
+}
+
+.footer__legal-inf {
+  font-size: 0.6em;
+}
+
+.footer__legal-inf > a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.738);
 }
 
 footer ul {
@@ -752,6 +781,16 @@ footer ul a {
   margin: 0;
   border: 0;
   cursor: pointer;
+  background: none;
+}
+
+.del_icon {
+  width: 35%;
+  opacity: 0.5;
+}
+
+.del_icon:hover {
+  opacity: 1;
 }
 
 /* ///////////////////СТИЛИ СЧЁТЧИКА КОЛ-ВА ТОВАРА */
@@ -1112,7 +1151,59 @@ button,
 }
 
 @media (max-width: 1024px) {
+  header {
+    font-size: 0.9em;
+  }
+
+  .img-logo {
+    width: 80px;
+  }
+
+  .slider {
+    grid-gap: 2em;
+    height: 400px;
+  }
+
+  .slider h1 {
+    font-size: 1.5em;
+  }
+
+  .slider-text p {
+    font-size: 0.8em;
+  }
+
+  .catalog-item {
+    width: 250px;
+  }
+
   .catalog-item__img {
-    width: 82%;
+    width: 100%;
+  }
+
+  .our-benefits {
+    grid-template-columns: repeat(auto-fill, 170px);
+  }
+
+  .our-benefits__item {
+    width: 100%;
+  }
+
+  .our-benefits__item > h4 {
+    font-size: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    white-space: normal;
+  }
+
+  .our-benefits__item > p {
+    font-size: 0.8em;
+  }
+
+  h3 {
+    margin-top: 1.2rem;
+  }
+
+  footer ul {
+    display: none;
   }
 }
