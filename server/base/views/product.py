@@ -10,7 +10,7 @@ class ProductList(ReadOnlyMixin, APIView):
     def get(self, request):
         type_param = request.query_params.get("type")
         products = Product.objects.all()
-        if (type_param):
+        if (type_param and type_param != "all"):
             products = products.filter(type=type_param)
         serializer = BagProductSerializer(products, many=True)
         return Response(serializer.data)

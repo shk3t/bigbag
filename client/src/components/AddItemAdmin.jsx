@@ -5,7 +5,7 @@ import CreatePolyBagForm from "../components/UI/Forms/CreatePolyBagForm";
 import { useDispatch, useSelector } from "react-redux";
 import { setProductAction } from "../reducers/productReducer";
 
-export default function AddAnItemAdmin() {
+export default function AddItemAdmin() {
   const dispatch = useDispatch();
   const { product } = useSelector((state) => state.productReducer);
   const [tableId, setTableId] = useState(POLY_BAG);

@@ -1,26 +1,13 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { useState } from "react";
+import React, { useState } from "react";
+import { POLY_BAG, BIG_BAG } from "../consts";
 
-export default function Filter(props) {
-  const { products } = useSelector((state) => state.productListReducer);
+export default function ProductFilter({ setSearchParams }) {
   // console.log(products);
   // products.map((e) => console.log(e.type));
   const [categories, setCategories] = useState([
-    {
-      key: "all",
-      name: "Все товары",
-    },
-
-    {
-      key: "Мешки полипропиленовые",
-      name: "Мешки",
-    },
-
-    {
-      key: "МКР (биг-бэг)",
-      name: "Биг-бэги",
-    },
+    { key: "all", name: "Все товары" },
+    { key: POLY_BAG, name: "Мешки" },
+    { key: BIG_BAG, name: "Биг-бэги" },
   ]);
 
   return (
@@ -40,7 +27,7 @@ export default function Filter(props) {
         <button
           className="filter__categories"
           key={el.key}
-          onClick={() => props.returnACategory(el.key)}
+          onClick={() => setSearchParams({type: el.key})}
         >
           {el.name}
         </button>

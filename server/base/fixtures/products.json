@@ -1,0 +1,140 @@
+[
+  {
+    "model": "base.Product",
+    "pk": 5,
+    "fields": {
+      "type": "Мешки полипропиленовые",
+      "image": "products/ex.webp",
+      "price": 9.0
+    }
+  },
+  {
+    "model": "base.Product",
+    "pk": 8,
+    "fields": {
+      "type": "Мешки полипропиленовые",
+      "image": "products/example-bug.png",
+      "price": 13.5
+    }
+  },
+  {
+    "model": "base.Product",
+    "pk": 20,
+    "fields": {
+      "type": "МКР (биг-бэг)",
+      "image": "products/example-bug2.png",
+      "price": 525.0
+    }
+  },
+  {
+    "model": "base.Product",
+    "pk": 24,
+    "fields": {
+      "type": "МКР (биг-бэг)",
+      "image": "products/example-bug3.png",
+      "price": 535.0,
+      "new": true
+    }
+  },
+
+  {
+    "model": "base.PolyBagType",
+    "pk": "Строительные",
+    "fields": {}
+  },
+  {
+    "model": "base.PolyBagType",
+    "pk": "Пищевые",
+    "fields": {}
+  },
+  {
+    "model": "base.PolyBagType",
+    "pk": "Бытовые",
+    "fields": {}
+  },
+  {
+    "model": "base.PolyBagType",
+    "pk": "Ламинированные коробчатого типа",
+    "fields": {}
+  },
+  {
+    "model": "base.PolyBagType",
+    "pk": "Пищевые с П/Э вкладышем",
+    "fields": {}
+  },
+
+  {
+    "model": "base.BigBagType",
+    "pk": "МКР 2 стропы",
+    "fields": {}
+  },
+  {
+    "model": "base.BigBagType",
+    "pk": "МКР 4 лямки",
+    "fields": {}
+  },
+  {
+    "model": "base.BigBagType",
+    "pk": "МКР 4 стропы",
+    "fields": {}
+  },
+  {
+    "model": "base.BigBagType",
+    "pk": "Вкладыши Новые МКР для МКР",
+    "fields": {}
+  },
+
+  {
+    "model": "base.PolyBag",
+    "pk": 5,
+    "fields": {
+      "subtype": "Строительные",
+      "size": "55x105",
+      "color": "Зеленый",
+      "poly_grade": "2",
+      "bag_weight": 50,
+      "items_per_pack": 1000
+    }
+  },
+  {
+    "model": "base.PolyBag",
+    "pk": 8,
+    "fields": {
+      "subtype": "Пищевые",
+      "size": "45x75",
+      "color": "Белый",
+      "poly_grade": "ВС",
+      "bag_weight": 45,
+      "items_per_pack": 1000
+    }
+  },
+
+  {
+    "model": "base.BigBag",
+    "pk": 20,
+    "fields": {
+      "subtype": "МКР 2 стропы",
+      "size": "75x75x125",
+      "top_modification": "Открытый",
+      "bottom_modification": "Глухой",
+      "bag_weight": 0.98,
+      "items_per_pack": 200,
+      "pack_size": "120x70x70",
+      "pack_volume": 0.6
+    }
+  },
+  {
+    "model": "base.BigBag",
+    "pk": 24,
+    "fields": {
+      "subtype": "МКР 4 лямки",
+      "size": "90x90x130",
+      "top_modification": "Открытый",
+      "bottom_modification": "Глухой",
+      "bag_weight": 1.1,
+      "items_per_pack": 200,
+      "pack_size": "120x70x70",
+      "pack_volume": 0.8
+    }
+  }
+]

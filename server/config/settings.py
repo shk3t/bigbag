@@ -7,7 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 metadata = json.load(open(BASE_DIR / "metadata.json"))
 
 # SECURITY
-SECRET_KEY = metadata["django-secret-key"]
+SECRET_KEY = metadata["secret-key"]
 DEBUG = True
 ALLOWED_HOSTS = []
 # DEBUG = False
@@ -36,7 +36,7 @@ ROOT_URLCONF = "config.urls"
 WSGI_APPLICATION = "config.wsgi.application"
 
 # Database
-DATABASES = {"default": metadata["psql-metadata"]}
+DATABASES = {"default": metadata["database-default"]}
 
 # Custom user model
 AUTH_USER_MODEL = "base.User"
@@ -77,6 +77,13 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3228",
     "http://localhost:3228",
 ]
+
+# Mailing
+EMAIL_HOST = "smtp.mail.ru"
+EMAIL_PORT = "465"
+EMAIL_HOST_USER = "sfdm-service@mail.ru"
+EMAIL_HOST_PASSWORD = metadata["email-host-password"]
+EMAIL_USE_SSL = True
 
 # REST framework extensions
 REST_FRAMEWORK = {

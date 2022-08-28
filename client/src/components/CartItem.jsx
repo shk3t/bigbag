@@ -1,10 +1,10 @@
-import React from "react";
+import React, { memo, useEffect, useMemo } from "react";
 import { useDispatch } from "react-redux";
 import { removeItemAction, setQuantityAction } from "../reducers/cartReducer";
 import { BASE_URL } from "../consts";
 import del_icon from "../assets/del_icon.png";
 
-export default function CartItem({ item }) {
+function CartItem({ item }) {
   const dispatch = useDispatch();
 
   return (
@@ -68,3 +68,9 @@ export default function CartItem({ item }) {
     </div>
   );
 }
+
+function areEqual(prev, next) {
+  return prev.item.quantity === next.item.quantity;
+}
+
+export default memo(CartItem, areEqual);

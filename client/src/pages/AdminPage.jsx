@@ -5,7 +5,7 @@ import CreatePolyBagForm from "../components/UI/Forms/CreatePolyBagForm";
 import { useDispatch, useSelector } from "react-redux";
 import { setProductAction } from "../reducers/productReducer";
 import Header from "../components/Header";
-import BtnAddAnItem from "../components/UI/Buttons/BtnAddAnItem";
+import BtnAddItem from "../components/UI/Buttons/BtnAddItem";
 
 export default function AdminPage() {
   const dispatch = useDispatch();
@@ -29,7 +29,7 @@ export default function AdminPage() {
     <div>
       <Header />
       <main className="admin-main">
-        <BtnAddAnItem />
+        <BtnAddItem />
 
         <div className="all-products__title">
           <div>Фото</div>

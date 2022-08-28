@@ -62,7 +62,10 @@ class Product(SafeModelMixin, models.Model):
 
     type = models.CharField(max_length=128, choices=ProductType.choices)
     image = models.ImageField(
-        null=True, blank=True, validators=[validate_image_file_extension]
+        upload_to="products",
+        null=True,
+        blank=True,
+        validators=[validate_image_file_extension],
     )
     price = models.DecimalField(max_digits=12, decimal_places=2)
     price100 = OptionalPriceFieldFactory.create()

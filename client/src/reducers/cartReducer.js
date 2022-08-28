@@ -3,22 +3,26 @@ const SET_QUANTITY = "SET_QUANTITY";
 const REMOVE_ITEM = "REMOVE_ITEM";
 const EMPTY_CART = "EMPTY_CART";
 
-export default function cartReducer(state = { cartItems: [] }, action) {
+export default function cartReducer(state = { cartItems: {} }, action) {
+  const { cartItems } = state || {};
   const { id, item, quantity } = action.payload || {};
   switch (action.type) {
     case ADD_ITEM:
-      if (!state.cartItems.hasOwnProperty(id)) {
-        state.cartItems[id] = item;
+      if (!cartItems.hasOwnProperty(id)) {
+        cartItems[id] = item;
       } else {
-        state.cartItems[id].quantity += item.quantity;
+        cartItems[id] = {
+          ...cartItems[id],
+          quantity: cartItems[id].quantity + item.quantity,
+        };
       }
-      return { cartItems: { ...state.cartItems } };
+      return { cartItems: { ...cartItems } };
     case SET_QUANTITY:
-      state.cartItems[id].quantity = quantity;
-      return { cartItems: { ...state.cartItems } };
+      cartItems[id] = { ...cartItems[id], quantity };
+      return { cartItems: { ...cartItems } };
     case REMOVE_ITEM:
-      delete state.cartItems[id];
-      return { cartItems: { ...state.cartItems } };
+      delete cartItems[id];
+      return { cartItems: { ...cartItems } };
     case EMPTY_CART:
       return { cartItems: [] };
     default:

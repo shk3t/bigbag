@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import Way from "../components/Way";
 import ProductItem from "../components/ProductItem";
-import Filter from "../components/Filter";
+import ProductFilter from "../components/ProductFilter";
 import { listProductsAction } from "../reducers/productListReducer";
 
 const CatalogPage = () => {
@@ -14,27 +14,10 @@ const CatalogPage = () => {
   const dispatch = useDispatch();
   const { products } = useSelector((state) => state.productListReducer);
 
-  const [currentProduct, setCurrentProduct] = useState(products);
-
-  // ПОЧЕМУ ЭТОТ МАССИВ СПЕРВА ПУСТОЙ, А ЗАТЕМ ОТРИСОВЫВАЕТСЯ СНОВА, УЖЕ ЗАПОЛНЕННЫЙ?
-  console.log(products);
-
-  const returnACategory = function (cat) {
-    console.log(cat);
-
-    if (cat === "all") {
-      setCurrentProduct(products);
-      console.log(products);
-      return;
-    }
-
-    setCurrentProduct(products.filter((el) => el.type === cat));
-  };
-
   useEffect(() => {
     const type = searchParams.get("type");
     dispatch(listProductsAction({ type }));
-  }, []);
+  }, [searchParams]);
 
   return (
     <div className="root-div">
@@ -47,11 +30,11 @@ const CatalogPage = () => {
       </div> */}
       <div className="catalog__aside-and-catalog">
         <div className="catalog__filter">
-          <Filter returnACategory={returnACategory} />
+          <ProductFilter setSearchParams={setSearchParams} />
         </div>
         <div className="catalog__in-catalog-page">
           <div className="catalog-item__wrap ">
-            {currentProduct.map((product) => (
+            {products.map((product) => (
               <ProductItem key={product.id} product={product} />
             ))}
           </div>

@@ -1,5 +1,5 @@
 from django.urls import path
-from base.views import product, subtype, user, auth
+from base.views import product, subtype, user, auth, email
 
 urlpatterns = [
     path("register", auth.register),
@@ -17,4 +17,6 @@ urlpatterns = [
     
     path("subtypes/<str:type>", subtype.BagTypeList.as_view()),
     path("subtypes/<str:type>/<str:name>", subtype.BagTypeDetail.as_view()),
+
+    path("call-request", email.send_email),
 ]

@@ -7,10 +7,10 @@ TRUNCATE TABLE base_bigbag CASCADE;
 
 INSERT INTO base_product(id, type, image, price, price_on_request, in_stock, new, sale)
 VALUES
-    (5, 'Мешки полипропиленовые', 'ex.webp', 9.00, FALSE, TRUE, FALSE, FALSE),
-    (8, 'Мешки полипропиленовые', 'example-bug.png', 13.50, FALSE, TRUE, FALSE, FALSE),
-    (20, 'МКР (биг-бэг)', 'example-bug2.png', 525, FALSE, TRUE, FALSE, FALSE),
-    (24, 'МКР (биг-бэг)', 'example-bug3.png', 535, FALSE, TRUE, TRUE, FALSE);
+    (5, 'Мешки полипропиленовые', 'products/ex.webp', 9.00, FALSE, TRUE, FALSE, FALSE),
+    (8, 'Мешки полипропиленовые', 'products/example-bug.png', 13.50, FALSE, TRUE, FALSE, FALSE),
+    (20, 'МКР (биг-бэг)', 'products/example-bug2.png', 525, FALSE, TRUE, FALSE, FALSE),
+    (24, 'МКР (биг-бэг)', 'products/example-bug3.png', 535, FALSE, TRUE, TRUE, FALSE);
 
 INSERT INTO base_polybagtype(name)
 VALUES

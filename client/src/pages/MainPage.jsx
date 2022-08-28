@@ -11,7 +11,7 @@ import novopack from "../assets/novopack.png";
 import exampleBug from "../assets/example-bug.png";
 import main_img from "../assets/main_img.jpg";
 
-import BtnRequestACall from "../components/UI/Buttons/BtnRequestACall";
+import BtnCallRequest from "../components/UI/Buttons/BtnCallRequest";
 
 export default function MainPage() {
   return (
@@ -28,9 +28,9 @@ export default function MainPage() {
                 строительные, бытовые, пищевые мешки, а также мягкие контейнеры
                 (биг-бэги). Доставка по России и странам СНГ
               </p>
-              {/* 22.08 заменить на Buttons -- BtnRequestACall */}
+              {/* 22.08 заменить на Buttons -- BtnCallRequest */}
               {/* <button className="btn__action">Заказать звонок</button> */}
-              <BtnRequestACall />
+              <BtnCallRequest />
             </div>
             <div className="slider-img">
               <img src={main_img} alt="Биг-бэг в производстве" />

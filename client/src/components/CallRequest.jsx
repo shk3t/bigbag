@@ -1,6 +1,9 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 export default function RequestACall() {
+  const { authUser } = useSelector(state => state.authReducer)
+
   return (
     <div>
       <div className="auth-card call__card">

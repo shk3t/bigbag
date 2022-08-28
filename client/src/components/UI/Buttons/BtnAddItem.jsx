@@ -1,22 +1,22 @@
-import { React, useState } from "react";
+import React, { useState } from "react";
 import Modal from "../../Modal/Modal";
-import CallRequest from "../../CallRequest";
+import AddItemAdmin from "../../AddItemAdmin";
 
-export default function BtnCallRequest() {
+export default function BtnAddItem() {
   const [modalActive, setModalActive] = useState();
 
   return (
     <div>
       <button
-        className="btn__action"
+        className="btn__action addItem"
         onClick={() => {
           setModalActive(true);
         }}
       >
-        Заказать звонок
+        Добавить товар
       </button>
       <Modal active={modalActive} setActive={setModalActive}>
-        <CallRequest />
+        <AddItemAdmin />
       </Modal>
     </div>
   );

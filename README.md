@@ -20,11 +20,15 @@
 
 ## Каталог
 
-- [ ] Меню фильтрации по группам и подгруппам мешков
+- [ ] Меню фильтрации
+    - [X] По группам
+    - [ ] По подгруппам
+- [ ] Пагинация
 
 ## Главный функционал
 
-- [ ] форма для отправки на почту запроса на обратную связь
+- [X] форма для отправки на почту запроса на обратную связь
+    - [ ] То же самое для корзины
 
 <br />
 
@@ -38,11 +42,11 @@
 
 # Как пересобирать базу данных:
 
-1. запустить `avegabug/server/bin/resetdb.sql` в слоне
+1. `python manage.py flush --no-input` [^cmd]
 2. удалить папку `avegabug/server/base/migrations`
 3. `python manage.py makemigrations base` [^cmd]
 4. `python manage.py migrate` [^cmd]
-5. запустить `avegabug/server/bin/initdb.sql` в слоне
+5. `python manage.py loaddata products` [^cmd]
 
 <br />
 
