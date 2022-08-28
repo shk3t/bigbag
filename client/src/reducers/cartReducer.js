@@ -1,7 +1,7 @@
 const ADD_ITEM = "ADD_ITEM";
 const SET_QUANTITY = "SET_QUANTITY";
 const REMOVE_ITEM = "REMOVE_ITEM";
-const EMPTY_CART = "EMPTY_CART";
+const CLEAR_CART = "CLEAR_CART";
 
 export default function cartReducer(state = { cartItems: {} }, action) {
   const { cartItems } = state || {};
@@ -23,7 +23,7 @@ export default function cartReducer(state = { cartItems: {} }, action) {
     case REMOVE_ITEM:
       delete cartItems[id];
       return { cartItems: { ...cartItems } };
-    case EMPTY_CART:
+    case CLEAR_CART:
       return { cartItems: [] };
     default:
       return state;
@@ -57,5 +57,5 @@ export const removeItemAction = (id) => async (dispatch) => {
 };
 
 export const clearCartAction = () => async (dispatch) => {
-  return dispatch({ type: EMPTY_CART, payload: null });
+  return dispatch({ type: CLEAR_CART, payload: null });
 };

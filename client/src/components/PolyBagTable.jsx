@@ -1,7 +1,10 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { POLY_BAG, BASE_URL } from "../consts";
 import { useDispatch, useSelector } from "react-redux";
-import { listProductsAction } from "../reducers/productListReducer";
+import {
+  clearProductListAction,
+  listProductsAction,
+} from "../reducers/productListReducer";
 
 export default function PolyBagTable() {
   const dispatch = useDispatch();
