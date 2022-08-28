@@ -11,12 +11,13 @@ function check_bin() {
 }
 
 function reset_db() {
-    python $BASE_DIR/manage.py flush --no-input
+    psql -d avegabag -f $BASE_DIR/bin/resetdb.sql
     rm -rf $BASE_DIR/base/migrations
     python $BASE_DIR/manage.py makemigrations base
     python $BASE_DIR/manage.py migrate
     python $BASE_DIR/manage.py loaddata products
 }
 
+check_bin psql
 check_bin python
 reset_db
