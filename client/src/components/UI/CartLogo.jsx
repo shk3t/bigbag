@@ -5,7 +5,7 @@ import cartLogo from "../../assets/icon-trolley-cart-3683279.png";
 import { CART_PATH } from "../../consts";
 
 export default function CartLogo() {
-  const { cartItems } = useSelector((state) => state.cartReducer);
+  const cartItems = useSelector((state) => state.cartReducer.cartItems);
 
   return (
     <div className="header__shopping-cart">

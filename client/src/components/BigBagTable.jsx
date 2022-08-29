@@ -8,7 +8,7 @@ import {
 
 export default function BigBagTable() {
   const dispatch = useDispatch();
-  const { products } = useSelector((state) => state.productListReducer);
+  const products = useSelector((state) => state.productListReducer.products);
 
   useEffect(() => {
     dispatch(listProductsAction({ type: BIG_BAG }));

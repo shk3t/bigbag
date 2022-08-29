@@ -12,7 +12,7 @@ import { listProductsAction } from "../reducers/productListReducer";
 const CatalogPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useDispatch();
-  const { products } = useSelector((state) => state.productListReducer);
+  const products = useSelector((state) => state.productListReducer.products);
 
   useEffect(() => {
     const type = searchParams.get("type");

@@ -4,7 +4,7 @@ import { setProductAction } from "../../../reducers/productReducer";
 
 export default function ProductInput({ field, ...props }) {
   const dispatch = useDispatch();
-  const { product } = useSelector((state) => state.productReducer);
+  const product = useSelector((state) => state.productReducer.product);
   const [value, setValue] = useState("");
 
   useMemo(() => {

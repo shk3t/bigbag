@@ -10,7 +10,7 @@ import SubtypeSelect from "../Selects/SubtypeSelect";
 
 export default function CreatePolyBagForm() {
   const dispatch = useDispatch();
-  const { product } = useSelector((state) => state.productReducer);
+  const product = useSelector((state) => state.productReducer.product);
 
   return (
     <form className="admin_add-meshki" encType="multipart/form-data">

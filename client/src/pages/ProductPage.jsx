@@ -12,7 +12,7 @@ import { BASE_URL } from "../consts";
 export default function ProductPage() {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const { product } = useSelector((state) => state.productReducer);
+  const product = useSelector((state) => state.productReducer.product);
   const [quantity, setQuantity] = useState(0);
   useEffect(() => {
     dispatch(getProductAction(id));

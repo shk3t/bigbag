@@ -6,8 +6,8 @@ import { listSubtypesAction } from "../../../reducers/subtypeListReducer";
 
 export default function SubtypeSelect() {
   const dispatch = useDispatch();
-  const { subtypes } = useSelector((state) => state.subtypeListReducer);
-  const { product } = useSelector((state) => state.productReducer);
+  const subtypes = useSelector((state) => state.subtypeListReducer.subtypes);
+  const product = useSelector((state) => state.productReducer.product);
   useEffect(() => {
     dispatch(listSubtypesAction(product.type));
   }, []);

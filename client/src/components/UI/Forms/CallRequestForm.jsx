@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { sendRequestAction, setRequestAction } from "../../../reducers/callRequestReducer";
-import CallRequestInput from "../Inputs/CallRequestInput";
-import SendCallRequestButton from "../Buttons/SendCallRequestButton";
+import { useSelector } from "react-redux";
+import EmailService from "../../../API/EmailService";
 
 export default function CallRequestForm() {
-  const dispatch = useDispatch();
-  const { authUser } = useSelector((state) => state.authReducer);
+  const authUser = useSelector((state) => state.authReducer.authUser);
+  const [request, setRequest] = useState({ name: "", phone: "", comment: "" });
 
   useEffect(() => {
     if (authUser) {
-      dispatch(setRequestAction({name: authUser.name}));
+      setRequest({ ...request, name: authUser.name });
     }
-  }, [])
+  }, [authUser]);
+
+  function sendRequest(event) {
+    event.preventDefault();
+    EmailService.requestCall(request);
+  }
 
   return (
     <div>
@@ -21,23 +24,32 @@ export default function CallRequestForm() {
         <p className="call_description">Наш менеджер вам перезвонит!</p>
         <form className="auth-forms__form" action="">
           <div className="auth-forms"></div>
-          <CallRequestInput
+          <input
+            value={request.name}
+            onChange={(event) =>
+              setRequest({ ...request, name: event.target.value })
+            }
             type="text"
-            field="name"
             placeholder="Ваше имя"
-          ></CallRequestInput>
-          <CallRequestInput
+          />
+          <input
+            value={request.phone}
+            onChange={(event) =>
+              setRequest({ ...request, phone: event.target.value })
+            }
             type="tel"
-            field="phone"
             placeholder="8-999-123-45-67"
-          ></CallRequestInput>
-          <CallRequestInput
+          />
+          <textarea
+            value={request.comment}
+            onChange={(event) =>
+              setRequest({ ...request, comment: event.target.value })
+            }
             type="textarea"
             field="comment"
             placeholder="Укажите комментарий, если требуется. Например, удобное время для звонка или интересующий вопрос"
           />
-
-          <SendCallRequestButton />
+          <button onClick={sendRequest}>Жду звонка!</button>;
         </form>
       </div>
     </div>

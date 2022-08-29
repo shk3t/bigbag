@@ -5,7 +5,7 @@ import AdminTables from "../components/AdminTables";
 import AdminTableSelect from "../components/UI/Selects/AdminTableSelect";
 
 export default function AdminPage() {
-  // const { product } = useSelector((state) => state.productReducer);
+  // const product = useSelector((state) => state.productReducer.product);
 
   return (
     <div>

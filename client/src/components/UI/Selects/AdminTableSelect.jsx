@@ -7,7 +7,7 @@ import { useSearchParams } from "react-router-dom";
 export default function AdminTableSelect() {
   const dispatch = useDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
-  // const { product } = useSelector((state) => state.productReducer);
+  // const product = useSelector((state) => state.productReducer.product);
 
   return (
     <div className=" admin__choose">

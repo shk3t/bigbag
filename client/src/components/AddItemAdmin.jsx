@@ -7,7 +7,7 @@ import { setProductAction } from "../reducers/productReducer";
 
 export default function AddItemAdmin() {
   const dispatch = useDispatch();
-  const { product } = useSelector((state) => state.productReducer);
+  const product = useSelector((state) => state.productReducer.product);
   const [tableId, setTableId] = useState(POLY_BAG);
 
   function renderTable() {

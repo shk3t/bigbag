@@ -12,7 +12,7 @@ import {
 
 const AuthPage = () => {
   const dispatch = useDispatch();
-  const { errorMessages } = useSelector((state) => state.authReducer);
+  const errorMessages = useSelector((state) => state.authReducer.errorMessages);
   const [credentials, setCredentials] = useState({
     name: "",
     email: "",
@@ -33,19 +33,6 @@ const AuthPage = () => {
     dispatch(clearErrorMessageAction());
     setIsLogin(!isLogin);
   }
-
-  // TODO
-  // function checkPassword(password) {
-  //   setCredentials({
-  //     ...credentials,
-  //     password: password.target.value,
-  //   });
-  //   password.target.value.length < 8 ? (
-  //     <ErrorAuthMsg messages={errorMessages} />
-  //   ) : (
-  //     alert("Надёжный пароль")
-  //   );
-  // }
 
   return (
     <div>

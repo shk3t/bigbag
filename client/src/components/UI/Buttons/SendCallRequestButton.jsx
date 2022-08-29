@@ -4,12 +4,8 @@ import { sendRequestAction } from "../../../reducers/callRequestReducer";
 
 export default function SendCallRequestButton() {
   const dispatch = useDispatch();
-  const { request } = useSelector(state => state.callRequestReducer)
+  const request = useSelector((state) => state.callRequestReducer.request);
 
-  function sendRequest(event) {
-    event.preventDefault();
-    dispatch(sendRequestAction(request));
-  }
 
   return <button onClick={sendRequest}>Жду звонка!</button>;
 }

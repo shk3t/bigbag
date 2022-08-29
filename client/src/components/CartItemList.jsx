@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import CartItem from "./CartItem";
 
 export default function CartItemList() {
-  const { cartItems } = useSelector((state) => state.cartReducer);
+  const cartItems = useSelector((state) => state.cartReducer.cartItems);
 
   function getTotalPrice() {
     let totalPrice = 0.0;

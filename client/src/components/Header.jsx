@@ -14,7 +14,7 @@ import HelloUser from "./UI/HelloUser";
 import CartLogo from "./UI/CartLogo";
 
 export default function Header() {
-  const { authUser } = useSelector((state) => state.authReducer);
+  const authUser = useSelector((state) => state.authReducer.authUser);
 
   return (
     <header>
@@ -45,9 +45,7 @@ export default function Header() {
       <div className="header__cart-login">
         {authUser ? <HelloUser name={authUser.name} /> : ""}
         <CartLogo />
-        <div>
-          <BtnLoginLogout />
-        </div>
+        <BtnLoginLogout />
       </div>
     </header>
   );

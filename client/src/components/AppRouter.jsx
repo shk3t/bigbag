@@ -11,7 +11,8 @@ import {
 } from "../routes";
 
 const AppRouter = () => {
-  const { authUser, accessToken } = useSelector((state) => state.authReducer);
+  const authUser = useSelector((state) => state.authReducer.authUser);
+  const accessToken = useSelector((state) => state.authReducer.accessToken);
   const [routes, setRoutes] = useState(publicRoutes);
 
   useEffect(() => {
@@ -29,7 +30,7 @@ const AppRouter = () => {
 
   return (
     <Routes>
-      {routes.map(({ path, Component }) => (
+      {publicRoutes.map(({ path, Component }) => (
         <Route key={path} path={path} element={<Component />} />
       ))}
       <Route path="*" element={<Navigate to={MAIN_PATH} />} />
