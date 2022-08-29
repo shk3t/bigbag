@@ -15,14 +15,15 @@ const BtnLoginLogout = () => {
   const [modalActive, setModalActive] = useState(false);
 
   useEffect(() => {
-    dispatch(clearErrorMessageAction());
-  }, [modalActive]);
+    setModalActive(false);
+  }, [authUser]);
 
   function loginOrLogout(event) {
     event.preventDefault();
     if (authUser) {
       dispatch(logoutAction());
     } else {
+      dispatch(clearErrorMessageAction());
       setModalActive(true);
     }
   }
