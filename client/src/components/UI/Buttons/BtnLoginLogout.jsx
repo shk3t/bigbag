@@ -12,11 +12,7 @@ const BtnLoginLogout = () => {
   const dispatch = useDispatch();
   const authUser = useSelector((state) => state.authReducer.authUser);
 
-  const [modalActive, setModalActive] = useState();
-
-  useEffect(() => {
-    setModalActive(false);
-  }, [authUser]);
+  const [modalActive, setModalActive] = useState(false);
 
   useEffect(() => {
     dispatch(clearErrorMessageAction());
