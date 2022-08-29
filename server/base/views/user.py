@@ -4,6 +4,7 @@ from rest_framework.permissions import IsAdminUser, IsAuthenticated
 
 from base.serializers import UserSerializer
 from base.models import User
+from base.services import AuthService
 
 
 class UserList(APIView):
@@ -18,10 +19,19 @@ class UserList(APIView):
 
 class UserDetail(APIView):
     # permission_classes = [IsAdminUser]
+    # TODO use additional secret key
 
     def get(self, request, id):
         user = User.get_by_pk(id)
         serializer = UserSerializer(user)
+        return Response(serializer.data)
+
+    def put(self, request, id):
+        updated_data = request.data
+        user = User.get_by_pk(id)
+        serializer = UserSerializer(user, data=updated_data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
         return Response(serializer.data)
 
     def delete(self, request, id):

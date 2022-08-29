@@ -1,7 +1,10 @@
 from datetime import datetime
+from django.core.exceptions import ValidationError
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import AccessToken, RefreshToken
 from transliterate import translit
+import django.contrib.auth.password_validation as auth
+from base.exceptions import HttpException
 
 from base.models import User
 from base.serializers import UserWithTokenSerializer

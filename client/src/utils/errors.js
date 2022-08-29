@@ -20,7 +20,7 @@ export function extractErrorMessages(error) {
     messages.push(data.detail);
   } else {
     for (const [key, value] of Object.entries(data)) {
-      messages.push(translate(key) + ": " + decapitalize(value));
+      messages.push(translate(key) + ": " + value[0]);
     }
   }
 

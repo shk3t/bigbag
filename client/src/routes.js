@@ -15,10 +15,13 @@ import {
   ADMIN_PATH,
 } from "./consts";
 
-export const adminRoutes = [];
+export const adminRoutes = [
+];
+
+export const managerRoutes = [
+];
 
 export const authRoutes = [
-  // { path: ADMIN_PATH, Component: AdminPage },
 ];
 
 export const publicRoutes = [

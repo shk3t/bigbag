@@ -18,4 +18,7 @@ export default class AuthService {
     });
     return response.data;
   }
+  static parseToken(token) {
+    return JSON.parse(window.atob(token.split('.')[1]));
+  }
 }

@@ -11,8 +11,12 @@ from base.models import User
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ["id", "name", "email", "password"]
-        extra_kwargs = {"password": {"write_only": True}}
+        fields = ["id", "name", "email", "password", "is_admin", "is_manager"]
+        extra_kwargs = {
+            "password": {"write_only": True},
+            "is_admin": {"write_only": True},
+            "is_manager": {"write_only": True},
+        }
 
     def create(self, validated_data):
         password = validated_data.pop("password")
@@ -22,9 +26,11 @@ class UserSerializer(serializers.ModelSerializer):
         return user
 
     def update(self, user, validated_data):
+        password = validated_data.pop("password", None)
+        if password:
+            user.set_password(password)
         for attr, value in validated_data.items():
             setattr(user, attr, value)
-        user.set_password(validated_data.get("password", user.password))
         user.save()
         return user
 
@@ -41,7 +47,10 @@ class UserWithTokenSerializer(serializers.ModelSerializer):
         return UserSerializer(user).data
 
     def get_access_token(self, user):
-        return str(AccessToken.for_user(user))
+        access_token = AccessToken.for_user(user)
+        access_token["is_admin"] = user.is_admin
+        access_token["is_manager"] = user.is_manager
+        return str(access_token)
 
 
 class ProductSerializer(serializers.ModelSerializer):

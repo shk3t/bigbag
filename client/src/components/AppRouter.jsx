@@ -1,17 +1,31 @@
-import React  from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Routes, Route, Navigate } from "react-router-dom";
+import AuthService from "../API/AuthService";
 import { MAIN_PATH } from "../consts";
-import { publicRoutes, authRoutes } from "../routes";
+import {
+  publicRoutes,
+  authRoutes,
+  adminRoutes,
+  managerRoutes,
+} from "../routes";
 
 const AppRouter = () => {
-  const { authUser } = useSelector((state) => state.authReducer);
+  const { authUser, accessToken } = useSelector((state) => state.authReducer);
+  const [routes, setRoutes] = useState(publicRoutes);
 
-  //TODO проверять авторизацию и права администратора при подгрузке маршрутов
-  let routes = [...publicRoutes]
-  if (authUser) {
-    routes.push(...authRoutes);
-  }
+  useEffect(() => {
+    if (authUser) {
+      setRoutes([...routes, ...authRoutes]);
+      const token = AuthService.parseToken(accessToken);
+      if (token.is_admin) {
+        setRoutes([...routes, ...adminRoutes]);
+      }
+      if (token.is_manager) {
+        setRoutes([...routes, ...managerRoutes]);
+      }
+    }
+  }, [authUser]);
 
   return (
     <Routes>

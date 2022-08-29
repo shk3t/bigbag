@@ -1,7 +1,7 @@
 import { React, useEffect, useState } from "react";
 import classes from "./ButtonMore.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { logoutAction } from "../../../reducers/authReducer";
+import { clearErrorMessageAction, logoutAction } from "../../../reducers/authReducer";
 import Modal from "../../Modal/Modal";
 import AuthPage from "./../../../pages/AuthPage";
 
@@ -14,6 +14,10 @@ const BtnLoginLogout = () => {
   useEffect(() => {
     setModalActive(false);
   }, [authUser]);
+
+  useEffect(() => {
+    dispatch(clearErrorMessageAction());
+  }, [modalActive])
 
   function loginOrLogout(event) {
     event.preventDefault();
