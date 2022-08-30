@@ -16,7 +16,6 @@ import BtnCallRequest from "../components/UI/Buttons/BtnCallRequest";
 export default function MainPage() {
   return (
     <div className="root-div">
-      <Header />
 
       <div className="container">
         <main>

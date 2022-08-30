@@ -19,4 +19,5 @@ urlpatterns = [
     path("subtypes/<str:type>/<str:name>", subtype.BagTypeDetail.as_view()),
 
     path("call-request", email.request_call),
+    path("cart-call-request", email.request_with_cart),
 ]

@@ -6,7 +6,6 @@ import Footer from "../components/Footer";
 export default function DeliveryPage() {
   return (
     <div>
-      <Header />
       <Way />
       <Footer />
     </div>

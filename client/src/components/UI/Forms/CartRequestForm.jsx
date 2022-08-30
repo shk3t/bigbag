@@ -1,34 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  requestCallAction,
-  BUTTON_INIT,
-} from "../../../reducers/callRequestReducer";
+import { BUTTON_INIT, sendCartAction } from "../../../reducers/callRequestReducer";
 import ErrorMsg from "../ErrorMsg";
 
-export default function CallRequestForm() {
+export default function CartRequestForm() {
   const dispatch = useDispatch();
   const authUser = useSelector((state) => state.authReducer.authUser);
+  const cartItems = useSelector((state) => state.cartReducer.cartItems);
   const { errorMessages, buttonLabel } = useSelector(
     (state) => state.callRequestReducer
   );
   const [request, setRequest] = useState({ name: "", phone: "", comment: "" });
 
   useEffect(() => {
-    if (authUser && !request.name) {
+    if (authUser) {
       setRequest({ ...request, name: authUser.name });
     }
   }, [authUser]);
 
   async function sendRequest(event) {
     event.preventDefault();
-    dispatch(requestCallAction(request));
+    dispatch(sendCartAction(request, Object.values(cartItems)));
   }
 
   return (
     <div>
       <div className="auth-card call__card">
-        <h2>Закажите звонок</h2>
+        <h2>Отправьте заявку</h2>
         <p className="call_description">Наш менеджер вам перезвонит!</p>
         {errorMessages && <ErrorMsg messages={errorMessages} />}
         <form className="auth-forms__form" action="">

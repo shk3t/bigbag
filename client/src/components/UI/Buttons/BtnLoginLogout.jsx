@@ -6,12 +6,11 @@ import {
   logoutAction,
 } from "../../../reducers/authReducer";
 import Modal from "../../Modal/Modal";
-import AuthPage from "./../../../pages/AuthPage";
+import AuthForm from "../Forms/AuthForm";
 
-const BtnLoginLogout = () => {
+export default function BtnLoginLogout() {
   const dispatch = useDispatch();
   const authUser = useSelector((state) => state.authReducer.authUser);
-
   const [modalActive, setModalActive] = useState(false);
 
   useEffect(() => {
@@ -33,11 +32,9 @@ const BtnLoginLogout = () => {
       <button onClick={loginOrLogout} className={classes.header__login_btn}>
         {authUser ? "Выйти" : "Войти"}
       </button>
-      <Modal active={!authUser && modalActive} setActive={setModalActive}>
-        <AuthPage />
-      </Modal>
+    <Modal active={modalActive} setActive={setModalActive}>
+      <AuthForm />
+    </Modal>
     </div>
   );
-};
-
-export default BtnLoginLogout;
+}

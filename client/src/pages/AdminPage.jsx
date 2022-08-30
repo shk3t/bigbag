@@ -9,7 +9,6 @@ export default function AdminPage() {
 
   return (
     <div>
-      <Header />
       <main className="admin-main">
         <BtnAddItem />
         <AdminTableSelect />

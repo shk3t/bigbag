@@ -1,6 +1,6 @@
 import React from "react";
 
-const ErrorAuthMsg = ({ messages }) => {
+export default function ErrorMsg({ messages }) {
   return (
     <div>
       <div className="auth_error">
@@ -11,5 +11,3 @@ const ErrorAuthMsg = ({ messages }) => {
     </div>
   );
 };
-
-export default ErrorAuthMsg;

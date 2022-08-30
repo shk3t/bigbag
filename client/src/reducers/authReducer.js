@@ -53,7 +53,7 @@ export const loginAction = (credentials) => async (dispatch) => {
 
 export const logoutAction = () => async (dispatch) => {
   await AuthService.logout();
-  dispatch({ type: LOGOUT, payload: null });
+  dispatch({ type: LOGOUT });
 };
 
 export const refreshTokensAction = () => async (dispatch) => {
@@ -62,5 +62,5 @@ export const refreshTokensAction = () => async (dispatch) => {
 };
 
 export const clearErrorMessageAction = () => (dispatch) => {
-  dispatch({ type: CLEAR_ERROR_MESSAGE, payload: null });
+  dispatch({ type: CLEAR_ERROR_MESSAGE });
 };

@@ -38,7 +38,6 @@ export default function ProductPage() {
 
   return (
     <div>
-      <Header />
       <Way />
       <main>
         {product && (

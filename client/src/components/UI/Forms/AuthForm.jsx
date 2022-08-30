@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-
-import ErrorAuthMsg from "../components/UI/ErrorAuthMsg";
-
+import ErrorMsg from "../ErrorMsg";
 import {
   registerAction,
   loginAction,
   clearErrorMessageAction,
-} from "../reducers/authReducer";
+} from "../../../reducers/authReducer";
 
-const AuthPage = () => {
+export default function AuthForm() {
   const dispatch = useDispatch();
   const errorMessages = useSelector((state) => state.authReducer.errorMessages);
   const [credentials, setCredentials] = useState({
@@ -38,7 +36,7 @@ const AuthPage = () => {
     <div>
       <div className="auth-card">
         <h2>{isLogin ? "Авторизация" : "Регистрация"}</h2>
-        {errorMessages && <ErrorAuthMsg messages={errorMessages} />}
+        {errorMessages && <ErrorMsg messages={errorMessages} />}
         <form className="auth-forms__form">
           <div className="auth-forms">
             {!isLogin && (
@@ -91,6 +89,4 @@ const AuthPage = () => {
       </div>
     </div>
   );
-};
-
-export default AuthPage;
+}

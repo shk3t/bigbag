@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { POLY_BAG, BIG_BAG } from "../consts";
 
-export default function ProductFilter({ setSearchParams }) {
-  // console.log(products);
-  // products.map((e) => console.log(e.type));
+export default function ProductFilter() {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const [categories, setCategories] = useState([
     { key: "all", name: "Все товары" },
     { key: POLY_BAG, name: "Мешки" },

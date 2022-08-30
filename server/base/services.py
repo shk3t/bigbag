@@ -29,3 +29,21 @@ class AuthService:
             httponly=True,
         )
         return response
+
+
+class EmailService:
+    def request_to_message(data):
+        if (
+            not "name" in data
+            or not "phone" in data
+            or not data["name"]
+            or not data["phone"]
+        ):
+            raise HttpException("Имя и номер телефона должны быть указаны", 400)
+
+        message = f"Имя: {data['name']},\nТелефон: {data['phone']}"
+
+        if "comment" in data:
+            message += f"\n\nКомментарий:\n{data['comment']}"
+
+        return message

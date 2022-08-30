@@ -856,14 +856,14 @@ footer ul a {
   margin-top: 2rem;
 }
 
-.cart__sent > form > button {
+.cart__sent > button {
   font-size: 1em;
   cursor: pointer;
   background-color: rgba(46, 78, 46, 0.785);
   color: #fff;
 }
 
-.cart__sent > form > button:hover {
+.cart__sent > button:hover {
   border: 1px solid rgba(0, 0, 0, 0.33);
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
 }

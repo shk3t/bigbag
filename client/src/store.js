@@ -10,6 +10,7 @@ import subtypeReducer from "./reducers/subtypeReducer";
 import subtypeListReducer from "./reducers/subtypeListReducer";
 import cartReducer from "./reducers/cartReducer";
 import authReducer from "./reducers/authReducer";
+import callRequestReducer from "./reducers/callRequestReducer";
 
 const middlewares = [thunk];
 
@@ -31,6 +32,7 @@ const rootReducer = combineReducers({
   subtypeListReducer,
   cartReducer: persistReducer(cartPersistConfig, cartReducer),
   authReducer: persistReducer(authPersistConfig, authReducer),
+  callRequestReducer,
 });
 
 export const store = createStore(

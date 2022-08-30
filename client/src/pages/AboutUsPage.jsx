@@ -6,7 +6,6 @@ import Footer from "../components/Footer";
 export default function AboutUsPage() {
   return (
     <div>
-      <Header />
       <Way />
 
       <div className="about-us__wrap">
