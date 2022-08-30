@@ -28,6 +28,7 @@ export default function BigBagTable() {
         <div>Шт/уп</div>
         <div>Размер упаковки</div>
         <div>Объем упаковки</div>
+        <div>Редактировать</div>
       </div>
       {products.map((product) => (
         <div className="all-products__title" key={product.id}>
@@ -48,7 +49,7 @@ export default function BigBagTable() {
           <div>{product.items_per_pack} Шт/уп</div>
           <div>{product.pack_size}</div>
           <div>{product.pack_volume.toFixed(3)} м3</div>
-          <div>Изменить</div>
+          <div className="admin__edit">Редактировать</div>
         </div>
       ))}
     </div>

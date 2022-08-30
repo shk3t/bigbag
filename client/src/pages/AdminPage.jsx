@@ -11,9 +11,11 @@ export default function AdminPage() {
     <div>
       <Header />
       <main className="admin-main">
-        <AdminTableSelect />
-        <AdminTables />
         <BtnAddItem />
+        <AdminTableSelect />
+        <div className="admin__tables">
+          <AdminTables />
+        </div>
       </main>
       {/* весь admin-container сделать модальным, появляется когда клик Добавить */}
 

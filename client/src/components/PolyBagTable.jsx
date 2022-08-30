@@ -26,11 +26,11 @@ export default function PolyBagTable() {
         <div>Сорт</div>
         <div>Вес мешка</div>
         <div>Шт/уп</div>
-        <div>Изменить</div>
+        <div className="admin__edit-title">Редактировать</div>
       </div>
       {products.map((product) => (
         <div className="all-products__title" key={product.id}>
-          <div>
+          <div className="admin-item__img">
             <img
               className="catalog-item__img"
               alt="продукт"
@@ -47,7 +47,7 @@ export default function PolyBagTable() {
             {product.bag_weight}+-{product.weight_error} г
           </div>
           <div>{product.items_per_pack} Шт/уп</div>
-          <div>Изменить</div>
+          <div className="admin__edit">Редактировать</div>
         </div>
       ))}
     </div>

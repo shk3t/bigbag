@@ -1,5 +1,10 @@
 import React from "react";
-import { BIG_BAG, BIG_BAG_TYPE, POLY_BAG, POLY_BAG_TYPE } from "../../../consts";
+import {
+  BIG_BAG,
+  BIG_BAG_TYPE,
+  POLY_BAG,
+  POLY_BAG_TYPE,
+} from "../../../consts";
 import { useDispatch } from "react-redux";
 import { clearProductListAction } from "../../../reducers/productListReducer";
 import { useSearchParams } from "react-router-dom";
@@ -11,7 +16,7 @@ export default function AdminTableSelect() {
 
   return (
     <div className=" admin__choose">
-      Выберите таблицу:
+      <p> Выберите таблицу:</p>
       <select
         onChange={(event) => {
           dispatch(clearProductListAction());

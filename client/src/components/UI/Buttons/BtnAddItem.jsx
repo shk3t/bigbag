@@ -6,7 +6,7 @@ export default function BtnAddItem() {
   const [modalActive, setModalActive] = useState();
 
   return (
-    <div>
+    <div className="btn__addItem">
       <button
         className="btn__action addItem"
         onClick={() => {
