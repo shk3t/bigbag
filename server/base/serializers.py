@@ -107,7 +107,6 @@ class BagProductSerializer(serializers.Serializer):
         return ret
 
     def create(self, data):
-        # TODO test
         data.pop("image", None)
         _, BagSerializer = BagMapping.for_type(data["type"])
         product_serializer = ProductSerializer(data=data)
@@ -122,6 +121,7 @@ class BagProductSerializer(serializers.Serializer):
         return self.merge_data(product_serializer, bag_serializer)
 
     def update(self, product, data):
+        data.pop("image", None)
         Bag, BagSerializer = BagMapping.for_type(product.type)
         if "type" in data and data["type"] != product.type:
             raise HttpException({"type": ["Изменение значения запрещено"]}, 400)

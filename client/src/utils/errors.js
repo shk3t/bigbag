@@ -1,20 +1,19 @@
+import { TRANSLATIONS } from "../consts";
+
 export function extractErrorMessages(error) {
+  if (!error.response) return "Unexpected behavior";
   const data = error.response.data;
-  const status = error.response.status;
+  // const status = error.response.status;
   const messages = [];
 
+
   function translate(word) {
-    switch (word.toLowerCase()) {
-      case "email":
-        return "Эл. почта";
-      case "password":
-        return "Пароль";
-    }
+    return TRANSLATIONS[word.toLowerCase()];
   }
 
-  function decapitalize([first, ...rest]) {
-    return first.toLowerCase() + rest;
-  }
+  // function decapitalize([first, ...rest]) {
+  //   return first.toLowerCase() + rest;
+  // }
 
   if (data.detail) {
     messages.push(data.detail);

@@ -1,33 +1,31 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import {
   BIG_BAG,
   BIG_BAG_TYPE,
   POLY_BAG,
   POLY_BAG_TYPE,
 } from "../../../consts";
-import { useDispatch } from "react-redux";
 import { clearProductListAction } from "../../../reducers/productListReducer";
 import { useSearchParams } from "react-router-dom";
 
 export default function AdminTableSelect() {
-  const dispatch = useDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
-  // const product = useSelector((state) => state.productReducer.product);
+  const dispatch = useDispatch();
 
   return (
     <div className=" admin__choose">
       <p> Выберите таблицу:</p>
       <select
         onChange={(event) => {
-          dispatch(clearProductListAction());
+          // TODO попробовать удалить
+          if (event.target.value !== searchParams.get("table"))
+            dispatch(clearProductListAction());
           setSearchParams({ table: event.target.value });
-          // dispatch(
-          //   setProductAction({ ...product, type: event.target.value })
-          // );
         }}
       >
-        <option defaultValue="" hidden>
-          {searchParams.get("table") || POLY_BAG}
+        <option defaultValue={null} hidden>
+          {POLY_BAG}
         </option>
         <option value={POLY_BAG}>Мешки полипропиленовые</option>
         <option value={BIG_BAG}>МКР (биг-бэг)</option>

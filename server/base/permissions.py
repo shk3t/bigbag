@@ -9,8 +9,3 @@ class IsAdminOrReadOnly(BasePermission):
         return bool(
             request.method in SAFE_METHODS or request.user and request.user.is_staff
         )
-
-
-class ReadOnlyMixin:
-    pass  # TODO uncomment
-    # permission_classes = [IsAdminOrReadOnly]

@@ -2,7 +2,6 @@ from django.core.mail import send_mail
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from base.exceptions import HttpException
 from base.services import EmailService
 
 
@@ -11,13 +10,14 @@ def request_call(request):
     data = request.data
     message = EmailService.request_to_message(data)
 
-    send_mail(
-        "Заказ звонка",
-        message,
-        "sfdm-service@mail.ru",
-        ["dansikdudok@mail.ru"],
-        fail_silently=False,
-    )
+    # send_mail(
+    #     "Заказ звонка",
+    #     message,
+    #     "sfdm-service@mail.ru",
+    #     ["dansikdudok@mail.ru"],
+    #     fail_silently=False,
+    # )
+    print(message)
     return Response("Sended")
 
 

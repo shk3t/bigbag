@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { BIG_BAG, BIG_BAG_TYPE, POLY_BAG, POLY_BAG_TYPE } from "../consts";
-import CreatePolyBagForm from "../components/UI/Forms/CreatePolyBagForm";
+import PolyBagForm from "../components/UI/Forms/CreatePolyBagForm";
 import { useDispatch, useSelector } from "react-redux";
 import { setProductAction } from "../reducers/productReducer";
 
@@ -13,7 +13,7 @@ export default function AddItemAdmin() {
   function renderTable() {
     switch (tableId) {
       case POLY_BAG:
-        return <CreatePolyBagForm />;
+        return <PolyBagForm />;
       case BIG_BAG:
         return <div>Таблица биг бегов</div>;
       case POLY_BAG_TYPE:

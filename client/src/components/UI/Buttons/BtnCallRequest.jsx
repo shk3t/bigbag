@@ -1,13 +1,13 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setModalAction } from "../../../reducers/callRequestReducer";
+import { setModalAction } from "../../../reducers/modalRequestReducer";
 import Modal from "../../Modal/Modal";
 import CallRequestForm from "../Forms/CallRequestForm";
 
 export default function BtnCallRequest() {
   const dispatch = useDispatch();
   const modalActive = useSelector(
-    (state) => state.callRequestReducer.modalActive
+    (state) => state.modalRequestReducer.modalActive
   );
 
   return (
@@ -20,7 +20,7 @@ export default function BtnCallRequest() {
       </button>
       <Modal
         active={modalActive}
-        setActive={(isOpen) => dispatch(setModalAction(isOpen))}
+        setActive={(isActive) => dispatch(setModalAction(isActive))}
       >
         <CallRequestForm />
       </Modal>

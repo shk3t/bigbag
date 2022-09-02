@@ -1,12 +1,14 @@
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from base.permissions import ReadOnlyMixin
 from base.models import Product
+from base.permissions import IsAdminOrReadOnly
 from base.serializers import BagProductSerializer, BagMapping
 
 
-class ProductList(ReadOnlyMixin, APIView):
+class ProductList(APIView):
+    # permission_classes = [IsAdminOrReadOnly]
+
     def get(self, request):
         type_param = request.query_params.get("type")
         products = Product.objects.all()
@@ -22,7 +24,7 @@ class ProductList(ReadOnlyMixin, APIView):
         return Response(serializer.data)
 
 
-class ProductDetail(ReadOnlyMixin, APIView):
+class ProductDetail(APIView):
     def get(self, request, id):
         product = Product.get_by_pk(id)
         serializer = BagProductSerializer(product)
@@ -45,14 +47,13 @@ class ProductDetail(ReadOnlyMixin, APIView):
         return Response("Product deleted")
 
 
-class ImageDetial(ReadOnlyMixin, APIView):
+class ImageDetial(APIView):
     def put(self, request, product_id):
         product = Product.get_by_pk(product_id)
         product.image.delete()
         product.image = request.FILES.get("image")
         product.validate()
         product.save()
-        # TODO test
         serializer = BagProductSerializer(product)
         return Response(serializer.data["image"])
 

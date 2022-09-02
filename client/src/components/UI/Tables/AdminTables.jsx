@@ -1,13 +1,13 @@
 import React from "react";
+import { useSearchParams } from "react-router-dom";
 import {
   BIG_BAG,
   BIG_BAG_TYPE,
   POLY_BAG,
   POLY_BAG_TYPE,
-} from "../consts";
-import PolyBagTable from "../components/PolyBagTable";
-import BigBagTable from "../components/BigBagTable";
-import { useSearchParams } from "react-router-dom";
+} from "..//../../consts";
+import PolyBagTable from "./PolyBagTable";
+import BigBagTable from "./BigBagTable";
 
 export default function AdminTables() {
   const [searchParams] = useSearchParams();
@@ -15,7 +15,6 @@ export default function AdminTables() {
   switch (searchParams.get("table")) {
     case POLY_BAG:
       return <PolyBagTable />;
-    // return <CreatePolyBagForm />;
     case BIG_BAG:
       return <BigBagTable />;
     case POLY_BAG_TYPE:
