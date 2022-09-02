@@ -31,6 +31,10 @@ main {
   /* background-color: aliceblue; */
 }
 
+.product-img > img {
+  width: 100%;
+}
+
 .product-about__wrap {
   width: 80%;
 }

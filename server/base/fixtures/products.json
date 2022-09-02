@@ -1,43 +1,5 @@
 [
   {
-    "model": "base.Product",
-    "pk": 5,
-    "fields": {
-      "type": "Мешки полипропиленовые",
-      "image": "products/ex.webp",
-      "price": 9.0
-    }
-  },
-  {
-    "model": "base.Product",
-    "pk": 8,
-    "fields": {
-      "type": "Мешки полипропиленовые",
-      "image": "products/example-bug.png",
-      "price": 13.5
-    }
-  },
-  {
-    "model": "base.Product",
-    "pk": 20,
-    "fields": {
-      "type": "МКР (биг-бэг)",
-      "image": "products/example-bug2.png",
-      "price": 525.0
-    }
-  },
-  {
-    "model": "base.Product",
-    "pk": 24,
-    "fields": {
-      "type": "МКР (биг-бэг)",
-      "image": "products/example-bug3.png",
-      "price": 535.0,
-      "new": true
-    }
-  },
-
-  {
     "model": "base.PolyBagType",
     "pk": "Строительные",
     "fields": {}
@@ -50,11 +12,6 @@
   {
     "model": "base.PolyBagType",
     "pk": "Бытовые",
-    "fields": {}
-  },
-  {
-    "model": "base.PolyBagType",
-    "pk": "Ламинированные коробчатого типа",
     "fields": {}
   },
   {
@@ -83,7 +40,106 @@
     "pk": "Вкладыши Новые МКР для МКР",
     "fields": {}
   },
+  {
+    "model": "base.Product",
+    "pk": 1,
+    "fields": {
+      "type": "Мешки полипропиленовые",
+      "image": "products/50x90.webp",
+      "price": 10.9
+    }
+  },
 
+  {
+    "model": "base.PolyBag",
+    "pk": 1,
+    "fields": {
+      "subtype": "Строительные",
+      "size": "50x90",
+      "color": "Серый",
+      "poly_grade": "2",
+      "bag_weight": 45,
+      "items_per_pack": 1000
+    }
+  },
+
+  {
+    "model": "base.Product",
+    "pk": 2,
+    "fields": {
+      "type": "Мешки полипропиленовые",
+      "image": "products/50x90.webp",
+      "price": 12.9
+    }
+  },
+  {
+    "model": "base.PolyBag",
+    "pk": 2,
+    "fields": {
+      "subtype": "Строительные",
+      "size": "55x105",
+      "color": "Серый",
+      "poly_grade": "2",
+      "bag_weight": 65,
+      "items_per_pack": 500
+    }
+  },
+
+  {
+    "model": "base.Product",
+    "pk": 3,
+    "fields": {
+      "type": "Мешки полипропиленовые",
+      "image": "products/5595.webp",
+      "price": 6.55
+    }
+  },
+
+  {
+    "model": "base.PolyBag",
+    "pk": 3,
+    "fields": {
+      "subtype": "Строительные",
+      "size": "55x95",
+      "color": "Зеленый",
+      "poly_grade": "2",
+      "bag_weight": 41,
+      "items_per_pack": 1000
+    }
+  },
+
+  {
+    "model": "base.Product",
+    "pk": 4,
+    "fields": {
+      "type": "Мешки полипропиленовые",
+      "image": "products/5595.webp",
+      "price": 9.95
+    }
+  },
+
+  {
+    "model": "base.PolyBag",
+    "pk": 4,
+    "fields": {
+      "subtype": "Строительные",
+      "size": "55x95 (усил.)",
+      "color": "Зеленый",
+      "poly_grade": "2",
+      "bag_weight": 45,
+      "items_per_pack": 1000
+    }
+  },
+
+  {
+    "model": "base.Product",
+    "pk": 5,
+    "fields": {
+      "type": "Мешки полипропиленовые",
+      "image": "products/5595.webp",
+      "price": 8.15
+    }
+  },
   {
     "model": "base.PolyBag",
     "pk": 5,
@@ -96,6 +152,61 @@
       "items_per_pack": 1000
     }
   },
+
+  {
+    "model": "base.Product",
+    "pk": 6,
+    "fields": {
+      "type": "Мешки полипропиленовые",
+      "image": "products/5595.webp",
+      "price": 12.4
+    }
+  },
+
+  {
+    "model": "base.PolyBag",
+    "pk": 6,
+    "fields": {
+      "subtype": "Строительные",
+      "size": "75x115",
+      "color": "Зеленый",
+      "poly_grade": "2",
+      "bag_weight": 75,
+      "items_per_pack": 1000
+    }
+  },
+
+  {
+    "model": "base.Product",
+    "pk": 7,
+    "fields": {
+      "type": "Мешки полипропиленовые",
+      "image": "products/5595.webp",
+      "price": 17.3
+    }
+  },
+  {
+    "model": "base.PolyBag",
+    "pk": 7,
+    "fields": {
+      "subtype": "Строительные",
+      "size": "90x130",
+      "color": "Зеленый",
+      "poly_grade": "2",
+      "bag_weight": 100,
+      "items_per_pack": 500
+    }
+  },
+
+  {
+    "model": "base.Product",
+    "pk": 8,
+    "fields": {
+      "type": "Мешки полипропиленовые",
+      "image": "products/4575.webp",
+      "price": 11.7
+    }
+  },
   {
     "model": "base.PolyBag",
     "pk": 8,
@@ -103,12 +214,259 @@
       "subtype": "Пищевые",
       "size": "45x75",
       "color": "Белый",
-      "poly_grade": "ВС",
+      "poly_grade": "Высший",
       "bag_weight": 45,
       "items_per_pack": 1000
     }
   },
+  {
+    "model": "base.Product",
+    "pk": 9,
+    "fields": {
+      "type": "Мешки полипропиленовые",
+      "image": "products/4575.webp",
+      "price": 13.5
+    }
+  },
+  {
+    "model": "base.PolyBag",
+    "pk": 9,
+    "fields": {
+      "subtype": "Пищевые",
+      "size": "55x95",
+      "color": "Белый",
+      "poly_grade": "Высший",
+      "bag_weight": 55,
+      "items_per_pack": 1000
+    }
+  },
+  {
+    "model": "base.Product",
+    "pk": 10,
+    "fields": {
+      "type": "Мешки полипропиленовые",
+      "image": "products/4575.webp",
+      "price": 12.5
+    }
+  },
+  {
+    "model": "base.PolyBag",
+    "pk": 10,
+    "fields": {
+      "subtype": "Пищевые",
+      "size": "55x105",
+      "color": "Белый",
+      "poly_grade": "Высший",
+      "bag_weight": 60,
+      "items_per_pack": 1000
+    }
+  },
+  {
+    "model": "base.Product",
+    "pk": 11,
+    "fields": {
+      "type": "Мешки полипропиленовые",
+      "image": "products/4575.webp",
+      "price": 16.6
+    }
+  },
+  {
+    "model": "base.PolyBag",
+    "pk": 11,
+    "fields": {
+      "subtype": "Пищевые",
+      "size": "55x105",
+      "color": "Белый",
+      "poly_grade": "Высший",
+      "bag_weight": 70,
+      "items_per_pack": 500
+    }
+  },
+  {
+    "model": "base.Product",
+    "pk": 12,
+    "fields": {
+      "type": "Мешки полипропиленовые",
+      "image": "products/4575.webp",
+      "price": 19.6
+    }
+  },
+  {
+    "model": "base.PolyBag",
+    "pk": 12,
+    "fields": {
+      "subtype": "Пищевые",
+      "size": "55x105",
+      "color": "Белый",
+      "poly_grade": "Высший",
+      "bag_weight": 80,
+      "items_per_pack": 500
+    }
+  },
+  {
+    "model": "base.Product",
+    "pk": 13,
+    "fields": {
+      "type": "Мешки полипропиленовые",
+      "image": "products/4575.webp",
+      "price": 21.5
+    }
+  },
+  {
+    "model": "base.PolyBag",
+    "pk": 13,
+    "fields": {
+      "subtype": "Пищевые",
+      "size": "55x105 ГОСТ",
+      "color": "Белый",
+      "poly_grade": "Высший",
+      "bag_weight": 90,
+      "items_per_pack": 500
+    }
+  },
 
+  {
+    "model": "base.Product",
+    "pk": 14,
+    "fields": {
+      "type": "Мешки полипропиленовые",
+      "image": "products/bytovie.webp",
+      "price": 13.2
+    }
+  },
+  {
+    "model": "base.PolyBag",
+    "pk": 14,
+    "fields": {
+      "subtype": "Бытовые",
+      "size": "55x105",
+      "color": "Белый",
+      "poly_grade": "1",
+      "bag_weight": 70,
+      "items_per_pack": 1000
+    }
+  },
+  {
+    "model": "base.Product",
+    "pk": 15,
+    "fields": {
+      "type": "Мешки полипропиленовые",
+      "image": "products/bytovie.webp",
+      "price": 27.1
+    }
+  },
+  {
+    "model": "base.PolyBag",
+    "pk": 15,
+    "fields": {
+      "subtype": "Бытовые",
+      "size": "80x115",
+      "color": "Белый",
+      "poly_grade": "1",
+      "bag_weight": 100,
+      "items_per_pack": 500
+    }
+  },
+
+  {
+    "model": "base.Product",
+    "pk": 16,
+    "fields": {
+      "type": "Мешки полипропиленовые",
+      "image": "products/bytovie.webp",
+      "price": 60.1
+    }
+  },
+  {
+    "model": "base.PolyBag",
+    "pk": 16,
+    "fields": {
+      "subtype": "Бытовые",
+      "size": "100x150",
+      "color": "Белый",
+      "poly_grade": "1",
+      "bag_weight": 175,
+      "items_per_pack": 300
+    }
+  },
+  {
+    "model": "base.PolyBagType",
+    "pk": "Ламинированные коробчатого типа",
+    "fields": {}
+  },
+  {
+    "model": "base.Product",
+    "pk": 17,
+    "fields": {
+      "type": "Мешки полипропиленовые",
+      "image": "products/korobchatyj.webp",
+      "price": 21.1
+    }
+  },
+  {
+    "model": "base.PolyBag",
+    "pk": 17,
+    "fields": {
+      "subtype": "Ламинированные коробчатого типа",
+      "size": "50x60x11x13",
+      "color": "Белый",
+      "poly_grade": "Высший",
+      "bag_weight": 80,
+      "items_per_pack": 500
+    }
+  },
+
+  {
+    "model": "base.Product",
+    "pk": 18,
+    "fields": {
+      "type": "Мешки полипропиленовые",
+      "image": "products/vklad.webp",
+      "price": 0
+    }
+  },
+  {
+    "model": "base.PolyBag",
+    "pk": 18,
+    "fields": {
+      "subtype": "Пищевые с П/Э вкладышем",
+      "size": "45x75",
+      "color": "Белый",
+      "poly_grade": "Высший",
+      "bag_weight": 45,
+      "items_per_pack": 500
+    }
+  },
+  {
+    "model": "base.Product",
+    "pk": 19,
+    "fields": {
+      "type": "Мешки полипропиленовые",
+      "image": "products/vklad.webp",
+      "price": 23.1
+    }
+  },
+  {
+    "model": "base.PolyBag",
+    "pk": 19,
+    "fields": {
+      "subtype": "Пищевые с П/Э вкладышем",
+      "size": "56x96",
+      "color": "Белый",
+      "poly_grade": "Высший",
+      "bag_weight": 80,
+      "items_per_pack": 500
+    }
+  },
+  {
+    "model": "base.Product",
+    "pk": 20,
+    "fields": {
+      "type": "МКР (биг-бэг)",
+      "image": "products/2strOtkr.webp",
+      "price": 255.0
+    }
+  },
   {
     "model": "base.BigBag",
     "pk": 20,
@@ -120,7 +478,85 @@
       "bag_weight": 0.98,
       "items_per_pack": 200,
       "pack_size": "120x70x70",
-      "pack_volume": 0.6
+      "pack_volume": 1
+    }
+  },
+  {
+    "model": "base.Product",
+    "pk": 21,
+    "fields": {
+      "type": "МКР (биг-бэг)",
+      "image": "products/2strSbork.webp",
+      "price": 345.0
+    }
+  },
+  {
+    "model": "base.BigBag",
+    "pk": 21,
+    "fields": {
+      "subtype": "МКР 2 стропы",
+      "size": "75x75x125",
+      "top_modification": "Сборка",
+      "bottom_modification": "Глухой",
+      "bag_weight": 0.98,
+      "items_per_pack": 200,
+      "pack_size": "120x70x70",
+      "pack_volume": 1
+    }
+  },
+  {
+    "model": "base.Product",
+    "pk": 22,
+    "fields": {
+      "type": "МКР (биг-бэг)",
+      "image": "products/2strOtkr.webp",
+      "price": 318.0
+    }
+  },
+  {
+    "model": "base.BigBag",
+    "pk": 22,
+    "fields": {
+      "subtype": "МКР 2 стропы",
+      "size": "75x75x150",
+      "top_modification": "Открытый",
+      "bottom_modification": "Глухой",
+      "bag_weight": 0.98,
+      "items_per_pack": 200,
+      "pack_size": "120x70x70",
+      "pack_volume": 1
+    }
+  },
+  {
+    "model": "base.Product",
+    "pk": 23,
+    "fields": {
+      "type": "МКР (биг-бэг)",
+      "image": "products/2strOtkr.webp",
+      "price": 335.0
+    }
+  },
+  {
+    "model": "base.BigBag",
+    "pk": 23,
+    "fields": {
+      "subtype": "МКР 2 стропы",
+      "size": "90x90x130",
+      "top_modification": "Открытый",
+      "bottom_modification": "Глухой",
+      "bag_weight": 1.1,
+      "items_per_pack": 200,
+      "pack_size": "120x70x70",
+      "pack_volume": 1
+    }
+  },
+  {
+    "model": "base.Product",
+    "pk": 24,
+    "fields": {
+      "type": "МКР (биг-бэг)",
+      "image": "products/4lOtkr.webp",
+      "price": 385.0
     }
   },
   {
@@ -132,9 +568,371 @@
       "top_modification": "Открытый",
       "bottom_modification": "Глухой",
       "bag_weight": 1.1,
-      "items_per_pack": 200,
-      "pack_size": "120x70x70",
-      "pack_volume": 0.8
+      "items_per_pack": 100,
+      "pack_size": "120x70x90",
+      "pack_volume": 1
+    }
+  },
+  {
+    "model": "base.Product",
+    "pk": 25,
+    "fields": {
+      "type": "МКР (биг-бэг)",
+      "image": "products/4lSbork.png",
+      "price": 428.0
+    }
+  },
+  {
+    "model": "base.BigBag",
+    "pk": 25,
+    "fields": {
+      "subtype": "МКР 4 лямки",
+      "size": "90x90x130",
+      "top_modification": "Сборка",
+      "bottom_modification": "Глухой",
+      "bag_weight": 1.1,
+      "items_per_pack": 100,
+      "pack_size": "120x70x90",
+      "pack_volume": 1
+    }
+  },
+  {
+    "model": "base.Product",
+    "pk": 26,
+    "fields": {
+      "type": "МКР (биг-бэг)",
+      "image": "products/4lOtkr.webp",
+      "price": 439.0
+    }
+  },
+  {
+    "model": "base.BigBag",
+    "pk": 26,
+    "fields": {
+      "subtype": "МКР 4 лямки",
+      "size": "90x90x150",
+      "top_modification": "Открытый",
+      "bottom_modification": "Глухой",
+      "bag_weight": 1.1,
+      "items_per_pack": 100,
+      "pack_size": "120x70x90",
+      "pack_volume": 1
+    }
+  },
+  {
+    "model": "base.Product",
+    "pk": 27,
+    "fields": {
+      "type": "МКР (биг-бэг)",
+      "image": "products/4lSbork.png",
+      "price": 452.0
+    }
+  },
+  {
+    "model": "base.BigBag",
+    "pk": 27,
+    "fields": {
+      "subtype": "МКР 4 лямки",
+      "size": "90x90x150",
+      "top_modification": "Сборка",
+      "bottom_modification": "Глухой",
+      "bag_weight": 1.1,
+      "items_per_pack": 100,
+      "pack_size": "120x70x90",
+      "pack_volume": 1
+    }
+  },
+  {
+    "model": "base.Product",
+    "pk": 28,
+    "fields": {
+      "type": "МКР (биг-бэг)",
+      "image": "products/4StrOtkrGluh.webp",
+      "price": 390.0
+    }
+  },
+  {
+    "model": "base.BigBag",
+    "pk": 28,
+    "fields": {
+      "subtype": "МКР 4 стропы",
+      "size": "95x95x130",
+      "top_modification": "Открытый",
+      "bottom_modification": "Глухой",
+      "bag_weight": 1.6,
+      "items_per_pack": 100,
+      "pack_size": "120x70x90",
+      "pack_volume": 1
+    }
+  },
+  {
+    "model": "base.Product",
+    "pk": 29,
+    "fields": {
+      "type": "МКР (биг-бэг)",
+      "image": "products/4StrSborkGluh.webp",
+      "price": 462.0
+    }
+  },
+  {
+    "model": "base.BigBag",
+    "pk": 29,
+    "fields": {
+      "subtype": "МКР 4 стропы",
+      "size": "95x95x130",
+      "top_modification": "Сборка",
+      "bottom_modification": "Глухой",
+      "bag_weight": 1.7,
+      "items_per_pack": 100,
+      "pack_size": "120x70x90",
+      "pack_volume": 1
+    }
+  },
+  {
+    "model": "base.Product",
+    "pk": 30,
+    "fields": {
+      "type": "МКР (биг-бэг)",
+      "image": "products/4StrSborkLuk.webp",
+      "price": 502.0
+    }
+  },
+  {
+    "model": "base.BigBag",
+    "pk": 30,
+    "fields": {
+      "subtype": "МКР 4 стропы",
+      "size": "95x95x130",
+      "top_modification": "Сборка",
+      "bottom_modification": "Люк",
+      "bag_weight": 1.7,
+      "items_per_pack": 100,
+      "pack_size": "120x70x90",
+      "pack_volume": 1
+    }
+  },
+  {
+    "model": "base.Product",
+    "pk": 31,
+    "fields": {
+      "type": "МКР (биг-бэг)",
+      "image": "products/4StrLukGluh.webp",
+      "price": 462.0
+    }
+  },
+  {
+    "model": "base.BigBag",
+    "pk": 31,
+    "fields": {
+      "subtype": "МКР 4 стропы",
+      "size": "95x95x130",
+      "top_modification": "Люк",
+      "bottom_modification": "Глухой",
+      "bag_weight": 1.7,
+      "items_per_pack": 100,
+      "pack_size": "120x70x90",
+      "pack_volume": 1
+    }
+  },
+  {
+    "model": "base.Product",
+    "pk": 32,
+    "fields": {
+      "type": "МКР (биг-бэг)",
+      "image": "products/LukLuk.webp",
+      "price": 502.0
+    }
+  },
+  {
+    "model": "base.BigBag",
+    "pk": 32,
+    "fields": {
+      "subtype": "МКР 4 стропы",
+      "size": "95x95x130",
+      "top_modification": "Люк",
+      "bottom_modification": "Люк",
+      "bag_weight": 1.7,
+      "items_per_pack": 100,
+      "pack_size": "120x70x90",
+      "pack_volume": 1
+    }
+  },
+  {
+    "model": "base.Product",
+    "pk": 33,
+    "fields": {
+      "type": "МКР (биг-бэг)",
+      "image": "products/4StrOtkrGluh.webp",
+      "price": 465.0
+    }
+  },
+  {
+    "model": "base.BigBag",
+    "pk": 33,
+    "fields": {
+      "subtype": "МКР 4 стропы",
+      "size": "95x95x180",
+      "top_modification": "Открытый",
+      "bottom_modification": "Глухой",
+      "bag_weight": 2.0,
+      "items_per_pack": 100,
+      "pack_size": "120x70x90",
+      "pack_volume": 1
+    }
+  },
+  {
+    "model": "base.Product",
+    "pk": 34,
+    "fields": {
+      "type": "МКР (биг-бэг)",
+      "image": "products/4StrSborkGluh.webp",
+      "price": 535.0
+    }
+  },
+  {
+    "model": "base.BigBag",
+    "pk": 34,
+    "fields": {
+      "subtype": "МКР 4 стропы",
+      "size": "95x95x180",
+      "top_modification": "Сборка",
+      "bottom_modification": "Глухой",
+      "bag_weight": 2.1,
+      "items_per_pack": 100,
+      "pack_size": "120x70x90",
+      "pack_volume": 1
+    }
+  },
+  {
+    "model": "base.Product",
+    "pk": 35,
+    "fields": {
+      "type": "МКР (биг-бэг)",
+      "image": "products/4StrSborkLuk.webp",
+      "price": 0
+    }
+  },
+  {
+    "model": "base.BigBag",
+    "pk": 35,
+    "fields": {
+      "subtype": "МКР 4 стропы",
+      "size": "95x95x180",
+      "top_modification": "Сборка",
+      "bottom_modification": "Люк",
+      "bag_weight": 2.1,
+      "items_per_pack": 100,
+      "pack_size": "120x70x90",
+      "pack_volume": 1
+    }
+  },
+  {
+    "model": "base.Product",
+    "pk": 36,
+    "fields": {
+      "type": "МКР (биг-бэг)",
+      "image": "products/4StrLukGluh.webp",
+      "price": 0
+    }
+  },
+  {
+    "model": "base.BigBag",
+    "pk": 36,
+    "fields": {
+      "subtype": "МКР 4 стропы",
+      "size": "95x95x180",
+      "top_modification": "Люк",
+      "bottom_modification": "Глухой",
+      "bag_weight": 2.1,
+      "items_per_pack": 100,
+      "pack_size": "120x70x90",
+      "pack_volume": 1
+    }
+  },
+  {
+    "model": "base.Product",
+    "pk": 37,
+    "fields": {
+      "type": "МКР (биг-бэг)",
+      "image": "products/LukLuk.webp",
+      "price": 0
+    }
+  },
+  {
+    "model": "base.BigBag",
+    "pk": 37,
+    "fields": {
+      "subtype": "МКР 4 стропы",
+      "size": "95x95x180",
+      "top_modification": "Люк",
+      "bottom_modification": "Люк",
+      "bag_weight": 2.1,
+      "items_per_pack": 100,
+      "pack_size": "120x70x90",
+      "pack_volume": 1
+    }
+  },
+  {
+    "model": "base.Product",
+    "pk": 38,
+    "fields": {
+      "type": "МКР (биг-бэг)",
+      "image": "products/vkladysh.png",
+      "price": 122
+    }
+  },
+  {
+    "model": "base.BigBag",
+    "pk": 38,
+    "fields": {
+      "subtype": "Вкладыши Новые МКР для МКР",
+      "size": "150x280",
+      "bag_weight": 0.6,
+      "items_per_pack": 25,
+      "pack_size": "55x40x12",
+      "pack_volume": 0
+    }
+  },
+  {
+    "model": "base.Product",
+    "pk": 39,
+    "fields": {
+      "type": "МКР (биг-бэг)",
+      "image": "products/vkladysh.png",
+      "price": 118
+    }
+  },
+  {
+    "model": "base.BigBag",
+    "pk": 39,
+    "fields": {
+      "subtype": "Вкладыши Новые МКР для МКР",
+      "size": "166x240",
+      "bag_weight": 0.6,
+      "items_per_pack": 25,
+      "pack_size": "55x40x12",
+      "pack_volume": 0
+    }
+  },
+  {
+    "model": "base.Product",
+    "pk": 40,
+    "fields": {
+      "type": "МКР (биг-бэг)",
+      "image": "products/vkladysh.png",
+      "price": 155
+    }
+  },
+  {
+    "model": "base.BigBag",
+    "pk": 40,
+    "fields": {
+      "subtype": "Вкладыши Новые МКР для МКР",
+      "size": "200x280",
+      "bag_weight": 0.8,
+      "items_per_pack": 25,
+      "pack_size": "80x40x17",
+      "pack_volume": 0.1
     }
   }
 ]

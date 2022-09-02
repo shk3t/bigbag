@@ -134,10 +134,11 @@ nav {
 
 .header__cart-login {
   display: grid;
-  grid-template-columns: 1fr auto;
-  grid-gap: 2rem;
+  grid-template-columns: 1fr auto auto;
+  grid-gap: 1.1rem;
   align-items: center;
   justify-content: space-between;
+  padding-left: 1em;
 }
 
 .header__admin-btn {
@@ -184,7 +185,9 @@ nav {
 }
 
 .slider {
-  height: 510px;
+  /* height: 650px; */
+  height: 38vw;
+
   display: grid;
   grid-template-columns: 0.8fr 1fr;
   grid-gap: 4rem;
