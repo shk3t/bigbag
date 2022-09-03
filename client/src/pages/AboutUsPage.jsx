@@ -7,25 +7,36 @@ export default function AboutUsPage() {
   return (
     <div>
       <Way />
-
       <div className="about-us__wrap">
         <div className="about-us__img">
-          <img src="#" alt="Производство мешков"></img>
+          <img
+            src="/server/media/products/aboutUs.jpg"
+            alt="Производство мешков"
+          ></img>
         </div>
         <div className="about-us__text">
           <h2>О компании</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
+            Компания «Авега» основана в 2017 году. Уже пять лет мы продаём
+            качественную упаковку из полипропилена для российских предприятий. У
+            нас вы можете заказать оптом{" "}
+            <strong>
+              строительные, бытовые, пищевые полипропиленовые мешки
+            </strong>
+            , а также <strong>мягкие контейнеры МКР(биг-бэги) </strong>разных
+            модификаций и сопутствующие аксессуары.
+          </p>
+          <p>
+            У каждого производства разные задачи. Мы индивидуально подходим к
+            каждому клиенту, помогая найти оптимальную упаковку и обеспечить
+            сохранность вашей продукции при хранении и транспортировке.
+          </p>
+          <p>
+            Мы <a href="/delivery"> доставляем упаковку</a> по Москве и
+            Московской области, а также по России и странам СНГ.
           </p>
         </div>
       </div>
-
       <Footer />
     </div>
   );

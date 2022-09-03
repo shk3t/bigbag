@@ -179,6 +179,11 @@ nav {
   border-radius: 10px;
 }
 
+.way__currentPath {
+  color: #323435;
+  font-weight: 400;
+}
+
 .way p {
   margin: 0;
   width: max-content;
@@ -1185,6 +1190,19 @@ button,
   overflow: auto;
 }
 
+/*/////////////////////// ДОСТАВКА*/
+.about-delivery {
+  padding: 2em 6em;
+}
+
+/*///////////////////// О НАС*/
+p > a[href^="/delivery"] {
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 500;
+  color: #cda88f;
+}
+
 /* /////////////////// МЕДИА ЗАПРОСЫ*/
 
 @media (max-width: 768px) {
@@ -1193,6 +1211,31 @@ button,
     margin-right: 2em;
     margin-left: 2em;
   }
+
+  .header__nav__ul {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header__nav {
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+
+  .header__nav-li {
+    font-size: 0.8em;
+    margin-bottom: 1em;
+  }
+
+  .about-us__img {
+    display: none;
+  }
+
+  .about-us__wrap {
+    grid-template-columns: 1fr;
+    padding-left: 2em;
+    padding-right: 2em;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -1200,6 +1243,9 @@ button,
     font-size: 0.9em;
   }
 
+  .header__nav-li:not(:first-child)::before {
+    display: none;
+  }
   .img-logo {
     width: 80px;
   }
@@ -1226,7 +1272,7 @@ button,
   }
 
   .our-benefits {
-    grid-template-columns: repeat(auto-fill, 170px);
+    grid-template-columns: repeat(auto-fill, 190px);
   }
 
   .our-benefits__item {
