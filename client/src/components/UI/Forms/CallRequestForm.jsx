@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  requestCallAction,
+  requestAction,
   BUTTON_INIT,
-} from "../../../reducers/callRequestReducer";
+} from "../../../reducers/modalRequestReducer";
 import ErrorMsg from "../ErrorMsg";
+import EmailService from "../../../API/EmailService";
 
 export default function CallRequestForm() {
   const dispatch = useDispatch();
   const authUser = useSelector((state) => state.authReducer.authUser);
-  const { errorMessages, buttonLabel } = useSelector(
-    (state) => state.callRequestReducer
+  const errorMessages = useSelector(
+    (state) => state.modalRequestReducer.errorMessages
+  );
+  const buttonLabel = useSelector(
+    (state) => state.modalRequestReducer.buttonLabel
   );
   const [request, setRequest] = useState({ name: "", phone: "", comment: "" });
 
@@ -22,7 +26,9 @@ export default function CallRequestForm() {
 
   async function sendRequest(event) {
     event.preventDefault();
-    dispatch(requestCallAction(request));
+    dispatch(
+      requestAction(async () => await EmailService.requestCall(request))
+    );
   }
 
   return (

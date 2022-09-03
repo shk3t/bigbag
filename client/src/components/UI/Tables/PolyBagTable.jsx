@@ -1,10 +1,13 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { POLY_BAG, BASE_URL } from "../consts";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { store } from "../../../store";
+import { POLY_BAG, BASE_URL } from "../../../consts";
 import {
-  clearProductListAction,
   listProductsAction,
-} from "../reducers/productListReducer";
+  deleteProductAction,
+} from "../../../reducers/productListReducer";
+import { setModalAction } from "../../../reducers/modalRequestReducer";
+import { setProductAction } from "../../../reducers/productReducer";
 
 export default function PolyBagTable() {
   const dispatch = useDispatch();
@@ -26,7 +29,8 @@ export default function PolyBagTable() {
         <div>Сорт</div>
         <div>Вес мешка</div>
         <div>Шт/уп</div>
-        <div className="admin__edit-title">Редактировать</div>
+        <div className="admin__edit-title"></div>
+        <div className="admin__edit-title"></div>
       </div>
       {products.map((product) => (
         <div className="all-products__title" key={product.id}>
@@ -47,7 +51,23 @@ export default function PolyBagTable() {
             {product.bag_weight}+-{product.weight_error} г
           </div>
           <div>{product.items_per_pack} Шт/уп</div>
-          <div className="admin__edit">Редактировать</div>
+          <div
+            className="admin__edit"
+            onClick={() => {
+              dispatch(setProductAction(product));
+              dispatch(setModalAction(true));
+            }}
+          >
+            Редактировать
+          </div>
+          <div
+            className="admin__edit"
+            onClick={async () => {
+              await store.dispatch(deleteProductAction(product.id));
+            }}
+          >
+            Удалить
+          </div>
         </div>
       ))}
     </div>

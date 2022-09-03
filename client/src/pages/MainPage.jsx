@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 import { CATALOG_PATH } from "../consts";
 import Footer from "../components/Footer";
-import Header from "../components/Header";
 
 import benefit from "../assets/benefit.png";
 import iconTrolleyCart from "../assets/icon-trolley-cart-3683279.png";

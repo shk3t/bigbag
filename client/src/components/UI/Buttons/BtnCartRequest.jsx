@@ -1,13 +1,13 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setModalAction } from "../../../reducers/callRequestReducer";
+import { setModalAction } from "../../../reducers/modalRequestReducer";
 import Modal from "../../Modal/Modal";
 import CartRequestForm from "../Forms/CartRequestForm";
 
 export default function BtnCartRequest() {
   const dispatch = useDispatch();
   const modalActive = useSelector(
-    (state) => state.callRequestReducer.modalActive
+    (state) => state.modalRequestReducer.modalActive
   );
 
   return (
@@ -17,7 +17,7 @@ export default function BtnCartRequest() {
       </button>
       <Modal
         active={modalActive}
-        setActive={(isOpen) => dispatch(setModalAction(isOpen))}
+        setActive={(isActive) => dispatch(setModalAction(isActive))}
       >
         <CartRequestForm />
       </Modal>

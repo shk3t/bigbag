@@ -1,11 +1,10 @@
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from base.permissions import ReadOnlyMixin
 
 from base.serializers import BagMapping
 
 
-class BagTypeList(ReadOnlyMixin, APIView):
+class BagTypeList(APIView):
     def get(self, request, type):
         BagType, BagTypeSerializer = BagMapping.for_type(type, type_model=True)
         bag_types = BagType.objects.all()
@@ -20,7 +19,7 @@ class BagTypeList(ReadOnlyMixin, APIView):
         return Response(serializer.data)
 
 
-class BagTypeDetail(ReadOnlyMixin, APIView):
+class BagTypeDetail(APIView):
     def put(self, request, type, subtype):
         Bag, _ = BagMapping.for_type(type)
         BagType, _ = BagMapping.for_type(type, type_model=True)

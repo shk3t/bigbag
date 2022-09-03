@@ -58,11 +58,11 @@ class User(AbstractUser, SafeModelMixin):
 
 @attribute_names
 class Product(SafeModelMixin, models.Model):
-    class OptionalPriceFieldFactory(models.DecimalField):
-        def create():
-            return models.DecimalField(
-                max_digits=12, decimal_places=2, null=True, blank=True
-            )
+    # class OptionalPriceFieldFactory(models.DecimalField):
+    #     def create():
+    #         return models.DecimalField(
+    #             max_digits=12, decimal_places=2, null=True, blank=True
+    #         )
 
     class ProductType(models.TextChoices):
         POLY_BAG = "Мешки полипропиленовые"
@@ -75,7 +75,7 @@ class Product(SafeModelMixin, models.Model):
         blank=True,
         validators=[validate_image_file_extension],
     )
-    price = models.DecimalField(max_digits=12, decimal_places=2)
+    price = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True)
     # price100 = OptionalPriceFieldFactory.create()
     # price200 = OptionalPriceFieldFactory.create()
     # price500 = OptionalPriceFieldFactory.create()
@@ -106,16 +106,15 @@ class PolyBag(SafeModelMixin, models.Model):
         to=PolyBagType,
         db_column="subtype",
         null=True,
-        blank=True,
         on_delete=models.SET_NULL,
     )
     size = models.CharField(max_length=128)
-    tag = models.CharField(max_length=128, null=True, blank=True)
+    tag = models.CharField(max_length=128, null=True)
     color = models.CharField(max_length=128)
     poly_grade = models.CharField(max_length=128)
     bag_weight = models.IntegerField()
     weight_error = models.IntegerField(default=3)
-    items_per_pack = models.IntegerField(default=500)
+    items_per_pack = models.IntegerField()
 
 
 class BigBag(SafeModelMixin, models.Model):
@@ -126,14 +125,13 @@ class BigBag(SafeModelMixin, models.Model):
         to=BigBagType,
         db_column="subtype",
         null=True,
-        blank=True,
         on_delete=models.SET_NULL,
     )
     size = models.CharField(max_length=128)
-    tag = models.CharField(max_length=128, null=True, blank=True)
+    tag = models.CharField(max_length=128, null=True)
     top_modification = models.CharField(max_length=128)
     bottom_modification = models.CharField(max_length=128)
     bag_weight = models.DecimalField(max_digits=12, decimal_places=3)
-    items_per_pack = models.IntegerField(default=100)
-    pack_size = models.CharField(max_length=128, default="120*70*70")
+    items_per_pack = models.IntegerField()
+    pack_size = models.CharField(max_length=128)
     pack_volume = models.DecimalField(max_digits=12, decimal_places=3)

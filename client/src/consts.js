@@ -19,3 +19,28 @@ export const AUTH_PATH = "/auth";
 export const REGISTRATION_PATH = "/registration";
 export const LOGIN_PATH = "/login";
 export const ADMIN_PATH = "/admin";
+
+// Translations
+export const TRANSLATIONS = {
+  email: "Эл. почта",
+  password: "Пароль",
+  type: "Тип продукта",
+  image: "Изображение",
+  price: "Цена",
+  price_on_request: "Цена по запросу",
+  in_stock: "В наличии",
+  new: "Новинка",
+  sale: "Акция",
+  subtype: "Тип мешка",
+  size: "Размер",
+  tag: "Метка",
+  color: "Цвет",
+  poly_grade: "Сорт",
+  bag_weight: "Вес мешка",
+  weight_error: "Погрешность веса",
+  items_per_pack: "Кол-во в упаковке",
+  top_modification: "Верхняя модификация",
+  bottom_modification: "Нижняя модификация",
+  pack_size: "Размер упаковки",
+  pack_volume: "Объем упаковки",
+};

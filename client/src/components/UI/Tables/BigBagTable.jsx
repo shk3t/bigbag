@@ -1,10 +1,7 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { BIG_BAG, BASE_URL } from "../consts";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  clearProductListAction,
-  listProductsAction,
-} from "../reducers/productListReducer";
+import { BIG_BAG, BASE_URL } from "../../../consts";
+import { listProductsAction } from "../../../reducers/productListReducer";
 
 export default function BigBagTable() {
   const dispatch = useDispatch();

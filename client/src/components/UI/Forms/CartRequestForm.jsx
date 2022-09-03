@@ -1,14 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { BUTTON_INIT, sendCartAction } from "../../../reducers/callRequestReducer";
+import {
+  BUTTON_INIT,
+  requestAction,
+} from "../../../reducers/modalRequestReducer";
 import ErrorMsg from "../ErrorMsg";
+import EmailService from "../../../API/EmailService";
 
 export default function CartRequestForm() {
   const dispatch = useDispatch();
   const authUser = useSelector((state) => state.authReducer.authUser);
   const cartItems = useSelector((state) => state.cartReducer.cartItems);
-  const { errorMessages, buttonLabel } = useSelector(
-    (state) => state.callRequestReducer
+  const errorMessages = useSelector(
+    (state) => state.modalRequestReducer.errorMessages
+  );
+  const buttonLabel = useSelector(
+    (state) => state.modalRequestReducer.buttonLabel
   );
   const [request, setRequest] = useState({ name: "", phone: "", comment: "" });
 
@@ -20,7 +27,15 @@ export default function CartRequestForm() {
 
   async function sendRequest(event) {
     event.preventDefault();
-    dispatch(sendCartAction(request, Object.values(cartItems)));
+    dispatch(
+      requestAction(
+        async () =>
+          await EmailService.sendCart({
+            request,
+            cart: Object.values(cartItems),
+          })
+      )
+    );
   }
 
   return (

@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useSearchParams } from "react-router-dom";
-
+import { useSearchParams } from "react-router-dom";
 import ProductItem from "../components/ProductItem";
-import ProductFilter from "../components/ProductFilter";
 import { listProductsAction } from "../reducers/productListReducer";
 
 export default function ProductList() {
