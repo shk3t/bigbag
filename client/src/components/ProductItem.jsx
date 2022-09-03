@@ -1,8 +1,8 @@
 import React from "react";
 import ButtonMore from "./UI/Buttons/ButtonMore";
 import { BASE_URL } from "../consts";
+import { getPrice } from "../utils/repr";
 
-// Деструктуризировал твои props в {product} - в принципе, получилось то же самое.
 const ProductItem = ({ product }) => {
   return (
     <div className="product-item">
@@ -23,7 +23,7 @@ const ProductItem = ({ product }) => {
             {product.type} {product.size}
           </div>
           <div className="catalog-item__price">
-            {product.price.toFixed(2)} р/шт
+            {getPrice(product)}
           </div>
         </div>
       </div>

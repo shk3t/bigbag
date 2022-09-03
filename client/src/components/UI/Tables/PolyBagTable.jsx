@@ -8,6 +8,7 @@ import {
 } from "../../../reducers/productListReducer";
 import { setModalAction } from "../../../reducers/modalRequestReducer";
 import { setProductAction } from "../../../reducers/productReducer";
+import { getPrice } from "../../../utils/repr";
 
 export default function PolyBagTable() {
   const dispatch = useDispatch();
@@ -42,7 +43,9 @@ export default function PolyBagTable() {
             ></img>
           </div>
           <div>{product.subtype}</div>
-          <div>{product.price.toFixed(2)} р/шт</div>
+          <div>
+            {getPrice(product)}
+          </div>
           <div>{product.size}</div>
           <div>{product.tag ? product.tag : "Без метки"}</div>
           <div>{product.color}</div>

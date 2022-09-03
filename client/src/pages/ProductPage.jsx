@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import "../styles/product.css";
-import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Way from "../components/Way";
 import { getProductAction } from "../reducers/productReducer";
 import { addItemAction } from "../reducers/cartReducer";
 import { BASE_URL } from "../consts";
+import { getPrice } from "../utils/repr";
 
 export default function ProductPage() {
   const { id } = useParams();
@@ -38,7 +38,7 @@ export default function ProductPage() {
 
   return (
     <div>
-      <Way />
+      <Way tail={product.type + " " + product.size} />
       <main>
         {product && (
           <div className="product-wrap">
@@ -54,7 +54,7 @@ export default function ProductPage() {
               </div>
               <div className="product__price-buy">
                 <div className="product__price">
-                  <p>{product.price.toFixed(2)} р/шт</p>
+                  <p>{getPrice(product)}</p>
                 </div>
                 <div className="product__amount">
                   <button
@@ -65,7 +65,7 @@ export default function ProductPage() {
                   </button>
                   <input
                     className="amount__cur"
-                    value={quantity}
+                    value={quantity || 0}
                     onChange={(event) =>
                       setQuantity(Number(event.target.value))
                     }

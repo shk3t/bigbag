@@ -14,8 +14,6 @@ export default function ProductInput({ field, ...props }) {
     if (modalActive) setValue(product[field]);
   }, [modalActive]);
 
-  console.log("called");
-
   switch (props.type) {
     case "file":
       return (

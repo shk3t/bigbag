@@ -422,7 +422,8 @@
     "fields": {
       "type": "Мешки полипропиленовые",
       "image": "products/vklad.webp",
-      "price": 0
+      "price": null,
+      "price_on_request": true
     }
   },
   {
@@ -556,7 +557,8 @@
     "fields": {
       "type": "МКР (биг-бэг)",
       "image": "products/4lOtkr.webp",
-      "price": 385.0
+      "price": 385.0,
+      "new": true
     }
   },
   {
@@ -579,7 +581,8 @@
     "fields": {
       "type": "МКР (биг-бэг)",
       "image": "products/4lSbork.png",
-      "price": 428.0
+      "price": 428.0,
+      "new": true
     }
   },
   {
@@ -602,7 +605,8 @@
     "fields": {
       "type": "МКР (биг-бэг)",
       "image": "products/4lOtkr.webp",
-      "price": 439.0
+      "price": 439.0,
+      "new": true
     }
   },
   {
@@ -625,7 +629,8 @@
     "fields": {
       "type": "МКР (биг-бэг)",
       "image": "products/4lSbork.png",
-      "price": 452.0
+      "price": 452.0,
+      "new": true
     }
   },
   {
@@ -809,7 +814,8 @@
     "fields": {
       "type": "МКР (биг-бэг)",
       "image": "products/4StrSborkLuk.webp",
-      "price": 0
+      "price": null,
+      "price_on_request": true
     }
   },
   {
@@ -832,7 +838,8 @@
     "fields": {
       "type": "МКР (биг-бэг)",
       "image": "products/4StrLukGluh.webp",
-      "price": 0
+      "price": null,
+      "price_on_request": true
     }
   },
   {
@@ -855,7 +862,8 @@
     "fields": {
       "type": "МКР (биг-бэг)",
       "image": "products/LukLuk.webp",
-      "price": 0
+      "price": null,
+      "price_on_request": true
     }
   },
   {

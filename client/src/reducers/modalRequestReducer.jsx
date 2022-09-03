@@ -35,7 +35,7 @@ export default function modalRequestReducer(state = initialState, action) {
 }
 
 export const requestAction =
-  (callback, delayed = True, postCallback = null) =>
+  (callback, delayed = true, postCallback = null) =>
   async (dispatch) => {
     try {
       dispatch({

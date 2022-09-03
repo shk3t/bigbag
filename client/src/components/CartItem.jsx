@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { removeItemAction, setQuantityAction } from "../reducers/cartReducer";
 import { BASE_URL } from "../consts";
 import del_icon from "../assets/del_icon.png";
+import { getPrice } from "../utils/repr";
 
 function CartItem({ item }) {
   const dispatch = useDispatch();
@@ -13,9 +14,7 @@ function CartItem({ item }) {
         <img src={BASE_URL + item.image}></img>
       </div>
       <div className="cart__container-products-title">{item.name}</div>
-      <div className="cart__container-products-price">
-        {item.price.toFixed(2)}
-      </div>
+      <div className="cart__container-products-price">{getPrice(item)}</div>
       <div className="cart__container-products-count">
         {/* вот это сделать компонентом мб, т.к. он есть и на карточке продукта */}
         <div className="count-count">
@@ -55,7 +54,7 @@ function CartItem({ item }) {
         </div>
       </div>
       <div className="cart__container-products-sum">
-        Итого: {(item.price * item.quantity).toFixed(2)} руб
+        {item.price ? (item.price * item.quantity).toFixed(2) + "руб" : "-"}
       </div>
       <div className="cart__container-products-delete">
         <button
