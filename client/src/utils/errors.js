@@ -1,14 +1,16 @@
 import { TRANSLATIONS } from "../consts";
 
 export function extractErrorMessages(error) {
-  if (!error.response) return "Unexpected behavior";
+  if (!error.response) return ["Unexpected behavior"];
   const data = error.response.data;
-  // const status = error.response.status;
+  const status = error.response.status;
+  if (status !== 400 && status !== 401) return ["Unexpected behavior"];
   const messages = [];
 
 
   function translate(word) {
-    return TRANSLATIONS[word.toLowerCase()];
+    const translation = TRANSLATIONS[word.toLowerCase()];
+    return translation || word;
   }
 
   // function decapitalize([first, ...rest]) {

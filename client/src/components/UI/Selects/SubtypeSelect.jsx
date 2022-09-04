@@ -17,7 +17,7 @@ export default function SubtypeSelect() {
 
   return (
     <select
-      defaultValue={"Выберите тип мешка"}
+      value={product.subtype || ""}
       onChange={(event) =>
         dispatch(setProductAction({ ...product, subtype: event.target.value }))
       }

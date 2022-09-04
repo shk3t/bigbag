@@ -18,7 +18,6 @@ export default function AdminTableSelect() {
       <p> Выберите таблицу:</p>
       <select
         onChange={(event) => {
-          // TODO попробовать удалить
           if (event.target.value !== searchParams.get("table"))
             dispatch(clearProductListAction());
           setSearchParams({ table: event.target.value });
@@ -31,6 +30,7 @@ export default function AdminTableSelect() {
         <option value={BIG_BAG}>МКР (биг-бэг)</option>
         <option value={POLY_BAG_TYPE}>Типы полипропиленовых мешков</option>
         <option value={BIG_BAG_TYPE}>Типы МКР</option>
+        {/*<option value="users">Пользователи</option>*/}
       </select>
     </div>
   );

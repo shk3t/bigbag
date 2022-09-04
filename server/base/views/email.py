@@ -1,4 +1,5 @@
-from django.core.mail import send_mail
+from datetime import datetime
+from django.core.mail import EmailMessage, send_mail
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
@@ -10,14 +11,13 @@ def request_call(request):
     data = request.data
     message = EmailService.request_to_message(data)
 
-    # send_mail(
-    #     "Заказ звонка",
-    #     message,
-    #     "sfdm-service@mail.ru",
-    #     ["dansikdudok@mail.ru"],
-    #     fail_silently=False,
-    # )
-    print(message)
+    send_mail(
+        "Заказ звонка",
+        message,
+        "sfdm-service@mail.ru",
+        ["dansikdudok@mail.ru"],
+        fail_silently=False,
+    )
     return Response("Sended")
 
 
@@ -27,22 +27,30 @@ def request_with_cart(request):
     cart_data = request.data["cart"]
     message = EmailService.request_to_message(request_data)
 
-    if cart_data:
-        message += "\n\nКорзина:\n"
-        message += f"{'Наименование' : <32}{'Количество' : <16}{'Цена за штуку' : <16}{'Общая цена' : <16}\n"
-        total_price = 0.0
-        for item in cart_data:
-            entry_price = item["quantity"] * item["price"]
-            total_price += entry_price
-            message += f"{item['name'] : <32}{item['quantity'] : <16}{item['price'] : <16.2f}{entry_price : <16.0f}\n"
-        message += f"Итого: {total_price} руб"
+    email = EmailMessage(
+        "Заявка с корзиной",
+        message,
+        "sfdm-service@mail.ru",
+        ["dansikdudok@mail.ru"],
+    )
 
-    # send_mail(
-    #     "Заявка с корзиной",
-    #     message,
-    #     "sfdm-service@mail.ru",
-    #     ["dansikdudok@mail.ru"],
-    #     fail_silently=False,
-    # )
-    print(message)
+    if cart_data:
+        filename = f"{request_data['name']}_{datetime.now().strftime('%d%m%y_%H%M%S')}_cart.csv"
+        csv = "Наименование,Количество,Цена за штуку,Общая цена\n"
+        total_price = 0.0
+        price_on_request = False
+        for item in cart_data:
+            if item["price"]:
+                entry_price = item["quantity"] * item["price"]
+                total_price += entry_price
+                csv += f"{item['name']},{item['quantity']},{item['price'] : .2f},{entry_price}\n"
+            else:
+                price_on_request = True
+                csv += f"{item['name']},{item['quantity']},-,-\n"
+        csv += f"\nИтого,{total_price : .2f}"
+        if price_on_request:
+            csv += ",Запрос цены"
+        email.attach(filename, csv, "text/csv")
+
+    email.send(fail_silently=False)
     return Response("Sended")

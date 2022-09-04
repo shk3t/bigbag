@@ -1,9 +1,8 @@
+import re
 from datetime import datetime
-from django.core.exceptions import ValidationError
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import AccessToken, RefreshToken
 from transliterate import translit
-import django.contrib.auth.password_validation as auth
 from base.exceptions import HttpException
 
 from base.models import User
@@ -33,13 +32,18 @@ class AuthService:
 
 class EmailService:
     def request_to_message(data):
-        if (
-            not "name" in data
-            or not "phone" in data
-            or not data["name"]
-            or not data["phone"]
-        ):
-            raise HttpException("Имя и номер телефона должны быть указаны", 400)
+        errors = {}
+        if not "name" in data or not data["name"]:
+            errors["Имя"] = ["Это поле не может быть пустым."]
+        elif not re.fullmatch(r"[A-Za-zА-Яа-я\s]+", data["name"]):
+            errors["Имя"] = ["Введены некорректные данные."]
+        if not "phone" in data or not data["phone"]:
+            errors["Тел."] = ["Это поле не может быть пустым."]
+        # elif not re.fullmatch(r"^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$", data["phone"]):
+        elif not re.fullmatch(r"[\+\-\(\)\s0-9]+", data["phone"]):
+            errors["Тел."] = ["Введены некорректные данные."]
+        if errors:
+            raise HttpException(errors, 400)
 
         message = f"Имя: {data['name']},\nТелефон: {data['phone']}"
 

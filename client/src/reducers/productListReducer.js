@@ -39,6 +39,7 @@ export const clearProductListAction = () => (dispatch) => {
 };
 
 export const createProductAction = (data) => async (dispatch) => {
+  if (!data.tag) data.tag = null;
   let product = {};
   if (data.imageFile) {
     product = await ProductService.createProduct(data);
@@ -53,6 +54,7 @@ export const createProductAction = (data) => async (dispatch) => {
 };
 
 export const updateProductAction = (id, data) => async (dispatch) => {
+  if (!data.tag) data.tag = null;
   let product = {};
   if (data.imageFile) {
     product = await ProductService.updateProduct(id, data);

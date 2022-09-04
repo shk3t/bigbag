@@ -21,6 +21,7 @@ export default function PolyBagTable() {
   return (
     <div>
       <div className="all-products__title">
+        <div>№</div>
         <div>Фото</div>
         <div>Тип мешка</div>
         <div>Цена</div>
@@ -35,6 +36,7 @@ export default function PolyBagTable() {
       </div>
       {products.map((product) => (
         <div className="all-products__title" key={product.id}>
+          <div>{product.id}</div>
           <div className="admin-item__img">
             <img
               className="catalog-item__img"
@@ -42,12 +44,10 @@ export default function PolyBagTable() {
               src={BASE_URL + product.image}
             ></img>
           </div>
-          <div>{product.subtype}</div>
-          <div>
-            {getPrice(product)}
-          </div>
+          <div>{product.subtype || "-"}</div>
+          <div>{getPrice(product)}</div>
           <div>{product.size}</div>
-          <div>{product.tag ? product.tag : "Без метки"}</div>
+          <div>{product.tag || "-"}</div>
           <div>{product.color}</div>
           <div>{product.poly_grade}</div>
           <div>

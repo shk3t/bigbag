@@ -15,10 +15,22 @@ export default function ProductInput({ field, ...props }) {
   }, [modalActive]);
 
   switch (props.type) {
+    case "checkbox":
+      return (
+        <input
+          {...props}
+          checked={product[field] || false}
+          onChange={(event) => {
+            product[field] = event.target.checked;
+            dispatch(setProductAction(product));
+          }}
+        />
+      );
     case "file":
       return (
         <input
           {...props}
+          key={modalActive}
           onChange={(event) => {
             product[field + "File"] = event.target.files[0];
             dispatch(setProductAction(product));

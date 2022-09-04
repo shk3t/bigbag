@@ -5,7 +5,7 @@ import BtnSaveProduct from "../Buttons/BtnSaveProduct";
 import { useSelector } from "react-redux";
 import ErrorMsg from "../ErrorMsg";
 
-export default function PolyBagForm() {
+export default function BigBagForm() {
   const errorMessages = useSelector(
     (state) => state.modalRequestReducer.errorMessages
   );
@@ -26,27 +26,31 @@ export default function PolyBagForm() {
             <SubtypeSelect />
           </div>
           Цена в руб.:
-          <ProductInput type="number" field="price" placeholder="13.00" />
+          <ProductInput type="number" field="price" placeholder="265.00" />
           Размер:
-          <ProductInput type="text" field="size" placeholder="50x90" />
+          <ProductInput type="text" field="size" placeholder="75x75x125" />
           Метка (необязательно):
           <ProductInput
             type="text"
             field="tag"
             placeholder="ГОСТ / (усиленный)"
           />
-          Цвет:
-          <ProductInput type="text" field="color" placeholder="Серый" />
-          Сорт:
-          <ProductInput type="text" field="poly_grade" placeholder="ВС" />
-          Вес мешка в гр.:
-          <ProductInput type="number" field="bag_weight" placeholder="45" />
+          Верхняя модификация:
+          <ProductInput type="text" field="top_modification" placeholder="Открытый" />
+          Нижняя модификация:
+          <ProductInput type="text" field="bottom_modification" placeholder="Глухой" />
+          Вес мешка в кг.:
+          <ProductInput type="number" field="bag_weight" placeholder="0.98" />
           Штук в упаковке:
           <ProductInput
             type="number"
             field="items_per_pack"
-            placeholder="1000"
+            placeholder="200"
           />
+          Размер упаковки:
+          <ProductInput type="text" field="pack_size" placeholder="120x70x70" />
+          Объем упаковки в м3:
+          <ProductInput type="number" field="pack_volume" placeholder="0.6" />
           Цена по запросу:
           <ProductInput type="checkbox" field="price_on_request" />
           Есть в наличии:
@@ -61,3 +65,4 @@ export default function PolyBagForm() {
     </div>
   );
 }
+

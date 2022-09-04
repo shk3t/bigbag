@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import CartItem from "./CartItem";
 
@@ -7,10 +7,12 @@ export default function CartItemList() {
 
   function getTotalPrice() {
     let totalPrice = 0.0;
+    let greaterPrice = false;
     for (const item of Object.values(cartItems)) {
+      if (!item.price) greaterPrice = true;
       totalPrice += item.price * item.quantity;
     }
-    return totalPrice.toFixed(2);
+    return (greaterPrice ? ">" : "") + totalPrice.toFixed(2);
   }
 
   return (
