@@ -1,30 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import { Routes, Route, Navigate } from "react-router-dom";
-import AuthService from "../API/AuthService";
 import { MAIN_PATH } from "../consts";
-import {
-  publicRoutes,
-  authRoutes,
-  adminRoutes,
-  managerRoutes,
-} from "../routes";
+import { parseToken } from "../utils/tokens";
+import { publicRoutes, authRoutes, adminRoutes } from "../routes";
 
 const AppRouter = () => {
   const authUser = useSelector((state) => state.authReducer.authUser);
   const accessToken = useSelector((state) => state.authReducer.accessToken);
   const [routes, setRoutes] = useState(publicRoutes);
 
-  useEffect(() => {
+  useMemo(() => {
     if (authUser) {
-      setRoutes([...routes, ...authRoutes]);
-      const token = AuthService.parseToken(accessToken);
+      routes.push(...authRoutes);
+      const token = parseToken(accessToken);
       if (token.is_admin) {
-        setRoutes([...routes, ...adminRoutes]);
+        routes.push(...adminRoutes);
       }
-      if (token.is_manager) {
-        setRoutes([...routes, ...managerRoutes]);
-      }
+      setRoutes([...routes]);
     }
   }, [authUser]);
 

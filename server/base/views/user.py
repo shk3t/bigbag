@@ -1,15 +1,13 @@
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.permissions import IsAdminUser, IsAuthenticated
+from rest_framework.permissions import IsAuthenticated
 
 from base.serializers import UserSerializer
 from base.models import User
-from base.services import AuthService
-
+from base.permissions import IsAdmin
 
 class UserList(APIView):
-    # TODO uncomment all
-    # permission_classes = [IsAdminUser]
+    permission_classes = [IsAdmin]
 
     def get(self, request):
         users = User.objects.all()
@@ -18,8 +16,7 @@ class UserList(APIView):
 
 
 class UserDetail(APIView):
-    # permission_classes = [IsAdminUser]
-    # TODO use additional secret key
+    permission_classes = [IsAdmin]
 
     def get(self, request, id):
         user = User.get_by_pk(id)
@@ -41,7 +38,7 @@ class UserDetail(APIView):
 
 
 class AuthenticatedUserDetail(APIView):
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
     def get(self, request):
         user = request.user
@@ -50,6 +47,8 @@ class AuthenticatedUserDetail(APIView):
 
     def put(self, request):
         updated_data = request.data
+        updated_data.pop("is_admin", None)
+        updated_data.pop("is_manager", None)
         user = request.user
         serializer = UserSerializer(user, data=updated_data, partial=True)
         serializer.is_valid(raise_exception=True)

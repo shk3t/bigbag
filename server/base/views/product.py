@@ -7,12 +7,12 @@ from base.serializers import BagProductSerializer, BagMapping
 
 
 class ProductList(APIView):
-    # permission_classes = [IsAdminOrReadOnly]
+    permission_classes = [IsAdminOrReadOnly]
 
     def get(self, request):
         type_param = request.query_params.get("type")
         products = Product.objects.all()
-        if (type_param and type_param != "all"):
+        if type_param and type_param != "all":
             products = products.filter(type=type_param)
         serializer = BagProductSerializer(products, many=True)
         return Response(serializer.data)
@@ -25,6 +25,8 @@ class ProductList(APIView):
 
 
 class ProductDetail(APIView):
+    permission_classes = [IsAdminOrReadOnly]
+
     def get(self, request, id):
         product = Product.get_by_pk(id)
         serializer = BagProductSerializer(product)
@@ -48,6 +50,8 @@ class ProductDetail(APIView):
 
 
 class ImageDetial(APIView):
+    permission_classes = [IsAdminOrReadOnly]
+
     def put(self, request, product_id):
         product = Product.get_by_pk(product_id)
         product.image.delete()

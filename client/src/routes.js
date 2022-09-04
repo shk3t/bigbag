@@ -16,21 +16,17 @@ import {
 } from "./consts";
 
 export const adminRoutes = [
-];
-
-export const managerRoutes = [
+  { path: ADMIN_PATH, Component: AdminPage },
 ];
 
 export const authRoutes = [
 ];
 
 export const publicRoutes = [
-  { path: ADMIN_PATH, Component: AdminPage },
-
-  { path: CART_PATH, Component: CartPage },
-  { path: PRODUCTS_PATH + "/:id", Component: ProductPage },
   { path: CATALOG_PATH, Component: CatalogPage },
+  { path: DELIVERY_PATH, Component: DeliveryPage },
+  { path: PRODUCTS_PATH + "/:id", Component: ProductPage },
+  { path: CART_PATH, Component: CartPage },
   { path: MAIN_PATH, Component: MainPage },
   { path: ABOUT_PATH, Component: AboutUsPage },
-  { path: DELIVERY_PATH, Component: DeliveryPage },
 ];

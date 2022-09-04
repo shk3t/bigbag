@@ -1,10 +1,13 @@
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from base.permissions import IsAdminOrReadOnly
 
 from base.serializers import BagMapping
 
 
 class BagTypeList(APIView):
+    permission_classes = [IsAdminOrReadOnly]
+
     def get(self, request, type):
         BagType, BagTypeSerializer = BagMapping.for_type(type, type_model=True)
         bag_types = BagType.objects.all()
@@ -20,6 +23,8 @@ class BagTypeList(APIView):
 
 
 class BagTypeDetail(APIView):
+    permission_classes = [IsAdminOrReadOnly]
+
     def put(self, request, type, subtype):
         Bag, _ = BagMapping.for_type(type)
         BagType, _ = BagMapping.for_type(type, type_model=True)

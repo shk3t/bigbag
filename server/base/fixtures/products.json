@@ -895,6 +895,7 @@
     "fields": {
       "subtype": "Вкладыши Новые МКР для МКР",
       "size": "150x280",
+      "top_modification": "2 сорт",
       "bag_weight": 0.6,
       "items_per_pack": 25,
       "pack_size": "55x40x12",
@@ -916,6 +917,7 @@
     "fields": {
       "subtype": "Вкладыши Новые МКР для МКР",
       "size": "166x240",
+      "top_modification": "2 сорт",
       "bag_weight": 0.6,
       "items_per_pack": 25,
       "pack_size": "55x40x12",
@@ -937,6 +939,7 @@
     "fields": {
       "subtype": "Вкладыши Новые МКР для МКР",
       "size": "200x280",
+      "top_modification": "2 сорт",
       "bag_weight": 0.8,
       "items_per_pack": 25,
       "pack_size": "80x40x17",

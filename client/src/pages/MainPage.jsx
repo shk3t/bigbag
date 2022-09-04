@@ -104,7 +104,6 @@ export default function MainPage() {
             <div className="catalog-item__wrap">
               {[...Array(2).keys()].map((key) => (
                 <div key={key} className="catalog-item">
-                  {console.log(key)}
                   <div className="catalog-item__img-wrap">
                     <img
                       className="catalog-item__img"

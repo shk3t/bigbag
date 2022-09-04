@@ -12,9 +12,11 @@ import {
 import BtnLoginLogout from "./UI/Buttons/BtnLoginLogout";
 import HelloUser from "./UI/HelloUser";
 import CartLogo from "./UI/CartLogo";
+import { parseToken } from "../utils/tokens";
 
 export default function Header() {
   const authUser = useSelector((state) => state.authReducer.authUser);
+  const accessToken = useSelector((state) => state.authReducer.accessToken);
 
   return (
     <header>
@@ -39,9 +41,11 @@ export default function Header() {
           </ul>
         </nav>
       </div>
-      <Link to={ADMIN_PATH}>
-        <button className="header__admin-btn">Админ панель</button>
-      </Link>
+      {authUser && parseToken(accessToken).is_admin && (
+        <Link to={ADMIN_PATH}>
+          <button className="header__admin-btn">Админ панель</button>
+        </Link>
+      )}
       <div className="header__cart-login">
         {authUser ? <HelloUser name={authUser.name} /> : ""}
         <CartLogo />
