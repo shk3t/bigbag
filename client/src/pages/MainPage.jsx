@@ -8,14 +8,45 @@ import benefit from "../assets/benefit.png";
 import iconTrolleyCart from "../assets/icon-trolley-cart-3683279.png";
 import novopack from "../assets/novopack.png";
 import exampleBug from "../assets/example-bug.png";
+import bigbag from "../assets/bigbag.webp";
+
 import main_img from "../assets/main_img.jpg";
 
 import BtnCallRequest from "../components/UI/Buttons/BtnCallRequest";
 
 export default function MainPage() {
+  function defineItemByKey(key) {
+    switch (key) {
+      case 0:
+        return "МЕШКИ";
+
+      case 1:
+        return "БИГ-БЭГИ";
+
+      case 2:
+        return "ПЕРЧАТКИ";
+
+      case 3:
+        return "БИГ-БЭГИ б/у";
+
+      default:
+        return "ТОВАРЫ";
+    }
+  }
+
+  function defineImgByKey(key) {
+    switch (key) {
+      case 0:
+        return exampleBug;
+      case 1:
+        return bigbag;
+      default:
+        return exampleBug;
+    }
+  }
+
   return (
     <div className="root-div">
-
       <div className="container">
         <main>
           <section className="slider">
@@ -71,24 +102,28 @@ export default function MainPage() {
           </div>
           <section className="catalog">
             <div className="catalog-item__wrap">
-              {[...Array(10).keys()].map((key) => (
+              {[...Array(2).keys()].map((key) => (
                 <div key={key} className="catalog-item">
+                  {console.log(key)}
                   <div className="catalog-item__img-wrap">
                     <img
                       className="catalog-item__img"
-                      src={exampleBug}
-                      alt="мешок"
+                      src={defineImgByKey(key)}
+                      alt="п/п мешок"
                     />
                   </div>
                   <div className="catalog-btn__wrap">
-                    <button className="catalog-item__btn-price">МЕШКИ</button>
-                    <button className="catalog-item__btn-shopping-cart">
+                    <button className="catalog-item__btn-price">
+                      {defineItemByKey(key)}
+                    </button>
+
+                    {/* <button className="catalog-item__btn-shopping-cart">
                       <img
                         className="icon-trolley"
                         src={iconTrolleyCart}
                         alt="корзина"
                       />
-                    </button>
+                    </button> */}
                   </div>
                 </div>
               ))}

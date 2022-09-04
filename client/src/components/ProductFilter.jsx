@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { POLY_BAG, BIG_BAG } from "../consts";
+import ScrollToTop from "../components/ScrollToTop.jsx";
 
 export default function ProductFilter() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -10,7 +11,8 @@ export default function ProductFilter() {
     { key: POLY_BAG, name: "Мешки" },
     { key: BIG_BAG, name: "Биг-бэги" },
   ]);
-
+  // сейчас он срабатывает только один раз
+  <ScrollToTop />;
   return (
     <div>
       <h4>Фильтры</h4>
@@ -28,7 +30,7 @@ export default function ProductFilter() {
         <button
           className="filter__categories"
           key={el.key}
-          onClick={() => setSearchParams({type: el.key})}
+          onClick={() => setSearchParams({ type: el.key })}
         >
           {el.name}
         </button>
