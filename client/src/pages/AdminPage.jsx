@@ -1,6 +1,6 @@
 import React from "react";
 import AdminModal from "../components/Modal/AdminModal";
-import BtnNewProduct from "../components/UI/Buttons/BtnNewProduct";
+import BtnAdminNew from "../components/UI/Buttons/BtnAdminNew";
 import AdminTables from "../components/UI/Tables/AdminTables";
 import AdminTableSelect from "../components/UI/Selects/AdminTableSelect";
 
@@ -8,7 +8,7 @@ export default function AdminPage() {
   return (
     <div>
       <main className="admin-main">
-        <BtnNewProduct />
+        <BtnAdminNew />
         <AdminTableSelect />
         <div className="admin__tables">
           <AdminTables />

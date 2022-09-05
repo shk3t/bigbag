@@ -14,8 +14,6 @@ export default function PolyBagForm() {
     <div>
       {errorMessages && <ErrorMsg messages={errorMessages} />}
       <form className="admin_add-meshki" encType="multipart/form-data">
-        {/* <h4>Добавить мешок</h4> */}
-
         <div className="admin__add-description">
           <div>
             Выберите изображение:&nbsp;&nbsp;

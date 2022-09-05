@@ -12,7 +12,10 @@ from base.services import AuthService
 
 @api_view(["POST"])
 def register(request):
-    serializer = UserSerializer(data=request.data)
+    data = request.data
+    data.pop("is_admin", None)
+    data.pop("is_manager", None)
+    serializer = UserSerializer(data=data)
     serializer.is_valid(raise_exception=True)
     user = serializer.save()
     return AuthService.tokenized_response(user)

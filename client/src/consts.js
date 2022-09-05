@@ -7,6 +7,7 @@ export const POLY_BAG = "Мешки полипропиленовые";
 export const BIG_BAG = "МКР (биг-бэг)";
 export const POLY_BAG_TYPE = "polybag-type";
 export const BIG_BAG_TYPE = "bigbag-type";
+export const USERS = "users";
 
 // Routes
 export const MAIN_PATH = "/main";
