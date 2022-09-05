@@ -49,12 +49,60 @@ export default function ProductPage() {
               <div className="product-about__title">
                 {product.type} {product.size}
               </div>
+              {/* при добавлении новой категории, напр., перчаток, переписать */}
               <div className="product-about__text">
-                <p>{product.subtype}</p>
+                <p>
+                  <span className="product-about__category"> Тип:&nbsp;</span>
+                  {product.subtype}
+                </p>
+                <p>
+                  <span className="product-about__category">
+                    {" "}
+                    Размер:&nbsp;
+                  </span>
+                  {product.size}
+                </p>
+                <p>
+                  <span className="product-about__category"> Вес:&nbsp;</span>
+                  {product.bag_weight}{" "}
+                  {product.type === "Мешки полипропиленовые"
+                    ? "гр/шт"
+                    : "кг/шт"}
+                </p>
+                <p>
+                  <span className="product-about__category">
+                    Кол-во в упаковке:
+                  </span>{" "}
+                  {product.items_per_pack}
+                </p>
+
+                {product.type === "Мешки полипропиленовые" ? (
+                  <p>
+                    <span className="product-about__category">Цвет:&nbsp;</span>
+                    {product.color}
+                  </p>
+                ) : (
+                  <p>
+                    <span className="product-about__category">Верх:&nbsp;</span>
+                    {product.top_modification}
+                  </p>
+                )}
+                {product.type === "Мешки полипропиленовые" ? (
+                  <p>
+                    <span className="product-about__category">Сорт:&nbsp;</span>
+                    {product.poly_grade}
+                  </p>
+                ) : (
+                  <p>
+                    <span className="product-about__category">Низ:&nbsp;</span>
+                    {product.bottom_modification}
+                  </p>
+                )}
               </div>
               <div className="product__price-buy">
                 <div className="product__price">
-                  <p>{getPrice(product)}</p>
+                  <span>От</span>
+                  <span>&nbsp;{getPrice(product)}</span>
                 </div>
                 <div className="product__amount">
                   <button

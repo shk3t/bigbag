@@ -32,12 +32,12 @@ export default function Way({ tail = null }) {
 
   return (
     <section className="way">
-      <span>Главная</span>
-      <span>{" > "}</span>
+      <span>Главная&ensp;</span>
+      <span>{">"}&ensp;</span>
       <span className={tail || "way__currentPath"}>
-        {getCurrentPathname(pathname)}
+        {getCurrentPathname(pathname)}&ensp;
       </span>
-      {tail && <span> {" > "} </span>}
+      {tail && <span> {">"}&ensp; </span>}
       {tail && <span className="way__currentPath">{tail}</span>}
     </section>
   );

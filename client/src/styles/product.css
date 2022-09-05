@@ -48,8 +48,14 @@ main {
 
 .product-about__text {
   margin-top: 1.2em;
-  color: #9a9292;
-  font-size: 1.2em;
+  color: #655f5f;
+  font-size: 1em;
+  line-height: 0.7em;
+}
+
+.product-about__category {
+  color: #434343;
+  font-weight: 500;
 }
 
 .product__price-buy {
@@ -61,8 +67,8 @@ main {
 }
 
 .product__price {
-  align-items: center;
-  width: 100px;
+  align-self: center;
+  /* width: 100px; */
   font-size: 1.2em;
   color: #434343;
   font-weight: 600;

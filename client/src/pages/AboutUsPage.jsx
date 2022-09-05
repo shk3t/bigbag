@@ -2,17 +2,16 @@ import React from "react";
 import Header from "../components/Header";
 import Way from "../components/Way";
 import Footer from "../components/Footer";
+import aboutUs from "../assets/aboutUs.jpg";
 
 export default function AboutUsPage() {
   return (
     <div>
       <Way />
-      <div className="about-us__wrap">
-        <div className="about-us__img">
-          <img
-            src="/server/media/products/aboutUs.jpg"
-            alt="Производство мешков"
-          ></img>
+      <div className="slider about-us__wrap">
+        {/* <div className="about-us__img"> */}
+        <div className="slider-img">
+          <img src={aboutUs} alt="Производство мешков"></img>
         </div>
         <div className="about-us__text">
           <h2>О компании</h2>

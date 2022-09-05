@@ -10,7 +10,7 @@ import novopack from "../assets/novopack.png";
 import exampleBug from "../assets/example-bug.png";
 import bigbag from "../assets/bigbag.webp";
 
-import main_img from "../assets/main_img.jpg";
+import main_img from "../assets/main_img.webp";
 
 import BtnCallRequest from "../components/UI/Buttons/BtnCallRequest";
 

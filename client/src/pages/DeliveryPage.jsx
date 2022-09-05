@@ -16,8 +16,8 @@ export default function DeliveryPage() {
           тарифы для наших клиентов. Доставляем по{" "}
           <strong>России и странам CНГ!</strong> <br /> <br />
           Рассчитайте стоимость доставки по телефону{" "}
-          <strong> (812) 679-05-55 </strong> или напишите нам на почту
-          SALES.AVEGA@YANDEX.RU
+          <strong> (499) 490-78-12 </strong> или напишите нам на почту
+          <strong> avega.si@mail.ru</strong>
         </div>
       </div>
       <Footer />
