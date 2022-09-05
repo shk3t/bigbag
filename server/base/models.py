@@ -47,6 +47,9 @@ class User(AbstractUser, SafeModelMixin):
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
 
+    class Meta:
+        ordering = ["id"]
+
     @property
     def is_active(self):
         return True
@@ -88,6 +91,9 @@ class Product(SafeModelMixin, models.Model):
     in_stock = models.BooleanField(default=True)
     new = models.BooleanField(default=False)
     sale = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ["id"]
 
 
 class PolyBagType(SafeModelMixin, models.Model):

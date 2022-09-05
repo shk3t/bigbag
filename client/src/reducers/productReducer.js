@@ -57,13 +57,11 @@ export default function productReducer(
     case SET_PRODUCT:
       return { product: { ...action.payload } };
     case CLEAR_PRODUCT:
-      let clearedProduct = null
+      let clearedProduct = null;
       if (!action.payload) clearedProduct = emptyProduct;
       else if (action.payload.type == POLY_BAG) clearedProduct = emptyPolyBag;
       else if (action.payload.type == BIG_BAG) clearedProduct = emptyBigBag;
-      return {
-        product: { ...clearedProduct },
-      };
+      return { product: { ...clearedProduct } };
     default:
       return state;
   }

@@ -5,9 +5,11 @@ import {
   BIG_BAG_TYPE,
   POLY_BAG,
   POLY_BAG_TYPE,
+  USERS,
 } from "../../../consts";
 import PolyBagForm from "./PolyBagForm.jsx";
 import BigBagForm from "./BigBagForm.jsx";
+import UserForm from "./UserForm.jsx";
 
 export default function AdminForms() {
   const [searchParams] = useSearchParams();
@@ -21,6 +23,8 @@ export default function AdminForms() {
       return <div>Форма типов пп мешков</div>;
     case BIG_BAG_TYPE:
       return <div>Форма типов биг-бэг</div>;
+    case USERS:
+      return <UserForm />;
     default:
       return <PolyBagForm />;
   }

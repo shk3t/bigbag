@@ -1,9 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { store } from "../../../store";
-import { POLY_BAG, BASE_URL } from "../../../consts";
+import { BASE_URL } from "../../../consts";
 import {
-  listProductsAction,
   deleteProductAction,
 } from "../../../reducers/productListReducer";
 import { setModalAction } from "../../../reducers/modalRequestReducer";
@@ -13,10 +12,6 @@ import { getPrice } from "../../../utils/repr";
 export default function PolyBagTable() {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.productListReducer.products);
-
-  useEffect(() => {
-    dispatch(listProductsAction({ type: POLY_BAG }));
-  }, []);
 
   return (
     <div>

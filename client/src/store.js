@@ -8,6 +8,8 @@ import productReducer from "./reducers/productReducer";
 import productListReducer from "./reducers/productListReducer";
 import subtypeReducer from "./reducers/subtypeReducer";
 import subtypeListReducer from "./reducers/subtypeListReducer";
+import userReducer from "./reducers/userReducer";
+import userListReducer from "./reducers/userListReducer";
 import cartReducer from "./reducers/cartReducer";
 import authReducer from "./reducers/authReducer";
 import modalRequestReducer from "./reducers/modalRequestReducer";
@@ -30,6 +32,8 @@ const rootReducer = combineReducers({
   productListReducer,
   subtypeReducer,
   subtypeListReducer,
+  userReducer,
+  userListReducer,
   cartReducer: persistReducer(cartPersistConfig, cartReducer),
   authReducer: persistReducer(authPersistConfig, authReducer),
   modalRequestReducer,

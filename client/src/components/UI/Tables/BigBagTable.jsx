@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { store } from "../../../store";
-import { BIG_BAG, BASE_URL } from "../../../consts";
+import { BASE_URL } from "../../../consts";
 import {
   deleteProductAction,
-  listProductsAction,
 } from "../../../reducers/productListReducer";
 import { setModalAction } from "../../../reducers/modalRequestReducer";
 import { setProductAction } from "../../../reducers/productReducer";
@@ -13,10 +12,6 @@ import { getPrice } from "../../../utils/repr";
 export default function BigBagTable() {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.productListReducer.products);
-
-  useEffect(() => {
-    dispatch(listProductsAction({ type: BIG_BAG }));
-  }, []);
 
   return (
     <div>
