@@ -18,11 +18,11 @@ export default function PolyBagForm() {
 
         <div className="admin__add-description">
           <div>
-            Выберите изображение:
+            Выберите изображение:&nbsp;&nbsp;
             <ProductInput type="file" field="image" accept="image/*" />
           </div>
           <div>
-            Тип мешка:
+            Тип мешка:&nbsp;&nbsp;
             <SubtypeSelect />
           </div>
           Цена в руб.:
@@ -47,14 +47,22 @@ export default function PolyBagForm() {
             field="items_per_pack"
             placeholder="1000"
           />
-          Цена по запросу:
-          <ProductInput type="checkbox" field="price_on_request" />
-          Есть в наличии:
-          <ProductInput type="checkbox" field="in_stock" />
-          Новинка:
-          <ProductInput type="checkbox" field="new" />
-          Цена по акции:
-          <ProductInput type="checkbox" field="sale" />
+          <p>
+            Цена по запросу:
+            <ProductInput type="checkbox" field="price_on_request" />
+          </p>
+          <p>
+            Есть в наличии:
+            <ProductInput type="checkbox" field="in_stock" />
+          </p>
+          <p>
+            Новинка:
+            <ProductInput type="checkbox" field="new" />
+          </p>
+          <p>
+            Цена по акции:
+            <ProductInput type="checkbox" field="sale" />
+          </p>
           <BtnSaveProduct />
         </div>
       </form>

@@ -27,8 +27,8 @@ export default function BigBagTable() {
         <div>Цена</div>
         <div>Размер</div>
         <div>Метка</div>
-        <div>Верхняя модификация</div>
-        <div>Нижняя модификация</div>
+        <div>Верх</div>
+        <div>Низ</div>
         <div>Вес мешка</div>
         <div>Шт/уп</div>
         <div>Размер упаковки</div>

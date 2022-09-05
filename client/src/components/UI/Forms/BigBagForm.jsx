@@ -18,11 +18,11 @@ export default function BigBagForm() {
 
         <div className="admin__add-description">
           <div>
-            Выберите изображение:
+            Выберите изображение:&nbsp;&nbsp;
             <ProductInput type="file" field="image" accept="image/*" />
           </div>
           <div>
-            Тип мешка:
+            Тип мешка:&nbsp;&nbsp;
             <SubtypeSelect />
           </div>
           Цена в руб.:
@@ -35,10 +35,18 @@ export default function BigBagForm() {
             field="tag"
             placeholder="ГОСТ / (усиленный)"
           />
-          Верхняя модификация:
-          <ProductInput type="text" field="top_modification" placeholder="Открытый" />
-          Нижняя модификация:
-          <ProductInput type="text" field="bottom_modification" placeholder="Глухой" />
+          Верх:
+          <ProductInput
+            type="text"
+            field="top_modification"
+            placeholder="Открытый"
+          />
+          Низ:
+          <ProductInput
+            type="text"
+            field="bottom_modification"
+            placeholder="Глухой"
+          />
           Вес мешка в кг.:
           <ProductInput type="number" field="bag_weight" placeholder="0.98" />
           Штук в упаковке:
@@ -51,18 +59,23 @@ export default function BigBagForm() {
           <ProductInput type="text" field="pack_size" placeholder="120x70x70" />
           Объем упаковки в м3:
           <ProductInput type="number" field="pack_volume" placeholder="0.6" />
-          Цена по запросу:
-          <ProductInput type="checkbox" field="price_on_request" />
-          Есть в наличии:
-          <ProductInput type="checkbox" field="in_stock" />
-          Новинка:
-          <ProductInput type="checkbox" field="new" />
-          Цена по акции:
-          <ProductInput type="checkbox" field="sale" />
+          <p>
+            Цена по запросу:{" "}
+            <ProductInput type="checkbox" field="price_on_request" />
+          </p>
+          <p>
+            Есть в наличии: <ProductInput type="checkbox" field="in_stock" />
+          </p>
+          <p>
+            {" "}
+            Новинка: <ProductInput type="checkbox" field="new" />
+          </p>
+          <p>
+            Цена по акции: <ProductInput type="checkbox" field="sale" />
+          </p>
           <BtnSaveProduct />
         </div>
       </form>
     </div>
   );
 }
-

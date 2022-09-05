@@ -20,11 +20,15 @@ const ProductItem = ({ product }) => {
         {/* <button>Корзина</button> */}
         <div className="catalog-btn__wrap">
           <div className="catalog-item__title ">
-            {product.type} {product.size}
+            <span>
+              {" "}
+              {product.type}&nbsp;
+              {product.size}
+            </span>
+            <br />
+            <span className="item-subtype"> {product.subtype}</span>{" "}
           </div>
-          <div className="catalog-item__price">
-            {getPrice(product)}
-          </div>
+          <div className="catalog-item__price">{getPrice(product)}</div>
         </div>
       </div>
     </div>

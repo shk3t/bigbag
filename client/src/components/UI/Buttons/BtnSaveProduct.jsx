@@ -33,7 +33,7 @@ export default function BtnSaveProduct() {
   }
 
   return (
-    <div>
+    <div className="button-save">
       <button disabled={buttonLabel !== BUTTON_INIT} onClick={sendRequest}>
         {buttonLabel === BUTTON_INIT ? "Сохранить" : BUTTON_INIT}
       </button>

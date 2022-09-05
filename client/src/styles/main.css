@@ -727,6 +727,10 @@ footer ul a {
   text-align: left;
 }
 
+.item-subtype {
+  font-size: 0.8em;
+}
+
 .catalog-item__price {
   width: min-content;
   white-space: nowrap;
@@ -1141,6 +1145,8 @@ button,
 
 .admin_add-meshki:last-child {
   align-items: center;
+  padding-top: 2em;
+  padding-bottom: 1em;
 }
 
 .admin_add-meshki button {
@@ -1149,6 +1155,7 @@ button,
   border-radius: 1em;
   background-color: #616467bb;
   color: #fff;
+  font-size: 1em;
 }
 
 .admin_add-meshki button:hover {
@@ -1173,15 +1180,32 @@ button,
 .admin__add-description {
   display: grid;
   -ms-display: grid;
-  grid-gap: 0.4em;
+  grid-gap: 0.2em;
+  font-size: 0.8em;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin__add-description > div > select {
+  font-size: 0.8em;
+}
+
+.admin__add-description > p {
+  margin: 0;
+  display: flex;
+  align-items: center;
 }
 
 .admin__add-description input {
   background-color: #f3f6ff;
   border: 1px solid #c4c6cd;
-  height: 2em;
-  /* margin-bottom: 0.5em; */
-  font-size: 0.8em;
+  font-size: 1em;
+}
+
+.button-save {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* .admin__choose {
@@ -1195,12 +1219,14 @@ button,
   display: grid;
   -ms-display: grid;
 
-  grid-template-columns: repeat(auto-fit, minmax(10px, 1fr));
+  grid-template-columns: 18px repeat(auto-fit, minmax(20px, 1fr));
   height: 100px;
   border: 1px solid rgb(19, 79, 19);
   font-size: 0.8em;
   height: min-content;
   padding: 1em;
+  justify-content: center;
+  align-items: center;
 }
 
 .all-products__title:first-child {
@@ -1226,6 +1252,9 @@ button,
 .admin__edit {
   cursor: pointer;
   color: rgb(231, 100, 19);
+  font-size: 0.9em;
+  font-weight: 600;
+  text-align: center;
 }
 
 .admin__edit:hover {
