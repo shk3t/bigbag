@@ -45,6 +45,19 @@ export default function MainPage() {
     }
   }
 
+  function navByType(key) {
+    switch (key) {
+      case 0:
+        return CATALOG_PATH + "?type=Мешки+полипропиленовые";
+
+      case 1:
+        return CATALOG_PATH + "?type=МКР+%28биг-бэг%29";
+
+      default:
+        return CATALOG_PATH;
+    }
+  }
+
   return (
     <div className="root-div">
       <div className="container">
@@ -57,8 +70,7 @@ export default function MainPage() {
                 строительные, бытовые, пищевые мешки, а также мягкие контейнеры
                 (биг-бэги). Доставка по России и странам СНГ
               </p>
-              {/* 22.08 заменить на Buttons -- BtnCallRequest */}
-              {/* <button className="btn__action">Заказать звонок</button> */}
+
               <BtnCallRequest />
             </div>
             <div className="slider-img">
@@ -112,9 +124,11 @@ export default function MainPage() {
                     />
                   </div>
                   <div className="catalog-btn__wrap">
-                    <button className="catalog-item__btn-price">
-                      {defineItemByKey(key)}
-                    </button>
+                    <Link to={navByType(key)}>
+                      <button className="catalog-item__btn-price">
+                        {defineItemByKey(key)}
+                      </button>
+                    </Link>
 
                     {/* <button className="catalog-item__btn-shopping-cart">
                       <img

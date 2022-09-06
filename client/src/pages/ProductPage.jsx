@@ -38,106 +38,116 @@ export default function ProductPage() {
 
   return (
     <div>
-      <Way tail={product.type + " " + product.size} />
-      <main>
-        {product && (
-          <div className="product-wrap">
-            <div className="product-img">
-              <img src={BASE_URL + product.image} />
-            </div>
-            <div className="product-about__wrap">
-              <div className="product-about__title">
-                {product.type} {product.size}
+      <div className="wrapper-for-footer">
+        <Way tail={product.type + " " + product.size} />
+        <main>
+          {product && (
+            <div className="product-wrap">
+              <div className="product-img">
+                <img src={BASE_URL + product.image} />
               </div>
-              {/* при добавлении новой категории, напр., перчаток, переписать */}
-              <div className="product-about__text">
-                <p>
-                  <span className="product-about__category"> Тип:&nbsp;</span>
-                  {product.subtype}
-                </p>
-                <p>
-                  <span className="product-about__category">
-                    {" "}
-                    Размер:&nbsp;
-                  </span>
-                  {product.size}
-                </p>
-                <p>
-                  <span className="product-about__category"> Вес:&nbsp;</span>
-                  {product.bag_weight}{" "}
-                  {product.type === "Мешки полипропиленовые"
-                    ? "гр/шт"
-                    : "кг/шт"}
-                </p>
-                <p>
-                  <span className="product-about__category">
-                    Кол-во в упаковке:
-                  </span>{" "}
-                  {product.items_per_pack}
-                </p>
+              <div className="product-about__wrap">
+                <div className="product-about__title">
+                  {product.type} {product.size}
+                </div>
+                {/* при добавлении новой категории, напр., перчаток, переписать */}
+                <div className="product-about__text">
+                  <p>
+                    <span className="product-about__category"> Тип:&nbsp;</span>
+                    {product.subtype}
+                  </p>
+                  <p>
+                    <span className="product-about__category">
+                      {" "}
+                      Размер:&nbsp;
+                    </span>
+                    {product.size}
+                  </p>
+                  <p>
+                    <span className="product-about__category"> Вес:&nbsp;</span>
+                    {product.bag_weight}{" "}
+                    {product.type === "Мешки полипропиленовые"
+                      ? "гр/шт"
+                      : "кг/шт"}
+                  </p>
+                  <p>
+                    <span className="product-about__category">
+                      Кол-во в упаковке:
+                    </span>{" "}
+                    {product.items_per_pack}
+                  </p>
 
-                {product.type === "Мешки полипропиленовые" ? (
-                  <p>
-                    <span className="product-about__category">Цвет:&nbsp;</span>
-                    {product.color}
-                  </p>
-                ) : (
-                  <p>
-                    <span className="product-about__category">Верх:&nbsp;</span>
-                    {product.top_modification}
-                  </p>
-                )}
-                {product.type === "Мешки полипропиленовые" ? (
-                  <p>
-                    <span className="product-about__category">Сорт:&nbsp;</span>
-                    {product.poly_grade}
-                  </p>
-                ) : (
-                  <p>
-                    <span className="product-about__category">Низ:&nbsp;</span>
-                    {product.bottom_modification}
-                  </p>
-                )}
-              </div>
-              <div className="product__price-buy">
-                <div className="product__price">
-                  <span>От</span>
-                  <span>&nbsp;{getPrice(product)}</span>
+                  {product.type === "Мешки полипропиленовые" ? (
+                    <p>
+                      <span className="product-about__category">
+                        Цвет:&nbsp;
+                      </span>
+                      {product.color}
+                    </p>
+                  ) : (
+                    <p>
+                      <span className="product-about__category">
+                        Верх:&nbsp;
+                      </span>
+                      {product.top_modification}
+                    </p>
+                  )}
+                  {product.type === "Мешки полипропиленовые" ? (
+                    <p>
+                      <span className="product-about__category">
+                        Сорт:&nbsp;
+                      </span>
+                      {product.poly_grade}
+                    </p>
+                  ) : (
+                    <p>
+                      <span className="product-about__category">
+                        Низ:&nbsp;
+                      </span>
+                      {product.bottom_modification}
+                    </p>
+                  )}
                 </div>
-                <div className="product__amount">
-                  <button
-                    className="amount__change"
-                    onClick={decrementQuantity}
-                  >
-                    -
-                  </button>
-                  <input
-                    className="amount__cur"
-                    value={quantity || 0}
-                    onChange={(event) =>
-                      setQuantity(Number(event.target.value))
-                    }
-                  ></input>
-                  <button
-                    className="amount__change"
-                    onClick={incrementQuantity}
-                  >
-                    +
-                  </button>
-                </div>
-                <div>
-                  <button
-                    className="add-to-cart"
-                    onClick={() => dispatch(addItemAction(product, quantity))}
-                  >
-                    Добавить в корзину
-                  </button>
+                <div className="product__price-buy">
+                  <div className="product__price">
+                    <span>От</span>
+                    <span>&nbsp;{getPrice(product)}</span>
+                  </div>
+                  <div className="product__amount">
+                    <button
+                      className="amount__change"
+                      onClick={decrementQuantity}
+                    >
+                      -
+                    </button>
+                    <input
+                      className="amount__cur"
+                      value={quantity || 0}
+                      onChange={(event) =>
+                        setQuantity(Number(event.target.value))
+                      }
+                    ></input>
+                    <button
+                      className="amount__change"
+                      onClick={incrementQuantity}
+                    >
+                      +
+                    </button>
+                  </div>
+                  <div>
+                    <button
+                      className="add-to-cart"
+                      onClick={() => dispatch(addItemAction(product, quantity))}
+                    >
+                      Добавить в корзину
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        )}
-      </main>
+          )}
+        </main>
+      </div>
       <Footer />
     </div>
   );
