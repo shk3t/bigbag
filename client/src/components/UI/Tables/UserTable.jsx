@@ -4,6 +4,7 @@ import { store } from "../../../store";
 import { setModalAction } from "../../../reducers/modalRequestReducer";
 import { deleteUserAction } from "../../../reducers/userListReducer";
 import { setUserAction } from "../../../reducers/userReducer";
+import { ADMIN_REQUEST } from "../../../consts";
 
 export default function UserTable() {
   const dispatch = useDispatch();
@@ -31,7 +32,7 @@ export default function UserTable() {
             className="admin__edit"
             onClick={() => {
               dispatch(setUserAction(user));
-              dispatch(setModalAction(true));
+              dispatch(setModalAction(ADMIN_REQUEST, true));
             }}
           >
             Изменить

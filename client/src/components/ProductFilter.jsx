@@ -4,17 +4,11 @@ import { POLY_BAG, BIG_BAG } from "../consts";
 
 export default function ProductFilter() {
   const [searchParams, setSearchParams] = useSearchParams();
+  const { key } = useLocation();
 
-  function ScrollToTopAfterFilter() {
-    const { key } = useLocation();
-    useEffect(() => {
-      window.scrollTo(0, 0);
-    }, [key]);
-
-    return null;
-  }
-
-  ScrollToTopAfterFilter();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [key]);
 
   const [categories, setCategories] = useState([
     { key: "all", name: "Все товары" },

@@ -16,54 +16,61 @@ const initialState = {
   buttonLabel: BUTTON_INIT,
 };
 
-export default function modalRequestReducer(state = initialState, action) {
-  const { messages, button } = action.payload || {};
-  switch (action.type) {
-    case UPDATE_REQUEST_STATUS:
-      return { ...state, errorMessages: messages, buttonLabel: button };
-    case OPEN_MODAL:
-      return {
-        modalActive: true,
-        errorMessages: null,
-        buttonLabel: BUTTON_INIT,
-      };
-    case CLOSE_MODAL:
-      return { ...state, modalActive: false };
-    default:
-      return state;
-  }
-}
+const createModalRequestReducer =
+  (reducerName = "") =>
+  (state = initialState, action) => {
+    if (action.name !== reducerName) return state;
+    const { messages, button } = action.payload || {};
+    switch (action.type) {
+      case UPDATE_REQUEST_STATUS:
+        return { ...state, errorMessages: messages, buttonLabel: button };
+      case OPEN_MODAL:
+        return {
+          modalActive: true,
+          errorMessages: null,
+          buttonLabel: BUTTON_INIT,
+        };
+      case CLOSE_MODAL:
+        return { ...state, modalActive: false };
+      default:
+        return state;
+    }
+  };
+export default createModalRequestReducer;
 
 export const requestAction =
-  (callback, delayed = true, postCallback = null) =>
+  (name, callback, timeout = 0) =>
   async (dispatch) => {
     try {
       dispatch({
+        name,
         type: UPDATE_REQUEST_STATUS,
         payload: { messages: null, button: BUTTON_WAIT },
       });
       await callback();
       dispatch({
+        name,
         type: UPDATE_REQUEST_STATUS,
         payload: { messages: null, button: BUTTON_OK },
       });
-      if (delayed) await delay(1500);
-      dispatch({ type: CLOSE_MODAL });
-      if (postCallback) postCallback();
+      if (timeout > 0) await delay(timeout);
+      dispatch({ name, type: CLOSE_MODAL });
     } catch (error) {
       const messages = extractErrorMessages(error);
       dispatch({
+        name,
         type: UPDATE_REQUEST_STATUS,
         payload: { messages, button: BUTTON_ERROR },
       });
       await delay(1500);
       dispatch({
+        name,
         type: UPDATE_REQUEST_STATUS,
         payload: { messages, button: BUTTON_INIT },
       });
     }
   };
 
-export const setModalAction = (activate) => (dispatch) => {
-  dispatch({ type: activate ? OPEN_MODAL : CLOSE_MODAL });
+export const setModalAction = (name, activate) => (dispatch) => {
+  dispatch({ name, type: activate ? OPEN_MODAL : CLOSE_MODAL });
 };

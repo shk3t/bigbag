@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   BUTTON_INIT,
@@ -6,34 +6,36 @@ import {
 } from "../../../reducers/modalRequestReducer";
 import ErrorMsg from "../ErrorMsg";
 import EmailService from "../../../API/EmailService";
+import { CART_REQUEST } from "../../../consts";
 
 export default function CartRequestForm() {
   const dispatch = useDispatch();
   const authUser = useSelector((state) => state.authReducer.authUser);
   const cartItems = useSelector((state) => state.cartReducer.cartItems);
-  const errorMessages = useSelector(
-    (state) => state.modalRequestReducer.errorMessages
+  const { modalActive, errorMessages, buttonLabel } = useSelector(
+    (state) => state.cartRequestReducer
   );
-  const buttonLabel = useSelector(
-    (state) => state.modalRequestReducer.buttonLabel
-  );
-  const [request, setRequest] = useState({ name: "", phone: "", comment: "" });
+  const emptyRequest = { name: "", phone: "", comment: "" };
+  const [request, setRequest] = useState({ ...emptyRequest });
 
-  useEffect(() => {
-    if (authUser) {
-      setRequest({ ...request, name: authUser.name });
+  useMemo(() => {
+    if (modalActive) {
+      if (authUser) setRequest({ ...emptyRequest, name: authUser.name });
+      else setRequest({ ...emptyRequest });
     }
-  }, [authUser]);
+  }, [modalActive]);
 
   async function sendRequest(event) {
     event.preventDefault();
     dispatch(
       requestAction(
+        CART_REQUEST,
         async () =>
           await EmailService.sendCart({
             request,
             cart: Object.values(cartItems),
-          })
+          }),
+        1500
       )
     );
   }
@@ -71,6 +73,7 @@ export default function CartRequestForm() {
             field="comment"
             placeholder="Укажите комментарий, если требуется. Например, удобное время для звонка или интересующий вопрос"
           />
+          <p className="call_description">Корзина будет прикреплена к заявке</p>
           <button onClick={sendRequest} disabled={buttonLabel !== BUTTON_INIT}>
             {buttonLabel}
           </button>

@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { ADMIN_REQUEST } from "../../../consts";
 import {
   BUTTON_INIT,
   requestAction,
@@ -11,15 +12,15 @@ export default function BtnSaveUser() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.userReducer.user);
   const buttonLabel = useSelector(
-    (state) => state.modalRequestReducer.buttonLabel
+    (state) => state.adminRequestReducer.buttonLabel
   );
 
   function sendRequest(event) {
     event.preventDefault();
     dispatch(
       requestAction(
-        async () => await store.dispatch(updateUserAction(user.id, user)),
-        false
+        ADMIN_REQUEST,
+        async () => await store.dispatch(updateUserAction(user.id, user))
       )
     );
   }
@@ -27,7 +28,7 @@ export default function BtnSaveUser() {
   return (
     <div>
       <button disabled={buttonLabel !== BUTTON_INIT} onClick={sendRequest}>
-        {buttonLabel === BUTTON_INIT ? "Сохранить" : BUTTON_INIT}
+        {"Сохранить"}
       </button>
     </div>
   );

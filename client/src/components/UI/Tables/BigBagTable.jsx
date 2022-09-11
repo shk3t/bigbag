@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { store } from "../../../store";
-import { BASE_URL } from "../../../consts";
+import { ADMIN_REQUEST, BASE_URL } from "../../../consts";
 import {
   deleteProductAction,
 } from "../../../reducers/productListReducer";
@@ -55,7 +55,7 @@ export default function BigBagTable() {
             className="admin__edit"
             onClick={() => {
               dispatch(setProductAction(product));
-              dispatch(setModalAction(true));
+              dispatch(setModalAction(ADMIN_REQUEST, true));
             }}
           >
             Редактировать

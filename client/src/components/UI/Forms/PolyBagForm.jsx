@@ -7,7 +7,7 @@ import ErrorMsg from "../ErrorMsg";
 
 export default function PolyBagForm() {
   const errorMessages = useSelector(
-    (state) => state.modalRequestReducer.errorMessages
+    (state) => state.adminRequestReducer.errorMessages
   );
 
   return (
