@@ -10,7 +10,7 @@ import novopack from "../assets/novopack.png";
 import exampleBug from "../assets/example-bug.png";
 import bigbag from "../assets/bigbag.webp";
 
-import main_img from "../assets/main_img.webp";
+import main from "../assets/main.jpg";
 
 import BtnCallRequest from "../components/UI/Buttons/BtnCallRequest";
 
@@ -64,7 +64,7 @@ export default function MainPage() {
         <main>
           <section className="slider">
             <div className="slider-text">
-              <h1>«Авега» — промышленная упаковка для вашего бизнеса</h1>
+              <h1>«Дебют» — промышленная упаковка для вашего бизнеса</h1>
               <p>
                 Мы продаём качественную промышленную полимерную упаковку —
                 строительные, бытовые, пищевые мешки, а также мягкие контейнеры
@@ -74,7 +74,7 @@ export default function MainPage() {
               <BtnCallRequest />
             </div>
             <div className="slider-img">
-              <img src={main_img} alt="Биг-бэг в производстве" />
+              <img src={main} alt="Биг-бэг в производстве" />
             </div>
           </section>
           <div className="our-benefits__title">
@@ -104,7 +104,7 @@ export default function MainPage() {
 
               <h4>Сертификаты соответствия</h4>
               <p>
-                Продукция «Авега» имеет Декларацию о соответствии требованиям
+                Продукция «Дебют» имеет Декларацию о соответствии требованиям
                 Евразийкого Экономического союза
               </p>
             </div>

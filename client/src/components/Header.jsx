@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import avgLogo from "../assets/avg_logo.png";
+import logov2 from "../assets/logov2.png";
 import {
   ABOUT_PATH,
   CATALOG_PATH,
@@ -22,7 +22,7 @@ export default function Header() {
     <header>
       <div className="header__logo">
         <Link to={MAIN_PATH}>
-          <img className="img-logo" src={avgLogo} alt="AvegaBag лого" />
+          <img className="img-logo" src={logov2} alt="Дебют лого" />
         </Link>
       </div>
       <div className="header__nav">

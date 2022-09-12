@@ -79,6 +79,10 @@ header {
   -o-transition: 0.25s;
   transition: 0.25s;
 }
+.img-logo {
+  width: 130px;
+  margin-top: 5px;
+}
 
 .header__nav {
   width: 427px;
@@ -101,6 +105,7 @@ nav {
 
 .header__nav__ul a {
   text-decoration: none;
+  color: #393d45;
 }
 
 .header__nav__ul a:visited {

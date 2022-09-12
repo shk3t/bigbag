@@ -9,7 +9,7 @@ export default function Footer() {
     <footer>
       <div className="footer-logo">
         <Link to={MAIN_PATH}>
-          <img className="img-logo" src={avgLogo} alt="АвегаBag" />
+          <img className="img-logo" src={avgLogo} alt="ДебютBag" />
         </Link>
         <p>Промышленная полимерная упаковка</p>
         <p className="footer__legal-inf">
