@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import avgLogo from "../assets/avg_logo.png";
+import logov2 from "../assets/logov2.png";
 import { ABOUT_PATH, CALL_REQUEST, DELIVERY_PATH, MAIN_PATH } from "../consts";
 import { setModalAction } from "../reducers/modalRequestReducer";
 
@@ -12,7 +12,7 @@ export default function Footer() {
     <footer>
       <div className="footer-logo">
         <Link to={MAIN_PATH}>
-          <img className="img-logo" src={avgLogo} alt="ДебютBag" />
+          <img className="img-logo" src={logov2} alt="ДебютBag" />
         </Link>
         <p>Промышленная полимерная упаковка</p>
         <p className="footer__legal-inf">
