@@ -17,7 +17,7 @@ export default function DeliveryPage() {
           <strong>России и странам CНГ!</strong> <br /> <br />
           Рассчитайте стоимость доставки по телефону{" "}
           <strong> (499) 490-78-12 </strong> или напишите нам на почту
-          <strong> avega.si@mail.ru</strong>
+          <strong> bigbag.pro@mail.ru</strong>
         </div>
       </div>
       <Footer />

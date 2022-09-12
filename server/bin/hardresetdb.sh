@@ -11,7 +11,7 @@ function check_bin() {
 }
 
 function reset_db() {
-    psql -d avegabag -f $BASE_DIR/bin/resetdb.sql
+    psql -d bigbag -f $BASE_DIR/bin/resetdb.sql
     rm -rf $BASE_DIR/base/migrations
     python $BASE_DIR/manage.py makemigrations base
     python $BASE_DIR/manage.py migrate

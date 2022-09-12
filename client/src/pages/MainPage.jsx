@@ -6,7 +6,7 @@ import benefit from "../assets/benefit.png";
 import novopack from "../assets/novopack.png";
 import exampleBug from "../assets/example-bug.png";
 import bigbag from "../assets/bigbag.webp";
-import main from "../assets/main.jpg";
+import mainImg from "../assets/main.jpg";
 import { useDispatch } from "react-redux";
 import { setModalAction } from "../reducers/modalRequestReducer";
 
@@ -39,7 +39,7 @@ export default function MainPage() {
               </button>
             </div>
             <div className="slider-img">
-              <img src={main_img} alt="Биг-бэг в производстве" />
+              <img src={mainImg} alt="Биг-бэг в производстве" />
             </div>
           </section>
           <div className="our-benefits__title">
