@@ -6,7 +6,7 @@ export default function ProductInput({ field, ...props }) {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.productReducer.product);
   const modalActive = useSelector(
-    (state) => state.modalRequestReducer.modalActive
+    (state) => state.adminRequestReducer.modalActive
   );
   const [value, setValue] = useState("");
 

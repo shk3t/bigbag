@@ -1,7 +1,13 @@
 import React from "react";
-import { useLocation, Link, Navigate } from "react-router-dom";
-import { MAIN_PATH } from "../consts";
-import { useNavigate } from "react-router";
+import { useLocation, Link } from "react-router-dom";
+import {
+  ABOUT_PATH,
+  ADMIN_PATH,
+  CART_PATH,
+  CATALOG_PATH,
+  DELIVERY_PATH,
+  MAIN_PATH,
+} from "../consts";
 
 export default function Way({ tail = null }) {
   const { pathname } = useLocation();
@@ -11,28 +17,20 @@ export default function Way({ tail = null }) {
   // const goHome = <Navigate to={MAIN_PATH} />;
   // console.log(goHome);
 
-  function getCurrentPathname(path) {
+  function toWaySegment(path) {
     switch (path) {
-      case "/about":
+      case ABOUT_PATH:
         return "О нас";
-
-      case "/cart":
+      case CART_PATH:
         return "Корзина";
-
-      case "/catalog":
+      case CATALOG_PATH:
         return "Каталог";
-
-      case "/delivery":
+      case DELIVERY_PATH:
         return "Доставка";
-
-      case "/products":
-        return "Все мешки";
-
-      case "/admin":
+      case ADMIN_PATH:
         return "Админка";
-
       default:
-        if (path.includes("/products/")) return "Все мешки";
+        if (path.includes(CATALOG_PATH + "/")) return "Каталог";
         return "Главная";
     }
   }
@@ -45,7 +43,7 @@ export default function Way({ tail = null }) {
       <span>{">"}&ensp;</span>
       <Link to={pathname}>
         <span className={tail || "way__currentPath"}>
-          {getCurrentPathname(pathname)}&ensp;
+          {toWaySegment(pathname)}&ensp;
         </span>
       </Link>
       {tail && <span> {">"}&ensp; </span>}
@@ -61,7 +59,7 @@ export default function Way({ tail = null }) {
   //       <span>{">"}&ensp;</span>
   //       <Link to={pathname}>
   //         <span className={tail || "way__currentPath"}>
-  //           {getCurrentPathname(pathname)}&ensp;
+  //           {toWayItem(pathname)}&ensp;
   //         </span>
   //       </Link>
   //       {tail && <span> {">"}&ensp; </span>}

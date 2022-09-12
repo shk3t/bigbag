@@ -7,7 +7,7 @@ import ErrorMsg from "../ErrorMsg";
 
 export default function BigBagForm() {
   const errorMessages = useSelector(
-    (state) => state.modalRequestReducer.errorMessages
+    (state) => state.adminRequestReducer.errorMessages
   );
 
   return (
@@ -58,14 +58,13 @@ export default function BigBagForm() {
           Объем упаковки в м3:
           <ProductInput type="number" field="pack_volume" placeholder="0.6" />
           <p>
-            Цена по запросу:{" "}
+            Цена по запросу:
             <ProductInput type="checkbox" field="price_on_request" />
           </p>
           <p>
             Есть в наличии: <ProductInput type="checkbox" field="in_stock" />
           </p>
           <p>
-            {" "}
             Новинка: <ProductInput type="checkbox" field="new" />
           </p>
           <p>

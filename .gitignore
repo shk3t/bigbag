@@ -16,3 +16,6 @@ metadata.json
 node_modules/
 build/
 .env
+
+# Docker
+docker-compose.yaml

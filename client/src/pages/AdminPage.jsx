@@ -1,5 +1,4 @@
 import React from "react";
-import AdminModal from "../components/Modal/AdminModal";
 import BtnAdminNew from "../components/UI/Buttons/BtnAdminNew";
 import AdminTables from "../components/UI/Tables/AdminTables";
 import AdminTableSelect from "../components/UI/Selects/AdminTableSelect";
@@ -13,7 +12,6 @@ export default function AdminPage() {
         <div className="admin__tables">
           <AdminTables />
         </div>
-        <AdminModal />
       </main>
     </div>
   );

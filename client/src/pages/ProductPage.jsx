@@ -8,12 +8,16 @@ import { getProductAction } from "../reducers/productReducer";
 import { addItemAction } from "../reducers/cartReducer";
 import { BASE_URL } from "../consts";
 import { getPrice } from "../utils/repr";
+import { delay } from "../utils/delay";
 
 export default function ProductPage() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const product = useSelector((state) => state.productReducer.product);
   const [quantity, setQuantity] = useState(0);
+  const initialButtonLabel = "Добавить в корзину";
+  const [buttonLabel, setButtonLabel] = useState(initialButtonLabel);
+
   useEffect(() => {
     dispatch(getProductAction(id));
   }, []);
@@ -137,9 +141,14 @@ export default function ProductPage() {
                   <div>
                     <button
                       className="add-to-cart"
-                      onClick={() => dispatch(addItemAction(product, quantity))}
+                      onClick={async () => {
+                        dispatch(addItemAction(product, quantity));
+                        setButtonLabel("Добавлено!");
+                        await delay(1000);
+                        setButtonLabel(initialButtonLabel);
+                      }}
                     >
-                      Добавить в корзину
+                      {buttonLabel}
                     </button>
                   </div>
                 </div>

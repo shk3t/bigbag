@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   requestAction,
@@ -6,28 +6,32 @@ import {
 } from "../../../reducers/modalRequestReducer";
 import ErrorMsg from "../ErrorMsg";
 import EmailService from "../../../API/EmailService";
+import { CALL_REQUEST } from "../../../consts";
 
 export default function CallRequestForm() {
   const dispatch = useDispatch();
   const authUser = useSelector((state) => state.authReducer.authUser);
-  const errorMessages = useSelector(
-    (state) => state.modalRequestReducer.errorMessages
+  const { modalActive, errorMessages, buttonLabel } = useSelector(
+    (state) => state.callRequestReducer
   );
-  const buttonLabel = useSelector(
-    (state) => state.modalRequestReducer.buttonLabel
-  );
-  const [request, setRequest] = useState({ name: "", phone: "", comment: "" });
+  const emptyRequest = { name: "", phone: "", comment: "" };
+  const [request, setRequest] = useState({ ...emptyRequest });
 
-  useEffect(() => {
-    if (authUser && !request.name) {
-      setRequest({ ...request, name: authUser.name });
+  useMemo(() => {
+    if (modalActive) {
+      if (authUser) setRequest({ ...emptyRequest, name: authUser.name });
+      else setRequest({ ...emptyRequest });
     }
-  }, [authUser]);
+  }, [modalActive]);
 
   async function sendRequest(event) {
     event.preventDefault();
     dispatch(
-      requestAction(async () => await EmailService.requestCall(request))
+      requestAction(
+        CALL_REQUEST,
+        async () => await EmailService.requestCall(request),
+        1500
+      )
     );
   }
 

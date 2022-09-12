@@ -1,29 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ErrorMsg from "../ErrorMsg";
-import {
-  registerAction,
-  loginAction,
-  clearErrorMessageAction,
-} from "../../../reducers/authReducer";
+import { registerAction, loginAction } from "../../../reducers/authReducer";
+import { store } from "../../../store";
+import { BUTTON_INIT, requestAction } from "../../../reducers/modalRequestReducer";
+import { AUTH_REQUEST } from "../../../consts";
 
 export default function AuthForm() {
   const dispatch = useDispatch();
-  const errorMessages = useSelector((state) => state.authReducer.errorMessages);
-  const [credentials, setCredentials] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
+  const { errorMessages, modalActive, buttonLabel } = useSelector(
+    (state) => state.authRequestReducer
+  );
+  const emptyCredentials = { name: "", email: "", password: "" };
+  const [credentials, setCredentials] = useState({ ...emptyCredentials });
   const [isLogin, setIsLogin] = useState(true);
+
+  useMemo(() => {
+    if (modalActive) {
+      setCredentials({ ...emptyCredentials });
+    }
+  }, [modalActive]);
 
   function registerOrLogin(event) {
     event.preventDefault();
-    if (isLogin) {
-      dispatch(loginAction(credentials));
-    } else {
-      dispatch(registerAction(credentials));
-    }
+    dispatch(
+      requestAction(
+        AUTH_REQUEST,
+        async () =>
+          await store.dispatch(
+            isLogin ? loginAction(credentials) : registerAction(credentials)
+          )
+      )
+    );
   }
 
   function toggleAuth() {
@@ -66,7 +74,10 @@ export default function AuthForm() {
               placeholder="Пароль"
             ></input>
           </div>
-          <button onClick={registerOrLogin}>
+          <button
+            onClick={registerOrLogin}
+            disabled={buttonLabel !== BUTTON_INIT}
+          >
             {isLogin ? "Войти" : "Зарегистрироваться"}
           </button>
         </form>

@@ -12,7 +12,8 @@ import userReducer from "./reducers/userReducer";
 import userListReducer from "./reducers/userListReducer";
 import cartReducer from "./reducers/cartReducer";
 import authReducer from "./reducers/authReducer";
-import modalRequestReducer from "./reducers/modalRequestReducer";
+import createModalRequestReducer from "./reducers/modalRequestReducer";
+import { AUTH_REQUEST, CALL_REQUEST, CART_REQUEST, ADMIN_REQUEST} from "./consts";
 
 const middlewares = [thunk];
 
@@ -36,7 +37,10 @@ const rootReducer = combineReducers({
   userListReducer,
   cartReducer: persistReducer(cartPersistConfig, cartReducer),
   authReducer: persistReducer(authPersistConfig, authReducer),
-  modalRequestReducer,
+  callRequestReducer: createModalRequestReducer(CALL_REQUEST),
+  cartRequestReducer: createModalRequestReducer(CART_REQUEST),
+  authRequestReducer: createModalRequestReducer(AUTH_REQUEST),
+  adminRequestReducer: createModalRequestReducer(ADMIN_REQUEST),
 });
 
 export const store = createStore(

@@ -1,62 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
-import { CATALOG_PATH } from "../consts";
+import { BIG_BAG, CALL_REQUEST, CATALOG_PATH, POLY_BAG } from "../consts";
 import Footer from "../components/Footer";
-
 import benefit from "../assets/benefit.png";
-import iconTrolleyCart from "../assets/icon-trolley-cart-3683279.png";
 import novopack from "../assets/novopack.png";
 import exampleBug from "../assets/example-bug.png";
 import bigbag from "../assets/bigbag.webp";
-
 import main from "../assets/main.jpg";
-
-import BtnCallRequest from "../components/UI/Buttons/BtnCallRequest";
+import { useDispatch } from "react-redux";
+import { setModalAction } from "../reducers/modalRequestReducer";
 
 export default function MainPage() {
-  function defineItemByKey(key) {
-    switch (key) {
-      case 0:
-        return "МЕШКИ";
+  const dispatch = useDispatch();
 
-      case 1:
-        return "БИГ-БЭГИ";
-
-      case 2:
-        return "ПЕРЧАТКИ";
-
-      case 3:
-        return "БИГ-БЭГИ б/у";
-
-      default:
-        return "ТОВАРЫ";
-    }
-  }
-
-  function defineImgByKey(key) {
-    switch (key) {
-      case 0:
-        return exampleBug;
-      case 1:
-        return bigbag;
-      default:
-        return exampleBug;
-    }
-  }
-
-  function navByType(key) {
-    switch (key) {
-      case 0:
-        return CATALOG_PATH + "?type=Мешки+полипропиленовые";
-
-      case 1:
-        return CATALOG_PATH + "?type=МКР+%28биг-бэг%29";
-
-      default:
-        return CATALOG_PATH;
-    }
-  }
+  const catalogCategories = [
+    { label: "МЕШКИ", image: exampleBug, path: CATALOG_PATH + "?" + POLY_BAG },
+    { label: "БИГ-БЭГИ", image: bigbag, path: CATALOG_PATH + "?" + BIG_BAG },
+  ];
 
   return (
     <div className="root-div">
@@ -71,10 +31,15 @@ export default function MainPage() {
                 (биг-бэги). Доставка по России и странам СНГ
               </p>
 
-              <BtnCallRequest />
+              <button
+                className="btn__action"
+                onClick={() => dispatch(setModalAction(CALL_REQUEST, true))}
+              >
+                Заказать звонок
+              </button>
             </div>
             <div className="slider-img">
-              <img src={main} alt="Биг-бэг в производстве" />
+              <img src={main_img} alt="Биг-бэг в производстве" />
             </div>
           </section>
           <div className="our-benefits__title">
@@ -114,19 +79,19 @@ export default function MainPage() {
           </div>
           <section className="catalog">
             <div className="catalog-item__wrap">
-              {[...Array(2).keys()].map((key) => (
-                <div key={key} className="catalog-item">
+              {catalogCategories.map((category) => (
+                <div key={category.label} className="catalog-item">
                   <div className="catalog-item__img-wrap">
                     <img
                       className="catalog-item__img"
-                      src={defineImgByKey(key)}
+                      src={category.image}
                       alt="п/п мешок"
                     />
                   </div>
                   <div className="catalog-btn__wrap">
-                    <Link to={navByType(key)}>
+                    <Link to={category.path}>
                       <button className="catalog-item__btn-price">
-                        {defineItemByKey(key)}
+                        {category.label}
                       </button>
                     </Link>
 

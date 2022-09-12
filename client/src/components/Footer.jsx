@@ -1,10 +1,13 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-
 import avgLogo from "../assets/avg_logo.png";
-import { ABOUT_PATH, DELIVERY_PATH, MAIN_PATH } from "../consts";
+import { ABOUT_PATH, CALL_REQUEST, DELIVERY_PATH, MAIN_PATH } from "../consts";
+import { setModalAction } from "../reducers/modalRequestReducer";
 
 export default function Footer() {
+  const dispatch = useDispatch();
+
   return (
     <footer>
       <div className="footer-logo">
@@ -30,19 +33,15 @@ export default function Footer() {
       </div>
 
       <div className="footer-call">
-        <p>Нужна консультация? Оставьте свой номер, и мы c вами свяжемся:</p>
-        <form action="#" method="post" className="phone_form">
-          <div className="user_phone">
-            <input
-              type="tel"
-              placeholder="+7xxx-xxx-xx-xx"
-              id="user_phone"
-              className="rfield"
-            />
-          </div>
-
-          <input type="submit" className="btn_submit" />
-        </form>
+        <p>Нужна консультация? Оставьте свой номер, и мы c вами свяжемся</p>
+        <button
+          className="btn_submit"
+          onClick={(isActive) =>
+            dispatch(setModalAction(CALL_REQUEST, isActive))
+          }
+        >
+          Оставить номер
+        </button>
       </div>
       <div className="footer-contacts">
         <p>

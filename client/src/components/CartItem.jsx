@@ -1,18 +1,21 @@
 import React, { memo } from "react";
 import { useDispatch } from "react-redux";
 import { removeItemAction, setQuantityAction } from "../reducers/cartReducer";
-import { BASE_URL } from "../consts";
+import { BASE_URL, CATALOG_PATH } from "../consts";
 import del_icon from "../assets/del_icon.png";
 import { getPrice } from "../utils/repr";
+import { Link } from "react-router-dom";
 
 function CartItem({ item }) {
   const dispatch = useDispatch();
 
   return (
     <div>
-      <div className="cart__container-products-img">
-        <img src={BASE_URL + item.image}></img>
-      </div>
+      <Link to={CATALOG_PATH + "/" + item.id}>
+        <div className="cart__container-products-img">
+          <img src={BASE_URL + item.image}></img>
+        </div>
+      </Link>
       <div className="cart__container-products-title">{item.name}</div>
       <div className="cart__container-products-price">{getPrice(item)}</div>
       <div className="cart__container-products-count">

@@ -11,15 +11,18 @@ export const USERS = "users";
 
 // Routes
 export const MAIN_PATH = "/main";
-export const PRODUCTS_PATH = "/products";
 export const CATALOG_PATH = "/catalog";
 export const ABOUT_PATH = "/about";
 export const DELIVERY_PATH = "/delivery";
 export const CART_PATH = "/cart";
 export const AUTH_PATH = "/auth";
-export const REGISTRATION_PATH = "/registration";
-export const LOGIN_PATH = "/login";
 export const ADMIN_PATH = "/admin";
+
+// Request reducers
+export const CALL_REQUEST = "callRequestReducer";
+export const CART_REQUEST = "cartRequestReducer";
+export const AUTH_REQUEST = "authRequestReducer";
+export const ADMIN_REQUEST = "adminRequestReducer";
 
 // Translations
 export const TRANSLATIONS = {

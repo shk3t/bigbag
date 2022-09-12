@@ -7,7 +7,7 @@ import { setUserAction } from "../../../reducers/userReducer";
 export default function UserForm() {
   const dispatch = useDispatch();
   const errorMessages = useSelector(
-    (state) => state.modalRequestReducer.errorMessages
+    (state) => state.adminRequestReducer.errorMessages
   );
   const user = useSelector((state) => state.userReducer.user);
 
