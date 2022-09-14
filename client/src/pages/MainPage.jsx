@@ -4,8 +4,8 @@ import { BIG_BAG, CALL_REQUEST, CATALOG_PATH, POLY_BAG } from "../consts";
 import Footer from "../components/Footer";
 import benefit from "../assets/benefit.png";
 import novopack from "../assets/novopack.png";
-import exampleBug from "../assets/example-bug.png";
-import bigbag from "../assets/bigbag.webp";
+import exampleBug from "../assets/5595.jpg";
+import bigbag from "../assets/bb_main.jpg";
 
 import mainImg from "../assets/main_img.jpg";
 

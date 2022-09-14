@@ -411,8 +411,8 @@ h3 {
   -webkit-box-shadow: 5px 5px 9px -1px rgba(34, 60, 80, 0.2);
 
   box-shadow: 5px 5px 9px -1px rgba(34, 60, 80, 0.2);
-
   position: relative;
+  background: #fff;
 }
 
 /* три блока ниже -- увеличение при наведении */
@@ -441,9 +441,10 @@ h3 {
   width: 100%;
   border-radius: 20px 20px 0 0;
   /* position: relative; */
-  /* высота и бек временно, для страницы Каталог, пока нет картинок */
-  /* height: 269px; */
-  /* background-color: aliceblue; */
+
+  height: 269px;
+  object-fit: contain;
+  /* -ms-background-size: cover; */
 }
 
 .catalog-btn__wrap {

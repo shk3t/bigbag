@@ -45,7 +45,7 @@
     "pk": 1,
     "fields": {
       "type": "Мешки полипропиленовые",
-      "image": "products/50x90.webp",
+      "image": "products/50x90.png",
       "price": 10.9
     }
   },
@@ -68,7 +68,7 @@
     "pk": 2,
     "fields": {
       "type": "Мешки полипропиленовые",
-      "image": "products/50x90.webp",
+      "image": "products/50x90.png",
       "price": 12.9
     }
   },
@@ -90,7 +90,7 @@
     "pk": 3,
     "fields": {
       "type": "Мешки полипропиленовые",
-      "image": "products/5595.webp",
+      "image": "products/5595.jpg",
       "price": 6.55
     }
   },
@@ -113,7 +113,7 @@
     "pk": 4,
     "fields": {
       "type": "Мешки полипропиленовые",
-      "image": "products/5595.webp",
+      "image": "products/5595.jpg",
       "price": 9.95
     }
   },
@@ -136,7 +136,7 @@
     "pk": 5,
     "fields": {
       "type": "Мешки полипропиленовые",
-      "image": "products/5595.webp",
+      "image": "products/5595.jpg",
       "price": 8.15
     }
   },
@@ -158,7 +158,7 @@
     "pk": 6,
     "fields": {
       "type": "Мешки полипропиленовые",
-      "image": "products/5595.webp",
+      "image": "products/5595.jpg",
       "price": 12.4
     }
   },
@@ -181,7 +181,7 @@
     "pk": 7,
     "fields": {
       "type": "Мешки полипропиленовые",
-      "image": "products/5595.webp",
+      "image": "products/5595.jpg",
       "price": 17.3
     }
   },
@@ -203,7 +203,7 @@
     "pk": 8,
     "fields": {
       "type": "Мешки полипропиленовые",
-      "image": "products/4575.webp",
+      "image": "products/bytovie.jpeg",
       "price": 11.7
     }
   },
@@ -224,7 +224,7 @@
     "pk": 9,
     "fields": {
       "type": "Мешки полипропиленовые",
-      "image": "products/4575.webp",
+      "image": "products/bytovie.jpeg",
       "price": 13.5
     }
   },
@@ -245,7 +245,7 @@
     "pk": 10,
     "fields": {
       "type": "Мешки полипропиленовые",
-      "image": "products/4575.webp",
+      "image": "products/bytovie.jpeg",
       "price": 12.5
     }
   },
@@ -266,7 +266,7 @@
     "pk": 11,
     "fields": {
       "type": "Мешки полипропиленовые",
-      "image": "products/4575.webp",
+      "image": "products/bytovie.jpeg",
       "price": 16.6
     }
   },
@@ -287,7 +287,7 @@
     "pk": 12,
     "fields": {
       "type": "Мешки полипропиленовые",
-      "image": "products/4575.webp",
+      "image": "products/bytovie.jpeg",
       "price": 19.6
     }
   },
@@ -308,7 +308,7 @@
     "pk": 13,
     "fields": {
       "type": "Мешки полипропиленовые",
-      "image": "products/4575.webp",
+      "image": "products/bytovie.jpeg",
       "price": 21.5
     }
   },
@@ -330,7 +330,7 @@
     "pk": 14,
     "fields": {
       "type": "Мешки полипропиленовые",
-      "image": "products/bytovie.webp",
+      "image": "products/4575.jpg",
       "price": 13.2
     }
   },
@@ -351,7 +351,7 @@
     "pk": 15,
     "fields": {
       "type": "Мешки полипропиленовые",
-      "image": "products/bytovie.webp",
+      "image": "products/4575.jpg",
       "price": 27.1
     }
   },
@@ -373,7 +373,7 @@
     "pk": 16,
     "fields": {
       "type": "Мешки полипропиленовые",
-      "image": "products/bytovie.webp",
+      "image": "products/4575.jpg",
       "price": 60.1
     }
   },
@@ -399,7 +399,7 @@
     "pk": 17,
     "fields": {
       "type": "Мешки полипропиленовые",
-      "image": "products/korobchatyj.webp",
+      "image": "products/korobchat.png",
       "price": 21.1
     }
   },
@@ -421,7 +421,7 @@
     "pk": 18,
     "fields": {
       "type": "Мешки полипропиленовые",
-      "image": "products/vklad.webp",
+      "image": "products/vklad.jpg",
       "price": null,
       "price_on_request": true
     }
@@ -443,7 +443,7 @@
     "pk": 19,
     "fields": {
       "type": "Мешки полипропиленовые",
-      "image": "products/vklad.webp",
+      "image": "products/vklad.jpg",
       "price": 23.1
     }
   },
@@ -464,7 +464,7 @@
     "pk": 20,
     "fields": {
       "type": "МКР (биг-бэг)",
-      "image": "products/2strOtkr.webp",
+      "image": "products/2strOtkr.jpg",
       "price": 255.0
     }
   },
@@ -487,7 +487,7 @@
     "pk": 21,
     "fields": {
       "type": "МКР (биг-бэг)",
-      "image": "products/2strSbork.webp",
+      "image": "products/2strSbork.jpg",
       "price": 345.0
     }
   },
@@ -510,7 +510,7 @@
     "pk": 22,
     "fields": {
       "type": "МКР (биг-бэг)",
-      "image": "products/2strOtkr.webp",
+      "image": "products/2strOtkr.jpg",
       "price": 318.0
     }
   },
@@ -533,7 +533,7 @@
     "pk": 23,
     "fields": {
       "type": "МКР (биг-бэг)",
-      "image": "products/2strOtkr.webp",
+      "image": "products/2strOtkr.jpg",
       "price": 335.0
     }
   },
@@ -556,7 +556,7 @@
     "pk": 24,
     "fields": {
       "type": "МКР (биг-бэг)",
-      "image": "products/4lOtkr.webp",
+      "image": "products/4lOtkr.png",
       "price": 385.0,
       "new": true
     }
@@ -604,7 +604,7 @@
     "pk": 26,
     "fields": {
       "type": "МКР (биг-бэг)",
-      "image": "products/4lOtkr.webp",
+      "image": "products/4lOtkr.png",
       "price": 439.0,
       "new": true
     }
@@ -652,7 +652,7 @@
     "pk": 28,
     "fields": {
       "type": "МКР (биг-бэг)",
-      "image": "products/4StrOtkrGluh.webp",
+      "image": "products/4StrOtkrGluh.jpg",
       "price": 390.0
     }
   },
@@ -675,7 +675,7 @@
     "pk": 29,
     "fields": {
       "type": "МКР (биг-бэг)",
-      "image": "products/4StrSborkGluh.webp",
+      "image": "products/4StrSborkGluh.png",
       "price": 462.0
     }
   },
@@ -698,7 +698,7 @@
     "pk": 30,
     "fields": {
       "type": "МКР (биг-бэг)",
-      "image": "products/4StrSborkLuk.webp",
+      "image": "products/4StrSborkLuk.png",
       "price": 502.0
     }
   },
@@ -721,7 +721,7 @@
     "pk": 31,
     "fields": {
       "type": "МКР (биг-бэг)",
-      "image": "products/4StrLukGluh.webp",
+      "image": "products/4StrLukGluh.png",
       "price": 462.0
     }
   },
@@ -744,7 +744,7 @@
     "pk": 32,
     "fields": {
       "type": "МКР (биг-бэг)",
-      "image": "products/LukLuk.webp",
+      "image": "products/LukLuk.png",
       "price": 502.0
     }
   },
@@ -767,7 +767,7 @@
     "pk": 33,
     "fields": {
       "type": "МКР (биг-бэг)",
-      "image": "products/4StrOtkrGluh.webp",
+      "image": "products/4StrOtkrGluh.jpg",
       "price": 465.0
     }
   },
@@ -790,7 +790,7 @@
     "pk": 34,
     "fields": {
       "type": "МКР (биг-бэг)",
-      "image": "products/4StrSborkGluh.webp",
+      "image": "products/4StrSborkGluh.png",
       "price": 535.0
     }
   },
@@ -813,7 +813,7 @@
     "pk": 35,
     "fields": {
       "type": "МКР (биг-бэг)",
-      "image": "products/4StrSborkLuk.webp",
+      "image": "products/4StrSborkLuk.png",
       "price": null,
       "price_on_request": true
     }
@@ -837,7 +837,7 @@
     "pk": 36,
     "fields": {
       "type": "МКР (биг-бэг)",
-      "image": "products/4StrLukGluh.webp",
+      "image": "products/4StrLukGluh.png",
       "price": null,
       "price_on_request": true
     }
@@ -861,7 +861,7 @@
     "pk": 37,
     "fields": {
       "type": "МКР (биг-бэг)",
-      "image": "products/LukLuk.webp",
+      "image": "products/LukLuk.png",
       "price": null,
       "price_on_request": true
     }
@@ -885,7 +885,7 @@
     "pk": 38,
     "fields": {
       "type": "МКР (биг-бэг)",
-      "image": "products/vkladysh.png",
+      "image": "products/vkladysh.jpg",
       "price": 122
     }
   },
@@ -907,7 +907,7 @@
     "pk": 39,
     "fields": {
       "type": "МКР (биг-бэг)",
-      "image": "products/vkladysh.png",
+      "image": "products/vkladysh.jpg",
       "price": 118
     }
   },
@@ -929,7 +929,7 @@
     "pk": 40,
     "fields": {
       "type": "МКР (биг-бэг)",
-      "image": "products/vkladysh.png",
+      "image": "products/vkladysh.jpg",
       "price": 155
     }
   },
