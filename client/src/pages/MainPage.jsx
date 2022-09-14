@@ -7,7 +7,7 @@ import novopack from "../assets/novopack.png";
 import exampleBug from "../assets/example-bug.png";
 import bigbag from "../assets/bigbag.webp";
 
-import mainImg from "../assets/main.jpg";
+import mainImg from "../assets/main_img.jpg";
 
 import { useDispatch } from "react-redux";
 import { setModalAction } from "../reducers/modalRequestReducer";
