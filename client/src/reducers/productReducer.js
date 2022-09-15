@@ -61,7 +61,7 @@ export default function productReducer(
       if (!action.payload) clearedProduct = emptyProduct;
       else if (action.payload.type == POLY_BAG) clearedProduct = emptyPolyBag;
       else if (action.payload.type == BIG_BAG) clearedProduct = emptyBigBag;
-      return { product: { ...clearedProduct } };
+      return { product: { ...clearedProduct} };
     default:
       return state;
   }

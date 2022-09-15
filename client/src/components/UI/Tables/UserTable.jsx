@@ -18,7 +18,7 @@ export default function UserTable() {
         <div>Почта</div>
         <div>Админ</div>
         <div>Менеджер</div>
-        <div className="admin__edit-title"></div>
+        <div></div>
         {/*<div className="admin__edit-title"></div>*/}
       </div>
       {users.map((user) => (

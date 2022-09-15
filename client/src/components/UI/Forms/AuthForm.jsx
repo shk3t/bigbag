@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ErrorMsg from "../ErrorMsg";
 import { registerAction, loginAction } from "../../../reducers/authReducer";
 import { store } from "../../../store";
-import { BUTTON_INIT, requestAction } from "../../../reducers/modalRequestReducer";
+import { BUTTON_INIT, clearErrorsAction, requestAction } from "../../../reducers/modalRequestReducer";
 import { AUTH_REQUEST } from "../../../consts";
 
 export default function AuthForm() {
@@ -35,7 +35,7 @@ export default function AuthForm() {
   }
 
   function toggleAuth() {
-    dispatch(clearErrorMessageAction());
+    dispatch(clearErrorsAction(AUTH_REQUEST));
     setIsLogin(!isLogin);
   }
 

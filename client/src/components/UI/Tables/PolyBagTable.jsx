@@ -26,8 +26,8 @@ export default function PolyBagTable() {
         <div>Сорт</div>
         <div>Вес мешка</div>
         <div>Шт/уп</div>
-        <div className="admin__edit-title"></div>
-        <div className="admin__edit-title"></div>
+        <div></div>
+        <div></div>
       </div>
       {products.map((product) => (
         <div className="all-products__title" key={product.id}>

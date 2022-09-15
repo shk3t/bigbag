@@ -28,8 +28,8 @@ export default function BigBagTable() {
         <div>Шт/уп</div>
         <div>Размер упаковки</div>
         <div>Объем упаковки</div>
-        <div className="admin__edit-title"></div>
-        <div className="admin__edit-title"></div>
+        <div></div>
+        <div></div>
       </div>
       {products.map((product) => (
         <div className="all-products__title" key={product.id}>

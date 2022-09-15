@@ -4,6 +4,7 @@ import { delay } from "../utils/delay";
 const UPDATE_REQUEST_STATUS = "UPDATE_REQUEST_STATUS";
 const OPEN_MODAL = "OPEN_MODAL";
 const CLOSE_MODAL = "CLOSE_MODAL";
+const CLEAR_ERRORS = "CLEAR_ERRORS";
 
 export const BUTTON_INIT = "Отправить";
 const BUTTON_WAIT = "Отправляем...";
@@ -23,7 +24,10 @@ const createModalRequestReducer =
     const { messages, button } = action.payload || {};
     switch (action.type) {
       case UPDATE_REQUEST_STATUS:
-        return { ...state, errorMessages: messages, buttonLabel: button };
+        const newState = { ...state };
+        if (messages) newState["errorMessages"] = messages;
+        if (button) newState["buttonLabel"] = button;
+        return newState;
       case OPEN_MODAL:
         return {
           modalActive: true,
@@ -32,6 +36,8 @@ const createModalRequestReducer =
         };
       case CLOSE_MODAL:
         return { ...state, modalActive: false };
+      case CLEAR_ERRORS:
+        return { ...state, errorMessages: null };
       default:
         return state;
     }
@@ -66,11 +72,15 @@ export const requestAction =
       dispatch({
         name,
         type: UPDATE_REQUEST_STATUS,
-        payload: { messages, button: BUTTON_INIT },
+        payload: { button: BUTTON_INIT },
       });
     }
   };
 
 export const setModalAction = (name, activate) => (dispatch) => {
   dispatch({ name, type: activate ? OPEN_MODAL : CLOSE_MODAL });
+};
+
+export const clearErrorsAction = (name) => (dispatch) => {
+  dispatch({ name, type: CLEAR_ERRORS });
 };

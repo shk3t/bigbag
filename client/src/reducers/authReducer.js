@@ -41,7 +41,3 @@ export const refreshTokensAction = () => async (dispatch) => {
   const { access_token } = await AuthService.refreshTokens();
   dispatch({ type: REFRESH_TOKENS, payload: { token: access_token } });
 };
-
-export const clearErrorMessageAction = () => (dispatch) => {
-  dispatch({ type: CLEAR_ERROR_MESSAGE });
-};

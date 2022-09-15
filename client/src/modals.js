@@ -29,7 +29,7 @@ const modals = [
     Child: CartRequestForm,
   },
   {
-    path: AUTH_PATH,
+    path: ".*",
     active: state.authRequestReducer.modalActive,
     type: AUTH_REQUEST,
     Child: AuthForm,
