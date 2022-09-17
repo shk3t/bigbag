@@ -1,9 +1,10 @@
-import React from "react";
+import React, { memo } from "react";
 import ButtonMore from "./UI/Buttons/ButtonMore";
 import { BASE_URL } from "../consts";
 import { getPrice } from "../utils/repr";
 
-const ProductItem = ({ product }) => {
+
+function ProductItem ({ product }) {
   return (
     <div className="product-item">
       <div className="item__hover-scale">
@@ -32,4 +33,4 @@ const ProductItem = ({ product }) => {
   );
 };
 
-export default ProductItem;
+export default memo(ProductItem);

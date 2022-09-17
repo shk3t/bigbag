@@ -10,8 +10,6 @@ import { BASE_URL, POLY_BAG } from "../consts";
 import { getPrice } from "../utils/repr";
 import { delay } from "../utils/delay";
 
-// TODO разбить на 2 компонента
-// TODO пофиксить вкладыши для биг бегов
 export default function ProductPage() {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -23,6 +21,7 @@ export default function ProductPage() {
   useEffect(() => {
     dispatch(getProductAction(id));
   }, []);
+
   useEffect(() => {
     if (product) {
       setQuantity(product.items_per_pack);
@@ -64,20 +63,19 @@ export default function ProductPage() {
                   </p>
                   <p>
                     <span className="product-about__category">
-                      {" "}
                       Размер:&nbsp;
                     </span>
                     {product.size}
                   </p>
                   <p>
-                    <span className="product-about__category"> Вес:&nbsp;</span>
-                    {product.bag_weight}{" "}
+                    <span className="product-about__category">Вес:&nbsp;</span>
+                    {product.bag_weight}
                     {product.type === POLY_BAG ? "гр/шт" : "кг/шт"}
                   </p>
                   <p>
                     <span className="product-about__category">
-                      Кол-во в упаковке:
-                    </span>{" "}
+                      Кол-во в упаковке:&nbsp;
+                    </span>
                     {product.items_per_pack}
                   </p>
 
@@ -91,7 +89,7 @@ export default function ProductPage() {
                   ) : (
                     <p>
                       <span className="product-about__category">
-                        Верх:&nbsp;
+                        {product.bottom_modification ? "Верх:" : "Сорт:"}&nbsp;
                       </span>
                       {product.top_modification}
                     </p>
@@ -104,18 +102,22 @@ export default function ProductPage() {
                       {product.poly_grade}
                     </p>
                   ) : (
-                    <p>
-                      <span className="product-about__category">
-                        Низ:&nbsp;
-                      </span>
-                      {product.bottom_modification}
-                    </p>
+                    product.bottom_modification && (
+                      <p>
+                        <span className="product-about__category">
+                          Низ:&nbsp;
+                        </span>
+                        {product.bottom_modification}
+                      </p>
+                    )
                   )}
                 </div>
                 <div className="product__price-buy">
                   <div className="product__price">
-                    <span>От</span>
-                    <span>&nbsp;{getPrice(product)}</span>
+                    <span>
+                      {!product.price_on_request && "От "}
+                      {getPrice(product)}
+                    </span>
                   </div>
                   <div className="product__amount">
                     <button

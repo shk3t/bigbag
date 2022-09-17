@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useObserver } from "../hooks/useObserver";
-import { useLocation } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 export default function Paginator({ fetchCallback }) {
+  const [searchParams] = useSearchParams();
   const scroller = useRef();
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
   const [allowFetch, setAllowFetch] = useState(false);
-  const { key } = useLocation();
 
   async function doFetch(...args) {
     try {
@@ -21,11 +21,11 @@ export default function Paginator({ fetchCallback }) {
   useEffect(() => {
     setPage(1);
     setAllowFetch(true);
-  }, [key]);
+  }, [searchParams]);
 
   useEffect(() => {
-    doFetch(page);
-  }, [page, key]);
+    if (page !== 0) doFetch(page);
+  }, [page]);
 
   useObserver(scroller, () => setPage(page + 1), allowFetch);
 

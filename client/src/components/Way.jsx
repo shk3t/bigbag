@@ -41,7 +41,8 @@ export default function Way({ tail = null }) {
         <span>Главная&ensp;</span>
       </Link>
       <span>{">"}&ensp;</span>
-      <Link to={pathname}>
+      {/* Захардкодил, пофикшу в следующей жизни :3 */}
+      <Link to={pathname.includes(CATALOG_PATH) ? CATALOG_PATH : pathname}>
         <span className={tail || "way__currentPath"}>
           {toWaySegment(pathname)}&ensp;
         </span>

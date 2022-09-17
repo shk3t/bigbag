@@ -1,17 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import ProductItem from "../components/ProductItem";
 import Paginator from "../components/Paginator";
-import {
-  clearProductListAction,
-  listProductsAction,
-} from "../reducers/productListReducer";
+import { listProductsAction } from "../reducers/productListReducer";
 import { store } from "../store";
 
 export default function ProductList() {
   const [searchParams] = useSearchParams();
-  const dispatch = useDispatch();
   const products = useSelector((state) => state.productListReducer.products);
 
   return (

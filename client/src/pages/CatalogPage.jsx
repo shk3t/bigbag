@@ -1,13 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams, useSearchParams } from "react-router-dom";
-
+import React from "react";
 import Footer from "../components/Footer";
 import Way from "../components/Way";
-import ProductItem from "../components/ProductItem";
 import ProductFilter from "../components/ProductFilter";
 import ProductList from "../components/ProductList";
-import { listProductsAction } from "../reducers/productListReducer";
 
 export default function CatalogPage() {
   return (
