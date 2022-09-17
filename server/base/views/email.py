@@ -2,6 +2,7 @@ from datetime import datetime
 from django.core.mail import EmailMessage, send_mail
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from base.models import User
 
 from base.services import EmailService
 
@@ -10,12 +11,14 @@ from base.services import EmailService
 def request_call(request):
     data = request.data
     message = EmailService.request_to_message(data)
+    managers = User.objects.filter(is_manager=True)
+    manager_emails = list(map(lambda manager: manager.email, managers))
 
     send_mail(
         "Заказ звонка",
         message,
         "sfdm-service@mail.ru",
-        ["dansikdudok@mail.ru"],
+        manager_emails,
         fail_silently=False,
     )
     return Response("Sended")
@@ -26,12 +29,14 @@ def request_with_cart(request):
     request_data = request.data["request"]
     cart_data = request.data["cart"]
     message = EmailService.request_to_message(request_data)
+    managers = User.objects.filter(is_manager=True)
+    manager_emails = list(map(lambda manager: manager.email, managers))
 
     email = EmailMessage(
         "Заявка с корзиной",
         message,
         "sfdm-service@mail.ru",
-        ["dansikdudok@mail.ru"],
+        manager_emails,
     )
 
     if cart_data:
