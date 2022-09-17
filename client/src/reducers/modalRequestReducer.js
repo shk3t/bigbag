@@ -6,33 +6,33 @@ const OPEN_MODAL = "OPEN_MODAL";
 const CLOSE_MODAL = "CLOSE_MODAL";
 const CLEAR_ERRORS = "CLEAR_ERRORS";
 
-export const BUTTON_INIT = "Отправить";
-const BUTTON_WAIT = "Отправляем...";
-const BUTTON_OK = "Отправлено!";
-const BUTTON_ERROR = "Ошибка";
+export const STATUS_INIT = "Отправить";
+const STATUS_WAIT = "Отправляем...";
+const STATUS_OK = "Отправлено!";
+const STATUS_ERROR = "Ошибка";
 
 const initialState = {
   modalActive: false,
   errorMessages: null,
-  buttonLabel: BUTTON_INIT,
+  requestStatus: STATUS_INIT,
 };
 
 const createModalRequestReducer =
   (reducerName = "") =>
   (state = initialState, action) => {
     if (action.name !== reducerName) return state;
-    const { messages, button } = action.payload || {};
+    const { messages, status } = action.payload || {};
     switch (action.type) {
       case UPDATE_REQUEST_STATUS:
         const newState = { ...state };
         if (messages) newState["errorMessages"] = messages;
-        if (button) newState["buttonLabel"] = button;
+        if (status) newState["requestStatus"] = status;
         return newState;
       case OPEN_MODAL:
         return {
           modalActive: true,
           errorMessages: null,
-          buttonLabel: BUTTON_INIT,
+          requestStatus: STATUS_INIT,
         };
       case CLOSE_MODAL:
         return { ...state, modalActive: false };
@@ -51,13 +51,13 @@ export const requestAction =
       dispatch({
         name,
         type: UPDATE_REQUEST_STATUS,
-        payload: { messages: null, button: BUTTON_WAIT },
+        payload: { messages: null, status: STATUS_WAIT },
       });
       await callback();
       dispatch({
         name,
         type: UPDATE_REQUEST_STATUS,
-        payload: { messages: null, button: BUTTON_OK },
+        payload: { messages: null, status: STATUS_OK },
       });
       if (timeout > 0) await delay(timeout);
       dispatch({ name, type: CLOSE_MODAL });
@@ -66,13 +66,13 @@ export const requestAction =
       dispatch({
         name,
         type: UPDATE_REQUEST_STATUS,
-        payload: { messages, button: BUTTON_ERROR },
+        payload: { messages, status: STATUS_ERROR },
       });
       await delay(1500);
       dispatch({
         name,
         type: UPDATE_REQUEST_STATUS,
-        payload: { button: BUTTON_INIT },
+        payload: { status: STATUS_INIT },
       });
     }
   };

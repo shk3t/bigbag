@@ -8,6 +8,7 @@ import {
   USERS,
 } from "..//../../consts";
 import BtnNewProduct from "./BtnNewProduct";
+import BtnNewBagType from "./BtnNewBagType";
 
 export default function BtnAdminNew() {
   const [searchParams] = useSearchParams();
@@ -18,7 +19,7 @@ export default function BtnAdminNew() {
       return <BtnNewProduct />;
     case POLY_BAG_TYPE:
     case BIG_BAG_TYPE:
-      return <div>Кнопка создания типов мешков</div>;
+      return <BtnNewBagType />;
     case USERS:
       return null;
     default:

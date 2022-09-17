@@ -135,15 +135,11 @@ class BagMapping:
     BAG_MAPPING = {
         Product.ProductType.POLY_BAG: (PolyBag, PolyBagSerializer),
         Product.ProductType.BIG_BAG: (BigBag, BigBagSerializer),
-        "polybag": (PolyBag, PolyBagSerializer),
-        "bigbag": (BigBag, BigBagSerializer),
     }
 
     BAG_TYPE_MAPPING = {
         Product.ProductType.POLY_BAG: (PolyBagType, PolyBagTypeSerializer),
         Product.ProductType.BIG_BAG: (BigBagType, BigBagTypeSerializer),
-        "polybag": (PolyBagType, PolyBagTypeSerializer),
-        "bigbag": (BigBagType, BigBagTypeSerializer),
     }
 
     @staticmethod

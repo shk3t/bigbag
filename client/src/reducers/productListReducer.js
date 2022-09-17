@@ -1,6 +1,7 @@
 import ProductService from "../API/ProductService";
 
 const LIST_PRODUCTS = "LIST_PRODUCTS";
+const APPEND_PRODUCTS = "APPEND_PRODUCTS";
 const CLEAR_PRODUCTS = "CLEAR_PRODUCTS";
 const CREATE_PRODUCT = "CREATE_PRODUCT";
 const UPDATE_PRODUCT = "UPDATE_PRODUCT";
@@ -10,6 +11,8 @@ export default function productListReducer(state = { products: [] }, action) {
   switch (action.type) {
     case LIST_PRODUCTS:
       return { products: action.payload };
+    case APPEND_PRODUCTS:
+      return { products: [...state.products, ...action.payload] };
     case CLEAR_PRODUCTS:
       return { products: [] };
     case CREATE_PRODUCT:
@@ -29,10 +32,15 @@ export default function productListReducer(state = { products: [] }, action) {
   }
 }
 
-export const listProductsAction = (params) => async (dispatch) => {
-  const products = await ProductService.getAllProducts(params);
-  dispatch({ type: LIST_PRODUCTS, payload: products });
-};
+export const listProductsAction =
+  (params, append = false) =>
+  async (dispatch) => {
+    const products = await ProductService.getAllProducts(params);
+    dispatch({
+      type: append ? APPEND_PRODUCTS : LIST_PRODUCTS,
+      payload: products,
+    });
+  };
 
 export const clearProductListAction = () => (dispatch) => {
   dispatch({ type: CLEAR_PRODUCTS });

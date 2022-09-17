@@ -1,28 +1,39 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ErrorMsg from "../ErrorMsg";
-import { setUserAction } from "../../../reducers/userReducer";
-import { STATUS_INIT, requestAction } from "../../../reducers/modalRequestReducer";
+import { setSubtypeAction } from "../../../reducers/subtypeReducer";
+import {
+  STATUS_INIT,
+  requestAction,
+} from "../../../reducers/modalRequestReducer";
+import {
+  createSubtypeAction,
+  updateSubtypeAction,
+} from "../../../reducers/subtypeListReducer";
 import { ADMIN_REQUEST } from "../../../consts";
 import { store } from "../../../store";
-import { updateUserAction } from "../../../reducers/userListReducer";
 
-export default function UserForm() {
+export default function BagTypeForm({type}) {
   const dispatch = useDispatch();
-  const errorMessages = useSelector(
-    (state) => state.adminRequestReducer.errorMessages
-  );
   const requestStatus = useSelector(
     (state) => state.adminRequestReducer.requestStatus
   );
-  const user = useSelector((state) => state.userReducer.user);
+  const errorMessages = useSelector(
+    (state) => state.adminRequestReducer.errorMessages
+  );
+  const subtype = useSelector((state) => state.subtypeReducer.subtype);
 
   function sendRequest(event) {
     event.preventDefault();
     dispatch(
       requestAction(
         ADMIN_REQUEST,
-        async () => await store.dispatch(updateUserAction(user.id, user))
+        async () =>
+          await store.dispatch(
+            subtype.old_name
+              ? updateSubtypeAction(type, subtype.old_name, subtype)
+              : createSubtypeAction(type, subtype)
+          )
       )
     );
   }
@@ -32,23 +43,12 @@ export default function UserForm() {
       {errorMessages && <ErrorMsg messages={errorMessages} />}
       <form className="admin_add-meshki" encType="multipart/form-data">
         <div className="admin__add-description">
-          Админ:
+          Название типа мешка:
           <input
-            type="checkbox"
-            checked={user.is_admin || false}
+            value={subtype.name || ""}
             onChange={(event) =>
               dispatch(
-                setUserAction({ ...user, is_admin: event.target.checked })
-              )
-            }
-          />
-          Менеджер:
-          <input
-            type="checkbox"
-            checked={user.is_manager || false}
-            onChange={(event) =>
-              dispatch(
-                setUserAction({ ...user, is_manager: event.target.checked })
+                setSubtypeAction({ ...subtype, name: event.target.value })
               )
             }
           />

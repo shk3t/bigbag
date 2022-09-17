@@ -16,7 +16,7 @@ urlpatterns = [
     path("products/<str:product_id>/image", product.ImageDetial.as_view()),
     
     path("subtypes/<str:type>", subtype.BagTypeList.as_view()),
-    path("subtypes/<str:type>/<str:name>", subtype.BagTypeDetail.as_view()),
+    path("subtypes/<str:type>/<str:subtype>", subtype.BagTypeDetail.as_view()),
 
     path("call-request", email.request_call),
     path("cart-call-request", email.request_with_cart),

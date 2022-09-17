@@ -1,21 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useSearchParams } from "react-router-dom";
 import { store } from "../../../store";
 import { ADMIN_REQUEST, BASE_URL } from "../../../consts";
-import { deleteProductAction } from "../../../reducers/productListReducer";
 import { setModalAction } from "../../../reducers/modalRequestReducer";
-import { setProductAction } from "../../../reducers/productReducer";
-import { listSubtypesAction } from "../../../reducers/subtypeListReducer";
+import { setSubtypeAction } from "../../../reducers/subtypeReducer";
+import { deleteSubtypeAction } from "../../../reducers/subtypeListReducer";
 
-export default function BagTypeTable() {
-  const [searchParams] = useSearchParams();
+export default function BagTypeTable({type}) {
   const dispatch = useDispatch();
   const subtypes = useSelector((state) => state.subtypeListReducer.subtypes);
-
-  useEffect(() => {
-    dispatch(listSubtypesAction(searchParams.get("table")));
-  }, [searchParams]);
 
   return (
     <div>
@@ -30,7 +23,7 @@ export default function BagTypeTable() {
           <div
             className="admin__edit"
             onClick={() => {
-              dispatch(setProductAction(product));
+              dispatch(setSubtypeAction({ ...subtype, old_name: subtype.name }));
               dispatch(setModalAction(ADMIN_REQUEST, true));
             }}
           >
@@ -39,7 +32,7 @@ export default function BagTypeTable() {
           <div
             className="admin__edit"
             onClick={async () => {
-              await store.dispatch(deleteProductAction(product.id));
+              await store.dispatch(deleteSubtypeAction(type, subtype.name));
             }}
           >
             Удалить

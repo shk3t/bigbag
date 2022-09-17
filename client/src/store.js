@@ -13,7 +13,13 @@ import userListReducer from "./reducers/userListReducer";
 import cartReducer from "./reducers/cartReducer";
 import authReducer from "./reducers/authReducer";
 import createModalRequestReducer from "./reducers/modalRequestReducer";
-import { AUTH_REQUEST, CALL_REQUEST, CART_REQUEST, ADMIN_REQUEST} from "./consts";
+import {
+  AUTH_REQUEST,
+  CALL_REQUEST,
+  CART_REQUEST,
+  ADMIN_REQUEST,
+  PAGINATION_REQUEST,
+} from "./consts";
 
 const middlewares = [thunk];
 

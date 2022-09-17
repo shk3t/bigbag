@@ -6,10 +6,12 @@ import Footer from "../components/Footer";
 import Way from "../components/Way";
 import { getProductAction } from "../reducers/productReducer";
 import { addItemAction } from "../reducers/cartReducer";
-import { BASE_URL } from "../consts";
+import { BASE_URL, POLY_BAG } from "../consts";
 import { getPrice } from "../utils/repr";
 import { delay } from "../utils/delay";
 
+// TODO разбить на 2 компонента
+// TODO пофиксить вкладыши для биг бегов
 export default function ProductPage() {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -70,9 +72,7 @@ export default function ProductPage() {
                   <p>
                     <span className="product-about__category"> Вес:&nbsp;</span>
                     {product.bag_weight}{" "}
-                    {product.type === "Мешки полипропиленовые"
-                      ? "гр/шт"
-                      : "кг/шт"}
+                    {product.type === POLY_BAG ? "гр/шт" : "кг/шт"}
                   </p>
                   <p>
                     <span className="product-about__category">
@@ -81,7 +81,7 @@ export default function ProductPage() {
                     {product.items_per_pack}
                   </p>
 
-                  {product.type === "Мешки полипропиленовые" ? (
+                  {product.type === POLY_BAG ? (
                     <p>
                       <span className="product-about__category">
                         Цвет:&nbsp;
@@ -96,7 +96,7 @@ export default function ProductPage() {
                       {product.top_modification}
                     </p>
                   )}
-                  {product.type === "Мешки полипропиленовые" ? (
+                  {product.type === POLY_BAG ? (
                     <p>
                       <span className="product-about__category">
                         Сорт:&nbsp;

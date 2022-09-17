@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import {
+    BAG_TYPE_MAPPING,
   BIG_BAG,
   BIG_BAG_TYPE,
   POLY_BAG,
@@ -13,6 +14,7 @@ import {
 } from "../../../reducers/productListReducer";
 import { listUsersAction } from "../../../reducers/userListReducer";
 import { useSearchParams } from "react-router-dom";
+import { listSubtypesAction } from "../../../reducers/subtypeListReducer";
 
 export default function AdminTableSelect() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -20,10 +22,18 @@ export default function AdminTableSelect() {
 
   useEffect(() => {
     const table = searchParams.get("table");
-    if (table === USERS) {
-      dispatch(listUsersAction());
-    } else {
-      dispatch(listProductsAction({ type: table }));
+    switch (table) {
+      case USERS:
+        dispatch(listUsersAction());
+        break;
+      case BIG_BAG_TYPE:
+      case POLY_BAG_TYPE:
+        dispatch(listSubtypesAction(BAG_TYPE_MAPPING[table]));
+        break;
+      case BIG_BAG:
+      case POLY_BAG:
+      default:
+        dispatch(listProductsAction({ type: table }));
     }
   }, [searchParams]);
 

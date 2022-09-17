@@ -5,9 +5,12 @@ export const BASE_URL = "http://127.0.0.1:8000";
 // Data
 export const POLY_BAG = "Мешки полипропиленовые";
 export const BIG_BAG = "МКР (биг-бэг)";
-export const POLY_BAG_TYPE = "polybag-type";
-export const BIG_BAG_TYPE = "bigbag-type";
+export const POLY_BAG_TYPE = "Типы полипропиленовых мешков";
+export const BIG_BAG_TYPE = "Типы МКР";
 export const USERS = "users";
+export const BAG_TYPE_MAPPING = {};
+BAG_TYPE_MAPPING[POLY_BAG_TYPE] = POLY_BAG;
+BAG_TYPE_MAPPING[BIG_BAG_TYPE] = BIG_BAG;
 
 // Routes
 export const MAIN_PATH = "/main";
@@ -47,4 +50,5 @@ export const TRANSLATIONS = {
   bottom_modification: "Нижняя модификация",
   pack_size: "Размер упаковки",
   pack_volume: "Объем упаковки",
+  name: "Название"
 };

@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  BUTTON_INIT,
+  STATUS_INIT,
   requestAction,
 } from "../../../reducers/modalRequestReducer";
 import ErrorMsg from "../ErrorMsg";
@@ -12,7 +12,7 @@ export default function CartRequestForm() {
   const dispatch = useDispatch();
   const authUser = useSelector((state) => state.authReducer.authUser);
   const cartItems = useSelector((state) => state.cartReducer.cartItems);
-  const { modalActive, errorMessages, buttonLabel } = useSelector(
+  const { modalActive, errorMessages, requestStatus } = useSelector(
     (state) => state.cartRequestReducer
   );
   const emptyRequest = { name: "", phone: "", comment: "" };
@@ -74,8 +74,8 @@ export default function CartRequestForm() {
             placeholder="Укажите комментарий, если требуется. Например, удобное время для звонка или интересующий вопрос"
           />
           <p className="call_description">Корзина будет прикреплена к заявке</p>
-          <button onClick={sendRequest} disabled={buttonLabel !== BUTTON_INIT}>
-            {buttonLabel}
+          <button onClick={sendRequest} disabled={requestStatus !== STATUS_INIT}>
+            {requestStatus}
           </button>
         </form>
       </div>

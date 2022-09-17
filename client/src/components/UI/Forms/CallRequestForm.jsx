@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   requestAction,
-  BUTTON_INIT,
+  STATUS_INIT,
 } from "../../../reducers/modalRequestReducer";
 import ErrorMsg from "../ErrorMsg";
 import EmailService from "../../../API/EmailService";
@@ -11,7 +11,7 @@ import { CALL_REQUEST } from "../../../consts";
 export default function CallRequestForm() {
   const dispatch = useDispatch();
   const authUser = useSelector((state) => state.authReducer.authUser);
-  const { modalActive, errorMessages, buttonLabel } = useSelector(
+  const { modalActive, errorMessages, requestStatus } = useSelector(
     (state) => state.callRequestReducer
   );
   const emptyRequest = { name: "", phone: "", comment: "" };
@@ -68,8 +68,8 @@ export default function CallRequestForm() {
             field="comment"
             placeholder="Укажите комментарий, если требуется. Например, удобное время для звонка или интересующий вопрос"
           />
-          <button onClick={sendRequest} disabled={buttonLabel !== BUTTON_INIT}>
-            {buttonLabel}
+          <button onClick={sendRequest} disabled={requestStatus !== STATUS_INIT}>
+            {requestStatus}
           </button>
         </form>
       </div>

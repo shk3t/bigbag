@@ -1,5 +1,6 @@
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.pagination import PageNumberPagination
 
 from base.models import Product
 from base.permissions import IsAdminOrReadOnly
@@ -14,6 +15,7 @@ class ProductList(APIView):
         products = Product.objects.all()
         if type_param and type_param != "all":
             products = products.filter(type=type_param)
+        products = PageNumberPagination().paginate_queryset(products, request)
         serializer = BagProductSerializer(products, many=True)
         return Response(serializer.data)
 

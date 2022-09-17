@@ -3,12 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import ErrorMsg from "../ErrorMsg";
 import { registerAction, loginAction } from "../../../reducers/authReducer";
 import { store } from "../../../store";
-import { BUTTON_INIT, clearErrorsAction, requestAction } from "../../../reducers/modalRequestReducer";
+import { STATUS_INIT, clearErrorsAction, requestAction } from "../../../reducers/modalRequestReducer";
 import { AUTH_REQUEST } from "../../../consts";
 
+// TODO сообщение об ошибке о существующем email
 export default function AuthForm() {
   const dispatch = useDispatch();
-  const { errorMessages, modalActive, buttonLabel } = useSelector(
+  const { errorMessages, modalActive, requestStatus } = useSelector(
     (state) => state.authRequestReducer
   );
   const emptyCredentials = { name: "", email: "", password: "" };
@@ -76,7 +77,7 @@ export default function AuthForm() {
           </div>
           <button
             onClick={registerOrLogin}
-            disabled={buttonLabel !== BUTTON_INIT}
+            disabled={requestStatus !== STATUS_INIT}
           >
             {isLogin ? "Войти" : "Зарегистрироваться"}
           </button>

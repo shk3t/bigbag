@@ -1,9 +1,7 @@
-import { React, useEffect, useState } from "react";
+import { React, useEffect } from "react";
 import classes from "./ButtonMore.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutAction } from "../../../reducers/authReducer";
-import Modal from "../../Modal/Modal";
-import AuthForm from "../Forms/AuthForm";
 import { setModalAction } from "../../../reducers/modalRequestReducer";
 import { AUTH_REQUEST } from "../../../consts";
 

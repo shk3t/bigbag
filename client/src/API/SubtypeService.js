@@ -9,11 +9,11 @@ export default class SubtypeService {
     const response = await authApi.post(`/api/subtypes/${type}`, data);
     return response.data;
   }
-  static async updateSubtype(type, name, data) {
-    const response = await authApi.put(`/api/subtypes/${type}/${name}`, data);
+  static async updateSubtype(type, subtype, data) {
+    const response = await authApi.put(`/api/subtypes/${type}/${subtype}`, data);
     return response.data;
   }
-  static async deleteSubtype(type, name) {
-    await authApi.delete(`/api/subtypes/${type}/${name}`);
+  static async deleteSubtype(type, subtype) {
+    await authApi.delete(`/api/subtypes/${type}/${subtype}`);
   }
 }

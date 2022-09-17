@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { useSearchParams, useLocation } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { POLY_BAG, BIG_BAG } from "../consts";
 
 export default function ProductFilter() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const { key } = useLocation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [key]);
+  }, [searchParams]);
 
-  const [categories, setCategories] = useState([
+  const [categories] = useState([
     { key: "all", name: "Все товары" },
     { key: POLY_BAG, name: "Мешки" },
     { key: BIG_BAG, name: "Биг-бэги" },

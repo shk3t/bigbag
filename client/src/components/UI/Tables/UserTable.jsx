@@ -1,8 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { store } from "../../../store";
 import { setModalAction } from "../../../reducers/modalRequestReducer";
-import { deleteUserAction } from "../../../reducers/userListReducer";
 import { setUserAction } from "../../../reducers/userReducer";
 import { ADMIN_REQUEST } from "../../../consts";
 
