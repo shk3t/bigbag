@@ -1,6 +1,6 @@
 import { applyMiddleware, combineReducers, createStore } from "redux";
 import thunk from "redux-thunk";
-import { composeWithDevTools } from "redux-devtools-extension";
+// import { composeWithDevTools } from "redux-devtools-extension";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
@@ -18,7 +18,6 @@ import {
   CALL_REQUEST,
   CART_REQUEST,
   ADMIN_REQUEST,
-  PAGINATION_REQUEST,
 } from "./consts";
 
 const middlewares = [thunk];
@@ -51,6 +50,7 @@ const rootReducer = combineReducers({
 
 export const store = createStore(
   rootReducer,
-  composeWithDevTools(applyMiddleware(...middlewares))
+  // composeWithDevTools(applyMiddleware(...middlewares))
+  applyMiddleware(...middlewares)
 );
 export const persistor = persistStore(store);
