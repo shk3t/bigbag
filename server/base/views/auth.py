@@ -44,7 +44,6 @@ def logout(request):
 @api_view(["POST"])
 def refresh_tokens(request):
     raw_token = request.COOKIES.get("refresh_token")
-    print(raw_token)
     try:
         if not raw_token:
             raise InvalidToken
