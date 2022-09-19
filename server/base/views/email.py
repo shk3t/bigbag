@@ -3,6 +3,7 @@ from django.core.mail import EmailMessage, send_mail
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from base.models import User
+from django.conf import settings
 
 from base.services import EmailService
 
@@ -17,7 +18,7 @@ def request_call(request):
     send_mail(
         "Заказ звонка",
         message,
-        "sfdm-service@mail.ru",
+        settings.EMAIL_HOST_USER,
         manager_emails,
         fail_silently=False,
     )
@@ -35,7 +36,7 @@ def request_with_cart(request):
     email = EmailMessage(
         "Заявка с корзиной",
         message,
-        "sfdm-service@mail.ru",
+        settings.EMAIL_HOST_USER,
         manager_emails,
     )
 

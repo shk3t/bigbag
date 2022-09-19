@@ -9,7 +9,12 @@ export const injectStore = (_store) => {
 };
 
 export const publicApi = axios.create({
-  baseURL: BASE_URL
+  baseURL: BASE_URL,
+});
+
+export const withCredentialsApi = axios.create({
+  baseURL: BASE_URL,
+  withCredentials: true,
 });
 
 export const authApi = axios.create({

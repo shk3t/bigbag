@@ -83,7 +83,7 @@ CORS_ALLOW_CREDENTIALS = True
 # Mailing
 EMAIL_HOST = "smtp.mail.ru"
 EMAIL_PORT = "465"
-EMAIL_HOST_USER = "sfdm-service@mail.ru"
+EMAIL_HOST_USER = "bigbag.pro@mail.ru"
 EMAIL_HOST_PASSWORD = metadata["email-host-password"]
 EMAIL_USE_SSL = True
 

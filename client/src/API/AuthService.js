@@ -1,4 +1,4 @@
-import { publicApi } from "../api";
+import { publicApi, withCredentialsApi } from "../api";
 
 export default class AuthService {
   static async register(credentials) {
@@ -13,9 +13,7 @@ export default class AuthService {
     await publicApi.post("api/logout");
   }
   static async refreshTokens() {
-    const response = await publicApi.post(`/api/tokens/refresh`, {
-      withCredentials: true,
-    });
+    const response = await withCredentialsApi.post("/api/tokens/refresh");
     return response.data;
   }
 }
