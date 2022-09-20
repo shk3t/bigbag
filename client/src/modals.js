@@ -1,6 +1,5 @@
 import {
   CART_PATH,
-  AUTH_PATH,
   ADMIN_PATH,
   CALL_REQUEST,
   CART_REQUEST,

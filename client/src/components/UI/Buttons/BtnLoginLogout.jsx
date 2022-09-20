@@ -8,9 +8,6 @@ import { AUTH_REQUEST } from "../../../consts";
 export default function BtnLoginLogout() {
   const dispatch = useDispatch();
   const authUser = useSelector((state) => state.authReducer.authUser);
-  const modalActive = useSelector(
-    (state) => state.authRequestReducer.modalActive
-  );
 
   useEffect(() => {
     dispatch(setModalAction(AUTH_REQUEST, false));

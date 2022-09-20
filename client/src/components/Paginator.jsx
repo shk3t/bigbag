@@ -8,22 +8,21 @@ export default function Paginator({ fetchCallback }) {
   const [page, setPage] = useState(0);
   const [allowFetch, setAllowFetch] = useState(false);
 
-  async function doFetch(...args) {
-    try {
-      setAllowFetch(false);
-      await fetchCallback(...args);
-      setAllowFetch(true);
-    } catch (e) {
-      setAllowFetch(false);
-    }
-  }
-
   useEffect(() => {
     setPage(1);
     setAllowFetch(true);
   }, [searchParams]);
 
   useEffect(() => {
+    async function doFetch(...args) {
+      try {
+        setAllowFetch(false);
+        await fetchCallback(...args);
+        setAllowFetch(true);
+      } catch (e) {
+        setAllowFetch(false);
+      }
+    }
     if (page !== 0) doFetch(page);
   }, [page]);
 

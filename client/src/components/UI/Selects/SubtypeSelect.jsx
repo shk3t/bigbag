@@ -22,7 +22,9 @@ export default function SubtypeSelect() {
         dispatch(setProductAction({ ...product, subtype: event.target.value }))
       }
     >
-      <option defaultValue={null} hidden>Выберите тип мешка</option>
+      <option defaultValue={null} hidden>
+        Выберите тип мешка
+      </option>
       {subtypes.map(({ name: subtype }) => (
         <option key={subtype}>{subtype}</option>
       ))}

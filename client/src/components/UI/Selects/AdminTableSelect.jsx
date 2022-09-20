@@ -1,17 +1,14 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import {
-    BAG_TYPE_MAPPING,
+  BAG_TYPE_MAPPING,
   BIG_BAG,
   BIG_BAG_TYPE,
   POLY_BAG,
   POLY_BAG_TYPE,
   USERS,
 } from "../../../consts";
-import {
-  clearProductListAction,
-  listProductsAction,
-} from "../../../reducers/productListReducer";
+import { listProductsAction } from "../../../reducers/productListReducer";
 import { listUsersAction } from "../../../reducers/userListReducer";
 import { useSearchParams } from "react-router-dom";
 import { listSubtypesAction } from "../../../reducers/subtypeListReducer";

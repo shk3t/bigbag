@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { BIG_BAG, CALL_REQUEST, CATALOG_PATH, POLY_BAG } from "../consts";
 import Footer from "../components/Footer";
 import benefit from "../assets/benefit.png";
-import novopack from "../assets/novopack.png";
 import exampleBug from "../assets/5595.jpg";
 import bigbag from "../assets/bb_main.jpg";
 
@@ -114,7 +113,7 @@ export default function MainPage() {
               <button className="btn-all">Все товары &rarr;</button>
             </Link>
           </div>
-          <div className="partners-title">
+          {/* <div className="partners-title">
             <h3>Наши партнёры</h3>
           </div>
           <section className="partners">
@@ -124,7 +123,7 @@ export default function MainPage() {
             <div className="partners-item">
               <img src={novopack} alt="Новопэк" />
             </div>
-          </section>
+          </section> */}
         </main>
       </div>
 

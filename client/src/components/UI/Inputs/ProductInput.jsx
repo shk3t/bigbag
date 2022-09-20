@@ -45,7 +45,7 @@ export default function ProductInput({ field, ...props }) {
           value={value || ""}
           onChange={(event) => {
             const value = event.target.value;
-            setValue(value.replace(/^0+(?=\d)/, "").replace(/[^\d\.]/, ""));
+            setValue(value.replace(/^0+(?=\d)/, "").replace(/[^\d.]/, ""));
             product[field] = Number(value);
             dispatch(setProductAction(product));
           }}

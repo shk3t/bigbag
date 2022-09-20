@@ -13,7 +13,7 @@ function CartItem({ item }) {
     <div>
       <Link to={CATALOG_PATH + "/" + item.id}>
         <div className="cart__container-products-img">
-          <img src={BASE_URL + item.image}></img>
+          <img src={BASE_URL + item.image} alt="товар"></img>
         </div>
       </Link>
       <div className="cart__container-products-title">{item.name}</div>

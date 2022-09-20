@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { store } from "../../../store";
-import { ADMIN_REQUEST, BASE_URL } from "../../../consts";
+import { ADMIN_REQUEST } from "../../../consts";
 import { setModalAction } from "../../../reducers/modalRequestReducer";
 import { setSubtypeAction } from "../../../reducers/subtypeReducer";
 import { deleteSubtypeAction } from "../../../reducers/subtypeListReducer";

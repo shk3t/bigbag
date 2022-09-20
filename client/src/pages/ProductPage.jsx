@@ -20,7 +20,7 @@ export default function ProductPage() {
 
   useEffect(() => {
     dispatch(getProductAction(id));
-  }, []);
+  });
 
   useEffect(() => {
     if (product) {
@@ -49,7 +49,7 @@ export default function ProductPage() {
           {product && (
             <div className="product-wrap">
               <div className="product-img">
-                <img src={BASE_URL + product.image} />
+                <img src={BASE_URL + product.image} alt="продукт" />
               </div>
               <div className="product-about__wrap">
                 <div className="product-about__title">
