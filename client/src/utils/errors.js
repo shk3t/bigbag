@@ -1,15 +1,15 @@
 import { TRANSLATIONS } from "../consts";
 
 export function extractErrorMessages(error) {
-  if (!error.response) return ["Unexpected behavior"];
+  if (!error.response) return ["Неизвестная ошибка"];
   const data = error.response.data;
   const status = error.response.status;
   if (status === 403) return ["Нет прав доступа"];
-  if (status !== 400 && status !== 401) return ["Unexpected behavior"];
+  if (status !== 400 && status !== 401) return ["Неизвестная ошибка"];
   const messages = [];
 
 
-  function translate(word) {
+  function translate() {
     const translation = TRANSLATIONS[word.toLowerCase()];
     return translation || word;
   }

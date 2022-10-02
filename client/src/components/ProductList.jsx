@@ -9,6 +9,7 @@ import { store } from "../store";
 export default function ProductList() {
   const [searchParams] = useSearchParams();
   const products = useSelector((state) => state.productListReducer.products);
+  const type = searchParams.get("type");
 
   return (
     <div className="catalog-item__wrap ">
@@ -16,10 +17,10 @@ export default function ProductList() {
         <ProductItem key={product.id} product={product} />
       ))}
       <Paginator
+        key={type}
         fetchCallback={async (page) => {
-          const type = searchParams.get("type");
           await store.dispatch(
-            listProductsAction({ type, page }, page === 1 ? false : true)
+            listProductsAction({ type, page }, page !== 1)
           );
         }}
       />

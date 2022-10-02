@@ -20,7 +20,7 @@ export default function ProductPage() {
 
   useEffect(() => {
     dispatch(getProductAction(id));
-  });
+  }, []);
 
   useEffect(() => {
     if (product) {

@@ -10,9 +10,8 @@ metadata = json.load(open(BASE_DIR / "metadata.json"))
 SECRET_KEY = metadata["secret-key"]
 DEBUG = True
 ALLOWED_HOSTS = []
-# DEBUG = False
-# ALLOWED_HOSTS = ['91.203.193.225']
-# CSRF_COOKIE_SECURE = True
+# ALLOWED_HOSTS = ['45.143.138.11']
+CSRF_COOKIE_SECURE = True
 # SECURE_SSL_REDIRECT = True
 # SECURE_HSTS_SECONDS = 0
 

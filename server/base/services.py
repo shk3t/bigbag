@@ -47,7 +47,7 @@ class EmailService:
 
         message = f"Имя: {data['name']},\nТелефон: {data['phone']}"
 
-        if "comment" in data:
+        if "comment" in data and data["comment"]:
             message += f"\n\nКомментарий:\n{data['comment']}"
 
         return message
