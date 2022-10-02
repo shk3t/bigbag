@@ -1,22 +1,22 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setModalAction } from "../reducers/modalRequestReducer";
 import { BIG_BAG, CALL_REQUEST, CATALOG_PATH, POLY_BAG } from "../consts";
+import { encodeUri } from "../utils/repr";
 import Footer from "../components/Footer";
 import benefit from "../assets/benefit.png";
 import exampleBug from "../assets/5595.jpg";
 import bigbag from "../assets/bb_main.jpg";
-
 import mainImg from "../assets/main_img.jpg";
-
-import { useDispatch } from "react-redux";
-import { setModalAction } from "../reducers/modalRequestReducer";
 
 export default function MainPage() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const catalogCategories = [
-    { label: "МЕШКИ", image: exampleBug, path: CATALOG_PATH + "?" + POLY_BAG },
-    { label: "БИГ-БЭГИ", image: bigbag, path: CATALOG_PATH + "?" + BIG_BAG },
+    { label: "МЕШКИ", image: exampleBug, path: CATALOG_PATH + "?type=" + encodeUri(POLY_BAG) },
+    { label: "БИГ-БЭГИ", image: bigbag, path: CATALOG_PATH + "?type=" + encodeUri(BIG_BAG) },
   ];
 
   return (
