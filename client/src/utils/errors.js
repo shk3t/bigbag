@@ -9,7 +9,7 @@ export function extractErrorMessages(error) {
   const messages = [];
 
 
-  function translate() {
+  function translate(word) {
     const translation = TRANSLATIONS[word.toLowerCase()];
     return translation || word;
   }
