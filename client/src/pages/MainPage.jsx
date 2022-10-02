@@ -12,7 +12,6 @@ import mainImg from "../assets/main_img.jpg";
 
 export default function MainPage() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const catalogCategories = [
     { label: "МЕШКИ", image: exampleBug, path: CATALOG_PATH + "?type=" + encodeUri(POLY_BAG) },
