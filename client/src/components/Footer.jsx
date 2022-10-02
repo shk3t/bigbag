@@ -46,12 +46,8 @@ export default function Footer() {
       </div>
       <div className="footer-contacts">
         <p>
-          Москва (499) 490-78-12 <br />
+          Москва +7 (499) 490-78-12 <br />
           bigbag.pro@mail.ru
-        </p>
-        <br />
-        <p>
-          <strong>г. Санкт-Петербург</strong>, ул. Минеральная, д. 31В, офис 20{" "}
         </p>
         <br />
         <p>
