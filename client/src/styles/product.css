@@ -162,3 +162,24 @@ main {
     width: 50%;
   }
 }
+
+@media (max-width: 768px) {
+  .product-wrap {
+    grid-template-rows: 0.5fr 1fr;
+    grid-template-columns: auto;
+    margin: auto;
+    padding: 1rem;
+    justify-items: center;
+  }
+
+  .product-about__text {
+    font-size: 0.8em;
+  }
+
+  .product-img > img {
+    width: 75%;
+  }
+  .product__price-buy {
+    justify-items: baseline;
+  }
+}

@@ -14,8 +14,16 @@ export default function MainPage() {
   const dispatch = useDispatch();
 
   const catalogCategories = [
-    { label: "МЕШКИ", image: exampleBug, path: CATALOG_PATH + "?type=" + encodeUri(POLY_BAG) },
-    { label: "БИГ-БЭГИ", image: bigbag, path: CATALOG_PATH + "?type=" + encodeUri(BIG_BAG) },
+    {
+      label: "МЕШКИ ПОЛИПРОПИЛЕНОВЫЕ",
+      image: exampleBug,
+      path: CATALOG_PATH + "?type=" + encodeUri(POLY_BAG),
+    },
+    {
+      label: "МЯГКИЕ КОНТЕЙНЕРЫ (БИГ-БЭГИ)",
+      image: bigbag,
+      path: CATALOG_PATH + "?type=" + encodeUri(BIG_BAG),
+    },
   ];
 
   return (
@@ -24,7 +32,7 @@ export default function MainPage() {
         <main>
           <section className="slider">
             <div className="slider-text">
-              <h1>«Дебют» — промышленная упаковка для вашего бизнеса</h1>
+              <h1>«БигБэгПро» — промышленная упаковка для вашего бизнеса</h1>
               <p>
                 Мы продаём качественную промышленную полимерную упаковку —
                 строительные, бытовые, пищевые мешки, а также мягкие контейнеры
@@ -69,8 +77,8 @@ export default function MainPage() {
 
               <h4>Сертификаты соответствия</h4>
               <p>
-                Продукция «Дебют» имеет Декларацию о соответствии требованиям
-                Евразийкого Экономического союза
+                Продукция «БигБэгПро» имеет Декларацию о соответствии
+                требованиям Евразийкого Экономического союза
               </p>
             </div>
           </section>
@@ -90,7 +98,7 @@ export default function MainPage() {
                   </div>
                   <div className="catalog-btn__wrap">
                     <Link to={category.path}>
-                      <button className="catalog-item__btn-price">
+                      <button className="catalog-item__btn-price-title">
                         {category.label}
                       </button>
                     </Link>

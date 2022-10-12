@@ -22,7 +22,7 @@ export default function Header() {
     <header>
       <div className="header__logo">
         <Link to={MAIN_PATH}>
-          <img className="img-logo" src={logov2} alt="Дебют лого" />
+          <img className="img-logo" src={logov2} alt="БигБэгПро лого" />
         </Link>
       </div>
       <div className="header__nav">

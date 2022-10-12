@@ -11,8 +11,8 @@ export default function ProductFilter() {
 
   const [categories] = useState([
     { key: "all", name: "Все товары" },
-    { key: POLY_BAG, name: "Мешки" },
-    { key: BIG_BAG, name: "Биг-бэги" },
+    { key: POLY_BAG, name: "Мешки полипропиленовые" },
+    { key: BIG_BAG, name: "Мягкие контейнеры (биг-бэг)" },
   ]);
 
   return (

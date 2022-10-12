@@ -492,7 +492,19 @@ h3 {
   color: #fff;
 }
 
-.catalog-item__btn-price:hover {
+.catalog-item__btn-price-title {
+  width: 13em;
+  height: 4em;
+  padding-left: 1em;
+  padding-right: 1em;
+  font-size: 0.8em;
+  background-color: #393d45;
+  border-radius: 10px;
+  color: #fff;
+}
+
+.catalog-item__btn-price:hover,
+.catalog-item__btn-price-title:hover {
   cursor: pointer;
   background: #393d452a;
   color: #211f1c;
@@ -681,11 +693,16 @@ footer ul a {
   background: #f5f7fb;
   margin: 1em;
   border-radius: 20px;
-  height: 2em;
-  width: 150px;
+  width: 160px;
   cursor: pointer;
   transition: all 0.4s ease;
   border: 1px solid transparent;
+}
+
+button.filter__categories {
+  height: 3.1rem;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
 .filter__categories:hover {
@@ -1345,6 +1362,13 @@ p > a[href^="/delivery"] {
     margin: 0;
   }
 
+  .way {
+    height: 3em;
+    font-size: 0.8em;
+    width: 100%;
+    margin: auto;
+  }
+
   .our-benefits {
     grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 1fr;
@@ -1396,9 +1420,43 @@ p > a[href^="/delivery"] {
     padding-right: 2em;
   }
 
-  /* .catalog__aside-and-catalog {
-    grid-template-columns: 1fr;
-  } */
+  .catalog__aside-and-catalog {
+    padding-left: 1em;
+    padding-right: 1em;
+    grid-template-rows: 0.2fr auto;
+    grid-template-columns: auto;
+  }
+  .catalog__filter {
+    width: 95%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    opacity: 1;
+  }
+
+  .catalog__filter > div {
+    width: 100%;
+
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .catalog__filter > div > h4 {
+    display: none;
+  }
+  button.filter__categories {
+    font-size: 0.7em;
+    width: auto;
+  }
+
+  .catalog__in-catalog-page {
+    width: 95%;
+    margin: auto;
+  }
+
+  .catalog-item__wrap {
+    width: 95%;
+  }
 
   footer {
     grid-template-columns: 1fr;

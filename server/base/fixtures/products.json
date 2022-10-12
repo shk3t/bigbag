@@ -459,6 +459,74 @@
       "items_per_pack": 500
     }
   },
+
+  {
+    "model": "base.Product",
+    "pk": 38,
+    "fields": {
+      "type": "Мешки полипропиленовые",
+      "image": "products/vkladysh.jpg",
+      "price": 122
+    }
+  },
+  {
+    "model": "base.PolyBag",
+    "pk": 38,
+    "fields": {
+      "subtype": "Вкладыши Новые МКР для МКР",
+      "size": "150x280",
+      "top_modification": "2 сорт",
+      "bag_weight": 0.6,
+      "items_per_pack": 25,
+      "pack_size": "55x40x12",
+      "pack_volume": 0
+    }
+  },
+  {
+    "model": "base.Product",
+    "pk": 39,
+    "fields": {
+      "type": "Мешки полипропиленовые",
+      "image": "products/vkladysh.jpg",
+      "price": 118
+    }
+  },
+  {
+    "model": "base.PolyBag",
+    "pk": 39,
+    "fields": {
+      "subtype": "Вкладыши Новые МКР для МКР",
+      "size": "166x240",
+      "top_modification": "2 сорт",
+      "bag_weight": 0.6,
+      "items_per_pack": 25,
+      "pack_size": "55x40x12",
+      "pack_volume": 0
+    }
+  },
+  {
+    "model": "base.Product",
+    "pk": 40,
+    "fields": {
+      "type": "Мешки полипропиленовые",
+      "image": "products/vkladysh.jpg",
+      "price": 155
+    }
+  },
+  {
+    "model": "base.PolyBag",
+    "pk": 40,
+    "fields": {
+      "subtype": "Вкладыши Новые МКР для МКР",
+      "size": "200x280",
+      "top_modification": "2 сорт",
+      "bag_weight": 0.8,
+      "items_per_pack": 25,
+      "pack_size": "80x40x17",
+      "pack_volume": 0.1
+    }
+  },
+
   {
     "model": "base.Product",
     "pk": 20,
@@ -782,72 +850,6 @@
       "items_per_pack": 100,
       "pack_size": "120x70x90",
       "pack_volume": 1
-    }
-  },
-  {
-    "model": "base.Product",
-    "pk": 38,
-    "fields": {
-      "type": "МКР (биг-бэг)",
-      "image": "products/vkladysh.jpg",
-      "price": 122
-    }
-  },
-  {
-    "model": "base.BigBag",
-    "pk": 38,
-    "fields": {
-      "subtype": "Вкладыши Новые МКР для МКР",
-      "size": "150x280",
-      "top_modification": "2 сорт",
-      "bag_weight": 0.6,
-      "items_per_pack": 25,
-      "pack_size": "55x40x12",
-      "pack_volume": 0
-    }
-  },
-  {
-    "model": "base.Product",
-    "pk": 39,
-    "fields": {
-      "type": "МКР (биг-бэг)",
-      "image": "products/vkladysh.jpg",
-      "price": 118
-    }
-  },
-  {
-    "model": "base.BigBag",
-    "pk": 39,
-    "fields": {
-      "subtype": "Вкладыши Новые МКР для МКР",
-      "size": "166x240",
-      "top_modification": "2 сорт",
-      "bag_weight": 0.6,
-      "items_per_pack": 25,
-      "pack_size": "55x40x12",
-      "pack_volume": 0
-    }
-  },
-  {
-    "model": "base.Product",
-    "pk": 40,
-    "fields": {
-      "type": "МКР (биг-бэг)",
-      "image": "products/vkladysh.jpg",
-      "price": 155
-    }
-  },
-  {
-    "model": "base.BigBag",
-    "pk": 40,
-    "fields": {
-      "subtype": "Вкладыши Новые МКР для МКР",
-      "size": "200x280",
-      "top_modification": "2 сорт",
-      "bag_weight": 0.8,
-      "items_per_pack": 25,
-      "pack_size": "80x40x17",
-      "pack_volume": 0.1
     }
   }
 ]

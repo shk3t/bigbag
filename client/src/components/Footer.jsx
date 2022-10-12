@@ -13,7 +13,7 @@ export default function Footer() {
     <footer>
       <div className="footer-logo">
         <Link to={MAIN_PATH}>
-          <img className="img-logo" src={bbLogo} alt="ДебютBag" />
+          <img className="img-logo" src={bbLogo} alt="BigBagPro" />
         </Link>
         <p>Промышленная полимерная упаковка</p>
         <p className="footer__legal-inf">
@@ -46,13 +46,12 @@ export default function Footer() {
       </div>
       <div className="footer-contacts">
         <p>
-          Москва +7 (499) 490-78-12 <br />
+          <strong>+7 (964) 789-94-40</strong> <br />
           bigbag.pro@mail.ru
         </p>
         <br />
         <p>
-          г. <strong>Москва</strong>, м. Пражская, ул. Подольских Курсантов, д.
-          3, стр. 7А, СК "Мобиус Логистика"
+          г. <strong>Москва</strong>, м. Бутырская, ул. Огородный проезд 8 с.1
         </p>
       </div>
     </footer>
