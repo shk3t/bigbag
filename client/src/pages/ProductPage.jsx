@@ -9,6 +9,7 @@ import { addItemAction } from "../reducers/cartReducer";
 import { BASE_URL, POLY_BAG } from "../consts";
 import { getPrice } from "../utils/repr";
 import { delay } from "../utils/delay";
+import ProductField from "../components/ProductField";
 
 export default function ProductPage() {
   const { id } = useParams();
@@ -53,63 +54,39 @@ export default function ProductPage() {
               </div>
               <div className="product-about__wrap">
                 <div className="product-about__title">
-                  {product.type} {product.size}
+                  {product.type} {product.size} {product.tag}
                 </div>
                 {/* при добавлении новой категории, напр., перчаток, переписать */}
                 <div className="product-about__text">
-                  <p>
-                    <span className="product-about__category"> Тип:&nbsp;</span>
-                    {product.subtype}
-                  </p>
-                  <p>
-                    <span className="product-about__category">
-                      Размер:&nbsp;
-                    </span>
-                    {product.size}
-                  </p>
-                  <p>
-                    <span className="product-about__category">Вес:&nbsp;</span>
-                    {product.bag_weight}
-                    {product.type === POLY_BAG ? "гр/шт" : "кг/шт"}
-                  </p>
-                  <p>
-                    <span className="product-about__category">
-                      Кол-во в упаковке:&nbsp;
-                    </span>
-                    {product.items_per_pack}
-                  </p>
+                  <ProductField label="Тип" field={product.subtype} />
+                  <ProductField label="Размер" field={product.size} />
+                  <ProductField
+                    label="Вес"
+                    field={`${product.bag_weight} ${
+                      product.type === POLY_BAG ? "гр" : "кг"
+                    }/шт`}
+                  />
+                  <ProductField
+                    label="Кол-во в упаковке"
+                    field={product.items_per_pack}
+                  />
 
                   {product.type === POLY_BAG ? (
-                    <p>
-                      <span className="product-about__category">
-                        Цвет:&nbsp;
-                      </span>
-                      {product.color}
-                    </p>
+                    <div>
+                      <ProductField label="Цвет" field={product.color} />
+                      <ProductField label="Сорт" field={product.poly_grade} />
+                    </div>
                   ) : (
-                    <p>
-                      <span className="product-about__category">
-                        {product.bottom_modification ? "Верх:" : "Сорт:"}&nbsp;
-                      </span>
-                      {product.top_modification}
-                    </p>
-                  )}
-                  {product.type === POLY_BAG ? (
-                    <p>
-                      <span className="product-about__category">
-                        Сорт:&nbsp;
-                      </span>
-                      {product.poly_grade}
-                    </p>
-                  ) : (
-                    product.bottom_modification && (
-                      <p>
-                        <span className="product-about__category">
-                          Низ:&nbsp;
-                        </span>
-                        {product.bottom_modification}
-                      </p>
-                    )
+                    <div>
+                      <ProductField
+                        label="Верх"
+                        field={product.top_modification}
+                      />
+                      <ProductField
+                        label="Низ"
+                        field={product.bottom_modification}
+                      />
+                    </div>
                   )}
                 </div>
                 <div className="product__price-buy">
